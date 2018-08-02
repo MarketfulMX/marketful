@@ -1,0 +1,45 @@
+@font-face{font-family:MyriadPro;src:url(MyriadPro-Regular.otf)}
+@font-face{font-family:FrutigerLTStd-Cn;src:url(FrutigerLTStd-Cn.otf)}
+
+.tableMK{
+    font-family: MyriadPro;
+    color: #669999;
+    font-size: 1.3em;
+    text-align: center;
+}
+.tableMK thead{
+    background-color: #fff;
+}
+.tableMK thead tr{
+    height: 7vh;
+}
+.bootstrap-wrapper .table thead th{
+    vertical-align: middle;
+}
+.bootstrap-wrapper .form-row{
+    margin-bottom: -5px;
+}
+
+.margen {
+    margin-top: 10px;
+}
+.margenCat{
+    margin-top: 2%!important;
+}
+.mkf-mtop-p5 {
+    margin-top: 2%;
+    font-family: FrutigerLTStd-Cn;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.mkf-form-title {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    color: #cccccc;
+}
+
+.mkf-inline-block {
+    display: inline-block;
+}
