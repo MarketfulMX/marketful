@@ -30,8 +30,25 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <td class="dt_check"><input type="checkbox" class="ids" name="ids[]" value="<?php echo $product->ID; ?>" />  </td>
         <td><?php echo $product->sku; ?></td>
         <td><?php echo $product->title; ?></td>
-        <td><?php echo $product->status; ?></td>
-        <td><?php echo $product->exposicion; ?></td>
+        <td><?php $productObject = MKF_ProductEntry::GetInstance(); ?>
+            <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
+            <?php  echo '<pre>'; print_r($all_mlmeta[0]["data"][0]->status); echo '</pre>'; ?> 
+ 
+            <!--select id="status">
+                <option value=""> </option>
+                <option value="Free">Gratis</option>
+                <option value="clasica">Clasica</option>
+                <option value="premium">Premium</option>
+            </select>-->
+        </td>
+        <td>
+            <select id="Exposicion">
+                <option value=""> </option>
+                <option value="active">Activa</option>
+                <option value="paused">Pausada</option>
+                <option value="closed">Finalizada</option>
+            </select>
+        </td>
         <td><?php echo $product->price; ?></td>
         <td><?php echo $product->stock; ?></td>
         <td>
@@ -44,3 +61,4 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   </table>
 </div>
 </div>
+
