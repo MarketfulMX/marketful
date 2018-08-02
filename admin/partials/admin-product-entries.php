@@ -7,13 +7,16 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 <script>
-    $("#status").onchange(
-        function ()
-        {
-            console.log("hola");
-            alert("HOLA HOLA");
-        }
-    );
+    
+    $(".status").on("change", hola)
+    
+    
+    
+    function hola(){
+        console.log("hola");
+        alert("HOLA HOLA");
+    }     
+    
 </script>
 
 <div class="bootstrap-wrapper">
@@ -43,7 +46,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <td><?php echo $product->sku; ?></td>
         <td><?php echo $product->title; ?></td>
         <td>
-            <select id="status" >
+            <select class="status" onChange="hola()">
             <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
             <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
             <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
