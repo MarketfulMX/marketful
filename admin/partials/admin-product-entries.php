@@ -4,6 +4,18 @@ $products = MKF_ProductEntry::GetInstance()->get_product_list();
 $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 ?>
+
+<script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<script>
+    $("#status").onchange(
+        function ()
+        {
+            console.log("hola");
+            alert("HOLA HOLA");
+        }
+    );
+</script>
+
 <div class="bootstrap-wrapper">
 <div class="container" style="margin-top: 5%">
 
@@ -30,24 +42,69 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <td class="dt_check"><input type="checkbox" class="ids" name="ids[]" value="<?php echo $product->ID; ?>" />  </td>
         <td><?php echo $product->sku; ?></td>
         <td><?php echo $product->title; ?></td>
-        <td><?php $productObject = MKF_ProductEntry::GetInstance(); ?>
+        <td>
+            <select id="status" >
+            <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
             <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
-            <?php  echo '<pre>'; print_r($all_mlmeta[0]["data"][0]->status); echo '</pre>'; ?> 
- 
-            <!--select id="status">
+            <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
+            <?php switch ($select_value)
+                    {
+                        case "active":
+                            echo "<option value='".$select_value."'selected>Activa</option>
+                            <option value='paused'>Pausada</option>
+                            <option value='closed'>Finalizada</option>";
+                            break;
+                        case "paused":
+                            echo "<option value='".$select_value."'selected>Pausada</option>
+                            <option value='active'>Activa</option>
+                            <option value='closed'>Finalizada</option>";
+                            break;
+                        case "closed":
+                            echo "<option value='".$select_value."'selected>Finalizada</option><option value='active'>Activa</option>
+                            <option value='paused'>Pausada</option>";
+                            break;
+                        default :
+                            echo "  <option value=''> </option>
+                                    <option value='active'>Activa</option>
+                                    <option value='paused'>Pausada</option>
+                                    <option value='closed'>Finalizada</option>";
+                            break;
+                    }?>
+            </select>
+        </td>
+        <td>
+            <select id="exposicion">
+            <?php $select_value = $all_mlmeta[0]["data"][0]->exposicion; ?>
+            <?php switch ($select_value)
+                    {
+                        case "free":
+                            echo "<option value='".$select_value."'selected>Gratis</option>
+                            <option value='clasica'>Clasica</option>
+                            <option value='premium'>Premium</option>";
+                            break;
+                        case "clasica":
+                            echo "<option value='".$select_value."'selected>Clasica</option>
+                            <option value='free'>Gratis</option>
+                            <option value='premium'>Premium</option>";
+                            break;
+                        case "premium":
+                            echo "<option value='".$select_value."'selected>Premium</option><option value='free'>Gratis</option>
+                            <option value='clasica'>Clasica</option>";
+                            break;
+                        default :
+                            echo "  <option value=''> </option>
+                                    <option value='free'>Gratis</option>
+                                    <option value='clasica'>Clasica</option>
+                                    <option value='premium'>Premium</option>";
+                            break;
+                    }?>
+            </select>
+            <!--select id="Exposicion">
                 <option value=""> </option>
                 <option value="Free">Gratis</option>
                 <option value="clasica">Clasica</option>
                 <option value="premium">Premium</option>
-            </select>-->
-        </td>
-        <td>
-            <select id="Exposicion">
-                <option value=""> </option>
-                <option value="active">Activa</option>
-                <option value="paused">Pausada</option>
-                <option value="closed">Finalizada</option>
-            </select>
+            </select-->
         </td>
         <td><?php echo $product->price; ?></td>
         <td><?php echo $product->stock; ?></td>
@@ -61,4 +118,6 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   </table>
 </div>
 </div>
+
+
 
