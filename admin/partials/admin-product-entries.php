@@ -19,9 +19,10 @@ function my_theme_ajax_submit() {
 
     $foo    = $_POST['titulo_ml'];
     $producto_id = $_POST['product_id'];
+    $status_ml = $_POST['status_ml'];
     ### aqui fue 
     // update_user_meta( 1, "first_name", nombre );
-    update_post_meta( $producto_id, 'titulo_ml', $foo );
+    update_post_meta( $producto_id, 'status_ml', $status_ml );
     
     // wp_send_json_success([200, "hola"], 200) ;
     wp_die();
@@ -33,13 +34,16 @@ function my_theme_ajax_submit() {
 <script>
    function cambioStatus(product_id){
         console.log(product_id)
+        var status_ml = $('#status_ml_' + product_id).val()
+        console.log(status_ml)
         jQuery.ajax({
             type: 'post',
             data: { 
                 "my_theme_ajax_submit": "now",
                 "nonce" : "<?php echo wp_create_nonce( 'my_theme_ajax_submit' ); ?>", 
                 titulo_ml: "gorro padre", 
-                product_id: product_id
+                product_id: product_id, 
+                status_ml: status_ml
             },
             success: function(response) { 
               console.log(response)
@@ -106,7 +110,7 @@ console.log(ajaxurl)
         <td><?php echo $product->sku; ?></td>
         <td><?php echo $product->title; ?></td>
         <td>
-            <select class="status" onChange="cambioStatus(<?php echo $product->ID;  ?>)" id="producto_<?php echo $product->ID;  ?>">
+            <select class="status" onChange="cambioStatus(<?php echo $product->ID;  ?>)" id="status_ml_<?php echo $product->ID;  ?>">
             <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
             <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
             <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
