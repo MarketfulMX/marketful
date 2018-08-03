@@ -137,7 +137,7 @@ console.log(ajaxurl)
             </select>
         </td>
         <td>
-            <select id="exposicion">
+            <select onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml')" id="exposicion_ml_<?php echo $product->ID;  ?>">
             <?php $select_value = $all_mlmeta[0]["data"][0]->exposicion; ?>
             <?php switch ($select_value)
                     {
