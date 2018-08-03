@@ -92,6 +92,17 @@ class MKF_Admin {
     wp_enqueue_script('admin_js_bootstrap_hack', plugin_dir_url( __FILE__ ) . 'js/bootstrap-hack.js', false, '1.0.0', false);
     wp_enqueue_script($this->plg_small_name, plugin_dir_url( __FILE__ ) . 'js/plg-admin.js', array('jquery'), $this->version, false);
 
+    wp_enqueue_script( 'ajax-script',
+        plugins_url( '/js/myjquery.js', __FILE__ ),
+        array('jquery')
+    );
+    $title_nonce = wp_create_nonce( 'title_example' );
+    wp_localize_script( 'ajax-script', 'my_ajax_obj', array(
+       // 'ajax_url' => admin_url( 'admin-ajax.php' ),
+       'ajax_url' => admin_url( 'admin-ajax.php' ),
+       'nonce'    => $title_nonce,
+    ) );
+
   }
 
   public function plg_menu() {
