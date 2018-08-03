@@ -4,42 +4,6 @@ $products = MKF_ProductEntry::GetInstance()->get_product_list();
 $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 
-// https://developer.wordpress.org/plugins/javascript/enqueuing/
-// add_action( 'admin_enqueue_scripts', 'my_enqueue' );
-// function my_enqueue( $hook ) {
-//     if( 'myplugin_settings.php' != $hook ) return;
-    // wp_enqueue_script( 'ajax-script',
-    //     plugins_url( '/js/myjquery.js', __FILE__ ),
-    //     array( 'jquery' )
-    // );
-    // $title_nonce = wp_create_nonce( 'title_example' );
-    // wp_localize_script( 'ajax-script', 'my_ajax_obj', array(
-    //    // 'ajax_url' => admin_url( 'admin-ajax.php' ),
-    //    'ajax_url' => admin_url( 'admin-ajax.php' ),
-    //    'nonce'    => $title_nonce,
-    // ) );
-// }
-
-
-
-// add_action( 'wp_ajax_my_ajax_handler', 'my_ajax_handler');
-// //JSON
-// function my_ajax_handler() {
-//     // check_ajax_referer( 'title_example' );
-//     // update_user_meta( get_current_user_id(), 'title_preference', $_POST['title'] );
-//     // $args = array(
-//     //     'tag' => $_POST['title'],
-//     // );
-//     // $the_query = new WP_Query( $args );
-//     //     wp_send_json( $_POST['title'] . ' (' . $the_query->post_count . ') ' );
-//   echo "hola";
-
-//   wp_die(); // this is required to terminate immediately and return a proper response
-// }
-
-
-// add_action('wp_ajax_r_rate', 'r_rate_recipe')
-
 ?>
 
 
@@ -53,8 +17,11 @@ function my_theme_ajax_submit() {
     // some php code that fires from AJAX click of #fire
     wp_mail( 'user@domain.com', 'my_theme_ajax_submit() fired', time());
 
-    update_user_meta( 1, "first_name", "adolfo" );
-    update_post_meta( 27, 'titulo_ml', "gorro chido" );
+    $foo    = $_POST['titulo_ml'];
+    $producto_id = $_POST['product_id'];
+    ### aqui fue 
+    // update_user_meta( 1, "first_name", nombre );
+    update_post_meta( $producto_id, 'titulo_ml', $foo );
     
     // wp_send_json_success([200, "hola"], 200) ;
     wp_die();
@@ -64,12 +31,15 @@ function my_theme_ajax_submit() {
 <button id='fire'>Fire Something</button>
 
 <script>
-    jQuery('#fire').click(function(){
+   function cambioStatus(product_id){
+        console.log(product_id)
         jQuery.ajax({
             type: 'post',
             data: { 
                 "my_theme_ajax_submit": "now",
-                "nonce" : "<?php echo wp_create_nonce( 'my_theme_ajax_submit' ); ?>"
+                "nonce" : "<?php echo wp_create_nonce( 'my_theme_ajax_submit' ); ?>", 
+                titulo_ml: "gorro padre", 
+                product_id: product_id
             },
             success: function(response) { 
               console.log(response)
@@ -80,7 +50,7 @@ function my_theme_ajax_submit() {
                 jQuery('#fire').text("...error!");
             },
         });
-    });
+    };
 </script>
 
 
@@ -92,20 +62,20 @@ function my_theme_ajax_submit() {
   // $(".status").on("change", cambioStatus)
 console.log(my_ajax_obj)
 console.log(ajaxurl)
-  function cambioStatus(){
-    console.log("hola");    
+  // function cambioStatus(){
+  //   console.log("hola");    
 
-    var this2 = this;                      //use in callback
-    $.post(my_ajax_obj.ajax_url, {         //POST request
-       _ajax_nonce: my_ajax_obj.nonce,     //nonce
-        action: "my_ajax_handler",            //action
-        title: this.value                  //data
-    }, function(data) {                    //callback
-      console.log(data)
-        // this2.nextSibling.remove();        //remove current title
-        // $(this2).after(data);              //insert server response
-    });
-  }     
+  //   var this2 = this;                      //use in callback
+  //   $.post(my_ajax_obj.ajax_url, {         //POST request
+  //      _ajax_nonce: my_ajax_obj.nonce,     //nonce
+  //       action: "my_ajax_handler",            //action
+  //       title: this.value                  //data
+  //   }, function(data) {                    //callback
+  //     console.log(data)
+  //       // this2.nextSibling.remove();        //remove current title
+  //       // $(this2).after(data);              //insert server response
+  //   });
+  // }     
     
 </script>
 
@@ -136,7 +106,7 @@ console.log(ajaxurl)
         <td><?php echo $product->sku; ?></td>
         <td><?php echo $product->title; ?></td>
         <td>
-            <select class="status" onChange="cambioStatus()">
+            <select class="status" onChange="cambioStatus(<?php echo $product->ID;  ?>)" id="producto_<?php echo $product->ID;  ?>">
             <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
             <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
             <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
