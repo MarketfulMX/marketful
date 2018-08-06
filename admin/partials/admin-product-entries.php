@@ -89,7 +89,7 @@ console.log(ajaxurl)
     <thead>
       <tr>
         <th class="dt_check"><input type="checkbox" class="ids" name="ids[]"  /> </th>
-        <th>SKU</th>
+        <th>SKU </th>
         <th>Título</th>
         <th>Status</th>
         <th>Exposición</th>

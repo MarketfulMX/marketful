@@ -3,7 +3,7 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       http://innodite.com
+ * @link       http://www.marketful.mx
  * @since      1.0.0
  *
  * @package    mkf
@@ -122,15 +122,15 @@ class MKF_ProductEntry extends MKF_DBCore {
 
         extract($_REQUEST,EXTR_PREFIX_ALL,"p");
 
-        update_post_meta(intval($p_product_id), $this->meta_title, empty($p_entry_title) ? null : $p_entry_title);
-        update_post_meta(intval($p_product_id), $this->meta_stock, $p_stock);
-        update_post_meta(intval($p_product_id), $this->meta_store, $p_store_recall);
+        // update_post_meta(intval($p_product_id), $this->meta_title, empty($p_entry_title) ? null : $p_entry_title);
+        // update_post_meta(intval($p_product_id), $this->meta_stock, $p_stock);
+        // update_post_meta(intval($p_product_id), $this->meta_store, $p_store_recall);
         update_post_meta(intval($p_product_id), $this->meta_status, $p_status_post);
         update_post_meta(intval($p_product_id), $this->meta_exp, $p_exposition);
-        update_post_meta(intval($p_product_id), $this->meta_wtime, $p_time_warranty);
-        update_post_meta(intval($p_product_id), $this->meta_cat, json_encode($p_ml_categories, JSON_FORCE_OBJECT));
-        update_post_meta(intval($p_product_id), $this->meta_lcat, $p_ml_categories['child'][count($p_ml_categories['child']) - 1]);
-        update_post_meta(intval($p_product_id), $this->meta_precio_ml, $p_precio_ml);
+        // update_post_meta(intval($p_product_id), $this->meta_wtime, $p_time_warranty);
+        // update_post_meta(intval($p_product_id), $this->meta_cat, json_encode($p_ml_categories, JSON_FORCE_OBJECT));
+        // update_post_meta(intval($p_product_id), $this->meta_lcat, $p_ml_categories['child'][count($p_ml_categories['child']) - 1]);
+        // update_post_meta(intval($p_product_id), $this->meta_precio_ml, $p_precio_ml);
 
         header("Location: admin.php?page=mkf-product-entries&success");
     }
