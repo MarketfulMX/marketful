@@ -7,11 +7,17 @@ Vista Base:
 1) ocultar precio_ml o regular price segun sea el caso LISTO
 2) ocultar cantidad LISTO
 3) mostrar sku  LISTO
-4) ocultar boton preview o cambiarle el link a url_mercadolibre
-5) ocultar o desactivar pero q se vea el boton edit para poder hacer release
+8) Escribir a Hugo y pedir hablar con Carlos Ruiz LISTO
+4) ocultar boton preview o cambiarle el link a url_mercadolibre LISTO
+5) ocultar o desactivar pero q se vea el boton edit para poder hacer release LISTO
+
+
+
 6) Chequear todo el codigo
 7) Borrar plugin e instalar de nuevo en Marketful local
-8) Llamar a Hugo y pedir hablar con Carlos Ruiz
+
+
+Con Carlos Ruiz
 8.1) Hacer backup de woo commerce la calzada
 8.2) Instalar plugin 
 8.3) Hablar de convenio para que sus clientes nos revendan tambien 

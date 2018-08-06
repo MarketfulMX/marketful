@@ -26,7 +26,7 @@ function my_theme_ajax_submit() {
 }
 ?>
 
-<button id='fire'>Fire Something</button>
+<!-- <button id='fire'>Fire Something</button> -->
 
 <script>
    function cambioStatus(product_id, key){
@@ -44,11 +44,11 @@ function my_theme_ajax_submit() {
             },
             success: function(response) { 
               console.log(response)
-                jQuery('#fire').text("Cambio Correcto!");
+                // jQuery('#fire').text("Cambio Correcto!");
             },
             error: function(response) { 
               console.log(response)
-                jQuery('#fire').text("...error!");
+                // jQuery('#fire').text("...error!");
             },
         });
     };
@@ -112,64 +112,20 @@ console.log(ajaxurl)
             <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
             <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
             <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
-            <?php switch ($select_value)
-                    {
-                        case "active":
-                            echo "<option value='".$select_value."'selected>Activa</option>
-                            <option value='paused'>Pausada</option>
-                            <option value='closed'>Finalizada</option>";
-                            break;
-                        case "paused":
-                            echo "<option value='".$select_value."'selected>Pausada</option>
-                            <option value='active'>Activa</option>
-                            <option value='closed'>Finalizada</option>";
-                            break;
-                        case "closed":
-                            echo "<option value='".$select_value."'selected>Finalizada</option><option value='active'>Activa</option>
-                            <option value='paused'>Pausada</option>";
-                            break;
-                        default :
-                            echo "  <option value=''> </option>
-                                    <option value='active'>Activa</option>
-                                    <option value='paused'>Pausada</option>
-                                    <option value='closed'>Finalizada</option>";
-                            break;
-                    }?>
+                <option>...</option>
+                <option value="active" <?php echo ($select_value=="active")?'selected':''; ?>>Activa</option>
+                <option value="paused" <?php echo ($select_value=="paused")?'selected':''; ?>>Pausada</option>
+                <option value="closed" <?php echo ($select_value=="closed")?'selected':''; ?> >Finalizada</option> 
             </select>
         </td>
         <td>
             <select onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml')" id="exposicion_ml_<?php echo $product->ID;  ?>">
             <?php $select_value = $all_mlmeta[0]["data"][0]->exposicion; ?>
-            <?php switch ($select_value)
-                    {
-                        case "free":
-                            echo "<option value='".$select_value."'selected>Gratis</option>
-                            <option value='clasica'>Clasica</option>
-                            <option value='premium'>Premium</option>";
-                            break;
-                        case "clasica":
-                            echo "<option value='".$select_value."'selected>Clasica</option>
-                            <option value='free'>Gratis</option>
-                            <option value='premium'>Premium</option>";
-                            break;
-                        case "premium":
-                            echo "<option value='".$select_value."'selected>Premium</option><option value='free'>Gratis</option>
-                            <option value='clasica'>Clasica</option>";
-                            break;
-                        default :
-                            echo "  <option value=''> </option>
-                                    <option value='free'>Gratis</option>
-                                    <option value='clasica'>Clasica</option>
-                                    <option value='premium'>Premium</option>";
-                            break;
-                    }?>
+                <option>...</option>
+                <option value="free" <?php echo ($select_value=="free")?'selected':''; ?>>Gratis</option>
+                <option value="clasica" <?php echo ($select_value=="clasica")?'selected':''; ?>>Clasica</option>
+                <option value="premium" <?php echo ($select_value=="premium")?'selected':''; ?> >Premium</option> 
             </select>
-            <!--select id="Exposicion">
-                <option value=""> </option>
-                <option value="Free">Gratis</option>
-                <option value="clasica">Clasica</option>
-                <option value="premium">Premium</option>
-            </select-->
         </td>
        <!--  <td><?php echo $product->price; ?></td>
         <td><?php echo $product->precio_ml; ?></td> -->
