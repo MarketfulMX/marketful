@@ -141,7 +141,7 @@ class MKF_ProductEntry extends MKF_DBCore {
 
         $sql = "SELECT tmp.ID,
                    tmp.sku,
-                   IFNULL(tmp.ml_title, tmp.title) title,
+                   IFNULL(tmp.titulo_ml, tmp.title) title,
                    CASE WHEN tmp.status_ml = 'A' THEN 'Activo' 
                         WHEN tmp.status_ml = 'I' THEN 'Inactivo'
                    ELSE tmp.status_ml
@@ -150,7 +150,7 @@ class MKF_ProductEntry extends MKF_DBCore {
                         WHEN tmp.exposicion_ml = 'P' THEN 'Premium'
                    ELSE tmp.exposicion_ml
                    END exposicion,
-                   IFNULL(tmp.ml_price, tmp.regular_price) price,
+                   IFNULL(tmp.precio_ml, tmp.regular_price) price,
                    IFNULL(tmp.ml_stock, tmp.stock) stock,
                    IFNULL(tmp.ml_url, tmp.wp_url) url
             FROM
@@ -159,7 +159,7 @@ class MKF_ProductEntry extends MKF_DBCore {
                      pm1.meta_value sku, 
                      (SELECT meta_value 
                       FROM {$this->getPostMetaTableName()} 
-                      WHERE post_id = p.ID AND meta_key = '{$this->meta_title}') ml_title,
+                      WHERE post_id = p.ID AND meta_key = '{$this->meta_title}') titulo_ml,
                      p.post_title title,
                      (SELECT meta_value 
                       FROM {$this->getPostMetaTableName()} 
@@ -174,7 +174,7 @@ class MKF_ProductEntry extends MKF_DBCore {
                      pm2.meta_value regular_price,
                      (SELECT meta_value 
                       FROM {$this->getPostMetaTableName()} 
-                      WHERE post_id = p.ID AND meta_key = '{$this->meta_price}') ml_price,
+                      WHERE post_id = p.ID AND meta_key = '{$this->meta_price}') precio_ml,
                      pm3.meta_value stock,
                      (SELECT meta_value 
                       FROM {$this->getPostMetaTableName()} 
