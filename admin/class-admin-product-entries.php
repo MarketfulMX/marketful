@@ -10,7 +10,11 @@
  * @subpackage mkf/admin
  */
 
-/* PRODUCT METADATA MercadoLibre */
+/* PRODUCT METADATA MercadoLibre 
+
+Se declaran constantes para referirse a campos en la base de datos
+
+*/
 if (!defined('ML_META_TITLE'))
     define('ML_META_TITLE', 'titulo_ml');
 if (!defined('ML_META_STATUS'))
@@ -68,7 +72,7 @@ class MKF_ProductEntry extends MKF_DBCore {
      */
     private $version;
 
-
+    // se declaran variables de la clase
     private $meta_title;
     private $meta_stock;
     private $meta_store;
@@ -110,6 +114,7 @@ class MKF_ProductEntry extends MKF_DBCore {
     }
 
 
+    // funcion para traer objetos de la clase
     public static function GetInstance() {
         if ( is_null( self::$instance ) ) {
             self::$instance = new self;
@@ -117,6 +122,8 @@ class MKF_ProductEntry extends MKF_DBCore {
         return self::$instance;
     }
 
+
+    // funcion para guardar la data q viene del formulario
     public function prefix_admin_add_metadata_to_product_entry()
     {
 
@@ -135,6 +142,8 @@ class MKF_ProductEntry extends MKF_DBCore {
         header("Location: admin.php?page=mkf-product-entries&success");
     }
 
+
+    // funcion para traer los productos
     public function get_product_list()
     {
         $out = array();
