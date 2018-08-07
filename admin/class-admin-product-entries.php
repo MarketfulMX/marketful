@@ -28,13 +28,13 @@ if (!defined('ML_META_WARRANTY_TIME'))
 if (!defined('ML_META_WARRANTY_UNIT_TIME'))
     define('ML_META_WARRANTY_UNIT_TIME', 'ut_garantia_ml');
 if (!defined('ML_META_PRICE'))
-    define('ML_META_PRICE', 'precio_ml');
+    define('ML_META_PRICE', 'regular_price');
 if (!defined('ML_META_CATEGORIES'))
     define('ML_META_CATEGORIES', 'categories_ml');
 if (!defined('ML_META_LAST_CATEGORY'))
     define('ML_META_LAST_CATEGORY', 'last_category_ml');
 if (!defined('ML_META_PRECIO_ML'))
-    define('ML_META_PRECIO_ML', 'precioNuevo_ml');
+    define('ML_META_PRECIO_ML', 'precio_ml');
 
 /**
  * The admin-specific functionality of the plugin.
@@ -123,7 +123,7 @@ class MKF_ProductEntry extends MKF_DBCore {
         extract($_REQUEST,EXTR_PREFIX_ALL,"p");
 
         // update_post_meta(intval($p_product_id), $this->meta_title, empty($p_entry_title) ? null : $p_entry_title);
-        // update_post_meta(intval($p_product_id), $this->meta_stock, $p_stock);
+        update_post_meta(intval($p_product_id), $this->meta_stock, $p_stock);
         // update_post_meta(intval($p_product_id), $this->meta_store, $p_store_recall);
         update_post_meta(intval($p_product_id), $this->meta_status, $p_status_post);
         update_post_meta(intval($p_product_id), $this->meta_exp, $p_exposition);
@@ -150,9 +150,9 @@ class MKF_ProductEntry extends MKF_DBCore {
                         WHEN tmp.exposicion_ml = 'P' THEN 'Premium'
                    ELSE tmp.exposicion_ml
                    END exposicion,
-                   IFNULL(tmp.precio_ml, tmp.regular_price) price,
+                   tmp.precio_ml as price,
                    IFNULL(tmp.ml_stock, tmp.stock) stock,
-                   IFNULL(tmp.ml_url, tmp.wp_url) url
+                   IFNULL(tmp.link_publicacion, tmp.wp_url) url
             FROM
             (
               SELECT p.ID, 
@@ -170,18 +170,15 @@ class MKF_ProductEntry extends MKF_DBCore {
                      p.guid wp_url,
                      (SELECT meta_value 
                       FROM {$this->getPostMetaTableName()} 
-                      WHERE post_id = p.ID AND meta_key = 'link_publicacion') ml_url,
-                     pm2.meta_value regular_price,
-                     (SELECT meta_value 
-                      FROM {$this->getPostMetaTableName()} 
-                      WHERE post_id = p.ID AND meta_key = '{$this->meta_price}') precio_ml,
+                      WHERE post_id = p.ID AND meta_key = 'link_publicacion') link_publicacion,
+     
                      pm3.meta_value stock,
                      (SELECT meta_value 
                       FROM {$this->getPostMetaTableName()} 
                       WHERE post_id = p.ID AND meta_key = '{$this->meta_stock}') ml_stock, 
                      (SELECT meta_value 
                       FROM {$this->getPostMetaTableName()} 
-                      WHERE post_id = p.ID AND meta_key = '{$this->meta_precio_ml}') precioNuevo_ml
+                      WHERE post_id = p.ID AND meta_key = '{$this->meta_precio_ml}') precio_ml
               FROM {$this->getPostTableName()} p
               INNER JOIN {$this->getPostMetaTableName()} pm1 ON pm1.post_id = p.ID and pm1.meta_key = '_sku'
               INNER JOIN {$this->getPostMetaTableName()} pm2 ON pm2.post_id = p.ID and pm2.meta_key = '_regular_price'
