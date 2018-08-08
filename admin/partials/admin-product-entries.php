@@ -93,9 +93,6 @@ console.log(ajaxurl)
         <th>Título</th>
         <th>Status</th>
         <th>Exposición</th>
- <!--        <th>Precio</th>
-        <th>Precio ML</th> -->
-        <!-- <th>Cantidad</th> -->
         <th style="min-width: 215px;">Acción</th>
       </tr>
     </thead>
@@ -127,9 +124,6 @@ console.log(ajaxurl)
                 <option value="premium" <?php echo ($select_value=="premium")?'selected':''; ?> >Premium</option> 
             </select>
         </td>
-       <!--  <td><?php echo $product->price; ?></td>
-        <td><?php echo $product->precio_ml; ?></td> -->
-        <!-- <td><?php echo $product->stock; ?></td> -->
         <td>
           <a href="?page=mkf-product-edit&product_id=<?php echo $product->ID; ?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
           <a href="<?php echo $product->url; ?>" target="_blank" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Preview</a>
