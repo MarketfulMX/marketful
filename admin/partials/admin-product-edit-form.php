@@ -167,7 +167,7 @@ if (!empty($product_id))
               <span class="syi-category-tree__image syi-category-tree__image--std" ></span>
               <div class="syi-gradient"></div>
           </div>
-          <div class="syi-category-tree__wrapper u--arrange-fill" >
+          <div class="syi-category-tree__wrapper u--arrange-fill" id="demo" >
               <div class="syi-category-tree__container syi-category-tree__container--3 ">
                   <div class="ui-box syi-category-tree__column" >
                       <div data-index="0" class="syi-category-tree__container " >
@@ -224,8 +224,10 @@ if (!empty($product_id))
                     Ndiv += '</div>';
                     Ndiv += '</div>';
                     jQuery(".syi-category-tree__column:last").after(Ndiv);
+                    jQuery('#demo').scrollLeft(2000);
                 }else{
                     add_submit_button();
+                    jQuery('#demo').scrollLeft(2000);
                 }
             }
         });

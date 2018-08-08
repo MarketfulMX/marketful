@@ -113,7 +113,7 @@ class MKF_Admin {
       $this->available_menu_to_editor_or_admin(),
       $this->dashboard_menu_name,
       array( $this, 'dashboard' ),
-      'dashicons-admin-settings'
+      'dashicons-hammer'
     );
 
     add_submenu_page(

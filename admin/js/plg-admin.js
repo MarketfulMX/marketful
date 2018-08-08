@@ -43,7 +43,7 @@
          },
          "columnDefs": [
                 { "targets": 0, "orderable": false },
-                { "targets": 7, "orderable": false }
+                { "targets": 2, "orderable": false }
             ],
       });
    });
