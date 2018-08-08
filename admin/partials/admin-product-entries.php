@@ -108,7 +108,7 @@ console.log(ajaxurl)
         <td><?php echo $product->sku; ?></td>
         <td><?php echo $product->title; ?></td>
         <td>
-            <select class="status" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'status_ml')" id="status_ml_<?php echo $product->ID;  ?>">
+            <select class="status" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre')" id="mercadolibre_<?php echo $product->ID;  ?>">
             <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
             <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
             <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>

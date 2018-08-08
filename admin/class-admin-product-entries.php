@@ -18,7 +18,7 @@ Se declaran constantes para referirse a campos en la base de datos
 if (!defined('ML_META_TITLE'))
     define('ML_META_TITLE', 'titulo_ml');
 if (!defined('ML_META_STATUS'))
-    define('ML_META_STATUS', 'status_ml');
+    define('ML_META_STATUS', 'mercadolibre');
 if (!defined('ML_META_STOCK'))
     define('ML_META_STOCK', 'inventario_ml');
 if (!defined('ML_META_EXPOSITION_TYPE'))
@@ -151,9 +151,9 @@ class MKF_ProductEntry extends MKF_DBCore {
         $sql = "SELECT tmp.ID,
                    tmp.sku,
                    IFNULL(tmp.titulo_ml, tmp.title) title,
-                   CASE WHEN tmp.status_ml = 'A' THEN 'Activo' 
-                        WHEN tmp.status_ml = 'I' THEN 'Inactivo'
-                   ELSE tmp.status_ml
+                   CASE WHEN tmp.mercadolibre = 'A' THEN 'Activo' 
+                        WHEN tmp.mercadolibre = 'I' THEN 'Inactivo'
+                   ELSE tmp.mercadolibre
                    END status,
                    CASE WHEN tmp.exposicion_ml = 'C' THEN 'Clasica' 
                         WHEN tmp.exposicion_ml = 'P' THEN 'Premium'
@@ -172,7 +172,7 @@ class MKF_ProductEntry extends MKF_DBCore {
                      p.post_title title,
                      (SELECT meta_value 
                       FROM {$this->getPostMetaTableName()} 
-                      WHERE post_id = p.ID AND meta_key = '{$this->meta_status}') status_ml,
+                      WHERE post_id = p.ID AND meta_key = '{$this->meta_status}') mercadolibre,
                      (SELECT meta_value 
                       FROM {$this->getPostMetaTableName()} 
                       WHERE post_id = p.ID AND meta_key = '$this->meta_exp') exposicion_ml,
