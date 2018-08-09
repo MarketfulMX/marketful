@@ -1,18 +1,19 @@
 <?php
 
-/**
- * The admin-specific functionality of the plugin.
+/*
+ * Archivo: admin-product-edit-form.php
+ * Ultima edición : 7 de agosto de 2018
  *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
+ * @autor: Adolfo Yanes <adolfo@marketful.mx>
+ * @autor: Mauricio Alcala <mauricio@marketful.mx> as proyect admin
+ * * @author: Javier Urbano <javierurbano11@gmail.com> as contributor
+ * * @author: Angel Salazar <salazar.angel.e@gmail.com> 
  *
- * @link       http://innodite.com
- * @since      1.0.0
+ * @versión: 1.02
+ * @link: marketful.mx
+ * @package    mkf
+ * @subpackage mkf/admin/partials
  *
- * @package    plgcore
- * @subpackage plgcore/admin
- * @author     Javier Urbano <javierurbano11@gmail.com> at Innodite Inc
- * @author     Angel Salazar <salazar.angel.e@gmail.com> at Innodite Inc.
  */
 
 

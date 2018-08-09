@@ -1,14 +1,16 @@
 <?php
 /*
-* Archivo: admin-product-entries.php
-* Versión:
-* Ultima edición : 8 de agosto de 2018
-* Autor: Marketful
-* 
-* @package    mkf
-* @subpackage mkf/admin/partials
-*
-*/
+ * Archivo: admin-product-edit-form.php
+ * Ultima edición : 7 de agosto de 2018
+ *
+ * @autor: Adolfo Yanes (adolfo@marketful.mx)
+ * @autor: Administrador de Proyecto: Mauricio Alcala (mauricio@marketful.mx)
+ * @versión: 1.02
+ * 
+ * @package    mkf
+ * @subpackage mkf/admin/partials
+ *
+ */
 
  /**
  * Descripción General: 
@@ -64,8 +66,20 @@ function my_theme_ajax_submit() {
     $key = $_POST['key'];
     ### aqui fue 
     // update_user_meta( 1, "first_name", nombre );
-    update_post_meta( $producto_id, $key, $value );
+    $a = update_post_meta( $producto_id, $key, $value );
     // wp_send_json_success([200, "hola"], 200) ; NO SIRVE
+    error_log("guardarmos el producto");
+    // error_log($a)
+    // Notificar el cambio a Marketful para que lo envie a Mercadolibre
+    $url = "https://woocommerce.marketful.mx/notifications?{$key}={$value}&product_id={$producto_id}";
+    // $url = "http://localhost:3000/notifications?{$key}={$value}&product_id={$producto_id}"; para pruebas locales
+    // $parametros = array($key => $value, "woo_id" => $_POST['product_id']);
+    error_log( print_r($parametros, TRUE));
+    // $response = wp_remote_post( $url, $args = $parametros ); 
+    $http = _wp_http_get_object();
+    // $response = $http->post( $url, array("elkey" => "elvalue") ); no manda los params 
+    $response = $http->post( $url );
+    error_log( print_r($response, TRUE));
     wp_die();
 }
 ?>
