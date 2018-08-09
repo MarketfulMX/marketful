@@ -2,9 +2,11 @@
 
 /*
  * Archivo: admin-product-edit-form.php
- * Versión: 1.02
  * Ultima edición : 7 de agosto de 2018
- * Autor: Marketful
+ *
+ * @autor: Adolfo Yanes (adolfo@marketful.mx)
+ * @autor: Administrador de Proyecto: Mauricio Alcala (mauricio@marketful.mx)
+ * @versión: 1.02
  * 
  * @package    mkf
  * @subpackage mkf/admin/partials
@@ -368,7 +370,7 @@ function add_categories_object(level, ml_url, cat_name, flag_to_add)
   });
 }
 
-/***************************************************************************************
+/*
 * @Función add_submit_button() JQuery
 * Se crea una @funcion llamada add_submit_button() que agrega
 * los valores de nuevas categorias aen el ultimo elemento de
