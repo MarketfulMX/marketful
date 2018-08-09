@@ -1,7 +1,7 @@
 # Marketful 
 **Marketful®** Proporcionamos a las personas y empresas que venden via online, herramientas tecnologicas practicas y eficaces, disenadas para simpificar el proceso de comercializacion y distribucion de sus productos.
 
-<img src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png" align="center">
+<h1 align="center"><img src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png" align="center"></h1>
 
 # Marketful Seller-Center
 
@@ -9,7 +9,7 @@
 - **Controla todos tus canales de venta** con marketful seller center puedes administrar todas tus cuentas de venta en un solo lugar.
 - **Cambios controlados** Los cambios dentro de Marketful Seller Center se reflejan en todas tus platadormas.
 - **Adios complicaciones** Con Marketful Seller Center se acabaron las horas de modificar productos iguales en pataformas diferentes.
-[header](Documentacion/img/page-02(3).jpeg)
+![header](Documentacion/img/page-02(3).jpeg)
 
 ## Version 1.0
 - **Publicaciones** Con Marketful Seller Center simplicidad es la norma, todos tus productos en un solo lugar y esto se refleja en el poder de publicar tus productos desde un solo lugar y esto se refleje en todos tus canales de venta, con *Marketful Seller Center* estas en buenas manos.
