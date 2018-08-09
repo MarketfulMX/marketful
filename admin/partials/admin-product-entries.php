@@ -20,8 +20,13 @@ function my_theme_ajax_submit() {
     $key = $_POST['key'];
     ### aqui fue 
     // update_user_meta( 1, "first_name", nombre );
-    update_post_meta( $producto_id, $key, $value );
+    $a = update_post_meta( $producto_id, $key, $value );
     // wp_send_json_success([200, "hola"], 200) ; NO SIRVE
+    error_log("guardarmos el producto");
+    // error_log($a)
+    $url = "https://woocommerce.marketful.mx/notifications";
+    $args = array($_POST['key'] => $_POST['value'], 'woo_id' => $_POST['product_id']);
+    wp_remote_post( $url, $args ); 
     wp_die();
 }
 ?>
