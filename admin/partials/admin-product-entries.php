@@ -1,16 +1,60 @@
 <?php
+/*
+* Archivo: admin-product-entries.php
+* Versión:
+* Ultima edición : 8 de agosto de 2018
+* Autor: Marketful
+* 
+* @package    mkf
+* @subpackage mkf/admin/partials
+*
+*/
 
+ /**
+ * Descripción General: 
+ * Sección de publicaciones dentro del plugin de Marketful
+ * que muestra la lista de productos con opcion de modificar
+ * los atributos de status, exposición y permite buscar 
+ * entre tus productos.
+ *
+ *
+ */
+
+/*
+* @Script PHP
+* Se toman los productos que se mostraran dentro de la tabla, y se guardan dentro de $products.
+* Se toma la imagen que se mostrara como cabecera.
+*/
 $products = MKF_ProductEntry::GetInstance()->get_product_list();
 $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
-
 
 ?>
 
 
 <?php
+
+/*
+* @Script PHP
+* Primero se valida con el @parametro $_POST['nonce'] y si el hash es correcto
+* posteriormente manda a llamar a la funcion my_theme_ajax_submit()
+*
+*/
 if (isset($_POST['my_theme_ajax_submit']))
     if ( wp_verify_nonce( $_POST['nonce'], 'my_theme_ajax_submit' ) )
         my_theme_ajax_submit(); 
+/*
+ * @Función PHP: my_theme_ajax_submit()
+ * La @función my_theme_ajax_submit() recibe dentro de las variables:
+ * $producto_id = Identificador del producto 
+ * $value = Nuevo valor a actualizar
+ * $key = Tipo de metadato que se modificara
+ *
+ * Posteriormente despues de recibir los @parámetros ejecuta la función de wp
+ * update_post_meta(@string,@string,@string) que actualiza la meta data que se envió.
+ *
+ * Para finalizar la @función wp_die() finaliza la ejecución y muestra el error
+ * en caso de que suceda alguno.
+ */
 
 function my_theme_ajax_submit() {
     // do something
@@ -29,29 +73,53 @@ function my_theme_ajax_submit() {
 <!-- <button id='fire'>Fire Something</button> -->
 
 <script>
-   function cambioStatus(product_id, key){
-        console.log(product_id)
-        var value = $('#' + key + "_" + product_id).val()
-        console.log(key)
-        jQuery.ajax({
-            type: 'post',
-            data: { 
-                "my_theme_ajax_submit": "now",
-                "nonce" : "<?php echo wp_create_nonce( 'my_theme_ajax_submit' ); ?>", 
-                product_id: product_id, 
-                value: value, 
-                key: key
-            },
-            success: function(response) { 
-              console.log(response)
-                // jQuery('#fire').text("Cambio Correcto!");
-            },
-            error: function(response) { 
-              console.log(response)
-                // jQuery('#fire').text("...error!");
-            },
-        });
-    };
+/*
+ * - @Función JQuery/Ajax: cambioStatus(@string,@string)
+ * Esta función recibe dos @parámetros que son el id del producto y el tipo de
+ * metadato que modificara.
+ * La @función console log muestra en la consola del navegador la información del objeto
+ * product_id.
+ *
+ * Se crea una variable con el valor del select que se modificó, se obtiene dicha
+ * información obteniendo el id del select con el tipo de metadato que se modificara
+ * más guion bajo más el id del producto.
+ *
+ * Se envía con console.log el valor de key
+ * Se crea una función AJAX que pide el tipo de solicitud que se hace 'POST'
+ * y se envían los @parámetros además que se manda a llamar a la función de PHP 
+ * my_theme_ajax_submit. Se le envían los @parámetros: product_id, value y key .
+ *
+ * La @función Ajax que nombramos response nos responde a la solicitud con un archivo Json.
+ *
+ * En caso de que la @función haya resultado exitosa, la reflejamos en consola con
+ * console.log y lo mostramos en el @boton #fire cambiando su texto a "Cambio
+ * correcto".
+ * En caso de que la @función Ajax no haya resultado exitosa, reflejamos en
+ * consola el error y actualizamos el @boton #fire cambiando su texto a "error".
+ */
+       function cambioStatus(product_id, key){
+            console.log(product_id)
+            var value = $('#' + key + "_" + product_id).val()
+            console.log(key)
+            jQuery.ajax({
+                type: 'post',
+                data: { 
+                    "my_theme_ajax_submit": "now",
+                    "nonce" : "<?php echo wp_create_nonce( 'my_theme_ajax_submit' ); ?>", 
+                    product_id: product_id, 
+                    value: value, 
+                    key: key
+                },
+                success: function(response) { 
+                  console.log(response)
+                    // jQuery('#fire').text("Cambio Correcto!");
+                },
+                error: function(response) { 
+                  console.log(response)
+                    // jQuery('#fire').text("...error!");
+                },
+            });
+        };
 </script>
 
 
@@ -59,6 +127,11 @@ function my_theme_ajax_submit() {
 
 <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 <script>
+    
+    /*
+    * @Script JQuery
+    * Mostramos en consola con console.log los valores de my_ajax_obj y ajaxurl
+    */
     
   // $(".status").on("change", cambioStatus)
 console.log(my_ajax_obj)
@@ -83,7 +156,7 @@ console.log(ajaxurl)
 <div class="bootstrap-wrapper">
 <div class="container" style="margin-top: 5%">
 
-  <?php echo "<img src='{$imgSrc}' > "; ?>
+  <?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> 
 
   <table id="services_list" class="table stripe tableMK" style="width:100%">
     <thead>
@@ -105,6 +178,16 @@ console.log(ajaxurl)
         <td><?php echo $product->sku; ?></td>
         <td><?php echo $product->title; ?></td>
         <td>
+            <!-- ******************************************************************
+                @Scripts PHP en esta sección:
+                -  Hacemos un Echo al valor de ID del producto para mandarlo como parametro a la @función
+                   cambioStatus(@string,@string)
+                -  Se toman los datos de los productos en $productObject.
+                -  Se capta toda la metadata desde el objeto $productObject
+                -  Se selecciona de la matriz resultante, el valor relacionado con el status
+                -  Dentro del select, se hace echo de 'Selected' para que sea la opcion seleccionada, en        caso de que el valor de $select_value sea igual a alguna de las opciones.
+                -  Se repite el procedimiento, pero en esta ocacion el dato que se utiliza es exposición_ml
+                --->
             <select class="status" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre')" id="mercadolibre_<?php echo $product->ID;  ?>">
             <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
             <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
