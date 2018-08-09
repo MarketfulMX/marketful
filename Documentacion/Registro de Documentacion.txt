@@ -1,0 +1,10 @@
+---------------------------------------------------------------
+-- archivo: Documentacion admin-product-edit-form php 1-02.pdf
+-- autor: Marketful
+-- creación: 8 de agosto de 2018
+---------------------------------------------------------------
+---------------------------------------------------------------
+-- archivo: Documentacion admin-product-entries php 1-02.pdf
+-- autor: Marketful
+-- creación: 8 de agosto de 2018
+---------------------------------------------------------------

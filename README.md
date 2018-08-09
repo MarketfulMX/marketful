@@ -19,22 +19,22 @@ Nos hemos enfocado en la sencilles, practicidad y valor para ti que necesitas te
 
 ## Instalación
 *Marketful Seller Center* es un Plugin que puedes tener disponible en tu sitio de Wordpress para poder administrar todos tus canales de venta en linea. Antes de instalar +Marketful Seller Center* es necesario contar con el plugin WooCommerce (Descargalo [aqui](https://public-api.wordpress.com/oauth2/authorize?response_type=code&client_id=50916&state=dfd6f41a8dfe38a4dfef4069580df166&redirect_uri=https%3A%2F%2Fwoocommerce.com%2Fwc-api%2Fwpcom-signin%3Fnext%3Dmy-dashboard&blog_id=0&wpcom_connect=1&new-user=1)) instalado y activo dentro de tu pagina de ventas. Instalarlo es sencillo:
-+1. Descarga [Marketful](https://www.marketful.mx) en tu ordenador.
-+2. Ve a la carpeta wp/wp-content/plugins en tu cPanel.
-+3. Pega la carpeta de Marketful en esa ubicacion
-+4. Dirigete al wp-admin y logueate con tu usuario y contraseña.
-+5. Ya despues de loguearte dirigete al apartado plugins.
-+6. Aparecera una lista de plugins, da clic en activar que aparece debajo del plugin Marketful.
-+7. A continuacion deberas tener las opciones de marketful en tu barra lateral.
++ 1. Descarga [Marketful](https://www.marketful.mx) en tu ordenador.
++ 2. Ve a la carpeta wp/wp-content/plugins en tu cPanel.
++ 3. Pega la carpeta de Marketful en esa ubicacion
++ 4. Dirigete al wp-admin y logueate con tu usuario y contraseña.
++ 5. Ya despues de loguearte dirigete al apartado plugins.
++ 6. Aparecera una lista de plugins, da clic en activar que aparece debajo del plugin Marketful.
++ 7. A continuacion deberas tener las opciones de marketful en tu barra lateral.
 
 #### Tabla de contenido
--[Comenzando a usar Marketful](#comenzando-a-usar-marketful)
--[Conectar tus diferentes tiendas](#conectando-tus-diferentes-tiendas)
--[Creando tus productos desde Marketful](#creando-tus-productos-dedsde-marketful)
--[Manejando tus ordenes desde Marketful](#manejando-tus-ordenes-desde-marketful)
--[Mensajes en Marketful](#mensajes-en-marketful)
--[Interfaz amigable](#interfaz-amigable)
--[Totalmente personalizable](#totalmente-personalizable)
+- [Comenzando a usar Marketful](#comenzando-a-usar-marketful)
+- [Conectar tus diferentes tiendas](#conectando-tus-diferentes-tiendas)
+- [Creando tus productos desde Marketful](#creando-tus-productos-dedsde-marketful)
+- [Manejando tus ordenes desde Marketful](#manejando-tus-ordenes-desde-marketful)
+- [Mensajes en Marketful](#mensajes-en-marketful)
+- [Interfaz amigable](#interfaz-amigable)
+- [Totalmente personalizable](#totalmente-personalizable)
 
 ## Comanzando a usar Marketful
 Despues de instalar *Marketful Seller Center* 
