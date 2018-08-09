@@ -143,6 +143,7 @@ class MKF_Core {
     $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
     $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
     $this->loader->add_action( 'admin_menu',            $plugin_admin, 'plg_menu' );
+    
 
     // CRUD ProductEntries (Definir la accion para procesar un formulario html con method POST)
     $this->loader->add_action( 

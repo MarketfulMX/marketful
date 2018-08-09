@@ -1,28 +1,39 @@
 <?php
 
-/**
- * Provide a admin area view for the plugin
- *
- * This file is used to markup the admin-facing aspects of the plugin.
- *
- * @link       http://example.com
- * @since      1.0.0
- *
+/*
+ * Archivo: admin-product-edit-form.php
+ * Versión: 1.02
+ * Ultima edición : 7 de agosto de 2018
+ * Autor: Marketful
+ * 
  * @package    mkf
  * @subpackage mkf/admin/partials
+ *
+ */
+
+/*
+ * Descripción General: 
+ * Archivo PHP que se manda a llamar desde el plugin de Marketful, en el cual se pueden modificar la
+ * información de venta de un producto.
  */
 ?>
 
 
 <?php
-
+// @script se asigna a $imgSrc el valor de la imagen en la URL  de tipo File
 $imgSrc = plugins_url( '../img/Marketful.png', __FILE__ );
+/*
+ * @Script
+ * A la variable $product_id se le asigna lo resultante de usar la @funcion isset
+ * que verifica que se hay posteado alguna variable llamada 'product_id' tiene
+ * algún dato en caso contrario $product_id tomara el valor ""
+ * Se definin las variables a usar, y se les asigna valor nulo para evitar mensajes de error
+ */
 $product_id = isset($_REQUEST['product_id']) ? $_REQUEST['product_id'] : "";
 
 $post_title = null;
 $post_sku   = null;
 $all_mlmeta = null;
-
 $ml_title   = null;
 $ml_store   = null;
 $ml_stock   = null;
@@ -32,6 +43,19 @@ $ml_wtime   = null;
 $ml_obj_cat = null;
 $ml_categories = null;
 
+/*
+ * @Script
+ * El siguiente IF valida que la variable $product_id NO este vacía en cuyo caso
+ * primeramente creara un @objeto llamado $productObject que tomara todos los valores que devuelve el
+ * @método MKF_ProductEntry.
+ * Después con las @funciones get_post() y get_post_meta() se obtienen los registros relacionados con
+ * ese id.
+ * Después se asignan los valores dentro del array $meta[0] para mostrarlos posteriormente. 
+ *
+ * Despues de lo anterior, se valida si $ml_categories NO esta vacía en
+ * cuyo caso con la @función Json_decode entrega el resultado de @string codificado para utilizarlo
+ * dentro del codigo PHP
+ */
 
 if (!empty($product_id))
 {
@@ -70,13 +94,24 @@ if (!empty($product_id))
 <div class="mkf-mtop-p5" style="background-color: white;padding: 2%">
   <h2>
     <?php
-      MKF_ProductEntry::product_edit_form_title_to_presenter($post_title, $post_sku);
+      // Se manda llamar al @método product_edit_form_title_to_presenter(@string, @string)
+      MKF_ProductEntry::product_edit_form_title_to_presenter($post_title, $post_sku); 
     ?>
   </h2>
   <hr>
 
   <form action="admin-post.php" method="POST" role="form" autocomplete="off">
-
+    <!-- @Scripts PHP en esta sección:
+            - Se hace echo al valor de $product_id como valor del input product_id
+            - Se hace echo al valor del $ml_title (Nombre del producto) en la input de texto en el   atributo value.
+            - Se valida si en (Retiro en tienda) esta activa la opción S o N.
+            - Se muestra el valor del stock haciendo  echo de $ml_stock
+            - En otro par de radio buttons se valida si la publicacion esta activa o no.
+            - Se muestra el valor de exposición en otro par de radio buttons
+            - Se muestra el tipo de garantiahaciendo echo de $ml_wtime
+            - Se crea un foreach que recorre toda la lista de valores que regresa $categories-       >getBody()
+            - Por cada iteracion se imprime en html un option con el valor del cada categoria.
+            - -->
     <input type="hidden" name="action" value="add_metadata_to_product_entry">
     <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
     <input type="hidden" name="category_aux" id="category_aux" value="">
@@ -167,7 +202,7 @@ if (!empty($product_id))
               <span class="syi-category-tree__image syi-category-tree__image--std" ></span>
               <div class="syi-gradient"></div>
           </div>
-          <div class="syi-category-tree__wrapper u--arrange-fill" >
+          <div class="syi-category-tree__wrapper u--arrange-fill" id="demo" >
               <div class="syi-category-tree__container syi-category-tree__container--3 ">
                   <div class="ui-box syi-category-tree__column" >
                       <div data-index="0" class="syi-category-tree__container " >
@@ -192,7 +227,25 @@ if (!empty($product_id))
 <script>
 
   var api_ml_url = "";
-
+/*
+ * - @Función JQuery/Ajax: getCategory(@string, @string, @currentlevel)
+ * Se valida que tree tenga valor de 'father' Y el valor del tag con id category_aux no sea
+ * igual al valor de caterg.value, en el tag id category_aux seteamos el valor de categ.value,
+ * después retiramos el tag class subcat.
+ *
+ * En caso contrario, buscamos los tags con class syi-category-tree__column. Validamos que index 
+ * sea mayor que el nivel actual En tal caso removemos el ítem A numItems le asignamos el valor de * los items menos uno veamos una @función Ajax que sea del tipo GET con la url con terminación en
+ * categ.value.
+ *
+ * Se crea una @función que recibe el @parámetro data, después Se crea una @función que recibe el
+ * @parámetro data creamos una variable que contiene varios div para mostrar las categorías. Se
+ * buscan todos los tags hijos de categorías y se les aplica la siguiente @función Jquery se
+ * muestra al final del tag class syi-category-tree__column: el contenido de Ndiv en caso
+ * contrario solo se muestra un option con un objeto Se agrega el valor de Ndiv al final del tag
+ * de la class syi-categorytree__column se ajusta la vista de #demo con scrollleft Se agrega un
+ * boton para enviar
+ */
+    
   function getCategory(categ, tree, currentLevel) {
 
         if (tree == "father" && jQuery("#category_aux").val() != categ.value) {
@@ -207,7 +260,6 @@ if (!empty($product_id))
         }
 
         var numItems = jQuery('.syi-category-tree__column').length-1;
-
         jQuery.ajax({
             type: "GET",
             url: "https://api.mercadolibre.com/categories/"+categ.value,
@@ -224,8 +276,10 @@ if (!empty($product_id))
                     Ndiv += '</div>';
                     Ndiv += '</div>';
                     jQuery(".syi-category-tree__column:last").after(Ndiv);
+                    jQuery('#demo').scrollLeft(2000);
                 }else{
                     add_submit_button();
+                    jQuery('#demo').scrollLeft(2000);
                 }
             }
         });
@@ -260,7 +314,23 @@ if (!empty($product_id))
 
 <?php endif; ?>
 
-
+/*
+ * @función Jquery
+ * Creamos la @funcion add_categories_object que recibe 4 @parámetros, posteriormente Se definen  
+ * dos variables myLevel y myName que toma el valor del nivel y la categoria.
+ *
+ *
+ * @función JQuery Ajax
+ * Creamos la funcion ajax de @metodo GET
+ * La @función en caso de que tenga éxito, requiere un valor llamado data, se crea una validación  * en caso de que flag_to_add sea verdadera.
+ * Se crea una variable llamada Ndiv para imprimir las categorías y se agregan valores a Ndiv.
+ * Posteriormente se crea una @función Jquery que recorre todas las categorías hijas de data y Se
+ * agrega una opción por cada categoría hija.
+ * Se agrega el valor de Ndiv al final de la última categoría, después Validamos si el nivel  
+ * actual es mayor que uno, en caso de que asi sea, se agrega al tag con id = level:(mylevel-
+ * 1).val(myname)
+ *
+ */
 function add_categories_object(level, ml_url, cat_name, flag_to_add)
 {
   var myLevel = parseInt(level) + 1;
@@ -298,6 +368,13 @@ function add_categories_object(level, ml_url, cat_name, flag_to_add)
   });
 }
 
+/***************************************************************************************
+* @Función add_submit_button() JQuery
+* Se crea una @funcion llamada add_submit_button() que agrega
+* los valores de nuevas categorias aen el ultimo elemento de
+* .syi-category-tree__column:last con Jquery
+* Se agrega e Ndiv al final de la clase syi-catogory-tree__column
+**/
 function add_submit_button()
 {
 
