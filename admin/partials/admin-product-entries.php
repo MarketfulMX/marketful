@@ -1,14 +1,16 @@
 <?php
 /*
-* Archivo: admin-product-entries.php
-* Versión:
-* Ultima edición : 8 de agosto de 2018
-* Autor: Marketful
-* 
-* @package    mkf
-* @subpackage mkf/admin/partials
-*
-*/
+ * Archivo: admin-product-edit-form.php
+ * Ultima edición : 7 de agosto de 2018
+ *
+ * @autor: Adolfo Yanes (adolfo@marketful.mx)
+ * @autor: Administrador de Proyecto: Mauricio Alcala (mauricio@marketful.mx)
+ * @versión: 1.02
+ * 
+ * @package    mkf
+ * @subpackage mkf/admin/partials
+ *
+ */
 
  /**
  * Descripción General: 

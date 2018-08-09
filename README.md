@@ -55,11 +55,11 @@ Despues de instalar y acceder a **Marketful Seller Center** es muy sencillo come
 
 ## Conectar tus diferentes tiendas
 **Marketful Seller Center** te permite conectar tus diferentes tiendas, actualizar tus productos, el stock, los precios y mas dentro de ellas desde la pantalla de Marketful. Todo en un solo lugar asegurando que lo que hagas en **Marketful Seller Center** se reflejara en todos tus canales de venta.
-![Conectar](Documentacion/img/Artboard18.png)
+![NProductos](Documentacion/img/Artboard15.png)
 
 ## Creando tus productos desde Marketful
 **Marketful Seller Center** te permite agregar tus productos en nuestro plugin lo cual se puede ver reflejado en las tiendas y canales de venta que tengas conectados con nosotros. Tu decides que vender en que lugar de la manera mas sencilla.
-![NProductos](Documentacion/img/Artboard15.png)
+![Conectar](Documentacion/img/Artboard18.png)
 
 ## Manejando tus ordenes desde Marketful
 **Marketful Selleer Center** a travez del Seller Center te permite llevar seguimiento de tu envio, desde el primer minuto hasta que llegue a la puerta de tu cliente. Te ofrecemos el menejo de guias de una manera sencilla y completamente confiable.
