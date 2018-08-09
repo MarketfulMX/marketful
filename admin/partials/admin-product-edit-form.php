@@ -227,7 +227,25 @@ if (!empty($product_id))
 <script>
 
   var api_ml_url = "";
-
+/*
+ * - @Función JQuery/Ajax: getCategory(@string, @string, @currentlevel)
+ * Se valida que tree tenga valor de 'father' Y el valor del tag con id category_aux no sea
+ * igual al valor de caterg.value, en el tag id category_aux seteamos el valor de categ.value,
+ * después retiramos el tag class subcat.
+ *
+ * En caso contrario, buscamos los tags con class syi-category-tree__column. Validamos que index 
+ * sea mayor que el nivel actual En tal caso removemos el ítem A numItems le asignamos el valor de * los items menos uno veamos una @función Ajax que sea del tipo GET con la url con terminación en
+ * categ.value.
+ *
+ * Se crea una @función que recibe el @parámetro data, después Se crea una @función que recibe el
+ * @parámetro data creamos una variable que contiene varios div para mostrar las categorías. Se
+ * buscan todos los tags hijos de categorías y se les aplica la siguiente @función Jquery se
+ * muestra al final del tag class syi-category-tree__column: el contenido de Ndiv en caso
+ * contrario solo se muestra un option con un objeto Se agrega el valor de Ndiv al final del tag
+ * de la class syi-categorytree__column se ajusta la vista de #demo con scrollleft Se agrega un
+ * boton para enviar
+ */
+    
   function getCategory(categ, tree, currentLevel) {
 
         if (tree == "father" && jQuery("#category_aux").val() != categ.value) {
@@ -242,24 +260,6 @@ if (!empty($product_id))
         }
 
         var numItems = jQuery('.syi-category-tree__column').length-1;
-        
-/*
- * - @Función JQuery/Ajax: getCategory(@string, @string, @currentlevel)
- * Se valida que tree tenga valor de 'father' Y el valor del tag con id category_aux no sea
- * igual al valor de caterg.value, en el tag id category_aux seteamos el valor de categ.value,
- * después retiramos el tag class subcat.
- *
- * En caso contrario, buscamos los tags con class syi-category-tree__column. Validamos que index 
- * sea mayor que el nivel actual En tal caso removemos el ítem A numItems le asignamos el valor de * los items menos uno veamos una @función Ajax que sea del tipo GET con la url con terminación en
- * categ.value.
- *
- * Se crea una @función que recibe el @parámetro data, después Se crea una @función que recibe el
- * @parámetro data creamos una variable que contiene varios div para mostrar las categorías. Se
- * buscan todos los tags hijos de categorías y se les aplica la siguiente @función se muestra al
- * final del tag class syi-category-tree__column: el contenido de Ndiv en caso contrario solo se
- * muestra un option con un objeto Se agrega el valor de Ndiv al final del tag de la class yi-
- * categorytree__column se ajusta la vista de #demo con scrollleft Se agrega un boton para enviar
- */
         jQuery.ajax({
             type: "GET",
             url: "https://api.mercadolibre.com/categories/"+categ.value,
@@ -314,7 +314,23 @@ if (!empty($product_id))
 
 <?php endif; ?>
 
-
+/*
+ * @función Jquery
+ * Creamos la @funcion add_categories_object que recibe 4 @parámetros, posteriormente Se definen  
+ * dos variables myLevel y myName que toma el valor del nivel y la categoria.
+ *
+ *
+ * @función JQuery Ajax
+ * Creamos la funcion ajax de @metodo GET
+ * La @función en caso de que tenga éxito, requiere un valor llamado data, se crea una validación  * en caso de que flag_to_add sea verdadera.
+ * Se crea una variable llamada Ndiv para imprimir las categorías y se agregan valores a Ndiv.
+ * Posteriormente se crea una @función Jquery que recorre todas las categorías hijas de data y Se
+ * agrega una opción por cada categoría hija.
+ * Se agrega el valor de Ndiv al final de la última categoría, después Validamos si el nivel  
+ * actual es mayor que uno, en caso de que asi sea, se agrega al tag con id = level:(mylevel-
+ * 1).val(myname)
+ *
+ */
 function add_categories_object(level, ml_url, cat_name, flag_to_add)
 {
   var myLevel = parseInt(level) + 1;
@@ -352,6 +368,13 @@ function add_categories_object(level, ml_url, cat_name, flag_to_add)
   });
 }
 
+/***************************************************************************************
+* @Función add_submit_button() JQuery
+* Se crea una @funcion llamada add_submit_button() que agrega
+* los valores de nuevas categorias aen el ultimo elemento de
+* .syi-category-tree__column:last con Jquery
+* Se agrega e Ndiv al final de la clase syi-catogory-tree__column
+**/
 function add_submit_button()
 {
 
