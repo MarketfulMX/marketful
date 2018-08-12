@@ -4,7 +4,7 @@
  * Archivo: admin-product-edit-form.php
  * Ultima edición : 7 de agosto de 2018
  *
- * @autor: Adolfo Yanes <adolfo@marketful.mx>
+ * @autor: Adolfo Yanes <adolfo@marketful.mx> as master contributor
  * @autor: Mauricio Alcala <mauricio@marketful.mx> as proyect admin
  * * @author: Javier Urbano <javierurbano11@gmail.com> as contributor
  * * @author: Angel Salazar <salazar.angel.e@gmail.com> as contributor
@@ -31,13 +31,6 @@
  * private $dashboard_menu_name ( Nombre a mostrar en el dashboard)
  * 
  * @Métodos
- 
- *
- 
- *
- 
- *
-
  * 
  * @función plg_menu(), encargada de indicar que es lo que se realiza 
  *
@@ -107,7 +100,13 @@ class MKF_Admin
     ) );
   }
     
-  //Add items to menú panel
+  /**
+   * @Función PHP
+   * La @función plg_menu() muestra la sección del plugin que corresponda, agregando una pagina al menu
+   * y posteriormente manda a llamar al metodo que muestra dichas secciónes.
+   * Nos muestra *Dashboard, *Publicaciones, *Ordenes, *Preguntas, *Mensajeria postventa y publicacion.
+   * 
+   */
   public function plg_menu() 
   {
     add_menu_page(
@@ -166,12 +165,25 @@ class MKF_Admin
 
   }
 
-  public function available_menu_to_editor_or_admin() {
-    if (is_user_logged_in()){
+  /**
+   * @Función PHP
+   * aviable_menu_to_editor_or_admin() 
+   * Primero se verifica si es una sesion registrada con is_user_logged_in() 
+   * Se define al variable $is_editor y se le asigna el valor falso
+   * Despues en la variable $user se guarda el valor del objeto usuario que devuelve wp_get_current_user() 
+   * Se crea un foreach para recorrer todos los valores (roles) dentro del objeto $user
+   * Definimos un switch para ver si es administrador o editor. En caso de ser editor se retorna la leyenda 'editor' en caso contrario se retorna 'manage:options'
+   * 
+   */
+  public function available_menu_to_editor_or_admin() 
+  {
+    if (is_user_logged_in())
+    {
       $is_editor = false;
       $user      = wp_get_current_user();
 
-      foreach ($user->roles as $key => $role) {
+      foreach ($user->roles as $key => $role) 
+      {
         
         switch ($role) {
           case 'administrator': return "manage_options";
@@ -187,14 +199,24 @@ class MKF_Admin
     return "manage_options";  
   }
 
+/**
+ * @Función dashboard()
+ * Método que manda a llamar el archivo admin-dashboard.php
+ */
   public function dashboard() {
     include_once "partials/admin-dashboard.php";
   }
-
+/**
+ * @Función entries_view()
+ * Método que manda a llamar el archivo admin-product-entries
+ */
   public function entries_view() {
     include_once "partials/admin-product-entries.php";
   }
-
+/**
+ * @Función entries_edit()
+ * Método que manda a llamar el archivo admin-product-edit-form.php
+ */
   public function entries_edit() {
     include_once "partials/admin-product-edit-form.php";
   }
