@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Archivo: admin-product-edit-form.php
+ * Archivo: class-admin.php
  * Ultima edición : 7 de agosto de 2018
  *
  * @autor: Adolfo Yanes <adolfo@marketful.mx> as master contributor

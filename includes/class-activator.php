@@ -1,7 +1,7 @@
 <?php
 if ( !class_exists( 'MKF_Activator', false ) ):
 /**
- * Archivo: class-admin-product-entries.php
+ * Archivo: class-activator.php
  * Ultima edición : 13 de agosto de 2018
  *
  * @autor: Adolfo Yanes <adolfo@marketful.mx> as master contributor

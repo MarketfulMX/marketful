@@ -1,126 +1,108 @@
 <?php
-if ( !class_exists( 'MKF_Core', false ) ):
 /**
- * The core plugin class.
+ * Archivo: class-core.php
+ * Ultima edición : 13 de agosto de 2018
  *
- * The file that defines the core plugin class
+ * @autor: Adolfo Yanes <adolfo@marketful.mx> as master contributor
+ * @autor: Mauricio Alcala <mauricio@marketful.mx> as proyect admin
+ * @author Javier Urbano <javierurbano11@gmail.com> as contributor
+ * @author Angel Salazar <salazar.angel.e@gmail.com> as contributor
  *
- * This is used to define internationalization, admin-specific hooks, and
- * public-facing site hooks.
- *
- * A class definition that includes attributes and functions used across both the
- * public-facing side of the site and the admin area.
- *
- * Also maintains the unique identifier of this plugin as well as the current
- * version of the plugin.
- *
- * @link       http://innodite.com
- * @since      1.0.0
- *
+ * @versión: 1.01
+ * @link: marketful.mx
  * @package    mkf
- * @subpackage mkf/includes
- * @author     Javier Urbano <javierurbano11@gmail.com> at Innodite Inc
- * @author     Angel Salazar <salazar.angel.e@gmail.com> at Innodite Inc.
+ * @subpackage mkf/admin/partials
+ *
  */
 
+/**
+ * Descripción general:
+ * Crea la clase MKF_Core y define valores para diferentes atributos, 
+ * además define los hooks públicos del plugin.
+ */
 
-class MKF_Core {
+/**
+ * @Script 
+ * Se valida que exista la clase MKF_Core en caso de que sea 
+ * falso continua.
+ */
+if ( !class_exists( 'MKF_Core', false ) ):
 
-  /**
-   * The loader that's responsible for maintaining and registering all hooks that power
-   * the plugin.
-   *
-   * @since    1.0.0
-   * @access   protected
-   * @var      plgcore_Loader    $loader    Maintains and registers all hooks for the plugin.
-   */
+/**
+ * @Clase MKF_Core
+ * 
+ * @atributos 
+ * -Creamos variables @protected $loader, $plugin_id, $version,
+ * $plugin_root.
+ * 
+ */
+class MKF_Core 
+{
   protected $loader;
-
-  /**
-   * The unique identifier of this plugin.
-   *
-   * @since    1.0.0
-   * @access   protected
-   * @var      string    $plugin_id    The string used to uniquely identify this plugin.
-   */
   protected $plugin_id;
-
-  /**
-   * The current version of the plugin.
-   *
-   * @since    1.0.0
-   * @access   protected
-   * @var      string    $version    The current version of the plugin.
-   */
   protected $version;
-
   protected $plugin_root;
-
+  
+    
   /**
-   * Define the core functionality of the plugin.
-   *
-   * Set the plugin name and the plugin version that can be used throughout the plugin.
-   * Load the dependencies, define the locale, and set the hooks for the admin area and
-   * the public-facing side of the site.
-   *
-   * @since    1.0.0
+   * @función __construct()
+   * 
+   * Dentro de esta función primeramente asignamos los valores 
+   * de los diferentes atributos de la clase.
    */
-  public function __construct() {
+  public function __construct() 
+  {
     $this->version    = defined( 'PLUGIN_GVERSION' ) ? PLUGIN_GVERSION : '1.0.0';
     $this->plugin_id  = defined( 'PLUGIN_GSNAME' )   ? PLUGIN_GSNAME   : 'mkf';
-
     $this->set_root_path();
     $this->load_dependencies();
     $this->set_locale();
     $this->define_admin_hooks();
     $this->define_public_hooks();
-
   }
 
-  public function set_root_path() {
+  /**
+   * @función set_root_path()
+   * 
+   * Se asigna el valor de dirname(__FILE__) al atributo 
+   * plugin_root que le devuelve el valor del nombre en el 
+   * directorio del Path.
+   */
+  public function set_root_path() 
+  {
     $this->plugin_root = plugin_dir_path( dirname( __FILE__ ) );
   }
 
   /**
-   * Load the required dependencies for this plugin.
-   *
-   * Include the following files that make up the plugin:
-   *
-   * - Loader. Orchestrates the hooks of the plugin.
-   * - i18n. Defines internationalization functionality.
-   * - Admin. Defines all hooks for the admin area.
-   * - Public. Defines all hooks for the public side of the site.
-   *
-   * Create an instance of the loader which will be used to register the hooks
-   * with WordPress.
-   *
-   * @since    1.0.0
-   * @access   private
+   * @función load_dependencies()
+   * 
+   * Se manda a llamar a las siguientes clases y se crea un nuevo objeto 
+   * llamado loader del tipo MKF_Loader().
    */
-  private function load_dependencies() {
-
+  private function load_dependencies() 
+  {
     require_once $this->plugin_root . 'includes/class-loader.php';
     require_once $this->plugin_root . 'includes/class-i18n.php';
     require_once $this->plugin_root . 'includes/class-dbcore.php';
     require_once $this->plugin_root . 'admin/class-admin.php';
     require_once $this->plugin_root . 'admin/class-admin-product-entries.php';
     require_once $this->plugin_root . 'admin/class-admin-wc-proxy.php';
-
     $this->loader = new MKF_Loader();
 
   }
 
   /**
-   * Define the locale for this plugin for internationalization.
+   * @función set_locale()
+   * 
+   * Se crea una @función provada set_locale() que crea un objeto llamado 
+   * $i18n del tipo MKF_i18n().
    *
-   * Uses the i18n class in order to set the domain and to register the hook
-   * with WordPress.
-   *
-   * @since    1.0.0
-   * @access   private
+   * Se agrega una acción al objeto Loader mandando a llamar 
+   * plugins_loaded, usando el objeto $i18n y la funcion 
+   * load_pluginn_textdomain
    */
-  
-  private function set_locale() {
+  private function set_locale() 
+  {
 
     $i18n = new MKF_i18n();
 
@@ -129,82 +111,76 @@ class MKF_Core {
   }
   
   /**
-   * Register all of the hooks related to the admin area functionality
-   * of the plugin.
+   * @funcion define_admin_hooks()
    *
-   * @since    1.0.0
-   * @access   private
+   * Dentro de esta función definimos un nuevo objeto llamado $plugin_admin 
+   * del tipo MKF_Admin, así como a otro producto llamado $product_entry
+   * Despues se agregan 3 acciones que son poner en cola los estilos, 
+   * despues se ponen en cola los scripts y por ultimo se agrega la accion 
+   * de admin_menu y el metodo plg_menu.
+   *
+   * CRUD ProductEntries (Definir la accion para procesar un formulario html 
+   * con method POST)
    */
-  private function define_admin_hooks() {
-
+  private function define_admin_hooks() 
+  {
     $plugin_admin = new MKF_Admin( $this->get_plugin_small_name(), $this->get_version() );
     $product_entry = new MKF_ProductEntry( $this->get_plugin_small_name(), $this->get_version() );
 
     $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
     $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
     $this->loader->add_action( 'admin_menu',            $plugin_admin, 'plg_menu' );
-    
-
-    // CRUD ProductEntries (Definir la accion para procesar un formulario html con method POST)
     $this->loader->add_action( 
       'admin_post_add_metadata_to_product_entry', 
       $product_entry, 
       'prefix_admin_add_metadata_to_product_entry' 
     );
+  }
+
+  /**
+   * @función define_public_hooks()
+   */
+  private function define_public_hooks() 
+  {
 
   }
 
   /**
-   * Register all of the hooks related to the public-facing functionality
-   * of the plugin.
-   *
-   * @since    1.0.0
-   * @access   private
+   * @función run()
+   * Se asigna al atributo loader el valor que retorna el @método run()
    */
-  private function define_public_hooks() {
-
-  }
-
-  /**
-   * Run the loader to execute all of the hooks with WordPress.
-   *
-   * @since    1.0.0
-   */
-  public function run() {
+  public function run() 
+  {
     $this->loader->run();
   }
 
   /**
-   * The name of the plugin used to uniquely identify it within the context of
-   * WordPress and to define internationalization functionality.
-   *
-   * @since     1.0.0
-   * @return    string    The name of the plugin.
+   * @función get_plugin_small_name()
+   * Se regresa el valor del atributo plugin_id
    */
-  public function get_plugin_small_name() {
+  public function get_plugin_small_name() 
+  {
     return $this->plugin_id;
   }
 
   /**
-   * The reference to the class that orchestrates the hooks with the plugin.
-   *
-   * @since     1.0.0
-   * @return    mkf_Loader    Orchestrates the hooks of the plugin.
+   * @función get_loader()
+   * Se regresa el valor del atributo loader
    */
-  public function get_loader() {
+  public function get_loader() 
+  {
     return $this->loader;
   }
 
   /**
-   * Retrieve the version number of the plugin.
-   *
-   * @since     1.0.0
-   * @return    string    The version number of the plugin.
+   * @función get_version()
+   * Se regresa el valor del atributo version
    */
-  public function get_version() {
+  public function get_version() 
+  {
     return $this->version;
   }
 
 }
 
-endif;
+endif; // Se cierra el IF

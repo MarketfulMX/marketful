@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Archivo: class-admin-product-entries.php
+ * Archivo: class-admin-wc-proxy.php
  * Ultima edición : 13 de agosto de 2018
  *
  * @autor: Adolfo Yanes <adolfo@marketful.mx> as master contributor
