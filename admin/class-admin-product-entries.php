@@ -55,14 +55,14 @@ if (!defined('ML_META_PRECIO_ML'))
     define('ML_META_PRECIO_ML', 'precio_ml');
 
 /**
- * @Clase MKF_ProductEntry que @hereda los metodos de MKF_DBCore
+ * @Clase MKF_ProductEntry que @hereda los metodos y atributos de MKF_DBCore
  *
  * Se declaran las variables de la clase. Ademas se definen las propiedades de la clase
  * ($instance @string, $plg_id @string y $version @string)
  *
  */
-class MKF_ProductEntry extends MKF_DBCore {
-
+class MKF_ProductEntry extends MKF_DBCore 
+{
     private static $instance = NULL;
     private $plg_id;
     private $version;
@@ -157,7 +157,7 @@ class MKF_ProductEntry extends MKF_DBCore {
      * plugin.
      * 
      * Primero se define un array que posteriormente mostrara toda la información resultante llamado $out.
-     * Despues utilizando array_push() agregamos al final del array out() el resultado que devuwelve
+     * Despues utilizando array_push() agregamos al final del array out() el resultado que devuelve
      * ejecutar la query.
      * Despues retorna el valor de $out
      */
@@ -284,26 +284,5 @@ class MKF_ProductEntry extends MKF_DBCore {
     }
 
 
-    /**
-     * @función get_ml_categories()
-     *
-     * Manda a llamar al archivo autoload.php, 
-     * Crea un nuevo objeto Cliente con los datos de base_uri y verify
-     * Creamos un onhjeto llamado $response que tome los valores devueltos por categories#json
-     * y despues los retorna.
-     */
-    public function get_ml_categories()
-    {
-        require_once plugin_dir_path( __FILE__ ) . "extras/vendor/autoload.php";
-
-        // Create a client with a base URI
-        $client = new GuzzleHttp\Client([
-            'base_uri' => 'https://api.mercadolibre.com/sites/MLM/categories',
-            'verify' => false
-        ]);
-
-        $response = $client->request('GET', 'categories#json');
-        return $response;
-    }
-
+   ccla
 }
