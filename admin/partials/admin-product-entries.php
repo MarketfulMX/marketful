@@ -71,8 +71,10 @@ function my_theme_ajax_submit() {
     error_log("guardarmos el producto");
     // error_log($a)
     // Notificar el cambio a Marketful para que lo envie a Mercadolibre
-    $url = "https://woocommerce.marketful.mx/notifications?{$key}={$value}&product_id={$producto_id}";
-    // $url = "http://localhost:3000/notifications?{$key}={$value}&product_id={$producto_id}"; para pruebas locales
+    // $url = "https://woocommerce.marketful.mx/notifications?{$key}={$value}&product_id={$producto_id}";
+     // para pruebas locales
+    site_url = <get_site_url();
+    $url = "http://localhost:3000/notifications?{$key}={$value}&product_id={$producto_id}&site=site_url";
     // $parametros = array($key => $value, "woo_id" => $_POST['product_id']);
     error_log( print_r($parametros, TRUE));
     // $response = wp_remote_post( $url, $args = $parametros ); 
@@ -180,7 +182,7 @@ console.log(ajaxurl)
         <th>Título</th>
         <th>Status</th>
         <th>Exposición</th>
-        <!-- <th style="min-width: 215px;">Acción</th> -->
+        <th style="min-width: 215px;">Acción</th>
       </tr>
     </thead>
     <tbody>
@@ -192,7 +194,7 @@ console.log(ajaxurl)
         <td><?php echo $product->sku; ?></td>
         <td><?php echo $product->title; ?></td>
         <td>
-            <!-- ******************************************************************
+            ******************************************************************
                 @Scripts PHP en esta sección:
                 -  Hacemos un Echo al valor de ID del producto para mandarlo como parametro a la @función
                    cambioStatus(@string,@string)
@@ -221,10 +223,10 @@ console.log(ajaxurl)
                 <option value="premium" <?php echo ($select_value=="premium")?'selected':''; ?> >Premium</option> 
             </select>
         </td>
-      <!--   <td>
+        <td>
           <a href="?page=mkf-product-edit&product_id=<?php echo $product->ID; ?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
           <a href="<?php echo $product->url; ?>" target="_blank" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Preview</a>
-        </td> -->
+        </td>
       </tr>
     <?php endforeach; //Fin Iteracion ?>
     </tbody>
