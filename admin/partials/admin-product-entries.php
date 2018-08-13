@@ -73,8 +73,8 @@ function my_theme_ajax_submit() {
     // Notificar el cambio a Marketful para que lo envie a Mercadolibre
     // $url = "https://woocommerce.marketful.mx/notifications?{$key}={$value}&product_id={$producto_id}";
      // para pruebas locales
-    $site_url = get_site_url();
-    $url = "http://localhost:3000/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}";
+    // $site_url = get_site_url();
+    $url = "http://localhost:3000/notifications?{$key}={$value}&product_id={$producto_id}";
     // $parametros = array($key => $value, "woo_id" => $_POST['product_id']);
     error_log( print_r($parametros, TRUE));
     // $response = wp_remote_post( $url, $args = $parametros ); 
@@ -193,7 +193,7 @@ console.log(ajaxurl)
         <td class="dt_check"><input type="checkbox" class="ids" name="ids[]" value="<?php echo $product->ID; ?>" />  </td>
         <td><?php echo $product->sku; ?></td>
         <td><?php echo $product->title; ?></td>
-        <td>
+        <td><!--
             ******************************************************************
                 @Scripts PHP en esta sección:
                 -  Hacemos un Echo al valor de ID del producto para mandarlo como parametro a la @función
@@ -203,7 +203,7 @@ console.log(ajaxurl)
                 -  Se selecciona de la matriz resultante, el valor relacionado con el status
                 -  Dentro del select, se hace echo de 'Selected' para que sea la opcion seleccionada, en        caso de que el valor de $select_value sea igual a alguna de las opciones.
                 -  Se repite el procedimiento, pero en esta ocacion el dato que se utiliza es exposición_ml
-                --->
+                -->
             <select class="status" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre')" id="mercadolibre_<?php echo $product->ID;  ?>">
             <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
             <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
