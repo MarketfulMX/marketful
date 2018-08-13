@@ -282,7 +282,4 @@ class MKF_ProductEntry extends MKF_DBCore
     {
         echo self::get_product_edit_form_title($title, $sku);
     }
-
-
-   ccla
 }
