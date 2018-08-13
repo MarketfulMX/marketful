@@ -71,10 +71,10 @@ function my_theme_ajax_submit() {
     error_log("guardarmos el producto");
     // error_log($a)
     // Notificar el cambio a Marketful para que lo envie a Mercadolibre
-    // $url = "https://woocommerce.marketful.mx/notifications?{$key}={$value}&product_id={$producto_id}";
-     // para pruebas locales
     $site_url = get_site_url();
-    $url = "http://localhost:3000/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}";
+    $url = "https://woocommerce.marketful.mx/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}";
+    // para pruebas locales
+    // $url = "http://localhost:3000/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}";
     // $parametros = array($key => $value, "woo_id" => $_POST['product_id']);
     error_log( print_r($parametros, TRUE));
     // $response = wp_remote_post( $url, $args = $parametros ); 
