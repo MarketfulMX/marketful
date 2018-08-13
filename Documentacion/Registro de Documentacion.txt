@@ -13,3 +13,8 @@
 -- autor: Marketful
 -- creación: 12 de agosto de 2018
 ---------------------------------------------------------------
+---------------------------------------------------------------
+-- archivo: Documentacion class-admin-product-entries php 1-01.pdf
+-- autor: Marketful
+-- creación: 13 de agosto de 2018
+---------------------------------------------------------------
