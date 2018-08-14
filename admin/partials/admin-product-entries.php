@@ -53,12 +53,20 @@ if (isset($_POST['my_theme_ajax_submit']))
  *
  * Posteriormente despues de recibir los @parámetros ejecuta la función de wp
  * update_post_meta(@string,@string,@string) que actualiza la meta data que se envió.
+ * 
+ * Se obtiene el $site_url, despues se crea el URL para guardar en ML con la $key
+ * y con el valor a cambiar $value del $producto_id en la $site_url que obtuvimos
+ * previamente.
+ * Se muestra un error en caso de que haya succedido.
+ * Se guarda un objeto inicializado WP_Http, se postea la $URL para ejecutar los cambios
+ * y en caso de error se muestra.
  *
  * Para finalizar la @función wp_die() finaliza la ejecución y muestra el error
  * en caso de que suceda alguno.
  */
 
-function my_theme_ajax_submit() {
+function my_theme_ajax_submit() 
+{
     // do something
     // some php code that fires from AJAX click of #fire
     $producto_id = $_POST['product_id'];
@@ -73,14 +81,13 @@ function my_theme_ajax_submit() {
     // Notificar el cambio a Marketful para que lo envie a Mercadolibre
     $site_url = get_site_url();
     $url = "https://woocommerce.marketful.mx/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}";
-    // para pruebas locales
-    // $url = "http://localhost:3000/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}";
+    // $url = "http://localhost:3000/notifications?{$key}={$value}&product_id={$producto_id}"; para pruebas locales
     // $parametros = array($key => $value, "woo_id" => $_POST['product_id']);
     error_log( print_r($parametros, TRUE));
     // $response = wp_remote_post( $url, $args = $parametros ); 
     $http = _wp_http_get_object();
     // $response = $http->post( $url, array("elkey" => "elvalue") ); no manda los params 
-    $response = $http->post( $url );
+    $response = $http->post( $url ); 
     error_log( print_r($response, TRUE));
     wp_die();
 }
@@ -113,7 +120,8 @@ function my_theme_ajax_submit() {
  * En caso de que la @función Ajax no haya resultado exitosa, reflejamos en
  * consola el error y actualizamos el @boton #fire cambiando su texto a "error".
  */
-       function cambioStatus(product_id, key){
+       function cambioStatus(product_id, key)
+       {
             console.log(product_id)
             var value = $('#' + key + "_" + product_id).val()
             console.log(key)
@@ -186,6 +194,7 @@ console.log(ajaxurl)
       </tr>
     </thead>
     <tbody>
+    <!-- Creamos un foreach para recorrer todos los valores -->
     <?php
       foreach ($products[0]["data"] as $key => $product) :
     ?>
@@ -223,7 +232,11 @@ console.log(ajaxurl)
                 <option value="premium" <?php echo ($select_value=="premium")?'selected':''; ?> >Premium</option> 
             </select>
         </td>
+<<<<<<< HEAD
         <td>
+=======
+          <td>
+>>>>>>> eea0a8826704f75768280e93c6e72a61a1e3389e
           <a href="?page=mkf-product-edit&product_id=<?php echo $product->ID; ?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
           <a href="<?php echo $product->url; ?>" target="_blank" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Preview</a>
         </td>
