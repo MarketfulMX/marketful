@@ -1,28 +1,41 @@
 <?php
 
 /**
- * Define the internationalization functionality
+ * Archivo: class-i18n.php
+ * Ultima edición : 13 de agosto de 2018
  *
- * Loads and defines the internationalization files for this plugin
- * so that it is ready for translation.
+ * @autor: Adolfo Yanes <adolfo@marketful.mx> as master contributor
+ * @autor: Mauricio Alcala <mauricio@marketful.mx> as proyect admin
+ * @author Javier Urbano <javierurbano11@gmail.com> as contributor
+ * @author Angel Salazar <salazar.angel.e@gmail.com> as contributor
  *
- * @link       http://innodite.com
- * @since      1.0.0
- *
+ * @versión: 1.01
+ * @link: marketful.mx
  * @package    mkf
- * @subpackage mkf/includes
- * @author     Javier Urbano <javierurbano11@gmail.com> at Innodite Inc
- * @author     Angel Salazar <salazar.angel.e@gmail.com> at Innodite Inc.
+ * @subpackage mkf/admin/partials
+ *
  */
 
+/**
+ * Descripción General:
+ * La clase i18n hace referencia a la internacionalización del plugin, 
+ * por lo cual aqui se puede ampliar la capaciadad del plugin de 
+ * llegar a nuevos usuarios en su propio idioma.
+ *
+ */
 
-class MKF_i18n {
+/**
+ * @Clase MKF_i18n
+ * 
+ */
 
-
+class MKF_i18n 
+{
   /**
-   * Load the plugin text domain for translation.
-   *
-   * @since    1.0.0
+   * @función load_plugin_textdomain()
+   * Se carga el dominio de texto que corresponde al plugin, 
+   * se pone como parametro el dominio y se coloca el $plugin_rel_path
+   * que indica la ruta donde reside el archivo de lenguaje.
    */
   public function load_plugin_textdomain() {
 
@@ -33,7 +46,4 @@ class MKF_i18n {
     );
 
   }
-
-
-
 }
