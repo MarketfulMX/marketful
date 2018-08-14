@@ -232,11 +232,7 @@ console.log(ajaxurl)
                 <option value="premium" <?php echo ($select_value=="premium")?'selected':''; ?> >Premium</option> 
             </select>
         </td>
-<<<<<<< HEAD
-        <td>
-=======
           <td>
->>>>>>> eea0a8826704f75768280e93c6e72a61a1e3389e
           <a href="?page=mkf-product-edit&product_id=<?php echo $product->ID; ?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
           <a href="<?php echo $product->url; ?>" target="_blank" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Preview</a>
         </td>
