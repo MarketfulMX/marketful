@@ -282,4 +282,17 @@ class MKF_ProductEntry extends MKF_DBCore
     {
         echo self::get_product_edit_form_title($title, $sku);
     }
+    public function get_ml_categories()
+    {
+        require_once plugin_dir_path( __FILE__ ) . "extras/vendor/autoload.php";
+
+        // Create a client with a base URI
+        $client = new GuzzleHttp\Client([
+            'base_uri' => 'https://api.mercadolibre.com/sites/MLM/categories',
+            'verify' => false
+        ]);
+
+        $response = $client->request('GET', 'categories#json');
+        return $response;
+    }
 }
