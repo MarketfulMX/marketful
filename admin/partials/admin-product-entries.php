@@ -64,9 +64,22 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 * posteriormente manda a llamar a la funcion my_theme_ajax_submit()
 *
 */
-if (isset($_POST['my_theme_ajax_submit']))
-    if ( wp_verify_nonce( $_POST['nonce'], 'my_theme_ajax_submit' ) )
-        my_theme_ajax_submit(); 
+if (isset($_POST['my_theme_ajax_submit'])){
+  if ( wp_verify_nonce( $_POST['nonce'], 'my_theme_ajax_submit' ) ){
+    $response = my_theme_ajax_submit(); 
+    error_log("vamos con la response");
+    error_log($response);
+    echo $response;
+  }
+  error_log("vamos con la salida del isset");
+  wp_send_json_success(true);
+  // error_log($response);
+  
+}
+    
+   error_log("estamos fuera del isset");      
+        // wp_send_json_success("hola");
+
 /*
  * @Función PHP: my_theme_ajax_submit()
  * La @función my_theme_ajax_submit() recibe dentro de las variables:
@@ -100,6 +113,7 @@ function my_theme_ajax_submit()
     $a = update_post_meta( $producto_id, $key, $value );
     // wp_send_json_success([200, "hola"], 200) ; NO SIRVE
     error_log("guardarmos el producto");
+    error_log($a);
     // error_log($a)
     // Notificar el cambio a Marketful para que lo envie a Mercadolibre
     $site_url = get_site_url();
@@ -107,18 +121,22 @@ function my_theme_ajax_submit()
     // para pruebas locales
     $url = "http://localhost:3000/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}"; 
     // $parametros = array($key => $value, "woo_id" => $_POST['product_id']);
-    error_log( print_r($parametros, TRUE));
+    // error_log( print_r($parametros, TRUE));
     // $response = wp_remote_post( $url, $args = $parametros ); 
     $http = _wp_http_get_object();
     // $response = $http->post( $url, array("elkey" => "elvalue") ); no manda los params 
     $response = $http->post( $url ); 
-    error_log( print_r($response, TRUE));
+    // error_log( print_r($response, TRUE));
     // wp_die();
     $data = array(
       'producto_id' => $product_id
       );
-    wp_send_json_success( $data );
-    wp_send_json_error($data);
+    error_log("vamos de salida");
+    // echo "Hola";
+
+    return "hello";
+    // wp_send_json_success($data);
+    // wp_send_json_error($data);
     // echo "hello";
 }
 ?>
@@ -157,7 +175,7 @@ function my_theme_ajax_submit()
             console.log(key)
             jQuery.ajax({
                 type: 'post',
-                dataType: 'json',
+                // dataType: 'json',
                 data: { 
                     "my_theme_ajax_submit": "now",
                     "nonce" : "<?php echo wp_create_nonce( 'my_theme_ajax_submit' ); ?>", 
@@ -237,6 +255,9 @@ function my_theme_ajax_submit()
                 // element.value = value;
               },
               error: function(response) { 
+                console.log("error")
+                console.log(response.responseText)
+
                 console.log(response.data)
                   // jQuery('#fire').text("...error!");
               },
