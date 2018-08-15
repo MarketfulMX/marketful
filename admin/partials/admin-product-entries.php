@@ -175,30 +175,34 @@ function my_theme_ajax_submit()
 <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 <script>
     
-    /*
-    * @Script JQuery
-    * Mostramos en consola con console.log los valores de my_ajax_obj y ajaxurl
-    */
-    
-  // $(".status").on("change", cambioStatus)
-console.log(my_ajax_obj)
-console.log(ajaxurl)
-  // function cambioStatus(){
-  //   console.log("hola");    
 
-  //   var this2 = this;                      //use in callback
-  //   $.post(my_ajax_obj.ajax_url, {         //POST request
-  //      _ajax_nonce: my_ajax_obj.nonce,     //nonce
-  //       action: "my_ajax_handler",            //action
-  //       title: this.value                  //data
-  //   }, function(data) {                    //callback
-  //     console.log(data)
-  //       // this2.nextSibling.remove();        //remove current title
-  //       // $(this2).after(data);              //insert server response
-  //   });
-  // }     
-    
+function buscarResultados(){
+  var keyword = jQuery('#keyword_input').val();
+  var url = "?page=mkf-product-entries&keyword=" + keyword
+  window.location.href = url;
+}
+
+function selectTodos(){
+  console.log("entramos en select otodos")
+  checkboxes = document.getElementsByName('checkboxes');
+  var source = $('#checkbox_master')
+  console.log(source)
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.is(":checked");
+    console.log(i)
+    // checkboxes[i].checked = true;
+  }
+}
 </script>
+
+
+
+<style>
+  .filtro{
+    float: right;
+    text-align: right;
+  }
+</style>
 
 <div class="bootstrap-wrapper">
 <div class="container" style="margin-top: 5%">
@@ -231,35 +235,6 @@ console.log(ajaxurl)
   </div>
 </div>
 
-
-<script>
-function buscarResultados(){
-  var keyword = jQuery('#keyword_input').val();
-  var url = "?page=mkf-product-entries&keyword=" + keyword
-  window.location.href = url;
-}
-
-function selectTodos(){
-  console.log("entramos en select otodos")
-  checkboxes = document.getElementsByName('checkboxes');
-  var source = $('#checkbox_master')
-  console.log(source)
-  for(var i=0, n=checkboxes.length;i<n;i++) {
-    checkboxes[i].checked = source.is(":checked");
-    console.log(i)
-    // checkboxes[i].checked = true;
-  }
-}
-</script>
-
-
-
-<style>
-.filtro{
-  float: right;
-  text-align: right;
-}
-</style>
 
 
   <table id="" class="table stripe tableMK" style="width:100%">
