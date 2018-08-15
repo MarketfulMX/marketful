@@ -176,10 +176,7 @@ class MKF_ProductEntry extends MKF_DBCore
                    CASE WHEN tmp.exposicion_ml = 'C' THEN 'Clasica' 
                         WHEN tmp.exposicion_ml = 'P' THEN 'Premium'
                    ELSE tmp.exposicion_ml
-                   END exposicion,
-                   tmp.precio_ml as price,
-                   IFNULL(tmp.ml_stock, tmp.stock) stock,
-                   IFNULL(tmp.link_publicacion, tmp.wp_url) url
+                   END exposicion
             FROM
             (
               SELECT p.ID, 
@@ -193,23 +190,10 @@ class MKF_ProductEntry extends MKF_DBCore
                       WHERE post_id = p.ID AND meta_key = '{$this->meta_status}') mercadolibre,
                      (SELECT meta_value 
                       FROM {$this->getPostMetaTableName()} 
-                      WHERE post_id = p.ID AND meta_key = '$this->meta_exp') exposicion_ml,
-                     p.guid wp_url,
-                     (SELECT meta_value 
-                      FROM {$this->getPostMetaTableName()} 
-                      WHERE post_id = p.ID AND meta_key = 'link_publicacion') link_publicacion,
-                     pm3.meta_value stock,
-                     (SELECT meta_value 
-                      FROM {$this->getPostMetaTableName()} 
-                      WHERE post_id = p.ID AND meta_key = '{$this->meta_stock}') ml_stock, 
-                     (SELECT meta_value 
-                      FROM {$this->getPostMetaTableName()} 
-                      WHERE post_id = p.ID AND meta_key = '{$this->meta_precio_ml}') precio_ml
+                      WHERE post_id = p.ID AND meta_key = '$this->meta_exp') exposicion_ml
+
               FROM {$this->getPostTableName()} p
               INNER JOIN {$this->getPostMetaTableName()} pm1 ON pm1.post_id = p.ID and pm1.meta_key = '_sku'
-              INNER JOIN {$this->getPostMetaTableName()} pm2 ON pm2.post_id = p.ID and pm2.meta_key = '_regular_price'
-              INNER JOIN {$this->getPostMetaTableName()} pm3 ON pm3.post_id = p.ID and 
-                                                               (pm3.meta_key = '_stock' or pm3.meta_key like '%stock_quantity')
               WHERE p.post_type = 'product')  tmp";
 
         array_push($out, array("data"=> $this->execute_custom_query($sql)));
