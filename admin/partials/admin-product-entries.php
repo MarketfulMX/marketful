@@ -199,7 +199,7 @@ function selectTodos(){
 
 <style>
   .filtro{
-    float: right;
+    /*float: right;*/
     text-align: right;
   }
 </style>
@@ -209,29 +209,40 @@ function selectTodos(){
 
   <?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> 
 
-<div style="width: 100%; padding-top:20px;">
+<div class="col-lg-12 col-md-12 col-sm-12" style=" padding-top:20px;">
   
 
+  <div class="row">
 
-  <div id="paginador" style="float: left;">
-    <?php 
-    if($pagina > 1){
+    <div id="paginador" style="float: left;" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+      <?php 
+      if($pagina > 1){
+        ?>
+        <a href="?page=mkf-product-entries&pagina=<?php echo ($pagina - 1) ?>">Anterior</a> | 
+      <?php
+      }else{
       ?>
-      <a href="?page=mkf-product-entries&pagina=<?php echo ($pagina - 1) ?>">Anterior</a> | 
-    <?php
-    }else{
-    ?>
-      Anterior | 
-    <?php
-    }
-    ?>
-    <a href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>">Siguiente</a>
-  </div>
-  <div class="filtro" >
-    <label> 
-      <input placeholder="Titulo" id="keyword_input">
-    </label>
-    <button id="boton_buscar" onClick="buscarResultados()">Buscar</button>
+        Anterior | 
+      <?php
+      }
+      ?>
+      <a href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>">Siguiente</a>
+    </div>
+    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+      Cambiar Selección: 
+      <select class="status" onChange="" >
+          <option>Status</option>
+          <option value="active" >Activa</option>
+          <option value="paused" >Pausada</option>
+          <option value="closed" >Finalizada</option> 
+      </select>
+    </div>
+    <div class="filtro col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      <label> 
+        <input placeholder="Titulo" id="keyword_input">
+      </label>
+      <button id="boton_buscar" onClick="buscarResultados()">Buscar</button>
+    </div>
   </div>
 </div>
 
