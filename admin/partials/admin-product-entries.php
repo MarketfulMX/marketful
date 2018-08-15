@@ -224,11 +224,24 @@ console.log(ajaxurl)
     <a href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>">Siguiente</a>
   </div>
   <div class="filtro" >
-    <label>Buscar: 
-      <input placeholder="Titulo">
+    <label> 
+      <input placeholder="Titulo" id="keyword_input">
     </label>
+    <button id="boton_buscar" onClick="buscarResultados()">Buscar</button>
   </div>
 </div>
+
+
+<script>
+function buscarResultados(){
+  var keyword = jQuery('#keyword_input').val();
+  var url = "?page=mkf-product-entries&keyword=" + keyword
+  window.location.href = url;
+}
+</script>
+
+
+
 <style>
 .filtro{
   float: right;
