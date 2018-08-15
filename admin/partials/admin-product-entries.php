@@ -103,8 +103,9 @@ function my_theme_ajax_submit()
     // error_log($a)
     // Notificar el cambio a Marketful para que lo envie a Mercadolibre
     $site_url = get_site_url();
-    $url = "https://woocommerce.marketful.mx/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}";
-    // $url = "http://localhost:3000/notifications?{$key}={$value}&product_id={$producto_id}"; para pruebas locales
+    // $url = "https://woocommerce.marketful.mx/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}";
+    // para pruebas locales
+    $url = "http://localhost:3000/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}"; 
     // $parametros = array($key => $value, "woo_id" => $_POST['product_id']);
     error_log( print_r($parametros, TRUE));
     // $response = wp_remote_post( $url, $args = $parametros ); 
@@ -112,7 +113,13 @@ function my_theme_ajax_submit()
     // $response = $http->post( $url, array("elkey" => "elvalue") ); no manda los params 
     $response = $http->post( $url ); 
     error_log( print_r($response, TRUE));
-    wp_die();
+    // wp_die();
+    $data = array(
+      'producto_id' => $product_id
+      );
+    wp_send_json_success( $data );
+    wp_send_json_error($data);
+    // echo "hello";
 }
 ?>
 
@@ -150,6 +157,7 @@ function my_theme_ajax_submit()
             console.log(key)
             jQuery.ajax({
                 type: 'post',
+                dataType: 'json',
                 data: { 
                     "my_theme_ajax_submit": "now",
                     "nonce" : "<?php echo wp_create_nonce( 'my_theme_ajax_submit' ); ?>", 
@@ -174,25 +182,80 @@ function my_theme_ajax_submit()
 
 <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 <script>
-    
 
-function buscarResultados(){
-  var keyword = jQuery('#keyword_input').val();
-  var url = "?page=mkf-product-entries&keyword=" + keyword
-  window.location.href = url;
-}
 
-function selectTodos(){
-  console.log("entramos en select otodos")
-  checkboxes = document.getElementsByName('checkboxes');
-  var source = $('#checkbox_master')
-  console.log(source)
-  for(var i=0, n=checkboxes.length;i<n;i++) {
-    checkboxes[i].checked = source.is(":checked");
-    console.log(i)
-    // checkboxes[i].checked = true;
+  function buscarResultados(){
+    var keyword = jQuery('#keyword_input').val();
+    var url = "?page=mkf-product-entries&keyword=" + keyword
+    window.location.href = url;
   }
-}
+
+  function selectTodos(){
+    console.log("entramos en select otodos")
+    checkboxes = document.getElementsByName('checkboxes');
+    var source = $('#checkbox_master')
+    console.log(source)
+    for(var i=0, n=checkboxes.length;i<n;i++) {
+      checkboxes[i].checked = source.is(":checked");
+      console.log(i)
+      // checkboxes[i].checked = true;
+    }
+  }
+
+  function statusMasivo(){
+    console.log("vamos a hacer un cambio masivo")
+    // console.log(product_id)
+    var value = $('#status_select').val()
+    var key = "mercadolibre"
+    console.log(key)
+    console.log(value)
+    var isGood=confirm('Confirmar hacer cambio masivo de status a ' + value + '?');
+    if (isGood) {
+      console.log("se prendio")
+      var checkboxes = $( '[name="checkboxes"]:checked');
+      for(var i=0, n=checkboxes.length;i<n;i++) {
+        var product_id = checkboxes[i].id.replace("checkbox_", "")
+        console.log(product_id)
+        // checkboxes[i].checked = true;
+
+          jQuery.ajax({
+              type: 'post',
+              dataType: 'json',
+              data: { 
+                  "my_theme_ajax_submit": "now",
+                  "nonce" : "<?php echo wp_create_nonce( 'my_theme_ajax_submit' ); ?>", 
+                  product_id: product_id, 
+                  value: value, 
+                  key: key
+              },
+              success: function(response) { 
+                console.log(response.data)
+                console.log("success")
+                
+                // var nombre = 'mercadolibre_' + product_id
+                // var element = document.getElementById(nombre);
+                // element.value = value;
+              },
+              error: function(response) { 
+                console.log(response.data)
+                  // jQuery('#fire').text("...error!");
+              },
+          });
+      }
+    }
+  }
+
+  function setSelect(){
+    console.log("entramos en set select")
+    // $('#mercadolibre_' + product_id).value = value;
+
+    var element = document.getElementById('mercadolibre_37');
+    console.log(element)
+      element.value = "paused";
+  }
+
+
+
 </script>
 
 
@@ -230,12 +293,13 @@ function selectTodos(){
     </div>
     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
       Cambiar Selección: 
-      <select class="status" onChange="" >
+      <select class="status" id="status_select" onChange="statusMasivo()" >
           <option>Status</option>
           <option value="active" >Activa</option>
           <option value="paused" >Pausada</option>
           <option value="closed" >Finalizada</option> 
       </select>
+      <button onClick="setSelect()">seleccion imponer</button>
     </div>
     <div class="filtro col-lg-4 col-md-4 col-sm-4 col-xs-4">
       <label> 
@@ -251,7 +315,7 @@ function selectTodos(){
   <table id="" class="table stripe tableMK" style="width:100%">
     <thead>
       <tr>
-        <th class="dt_check"><input type="checkbox" class="ids" name="checkboxes"  id="checkbox_master" onClick="selectTodos()"/> </th>
+        <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()"/> </th>
         <th>SKU </th>
         <th>Título</th>
         <th>Status</th>
@@ -265,7 +329,7 @@ function selectTodos(){
       foreach ($products[0]["data"] as $key => $product) :
     ?>
       <tr>
-        <td class="dt_check"><input type="checkbox" class="ids" name="checkboxes" value="<?php echo $product->ID; ?>" />  </td>
+        <td class="dt_check"><input type="checkbox" class="ids" name="checkboxes" id="checkbox_<?php echo $product->ID; ?>" />  </td>
         <td><?php echo $product->sku; ?></td>
         <td><?php echo $product->title; ?></td>
         <td><!--
