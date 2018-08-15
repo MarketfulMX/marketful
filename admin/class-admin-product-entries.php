@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /**
  * Archivo: class-admin-product-entries.php
@@ -198,7 +198,6 @@ class MKF_ProductEntry extends MKF_DBCore
                      (SELECT meta_value 
                       FROM {$this->getPostMetaTableName()} 
                       WHERE post_id = p.ID AND meta_key = 'link_publicacion') link_publicacion,
-     
                      pm3.meta_value stock,
                      (SELECT meta_value 
                       FROM {$this->getPostMetaTableName()} 
@@ -211,7 +210,7 @@ class MKF_ProductEntry extends MKF_DBCore
               INNER JOIN {$this->getPostMetaTableName()} pm2 ON pm2.post_id = p.ID and pm2.meta_key = '_regular_price'
               INNER JOIN {$this->getPostMetaTableName()} pm3 ON pm3.post_id = p.ID and 
                                                                (pm3.meta_key = '_stock' or pm3.meta_key like '%stock_quantity')
-              WHERE p.post_type = 'product') tmp";
+              WHERE p.post_type = 'product')  tmp";
 
         array_push($out, array("data"=> $this->execute_custom_query($sql)));
         return $out;
