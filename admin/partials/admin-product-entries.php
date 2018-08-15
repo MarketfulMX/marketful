@@ -29,6 +29,7 @@
 */
 $pagina = $_GET['pagina'];
 $tope = $_GET['tope'];
+$keyword = $_GET['keyword'];
 
 $offset = 0;
 if (is_null($pagina)){
@@ -49,7 +50,7 @@ if (is_null($tope)){
   
 
 
-$products = MKF_ProductEntry::GetInstance()->get_product_list($tope, $offset);
+$products = MKF_ProductEntry::GetInstance()->get_product_list($tope, $offset, $keyword);
 $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 ?>
@@ -204,20 +205,25 @@ console.log(ajaxurl)
 
   <?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> 
 
-<div style="width: 100%;">
+<div style="width: 100%; padding-top:20px;">
   
-  <?php 
-  if($pagina > 1){
+
+
+  <div id="paginador" style="float: left;">
+    <?php 
+    if($pagina > 1){
+      ?>
+      <a href="?page=mkf-product-entries&pagina=<?php echo ($pagina - 1) ?>">Anterior</a> | 
+    <?php
+    }else{
     ?>
-    <a href="?page=mkf-product-entries&pagina=<?php echo ($pagina - 1) ?>">Anterior</a> | 
-  <?php
-  }
-  ?>
-
-
-
-  <a href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>">Siguiente</a>
-  <div class="filtro">
+      Anterior | 
+    <?php
+    }
+    ?>
+    <a href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>">Siguiente</a>
+  </div>
+  <div class="filtro" >
     <label>Buscar: 
       <input placeholder="Titulo">
     </label>
