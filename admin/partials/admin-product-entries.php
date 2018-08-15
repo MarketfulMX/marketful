@@ -238,6 +238,18 @@ function buscarResultados(){
   var url = "?page=mkf-product-entries&keyword=" + keyword
   window.location.href = url;
 }
+
+function selectTodos(){
+  console.log("entramos en select otodos")
+  checkboxes = document.getElementsByName('checkboxes');
+  var source = $('#checkbox_master')
+  console.log(source)
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.is(":checked");
+    console.log(i)
+    // checkboxes[i].checked = true;
+  }
+}
 </script>
 
 
@@ -253,7 +265,7 @@ function buscarResultados(){
   <table id="" class="table stripe tableMK" style="width:100%">
     <thead>
       <tr>
-        <th class="dt_check"><input type="checkbox" class="ids" name="ids[]"  /> </th>
+        <th class="dt_check"><input type="checkbox" class="ids" name="checkboxes"  id="checkbox_master" onClick="selectTodos()"/> </th>
         <th>SKU </th>
         <th>Título</th>
         <th>Status</th>
@@ -261,13 +273,13 @@ function buscarResultados(){
         <!-- <th style="min-width: 215px;">Acción</th> -->
       </tr>
     </thead>
-    <tbody>
+    <tbody id="tbody_productos">
     <!-- Creamos un foreach para recorrer todos los valores -->
     <?php
       foreach ($products[0]["data"] as $key => $product) :
     ?>
       <tr>
-        <td class="dt_check"><input type="checkbox" class="ids" name="ids[]" value="<?php echo $product->ID; ?>" />  </td>
+        <td class="dt_check"><input type="checkbox" class="ids" name="checkboxes" value="<?php echo $product->ID; ?>" />  </td>
         <td><?php echo $product->sku; ?></td>
         <td><?php echo $product->title; ?></td>
         <td><!--
