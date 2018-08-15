@@ -27,7 +27,29 @@
 * Se toman los productos que se mostraran dentro de la tabla, y se guardan dentro de $products.
 * Se toma la imagen que se mostrara como cabecera.
 */
-$products = MKF_ProductEntry::GetInstance()->get_product_list();
+$pagina = $_GET['pagina'];
+$tope = $_GET['tope'];
+
+$offset = 0;
+if (is_null($pagina)){
+  error_log("la pagina es nula");
+  $offset = 0;
+  $pagina = 1;
+} else {
+  error_log ("la pagina esta presente");
+  error_log($pagina);
+  $offset = ($pagina-1)*50;
+}
+if (is_null($tope)){
+  error_log("el tope es nulo");
+  $tope = 50;
+} else {
+  error_log ("el tope esta presente");
+}
+  
+
+
+$products = MKF_ProductEntry::GetInstance()->get_product_list($tope, $offset);
 $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 ?>
@@ -182,7 +204,34 @@ console.log(ajaxurl)
 
   <?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> 
 
-  <table id="services_list" class="table stripe tableMK" style="width:100%">
+<div style="width: 100%;">
+  
+  <?php 
+  if($pagina > 1){
+    ?>
+    <a href="?page=mkf-product-entries&pagina=<?php echo ($pagina - 1) ?>">Anterior</a> | 
+  <?php
+  }
+  ?>
+
+
+
+  <a href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>">Siguiente</a>
+  <div class="filtro">
+    <label>Buscar: 
+      <input placeholder="Titulo">
+    </label>
+  </div>
+</div>
+<style>
+.filtro{
+  float: right;
+  text-align: right;
+}
+</style>
+
+
+  <table id="" class="table stripe tableMK" style="width:100%">
     <thead>
       <tr>
         <th class="dt_check"><input type="checkbox" class="ids" name="ids[]"  /> </th>

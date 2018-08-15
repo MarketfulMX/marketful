@@ -162,8 +162,9 @@ class MKF_ProductEntry extends MKF_DBCore
      * Despues retorna el valor de $out
      */
     // funcion para traer los productos
-    public function get_product_list()
+    public function get_product_list($tope, $offset)
     {
+
         $out = array();
 
         $sql = "SELECT tmp.ID,
@@ -194,7 +195,7 @@ class MKF_ProductEntry extends MKF_DBCore
 
               FROM {$this->getPostTableName()} p
               INNER JOIN {$this->getPostMetaTableName()} pm1 ON pm1.post_id = p.ID and pm1.meta_key = '_sku'
-              WHERE p.post_type = 'product')  tmp limit 50";
+              WHERE p.post_type = 'product')  tmp limit {$tope} offset {$offset} ";
 
         array_push($out, array("data"=> $this->execute_custom_query($sql)));
         return $out;
