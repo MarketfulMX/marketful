@@ -131,7 +131,6 @@ class MKF_ProductEntry extends MKF_DBCore
         //  $url = "http://localhost:3000/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}"; 
         $http = _wp_http_get_object();
         $response = $http->post( $url ); 
-        error_log($response)
 
         // $data = array(
         //   'producto_id' => $product_id
