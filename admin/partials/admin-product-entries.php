@@ -72,7 +72,7 @@ if (isset($_POST['my_theme_ajax_submit'])){
     echo $response;
   }
   error_log("vamos con la salida del isset");
-  wp_send_json_success(true);
+  wp_die();
   // error_log($response);
   
 }
@@ -117,9 +117,9 @@ function my_theme_ajax_submit()
     // error_log($a)
     // Notificar el cambio a Marketful para que lo envie a Mercadolibre
     $site_url = get_site_url();
-    // $url = "https://woocommerce.marketful.mx/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}";
+    $url = "https://woocommerce.marketful.mx/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}";
     // para pruebas locales
-    $url = "http://localhost:3000/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}"; 
+    // $url = "http://localhost:3000/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}"; 
     // $parametros = array($key => $value, "woo_id" => $_POST['product_id']);
     // error_log( print_r($parametros, TRUE));
     // $response = wp_remote_post( $url, $args = $parametros ); 
@@ -134,7 +134,8 @@ function my_theme_ajax_submit()
     error_log("vamos de salida");
     // echo "Hola";
 
-    return "hello";
+    // return "hello";
+    echo "salidaprueba";
     // wp_send_json_success($data);
     // wp_send_json_error($data);
     // echo "hello";
@@ -175,6 +176,7 @@ function my_theme_ajax_submit()
             console.log(key)
             jQuery.ajax({
                 type: 'post',
+                url: ajaxurl,
                 // dataType: 'json',
                 data: { 
                     "my_theme_ajax_submit": "now",
@@ -237,6 +239,7 @@ function my_theme_ajax_submit()
         // checkboxes[i].checked = true;
 
           jQuery.ajax({
+              url: ajaxurl,
               type: 'post',
               dataType: 'json',
               data: { 
@@ -247,7 +250,7 @@ function my_theme_ajax_submit()
                   key: key
               },
               success: function(response) { 
-                console.log(response.data)
+                console.log(response)
                 console.log("success")
                 
                 // var nombre = 'mercadolibre_' + product_id
