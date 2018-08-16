@@ -66,13 +66,13 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 */
 if (isset($_POST['my_theme_ajax_submit'])){
   if ( wp_verify_nonce( $_POST['nonce'], 'my_theme_ajax_submit' ) ){
-    $response = my_theme_ajax_submit(); 
-    error_log("vamos con la response");
-    error_log($response);
-    echo $response;
+    my_theme_ajax_submit(); 
+    // error_log("vamos con la response");
+    // error_log($response);
+    // echo $response;
   }
-  error_log("vamos con la salida del isset");
-  wp_die();
+  // error_log("vamos con la salida del isset");
+  // wp_die();
   // error_log($response);
   
 }
@@ -100,6 +100,8 @@ if (isset($_POST['my_theme_ajax_submit'])){
  * Para finalizar la @función wp_die() finaliza la ejecución y muestra el error
  * en caso de que suceda alguno.
  */
+
+add_action( 'wp_ajax_foobar', 'my_theme_ajax_submit' );
 
 function my_theme_ajax_submit() 
 {
@@ -131,7 +133,7 @@ function my_theme_ajax_submit()
     $data = array(
       'producto_id' => $product_id
       );
-    error_log("vamos de salida");
+    // error_log("vamos de salida");
     // echo "Hola";
 
     // return "hello";
@@ -139,6 +141,7 @@ function my_theme_ajax_submit()
     // wp_send_json_success($data);
     // wp_send_json_error($data);
     // echo "hello";
+    wp_die();
 }
 ?>
 
@@ -179,17 +182,20 @@ function my_theme_ajax_submit()
                 url: ajaxurl,
                 // dataType: 'json',
                 data: { 
-                    "my_theme_ajax_submit": "now",
-                    "nonce" : "<?php echo wp_create_nonce( 'my_theme_ajax_submit' ); ?>", 
+                    // "my_theme_ajax_submit": "now",
+                    // "nonce" : "<?php echo wp_create_nonce( 'my_theme_ajax_submit' ); ?>", 
                     product_id: product_id, 
                     value: value, 
-                    key: key
+                    key: key, 
+                    action: 'foobar'
                 },
                 success: function(response) { 
+                  console.log("exito")
                   console.log(response)
                     // jQuery('#fire').text("Cambio Correcto!");
                 },
                 error: function(response) { 
+                  console.log("fracaso")
                   console.log(response)
                     // jQuery('#fire').text("...error!");
                 },
