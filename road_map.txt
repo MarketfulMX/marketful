@@ -9,8 +9,9 @@ admin-product-entries.php
 5) Agregar campo para cambiar inventario_ml LISTO
 6) Hacer campo precio_ml funcional con ajax LISTO
 7) Hacer campo inventario_ml funcional con ajax LISTO
+8) Agregar campo url publicacion con link a la publicacion en mercadolibre target=_blank para que abra en ventana nueva LISTO
 
-8) Agregar campo url publicacion con link a la publicacion en mercadolibre target=_blank para que abra en ventana nueva
+
 9) Agregar campo Ultima Actualizacion que muestre el campo error_ml
 
 Aspecto admin-product-entrie.php
@@ -19,9 +20,15 @@ Aspecto admin-product-entrie.php
 
 
 Categorizacion 
-1) Crear vista categorizacion con el categorizador qeu aparece en edit form pero sin usar <form>
-2) Al completar, no se envia un form. Se envia un ajax que guarda el campo category_ml en meta y notifica a Marketful
+1) Crear vista categorizacion con el categorizador qeu aparece en edit form pero sin usar <form> LISTO
+2) Al completar, no se envia un form. Se envia un ajax que guarda el campo category_ml en meta y notifica a Marketful LISTO
+
+
 3) Probar y asegurarse que API funciona bien en Marketful 
+
+
+
+
 Release 2
 4) Seleccionar varias publicaciones para categorizar a la vez
 
