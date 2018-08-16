@@ -12,7 +12,11 @@ admin-product-entries.php
 7) Hacer campo inventario_ml funcional con ajax
 8) Agregar campo url publicacion con link a la publicacion en mercadoibre target=_blank para que abra en ventana nueva
 9) Agregar campo Ultima Actualizacion que muestre el campo error_ml
+
+Aspecto admin-product-entrie.php
+10) Disminuir tamaño de las letras. todo esta muy grande en la tabla
 3) Mejorar aspecto de area de botones para cambios masivos 
+
 
 Categorizacion 
 1) Crear vista categorizacion con el categorizador qeu aparece en edit form pero sin usar <form>

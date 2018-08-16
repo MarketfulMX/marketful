@@ -271,7 +271,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <th>Exposición</th>
         <th>Categoría ML</th>
         <th>Precio Woo Commerce</th>
-        <th>Precio Mercado Libre</th>
+        <th style="max-width: 100px;">Precio Mercado Libre</th>
         <th>Inventario Woo Commerce</th>
         <th>Inventario Mercado Libre</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
@@ -319,9 +319,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <?php $categoria = get_post_meta($product->ID, "last_category_ml", $single = true ) ?>
         <td id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}'>categorizar</a>")) ?></td>
         <td><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
-        <td><input type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>"></td>
+        <td style="max-width: 100px;"><input style="max-width: 80px;" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>"></td>
         <td><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
-        <td><input type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>"></td>
+        <td><input style="max-width: 100px;" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>"></td>
 
        <!--  <td>
           <a href="?page=mkf-product-edit&product_id=<?php echo $product->ID; ?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
