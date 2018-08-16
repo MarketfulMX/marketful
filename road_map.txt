@@ -2,8 +2,8 @@
 
 
 admin-product-entries.php 
-0) Agregar campo categoria con url a categorizacion con el param product id
-1) Hacer funcional el campo Exposicion uno por uno 
+
+1) Hacer funcional el campo Exposicion uno por uno YA ESTABA
 2) Agregar cambio masivo de Exposicion 
 3) Mejorar aspecto de area de botones para cambios masivos 
 4) Agregar campo para cambiar precio_ml 

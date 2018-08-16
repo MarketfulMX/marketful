@@ -140,14 +140,14 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     }
   }
 
-  function statusMasivo(){
+  function statusMasivo(key, nombre_key, id){
     console.log("vamos a hacer un cambio masivo")
     // console.log(product_id)
-    var value = $('#status_select').val()
-    var key = "mercadolibre"
+    var value = $('#' + id).val()
+    // var key = "mercadolibre"
     console.log(key)
     console.log(value)
-    var isGood=confirm('Confirmar hacer cambio masivo de status a ' + value + '?');
+    var isGood=confirm('Confirmar hacer cambio masivo de ' + nombre_key + ' a ' + value + '?');
     if (isGood) {
       console.log("se prendio")
       var checkboxes = $( '[name="checkboxes"]:checked');
@@ -169,7 +169,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               success: function(response) { 
                 console.log(response.data)
                 console.log("success")
-                var nombre = "mercadolibre_" + response.data["product_id"]
+                var nombre = key + "_" + response.data["product_id"]
                 var el_valor = response.data["value"]
                 console.log("el nombre es")
                 console.log(nombre)
@@ -219,7 +219,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
   <div class="row">
 
-    <div id="paginador" style="float: left;" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    <div id="paginador" style="float: left;" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
       <?php 
       if($pagina > 1){
         ?>
@@ -233,13 +233,21 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       ?>
       <a href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>">Siguiente</a>
     </div>
-    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
       Cambiar Selección: 
-      <select class="status" id="status_select" onChange="statusMasivo()" >
+      <select class="status" id="status_select" onChange="statusMasivo('mercadolibre', 'status', 'status_select')" >
           <option>Status</option>
           <option value="active" >Activa</option>
           <option value="paused" >Pausada</option>
           <option value="closed" >Finalizada</option> 
+      </select>
+      | 
+      Exposición: 
+      <select class="status" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de Exposición', 'exposicion_ml_select')" >
+          <option>Exposición</option>
+          <option value="free" >Gratis</option>
+          <option value="clasica" >Clásica</option>
+          <option value="premium" >Premium</option> 
       </select>
     </div>
     <div class="filtro col-lg-4 col-md-4 col-sm-4 col-xs-4">
