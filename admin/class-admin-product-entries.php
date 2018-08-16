@@ -200,7 +200,7 @@ class MKF_ProductEntry extends MKF_DBCore
         update_post_meta(intval($p_product_id), $this->meta_status, $p_status_post);
         update_post_meta(intval($p_product_id), $this->meta_exp, $p_exposition);
         // update_post_meta(intval($p_product_id), $this->meta_wtime, $p_time_warranty);
-        // update_post_meta(intval($p_product_id), $this->meta_cat, json_encode($p_ml_categories, JSON_FORCE_OBJECT));
+        update_post_meta(intval($p_product_id), $this->meta_cat, json_encode($p_ml_categories, JSON_FORCE_OBJECT));
         update_post_meta(intval($p_product_id), $this->meta_lcat, $p_ml_categories['child'][count($p_ml_categories['child']) - 1]);
         // update_post_meta(intval($p_product_id), $this->meta_precio_ml, $p_precio_ml);
         header("Location: admin.php?page=mkf-product-entries&success");
