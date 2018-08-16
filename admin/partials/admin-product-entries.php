@@ -324,25 +324,19 @@ function getCategory() {
 
 
   var categorias = $(".category_field").map(function() {
-    console.log($(this).text());
     var el_id = $(this).attr("id");
-    console.log(el_id)
     if($(this).text().length > 1){
       jQuery.ajax({
       type: "GET", 
         url: "https://api.mercadolibre.com/categories/"+ $(this).text(),
         async: false,
         success: function(data){
-          console.log(data.path_from_root);
           var path_categoria = "";
           data.path_from_root.map(function(r){
-            console.log(r.name);
             path_categoria = path_categoria + " > " + r.name;
           });
-          console.log(path_categoria);
-          console.log(el_id)
           $('#' + el_id).text("");
-          path_categoria = path_categoria.substring(2);
+          path_categoria = path_categoria.substring(3);
           $('#' + el_id).append('<a href=/?page=mkf-entries_categorizador&product_id=' + el_id.replace("categoria_", "") + ">" + path_categoria + "</a>");
         }
       });
