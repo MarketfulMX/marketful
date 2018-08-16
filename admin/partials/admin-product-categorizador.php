@@ -167,37 +167,95 @@ if (!empty($ml_categories))
         jQuery(".syi-category-tree__column:last").after(Ndiv);
     }
     
-    
+
+function getCCategory() 
+    {
+      var categorias = '<?php echo $categoria_ultima[0]; ?>';
+      {
+        var el_id = '<?php echo $categoria_ultima[0]; ?>';
+        if('<?php echo $categoria_ultima[0]; ?>'.length > 1)
+        {
+              jQuery.ajax(
+                {
+                    type: "GET", 
+                    url: "https://api.mercadolibre.com/categories/"+'<?php echo $categoria_ultima[0]; ?>',
+                    async: false,
+                    success: function(data)
+                    {
+                        console.log("llego success")
+                        var path_categoria = "";
+                        data.path_from_root.map(function(r)
+                        {
+                            path_categoria = path_categoria + " > " + r.name;
+                        });
+                        jQuery('#categoria').text("");
+                        path_categoria = path_categoria.substring(3);
+                        jQuery('#categoria').text(path_categoria);
+                    }
+                });
+        }
+
+      };
+    }
+jQuery(document).ready(function($){
+  getCCategory();
+});
 </script>
+
 <style>
+#leyenda
+    {
+        margin-left: 50px; margin-bottom: -20px;
+        color: dimgray; font-size: 120%;
+    }
+#contenedor
+    {
+        background-color: white;
+        margin-left: 40px; margin-top: 30px; 
+        font-family: serif;
+    }
+#interno
+    {
+        margin-left: 30px; margin-top: 10px; 
+    }
+#titulo
+    {
+        font-size: 35px;color:black;text-align: left;
+        padding-top: 30px;
+    }
+#categoria
+    {
+        font-size: 15px;
+    }
+  
 </style>
-<div>
-    <h4> Categorizador de productos </h4>
-    <h2><?php echo $titulo; ?> </h2>
-    <h5><?php echo $categoria_ultima[0]; ?> </h5>
-    <h5><?php //echo $categoria_arbol[0]; ?> </h5>
+<h4 id="leyenda"> Categorizador de productos </h4>
+<div id="contenedor">
+    <div id="interno">
+    <h2 id="titulo"><?php echo $titulo; ?> </h2>
+    <h2 class="margenCat">Categoría <h5 id="categoria" ></h5></h2>
+    </div>
+    <hr>
+    <div class="syi-category-tree">
+        <div class="ui-box syi-category-tree__column syi-category-tree__column--fixed syi-category-tree__column--selected syi-hub-std u--arrange-fit" data-reactid="22">
+            <h2 class="category-tree__title" >Productos y otros</h2>
+            <span class="syi-category-tree__image syi-category-tree__image--std" ></span>
+            <div class="syi-gradient"></div>
+        </div>
+        <div class="syi-category-tree__wrapper u--arrange-fill" id="demo" >
+            <div class="syi-category-tree__container syi-category-tree__container--3 ">
+                <div class="ui-box syi-category-tree__column" >
+                    <div data-index="0" class="syi-category-tree__container " >
+                        <select class="syi-category-tree__selector selected" id="level_0" required="" title="Elige una categoría" size="20" onChange="getCategory(this, 'father', 0);" name="ml_categories[father][]">
+                            <?php foreach (json_decode($categories->getBody(), true) as $key => $category) : ?>
+                                <option class="syi-category-tree__option" value="<?php echo $category['id']; ?>">
+                                    <?php echo $category['name']; ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<h2 class="margenCat">Categoría</h2>
-      <hr>
-      <div class="syi-category-tree">
-          <div class="ui-box syi-category-tree__column syi-category-tree__column--fixed syi-category-tree__column--selected syi-hub-std u--arrange-fit" data-reactid="22">
-              <h2 class="category-tree__title" >Productos y otros</h2>
-              <span class="syi-category-tree__image syi-category-tree__image--std" ></span>
-              <div class="syi-gradient"></div>
-          </div>
-          <div class="syi-category-tree__wrapper u--arrange-fill" id="demo" >
-              <div class="syi-category-tree__container syi-category-tree__container--3 ">
-                  <div class="ui-box syi-category-tree__column" >
-                      <div data-index="0" class="syi-category-tree__container " >
-                          <select class="syi-category-tree__selector selected" id="level_0" required="" title="Elige una categoría" size="20" onChange="getCategory(this, 'father', 0);" name="ml_categories[father][]">
-                              <?php foreach (json_decode($categories->getBody(), true) as $key => $category) : ?>
-                                      <option class="syi-category-tree__option" value="<?php echo $category['id']; ?>">
-                                        <?php echo $category['name']; ?>
-                                      </option>
-                              <?php endforeach; ?>
-                          </select>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>

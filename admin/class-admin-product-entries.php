@@ -130,22 +130,12 @@ class MKF_ProductEntry extends MKF_DBCore
 
     public function my_theme_ajax_submit() 
     {
-        // do something
-        // some php code that fires from AJAX click of #fire
         error_log("entramos en my_theme_ajax_submit");
-        
-
         $producto_id = $_POST['product_id'];
         error_log($producto_id);
         $value = $_POST['value'];
         $key = $_POST['key'];
-        // // ### aqui fue 
-        // // // update_user_meta( 1, "first_name", nombre );
         $a = update_post_meta( $producto_id, $key, $value );
-        // // // wp_send_json_success([200, "hola"], 200) ; NO SIRVE
-        // // error_log("guardarmos el producto");
-        // // error_log($a);
-        // // // error_log($a)
         // // // Notificar el cambio a Marketful para que lo envie a Mercadolibre
         $site_url = get_site_url();
         $url = "https://woocommerce.marketful.mx/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}";
@@ -154,12 +144,7 @@ class MKF_ProductEntry extends MKF_DBCore
         $http = _wp_http_get_object();
         $response = $http->post( $url ); 
 
-        // $data = array(
-        //   'producto_id' => $product_id
-        //   );
-
         wp_send_json_success(array('product_id' => $producto_id, 'value' => $value));
-
         wp_die();
     }
 
