@@ -102,7 +102,7 @@ class MKF_Admin
        'ajax_url' => admin_url( 'admin-ajax.php' ),
        'nonce'    => $title_nonce,
     ) );
-    add_action( 'wp_ajax_foobar', ['ClassName', 'my_theme_ajax_submit']);
+    
   }
     
   /**
