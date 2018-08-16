@@ -261,7 +261,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <th>Título</th>
         <th>Status</th>
         <th>Exposición</th>
-        <!-- <th style="min-width: 215px;">Acción</th> -->
+        <th>Categoría ML</th>
+        <th style="min-width: 215px;">Acción</th>
       </tr>
     </thead>
     <tbody id="tbody_productos">
@@ -303,10 +304,11 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 <option value="premium" <?php echo ($select_value=="premium")?'selected':''; ?> >Premium</option> 
             </select>
         </td>
-         <!--  <td>
+        <td><?php echo get_post_meta($product->ID, "last_category_ml", $single = true ) ?>    </td>
+          <td>
           <a href="?page=mkf-product-edit&product_id=<?php echo $product->ID; ?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
           <a href="<?php echo $product->url; ?>" target="_blank" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Preview</a>
-        </td> -->
+        </td>
       </tr>
     <?php endforeach; //Fin Iteracion ?>
     </tbody>

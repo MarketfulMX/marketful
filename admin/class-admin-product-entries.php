@@ -201,7 +201,7 @@ class MKF_ProductEntry extends MKF_DBCore
         update_post_meta(intval($p_product_id), $this->meta_exp, $p_exposition);
         // update_post_meta(intval($p_product_id), $this->meta_wtime, $p_time_warranty);
         // update_post_meta(intval($p_product_id), $this->meta_cat, json_encode($p_ml_categories, JSON_FORCE_OBJECT));
-        // update_post_meta(intval($p_product_id), $this->meta_lcat, $p_ml_categories['child'][count($p_ml_categories['child']) - 1]);
+        update_post_meta(intval($p_product_id), $this->meta_lcat, $p_ml_categories['child'][count($p_ml_categories['child']) - 1]);
         // update_post_meta(intval($p_product_id), $this->meta_precio_ml, $p_precio_ml);
         header("Location: admin.php?page=mkf-product-entries&success");
     }
@@ -249,6 +249,7 @@ class MKF_ProductEntry extends MKF_DBCore
                      (SELECT meta_value 
                       FROM {$this->getPostMetaTableName()} 
                       WHERE post_id = p.ID AND meta_key = '$this->meta_exp') exposicion_ml
+
 
               FROM {$this->getPostTableName()} p
               INNER JOIN {$this->getPostMetaTableName()} pm1 ON pm1.post_id = p.ID and pm1.meta_key = '_sku'
