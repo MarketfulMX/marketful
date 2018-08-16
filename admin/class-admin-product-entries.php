@@ -106,6 +106,28 @@ class MKF_ProductEntry extends MKF_DBCore
         $this->meta_precio_ml   = ML_META_PRECIO_ML;
     }
 
+
+    /*
+     * @Función PHP: my_theme_ajax_submit()
+     * La @función my_theme_ajax_submit() recibe dentro de las variables:
+     * $producto_id = Identificador del producto 
+     * $value = Nuevo valor a actualizar
+     * $key = Tipo de metadato que se modificara
+     *
+     * Posteriormente despues de recibir los @parámetros ejecuta la función de wp
+     * update_post_meta(@string,@string,@string) que actualiza la meta data que se envió.
+     * 
+     * Se obtiene el $site_url, despues se crea el URL para guardar en ML con la $key
+     * y con el valor a cambiar $value del $producto_id en la $site_url que obtuvimos
+     * previamente.
+     * Se muestra un error en caso de que haya succedido.
+     * Se guarda un objeto inicializado WP_Http, se postea la $URL para ejecutar los cambios
+     * y en caso de error se muestra.
+     *
+     * Para finalizar la @función wp_die() finaliza la ejecución y muestra el error
+     * en caso de que suceda alguno.
+     */
+
     public function my_theme_ajax_submit() 
     {
         // do something

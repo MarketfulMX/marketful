@@ -1,0 +1,54 @@
+### Road Map
+
+
+admin-product-entries.php 
+0) Agregar campo categoria con url a categorizacion con el param product id
+1) Hacer funcional el campo Exposicion uno por uno 
+2) Agregar cambio masivo de Exposicion 
+3) Mejorar aspecto de area de botones para cambios masivos 
+4) Agregar campo para cambiar precio_ml 
+5) Agregar campo para cambiar inventario_ml 
+6) Hacer campo precio_ml funcional con ajax
+7) Hacer campo inventario_ml funcional con ajax
+8) Agregar campo url publicacion con link a la publicacion en mercadoibre target=_blank para que abra en ventana nueva
+9) Agregar campo Ultima Actualizacion que muestre el campo error_ml
+
+Categorizacion 
+1) Crear vista categorizacion con el categorizador qeu aparece en edit form pero sin usar <form>
+2) Al completar, no se envia un form. Se envia un ajax que guarda el campo category_ml en meta y notifica a Marketful
+3) Probar y asegurarse que API funciona bien en Marketful 
+Release 2
+4) Seleccionar varias publicaciones para categorizar a la vez
+
+Descripcion para todas
+1) Crear una vista para crear una descrpicion que se agregara a todas las publicaciones 
+2) Crear API para manejar este recurso 
+
+Publicacion Show
+1) Crear vista que reciba param product_id y muestre indicadores de una publicaciones en mercadolibre
+	- Status de la publicacion
+	- Titulo en Mercadolibre
+	- Stock
+	- Precio
+	- Tipo de Envio
+	- Costo de Envio  (y a cargo de quien)
+	- Tipo de Publicacion
+	- % que cobra mercadoibre por venta
+	- Fee por venta en pesos 
+	- Costo total por venta
+	- Saldo neto que le queda al vendedor por venta (precio - envio - fee)
+	- Numero de dias publicado
+	- Numero de ventas
+	- Numero de visitas 
+
+
+Stock Ml Masivo
+1) Crear vista donde se puede cargar un archivo xls con el product_id de woo commerce y el precio y stock de Mercadolibre 
+2) Procesar el archivo y guardar en woo commerce los valores 
+
+
+Vista Atributos 
+1) Debe generar una tabla donde se pueden modificar los atributos. 
+2) Recibe en params un string con los product_ids  que van a modificar
+3) Ddebe consultar con Mercadolibre los parametros que admite cada producto segun su categoria 
+4) Guarda los cambios y notifica a Marketful
