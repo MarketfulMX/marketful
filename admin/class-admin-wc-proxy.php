@@ -1,46 +1,45 @@
 <?php
 
 /**
- * The admin-specific functionality of the plugin.
+ * Archivo: class-admin-wc-proxy.php
+ * Ultima edición : 13 de agosto de 2018
  *
- * @link       http://innodite.com
- * @since      1.0.0
+ * @autor: Adolfo Yanes <adolfo@marketful.mx> as master contributor
+ * @autor: Mauricio Alcala <mauricio@marketful.mx> as proyect admin
+ * @author Javier Urbano <javierurbano11@gmail.com> as contributor
+ * @author Angel Salazar <salazar.angel.e@gmail.com> as contributor
  *
+ * @versión: 1.01
+ * @link: marketful.mx
  * @package    mkf
- * @subpackage mkf/admin
+ * @subpackage mkf/admin/partials
+ *
  */
 
 /**
- * The admin-specific functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
- * @package    mkf
- * @subpackage mkf/admin
- * @author     Javier Urbano <javierurbano11@gmail.com> at Innodite Inc.
- * @author     Angel Salazar <salazar.angel.e@gmail.com> at Innodite Inc.
+ * Descipción general:
+ * Provee de diferentes métodos para poder crear las URL de 
+ * los diferentes productos y acceder a ellos en WC.
  */
-class MKF_ProductProxy extends MKF_DBCore {
+
+
+/**
+ * @función MKF_ProductProxy @hereda 
+ * 
+ * @atributos
+ * private static $instance = NULL;
+ * private $plg_id;
+ * private $version;
+ * 
+ * Se definin las variables a utilizar
+ * 
+ */
+class MKF_ProductProxy extends MKF_DBCore 
+{
 
   private static $instance = NULL;
-  /**
-   * The ID of this plugin.
-   *
-   * @since    1.0.0
-   * @access   private
-   * @var      string    $plg_id    The ID of this plugin.
-   */
   private $plg_id;
-  /**
-   * The version of this plugin.
-   *
-   * @since    1.0.0
-   * @access   private
-   * @var      string    $version    The current version of this plugin.
-   */
   private $version;
-
   private $woocommerce;
   private $customer_key;
   private $secret_key;
@@ -49,13 +48,14 @@ class MKF_ProductProxy extends MKF_DBCore {
   private $wc_api_v3;
 
   /**
-   * Initialize the class and set its properties.
-   *
-   * @since    1.0.0
-   * @param      string    $plg_id       The name of this plugin.
-   * @param      string    $version    The version of this plugin.
+   * @función __construct(@string = (PLUGIN_GSNAME, @string = (PLUGIN_GVERSION)))
+   * Manda a llamar al archivo autoload.php
+   * Asigna despues los valores a los diferentes atributos.
+   * Crea un nuevo objeto al cual le asigna los valores a base_uri y 
+   * verify.
    */
-  public function __construct( $plg_id = PLUGIN_GSNAME, $version = PLUGIN_GVERSION) {
+  public function __construct( $plg_id = PLUGIN_GSNAME, $version = PLUGIN_GVERSION) 
+  {
 
     require_once plugin_dir_path( __FILE__ ) . "extras/vendor/autoload.php";
 
@@ -73,18 +73,41 @@ class MKF_ProductProxy extends MKF_DBCore {
     
   }
 
-  public static function GetInstance() {
-    if ( is_null( self::$instance ) ) {
+  /**
+   * @función getInstance()
+   * Es una función estatica que accede al objeto $instance y busca que sea nulo, 
+   * en cuyo caso creal el objeto.
+   * En caso contrario retorna el objeto.
+   */
+  public static function GetInstance() 
+  {
+    if ( is_null( self::$instance ) ) 
+    {
       self::$instance = new self;
     }
     return self::$instance;
   }
 
+    
+  /**
+   * @función getWC()
+   * 
+   * Retorna el valor del atributo woocommerce.
+   */
   public function getWC()
   {
     return $this->woocommerce;
   }
 
+  /**
+   * @función products_get_request(@string = (NULL))
+   * 
+   * Define el valor del $url_path que sera en caso de ser TRUE el product:id 
+   * en caso contrario sera ""
+   * Despues devuelve el resultado de la funcion getWC( con los valores de la 
+   * api_v2 y el URL definido arriba.
+   * Despues devuelve el valor de customer_key y de secret_key.
+   */
   public function products_get_request($product_id = null)
   {
     $url_path = (empty($product_id) || is_null($product_id)) ? "" : "/{$product_id}";
@@ -98,6 +121,13 @@ class MKF_ProductProxy extends MKF_DBCore {
     );
   }
 
+  /**
+   * @Funciónproducts_put_request(@string = (NULL), @string = ([]))}
+   * 
+   * La función primero define el valor del URL_PATH con el product_id o en 
+   * su defecto con valor "".
+   * Despues regresa los valores de "auth" y "json"
+   */
   public function products_put_request($product_id = null, $metadata = [])
   {
     $url_path = (empty($product_id) || is_null($product_id)) ? "" : "/{$product_id}";
@@ -112,6 +142,15 @@ class MKF_ProductProxy extends MKF_DBCore {
     );
   }
 
+    
+  /**
+   * @función products_get_body (@string = (NULL), $force_to_array = (TRUE))
+   * 
+   * Esta funcion crea una variable llamada $body que contiene el resultado de
+   * la función llamada getBody()
+   * Despues retorna en caso de que $force_to_array arroje verdadero
+   * el valor del $body con json_decode() caso contrario, lo muestra sin json_decode
+   */
   public function products_get_body($product_id = null, $force_to_array = true)
   {
 

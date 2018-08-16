@@ -84,3 +84,4 @@ function mkf_run_core() {
 }
 //
 mkf_run_core();
+add_action( 'wp_ajax_foobar', ['MKF_ProductEntry', 'my_theme_ajax_submit']);
