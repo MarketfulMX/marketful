@@ -1,4 +1,6 @@
 <?php
+
+
 /*
  * Archivo: admin-product-edit-form.php
  * Ultima edición : 7 de agosto de 2018
@@ -101,7 +103,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
  * en caso de que suceda alguno.
  */
 
-add_action( 'wp_ajax_foobar', 'my_theme_ajax_submit' );
+
 
 function my_theme_ajax_submit() 
 {
