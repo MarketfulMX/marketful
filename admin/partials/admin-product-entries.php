@@ -305,7 +305,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             </select>
         </td>
         <?php $categoria = get_post_meta($product->ID, "last_category_ml", $single = true ) ?>
-        <td id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='/?page=mkf-entries_categorizador&product_id={$product->ID}'>categorizar</a>")) ?></td>
+        <td id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}'>categorizar</a>")) ?></td>
        <!--  <td>
           <a href="?page=mkf-product-edit&product_id=<?php echo $product->ID; ?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
           <a href="<?php echo $product->url; ?>" target="_blank" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Preview</a>
@@ -338,7 +338,7 @@ function getCategory() {
           });
           $('#' + el_id).text("");
           path_categoria = path_categoria.substring(3);
-          $('#' + el_id).append('<a href=/?page=mkf-entries_categorizador&product_id=' + el_id.replace("categoria_", "") + ">" + path_categoria + "</a>");
+          $('#' + el_id).append('<a href=?page=mkf-entries_categorizador&product_id=' + el_id.replace("categoria_", "") + ">" + path_categoria + "</a>");
         }
       });
     }
