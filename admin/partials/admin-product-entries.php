@@ -241,7 +241,6 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           <option value="paused" >Pausada</option>
           <option value="closed" >Finalizada</option> 
       </select>
-      <button onClick="setSelect()">seleccion imponer</button>
     </div>
     <div class="filtro col-lg-4 col-md-4 col-sm-4 col-xs-4">
       <label> 
