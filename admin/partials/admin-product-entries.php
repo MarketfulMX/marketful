@@ -58,58 +58,6 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 ?>
 
 
-<?php
-
-/*
-* @Script PHP
-* Primero se valida con el @parametro $_POST['nonce'] y si el hash es correcto
-* posteriormente manda a llamar a la funcion my_theme_ajax_submit()
-*
-*/
-// if (isset($_POST['my_theme_ajax_submit'])){
-//   if ( wp_verify_nonce( $_POST['nonce'], 'my_theme_ajax_submit' ) ){
-//     my_theme_ajax_submit(); 
-//     // error_log("vamos con la response");
-//     // error_log($response);
-//     // echo $response;
-//   }
-//   // error_log("vamos con la salida del isset");
-//   // wp_die();
-//   // error_log($response);
-  
-// }
-    
-   // error_log("estamos fuera del isset");      
-        // wp_send_json_success("hola");
-
-/*
- * @Función PHP: my_theme_ajax_submit()
- * La @función my_theme_ajax_submit() recibe dentro de las variables:
- * $producto_id = Identificador del producto 
- * $value = Nuevo valor a actualizar
- * $key = Tipo de metadato que se modificara
- *
- * Posteriormente despues de recibir los @parámetros ejecuta la función de wp
- * update_post_meta(@string,@string,@string) que actualiza la meta data que se envió.
- * 
- * Se obtiene el $site_url, despues se crea el URL para guardar en ML con la $key
- * y con el valor a cambiar $value del $producto_id en la $site_url que obtuvimos
- * previamente.
- * Se muestra un error en caso de que haya succedido.
- * Se guarda un objeto inicializado WP_Http, se postea la $URL para ejecutar los cambios
- * y en caso de error se muestra.
- *
- * Para finalizar la @función wp_die() finaliza la ejecución y muestra el error
- * en caso de que suceda alguno.
- */
-
-
-
-
-?>
-
-<!-- <button id='fire'>Fire Something</button> -->
-
 <script>
 /*
  * - @Función JQuery/Ajax: cambioStatus(@string,@string)
@@ -145,8 +93,6 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 url: ajaxurl,
                 dataType: 'json',
                 data: { 
-                    // "my_theme_ajax_submit": "now",
-                    // "nonce" : "<?php echo wp_create_nonce( 'my_theme_ajax_submit' ); ?>", 
                     product_id: product_id, 
                     value: value, 
                     key: key, 
@@ -155,12 +101,12 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 success: function(response) { 
                   console.log("exito")
                   console.log(response)
-                    // jQuery('#fire').text("Cambio Correcto!");
+                   
                 },
                 error: function(response) { 
                   console.log("fracaso")
                   console.log(response)
-                    // jQuery('#fire').text("...error!");
+                   
                 },
             });
         };
@@ -168,8 +114,11 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 
 
-
+<!-- // creo que sobra  -->
 <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+
+
+
 <script>
 
 
@@ -256,7 +205,6 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 <style>
   .filtro{
-    /*float: right;*/
     text-align: right;
   }
 </style>
