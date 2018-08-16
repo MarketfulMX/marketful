@@ -64,3 +64,10 @@ Vista Atributos
 2) Recibe en params un string con los product_ids  que van a modificar
 3) Ddebe consultar con Mercadolibre los parametros que admite cada producto segun su categoria 
 4) Guarda los cambios y notifica a Marketful
+
+
+
+
+
+
+

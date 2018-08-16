@@ -313,6 +313,7 @@ jQuery(document).ready(function($){
           success: function(response) { 
             console.log("exito")
             console.log(response)
+            location.reload();
              
           },
           error: function(response) { 
