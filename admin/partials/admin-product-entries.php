@@ -64,20 +64,20 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 * posteriormente manda a llamar a la funcion my_theme_ajax_submit()
 *
 */
-if (isset($_POST['my_theme_ajax_submit'])){
-  if ( wp_verify_nonce( $_POST['nonce'], 'my_theme_ajax_submit' ) ){
-    my_theme_ajax_submit(); 
-    // error_log("vamos con la response");
-    // error_log($response);
-    // echo $response;
-  }
-  // error_log("vamos con la salida del isset");
-  // wp_die();
-  // error_log($response);
+// if (isset($_POST['my_theme_ajax_submit'])){
+//   if ( wp_verify_nonce( $_POST['nonce'], 'my_theme_ajax_submit' ) ){
+//     my_theme_ajax_submit(); 
+//     // error_log("vamos con la response");
+//     // error_log($response);
+//     // echo $response;
+//   }
+//   // error_log("vamos con la salida del isset");
+//   // wp_die();
+//   // error_log($response);
   
-}
+// }
     
-   error_log("estamos fuera del isset");      
+   // error_log("estamos fuera del isset");      
         // wp_send_json_success("hola");
 
 /*
