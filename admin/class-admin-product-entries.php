@@ -130,9 +130,7 @@ class MKF_ProductEntry extends MKF_DBCore
 
     public function my_theme_ajax_submit() 
     {
-        error_log("entramos en my_theme_ajax_submit");
         $producto_id = $_POST['product_id'];
-        error_log($producto_id);
         $value = $_POST['value'];
         $key = $_POST['key'];
         $a = update_post_meta( $producto_id, $key, $value );
