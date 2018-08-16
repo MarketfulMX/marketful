@@ -4,14 +4,15 @@
 admin-product-entries.php 
 
 1) Hacer funcional el campo Exposicion uno por uno YA ESTABA
-2) Agregar cambio masivo de Exposicion 
-3) Mejorar aspecto de area de botones para cambios masivos 
-4) Agregar campo para cambiar precio_ml 
-5) Agregar campo para cambiar inventario_ml 
+2) Agregar cambio masivo de Exposicion LISTO
+
+4) Agregar campo para cambiar precio_ml LISTO
+5) Agregar campo para cambiar inventario_ml LISTO
 6) Hacer campo precio_ml funcional con ajax
 7) Hacer campo inventario_ml funcional con ajax
 8) Agregar campo url publicacion con link a la publicacion en mercadoibre target=_blank para que abra en ventana nueva
 9) Agregar campo Ultima Actualizacion que muestre el campo error_ml
+3) Mejorar aspecto de area de botones para cambios masivos 
 
 Categorizacion 
 1) Crear vista categorizacion con el categorizador qeu aparece en edit form pero sin usar <form>
