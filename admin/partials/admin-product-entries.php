@@ -140,14 +140,14 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     }
   }
 
-  function statusMasivo(){
+  function statusMasivo(key, nombre_key, id){
     console.log("vamos a hacer un cambio masivo")
     // console.log(product_id)
-    var value = $('#status_select').val()
-    var key = "mercadolibre"
+    var value = $('#' + id).val()
+    // var key = "mercadolibre"
     console.log(key)
     console.log(value)
-    var isGood=confirm('Confirmar hacer cambio masivo de status a ' + value + '?');
+    var isGood=confirm('Confirmar hacer cambio masivo de ' + nombre_key + ' a ' + value + '?');
     if (isGood) {
       console.log("se prendio")
       var checkboxes = $( '[name="checkboxes"]:checked');
@@ -169,7 +169,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               success: function(response) { 
                 console.log(response.data)
                 console.log("success")
-                var nombre = "mercadolibre_" + response.data["product_id"]
+                var nombre = key + "_" + response.data["product_id"]
                 var el_valor = response.data["value"]
                 console.log("el nombre es")
                 console.log(nombre)
@@ -219,7 +219,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
   <div class="row">
 
-    <div id="paginador" style="float: left;" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    <div id="paginador" style="float: left;" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
       <?php 
       if($pagina > 1){
         ?>
@@ -233,13 +233,21 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       ?>
       <a href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>">Siguiente</a>
     </div>
-    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
       Cambiar Selección: 
-      <select class="status" id="status_select" onChange="statusMasivo()" >
+      <select class="status" id="status_select" onChange="statusMasivo('mercadolibre', 'status', 'status_select')" >
           <option>Status</option>
           <option value="active" >Activa</option>
           <option value="paused" >Pausada</option>
           <option value="closed" >Finalizada</option> 
+      </select>
+      | 
+      Exposición: 
+      <select class="status" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de Exposición', 'exposicion_ml_select')" >
+          <option>Exposición</option>
+          <option value="free" >Gratis</option>
+          <option value="clasica" >Clásica</option>
+          <option value="premium" >Premium</option> 
       </select>
     </div>
     <div class="filtro col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -261,6 +269,12 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <th>Título</th>
         <th>Status</th>
         <th>Exposición</th>
+        <th>Categoría ML</th>
+        <th>Precio Woo Commerce</th>
+        <th style="max-width: 100px;">Precio Mercado Libre</th>
+        <th>Inventario Woo Commerce</th>
+        <th>Inventario Mercado Libre</th>
+        <th>Ver Publicacion</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
       </tr>
     </thead>
@@ -303,7 +317,16 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 <option value="premium" <?php echo ($select_value=="premium")?'selected':''; ?> >Premium</option> 
             </select>
         </td>
-         <!--  <td>
+        <?php $categoria = get_post_meta($product->ID, "last_category_ml", $single = true ) ?>
+        <td id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}'>categorizar</a>")) ?></td>
+        <td><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
+        <td style="max-width: 100px;"><input onchange="cambioStatus('<?php echo $product->ID ?>', 'precio_ml')" style="max-width: 80px;" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
+        <td><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
+        <td><input style="max-width: 100px;" onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
+        <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
+        <td><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicación</a>" : "no hay ") ?>
+          </td>
+       <!--  <td>
           <a href="?page=mkf-product-edit&product_id=<?php echo $product->ID; ?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
           <a href="<?php echo $product->url; ?>" target="_blank" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Preview</a>
         </td> -->
@@ -313,6 +336,42 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   </table>
 </div>
 </div>
+
+
+
+<script>
+
+function getCategory() {
+
+
+  var categorias = $(".category_field").map(function() {
+    var el_id = $(this).attr("id");
+    if($(this).text().length > 1 && $(this).text() != "categorizar"){
+      jQuery.ajax({
+      type: "GET", 
+        url: "https://api.mercadolibre.com/categories/"+ $(this).text(),
+        async: false,
+        success: function(data){
+          var path_categoria = "";
+          data.path_from_root.map(function(r){
+            path_categoria = path_categoria + " > " + r.name;
+          });
+          $('#' + el_id).text("");
+          path_categoria = path_categoria.substring(3);
+          $('#' + el_id).append('<a href=?page=mkf-entries_categorizador&product_id=' + el_id.replace("categoria_", "") + ">" + path_categoria + "</a>");
+        }
+      });
+    }
+    
+  });
+}
+
+
+jQuery(document).ready(function($){
+  getCategory();
+});
+</script>
+
 
 
 
