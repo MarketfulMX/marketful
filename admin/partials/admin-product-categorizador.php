@@ -36,6 +36,10 @@ $product_id = $_GET['product_id'];
 $productObject = MKF_ProductEntry::GetInstance();
 $categories = $productObject->get_ml_categories();
 $titulo = get_post_meta($product_id, "titulo_ml", $single = true );
+if(strlen($titulo < 1)){
+    $post_7 = get_post( $product_id );
+    $titulo = $post_7->post_title;
+}
 $categoria_ultima = get_post_meta($product_id, "last_category_ml");
 $categoria_arbol = get_post_meta($product_id, "categories_ml");
 $all_mlmeta = $productObject->get_ml_metadata($product_id)[0]['data'];
@@ -91,6 +95,7 @@ if (!empty($ml_categories))
                 else
                 {
                     add_submit_button();
+                    value = categ.value
                     jQuery('#demo').scrollLeft(2000);
                 }
             }
@@ -160,7 +165,7 @@ if (!empty($ml_categories))
         Ndiv += '<path fill="#468847" d="M42.9910714,20.2901786 C42.9910714,19.6651754 42.7901806,19.1517877 42.3883929,18.75 L39.3415179,15.7366071 C38.9174086,15.3124979 38.4151815,15.1004464 37.8348214,15.1004464 C37.2544614,15.1004464 36.7522343,15.3124979 36.328125,15.7366071 L22.6674107,29.3638393 L15.1004464,21.796875 C14.6763372,21.3727657 14.17411,21.1607143 13.59375,21.1607143 C13.01339,21.1607143 12.5111628,21.3727657 12.0870536,21.796875 L9.04017857,24.8102679 C8.63839085,25.2120556 8.4375,25.7254433 8.4375,26.3504464 C8.4375,26.953128 8.63839085,27.4553551 9.04017857,27.8571429 L21.1607143,39.9776786 C21.5848235,40.4017878 22.0870507,40.6138393 22.6674107,40.6138393 C23.2700923,40.6138393 23.78348,40.4017878 24.2075893,39.9776786 L42.3883929,21.796875 C42.7901806,21.3950873 42.9910714,20.8928602 42.9910714,20.2901786 L42.9910714,20.2901786 Z M51.4285714,25.7142857 C51.4285714,30.3794876 50.2790294,34.6818999 47.9799107,38.6216518 C45.6807921,42.5614036 42.5614036,45.6807921 38.6216518,47.9799107 C34.6818999,50.2790294 30.3794876,51.4285714 25.7142857,51.4285714 C21.0490838,51.4285714 16.7466715,50.2790294 12.8069196,47.9799107 C8.8671678,45.6807921 5.74777935,42.5614036 3.44866071,38.6216518 C1.14954208,34.6818999 0,30.3794876 0,25.7142857 C0,21.0490838 1.14954208,16.7466715 3.44866071,12.8069196 C5.74777935,8.8671678 8.8671678,5.74777935 12.8069196,3.44866071 C16.7466715,1.14954208 21.0490838,0 25.7142857,0 C30.3794876,0 34.6818999,1.14954208 38.6216518,3.44866071 C42.5614036,5.74777935 45.6807921,8.8671678 47.9799107,12.8069196 C50.2790294,16.7466715 51.4285714,21.0490838 51.4285714,25.7142857 L51.4285714,25.7142857 Z"></path>';
         Ndiv += '</svg><span class="ui-box-msg__title">¡Listo!</span>';
         Ndiv += '<div class="syi-action-button">';
-        Ndiv += '<input type="submit" value="Continuar" class="syi-action-button__primary ui-btn ">';
+        Ndiv += '<input type="submit" onclick="cambioStatus()" id="continuar" value="Continuar" class="syi-action-button__primary ui-btn ">';
         Ndiv += '</div>';
         Ndiv += '</div>';
         Ndiv += '</div>';
@@ -232,8 +237,8 @@ jQuery(document).ready(function($){
 <h4 id="leyenda"> Categorizador de productos </h4>
 <div id="contenedor">
     <div id="interno">
-    <h2 id="titulo"><?php echo $titulo; ?> </h2>
-    <h2 class="margenCat">Categoría <h5 id="categoria" ></h5></h2>
+    <h2 id="titulo" class="margenCat">Producto: <?php echo $titulo; ?> </h2>
+    <h2 class="margenCat">Categoría: <h5 id="categoria" ></h5></h2>
     </div>
     <hr>
     <div class="syi-category-tree">
@@ -259,3 +264,62 @@ jQuery(document).ready(function($){
         </div>
     </div>
 </div>
+
+
+<script>
+/*
+ * - @Función JQuery/Ajax: cambioStatus(@string,@string) ACTUALIZAR
+ * Esta función recibe dos @parámetros que son el id del producto y el tipo de
+ * metadato que modificara.
+ * La @función console log muestra en la consola del navegador la información del objeto
+ * product_id.
+ *
+ * Se crea una variable con el valor del select que se modificó, se obtiene dicha
+ * información obteniendo el id del select con el tipo de metadato que se modificara
+ * más guion bajo más el id del producto.
+ *
+ * Se envía con console.log el valor de key
+ * Se crea una función AJAX que pide el tipo de solicitud que se hace 'POST'
+ * y se envían los @parámetros además que se manda a llamar a la función de PHP 
+ * my_theme_ajax_submit. Se le envían los @parámetros: product_id, value y key .
+ *
+ * La @función Ajax que nombramos response nos responde a la solicitud con un archivo Json.
+ *
+ * En caso de que la @función haya resultado exitosa, la reflejamos en consola con
+ * console.log y lo mostramos en el @boton #fire cambiando su texto a "Cambio
+ * correcto".
+ * En caso de que la @función Ajax no haya resultado exitosa, reflejamos en
+ * consola el error y actualizamos el @boton #fire cambiando su texto a "error".
+ */
+
+ var value = ""
+
+
+ function cambioStatus()
+ {
+      var product_id = "<?php echo $product_id; ?>";
+      var key = "last_category_ml"
+      console.log(product_id, key, value)
+      jQuery.ajax({
+          type: 'post',
+          url: ajaxurl,
+          dataType: 'json',
+          data: { 
+              product_id: product_id, 
+              value: value, 
+              key: key, 
+              action: 'foobar'
+          },
+          success: function(response) { 
+            console.log("exito")
+            console.log(response)
+             
+          },
+          error: function(response) { 
+            console.log("fracaso")
+            console.log(response)
+             
+          },
+      });
+  };
+</script>
