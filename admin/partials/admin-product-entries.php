@@ -274,6 +274,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <th style="max-width: 100px;">Precio Mercado Libre</th>
         <th>Inventario Woo Commerce</th>
         <th>Inventario Mercado Libre</th>
+        <th>Ver Publicacion</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
       </tr>
     </thead>
@@ -319,10 +320,12 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <?php $categoria = get_post_meta($product->ID, "last_category_ml", $single = true ) ?>
         <td id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}'>categorizar</a>")) ?></td>
         <td><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
-        <td style="max-width: 100px;"><input style="max-width: 80px;" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>"></td>
+        <td style="max-width: 100px;"><input onchange="cambioStatus('<?php echo $product->ID ?>', 'precio_ml')" style="max-width: 80px;" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
         <td><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
-        <td><input style="max-width: 100px;" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>"></td>
-
+        <td><input style="max-width: 100px;" onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
+        <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
+        <td><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicación</a>" : "no hay ") ?>
+          </td>
        <!--  <td>
           <a href="?page=mkf-product-edit&product_id=<?php echo $product->ID; ?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
           <a href="<?php echo $product->url; ?>" target="_blank" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Preview</a>

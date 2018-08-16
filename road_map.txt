@@ -5,12 +5,12 @@ admin-product-entries.php
 
 1) Hacer funcional el campo Exposicion uno por uno YA ESTABA
 2) Agregar cambio masivo de Exposicion LISTO
-
 4) Agregar campo para cambiar precio_ml LISTO
 5) Agregar campo para cambiar inventario_ml LISTO
-6) Hacer campo precio_ml funcional con ajax
-7) Hacer campo inventario_ml funcional con ajax
-8) Agregar campo url publicacion con link a la publicacion en mercadoibre target=_blank para que abra en ventana nueva
+6) Hacer campo precio_ml funcional con ajax LISTO
+7) Hacer campo inventario_ml funcional con ajax LISTO
+
+8) Agregar campo url publicacion con link a la publicacion en mercadolibre target=_blank para que abra en ventana nueva
 9) Agregar campo Ultima Actualizacion que muestre el campo error_ml
 
 Aspecto admin-product-entrie.php
