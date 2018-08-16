@@ -304,7 +304,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 <option value="premium" <?php echo ($select_value=="premium")?'selected':''; ?> >Premium</option> 
             </select>
         </td>
-        <td id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo get_post_meta($product->ID, "last_category_ml", $single = true ) ?></td>
+        <?php $categoria = get_post_meta($product->ID, "last_category_ml", $single = true ) ?>
+        <td id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='/?page=mkf-entries_categorizador&product_id={$product->ID}'>categorizar</a>")) ?></td>
        <!--  <td>
           <a href="?page=mkf-product-edit&product_id=<?php echo $product->ID; ?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
           <a href="<?php echo $product->url; ?>" target="_blank" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Preview</a>
@@ -325,7 +326,7 @@ function getCategory() {
 
   var categorias = $(".category_field").map(function() {
     var el_id = $(this).attr("id");
-    if($(this).text().length > 1){
+    if($(this).text().length > 1 && $(this).text() != "categorizar"){
       jQuery.ajax({
       type: "GET", 
         url: "https://api.mercadolibre.com/categories/"+ $(this).text(),
