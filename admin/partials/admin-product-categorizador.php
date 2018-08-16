@@ -24,7 +24,7 @@
  *
  * 
  */
-$product_id = '19';
+$product_id = $_GET['product_id'];
 //$product_id = $_REQUEST['product_id'];
 
 /**
@@ -33,18 +33,25 @@ $product_id = '19';
  * Tomamos los datos que requermimos utilizando la función 
  * get_post_meta(@producto, @categoria, @solo un dato (opcional))
  */
-
+$productObject = MKF_ProductEntry::GetInstance();
+$categories = $productObject->get_ml_categories();
 $titulo = get_post_meta($product_id, "titulo_ml", $single = true );
 $categoria_ultima = get_post_meta($product_id, "last_category_ml");
 $categoria_arbol = get_post_meta($product_id, "categories_ml");
+$all_mlmeta = $productObject->get_ml_metadata($product_id)[0]['data'];
+$ml_categories = $all_mlmeta[0]->categories;
+if (!empty($ml_categories)) 
+{
+    $ml_obj_cat = json_decode($ml_categories, true);
+}
 
 
 ?>
 <script>
+    var api_ml_url = "";
     
     function getCategory(categ, tree, currentLevel) 
     {
-
         if (tree == "father" && jQuery("#category_aux").val() != categ.value) 
         {
           jQuery("#category_aux").val(categ.value);
@@ -167,7 +174,7 @@ $categoria_arbol = get_post_meta($product_id, "categories_ml");
 <div>
     <h4> Categorizador de productos </h4>
     <h2><?php echo $titulo; ?> </h2>
-    <h5><?php //echo $categoria_ultima[0]; ?> </h5>
+    <h5><?php echo $categoria_ultima[0]; ?> </h5>
     <h5><?php //echo $categoria_arbol[0]; ?> </h5>
 </div>
 <h2 class="margenCat">Categoría</h2>
