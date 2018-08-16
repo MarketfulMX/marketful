@@ -105,46 +105,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 
 
-function my_theme_ajax_submit() 
-{
-    // do something
-    // some php code that fires from AJAX click of #fire
-    $producto_id = $_POST['product_id'];
-    $value = $_POST['value'];
-    $key = $_POST['key'];
-    ### aqui fue 
-    // update_user_meta( 1, "first_name", nombre );
-    $a = update_post_meta( $producto_id, $key, $value );
-    // wp_send_json_success([200, "hola"], 200) ; NO SIRVE
-    error_log("guardarmos el producto");
-    error_log($a);
-    // error_log($a)
-    // Notificar el cambio a Marketful para que lo envie a Mercadolibre
-    $site_url = get_site_url();
-    $url = "https://woocommerce.marketful.mx/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}";
-    // para pruebas locales
-    // $url = "http://localhost:3000/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}"; 
-    // $parametros = array($key => $value, "woo_id" => $_POST['product_id']);
-    // error_log( print_r($parametros, TRUE));
-    // $response = wp_remote_post( $url, $args = $parametros ); 
-    $http = _wp_http_get_object();
-    // $response = $http->post( $url, array("elkey" => "elvalue") ); no manda los params 
-    $response = $http->post( $url ); 
-    // error_log( print_r($response, TRUE));
-    // wp_die();
-    $data = array(
-      'producto_id' => $product_id
-      );
-    // error_log("vamos de salida");
-    // echo "Hola";
 
-    // return "hello";
-    echo "salidaprueba";
-    // wp_send_json_success($data);
-    // wp_send_json_error($data);
-    // echo "hello";
-    wp_die();
-}
 ?>
 
 <!-- <button id='fire'>Fire Something</button> -->
@@ -182,7 +143,7 @@ function my_theme_ajax_submit()
             jQuery.ajax({
                 type: 'post',
                 url: ajaxurl,
-                // dataType: 'json',
+                dataType: 'json',
                 data: { 
                     // "my_theme_ajax_submit": "now",
                     // "nonce" : "<?php echo wp_create_nonce( 'my_theme_ajax_submit' ); ?>", 
@@ -251,19 +212,20 @@ function my_theme_ajax_submit()
               type: 'post',
               dataType: 'json',
               data: { 
-                  "my_theme_ajax_submit": "now",
-                  "nonce" : "<?php echo wp_create_nonce( 'my_theme_ajax_submit' ); ?>", 
                   product_id: product_id, 
                   value: value, 
-                  key: key
+                  key: key,
+                  action: 'foobar'
               },
               success: function(response) { 
-                console.log(response)
+                console.log(response.data)
                 console.log("success")
-                
-                // var nombre = 'mercadolibre_' + product_id
-                // var element = document.getElementById(nombre);
-                // element.value = value;
+                var nombre = "mercadolibre_" + response.data["product_id"]
+                var el_valor = response.data["value"]
+                console.log("el nombre es")
+                console.log(nombre)
+                var element = document.getElementById(nombre);
+                element.value = el_valor;
               },
               error: function(response) { 
                 console.log("error")
