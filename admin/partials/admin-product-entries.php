@@ -274,6 +274,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <th style="max-width: 100px;">Precio Mercado Libre</th>
         <th>Inventario Woo Commerce</th>
         <th style="max-width: 100px;">Inventario Mercado Libre</th>
+        <th>Tipo de Envío</th>
         <th>Ver Publicacion</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
       </tr>
@@ -324,7 +325,16 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <td><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
         <td style="max-width: 100px;"><input style="max-width: 80px;" onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
         <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
-        <td><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicación</a>" : "no hay ") ?>
+        <td>
+          <select onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml')" id="metodo_envio_ml_<?php echo $product->ID;  ?>">
+            <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
+                <option>...</option>
+                <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envío Gratis</option>
+                <option value="me_c" <?php echo ($select_value=="me_c")?'selected':''; ?>>Mercado Envío Pago</option>
+                <option value="custom" <?php echo ($select_value=="custom")?'selected':''; ?> >Personalizado</option> 
+            </select>
+        </td>
+        <td><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicación</a>" : "no hay ") ?>
           </td>
        <!--  <td>
           <a href="?page=mkf-product-edit&product_id=<?php echo $product->ID; ?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>

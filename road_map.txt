@@ -11,7 +11,7 @@ admin-product-entries.php
 7) Hacer campo inventario_ml funcional con ajax LISTO
 8) Agregar campo url publicacion con link a la publicacion en mercadolibre target=_blank para que abra en ventana nueva LISTO
 
-
+11) Agregar campo Tipo de Envio
 9) Agregar campo Ultima Actualizacion que muestre el campo error_ml
 
 Aspecto admin-product-entrie.php
