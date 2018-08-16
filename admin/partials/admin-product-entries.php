@@ -273,7 +273,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <th>Precio Woo Commerce</th>
         <th style="max-width: 100px;">Precio Mercado Libre</th>
         <th>Inventario Woo Commerce</th>
-        <th>Inventario Mercado Libre</th>
+        <th style="max-width: 100px;">Inventario Mercado Libre</th>
         <th>Ver Publicacion</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
       </tr>
@@ -322,7 +322,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <td><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
         <td style="max-width: 100px;"><input onchange="cambioStatus('<?php echo $product->ID ?>', 'precio_ml')" style="max-width: 80px;" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
         <td><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
-        <td><input style="max-width: 100px;" onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
+        <td style="max-width: 100px;"><input style="max-width: 80px;" onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
         <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
         <td><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicación</a>" : "no hay ") ?>
           </td>
