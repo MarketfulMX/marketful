@@ -29,6 +29,7 @@
 * Se toman los productos que se mostraran dentro de la tabla, y se guardan dentro de $products.
 * Se toma la imagen que se mostrara como cabecera.
 */
+error_reporting(E_ERROR | E_WARNING | E_PARSE); // Suprime errores de prueba
 $pagina = $_GET['pagina'];
 $tope = $_GET['tope'];
 $keyword = $_GET['keyword'];
@@ -200,30 +201,130 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 
 </script>
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<div class="bootstrap-wrapper">
 
 
 <style>
-  .filtro{
-    text-align: right;
-  }
+  .filtro
+    {
+        text-align: right;
+    }
+    
+    .bootstrap-wrapper
+    {
+        background-color:azure;
+        font-family: sans-serif;
+    }
+        .imagen 
+        {
+            
+        }
+
+        .opciones
+        {
+            display: grid;
+            grid-template-columns: 20% 20% 20% 20% 20%;
+            grid-template-rows: auto;
+            text-align: center; 
+        }
+
+            .paginador
+            {
+                grid-column: 1;
+                grid-row: 1;
+            }
+            #selecciones
+            {
+                grid-column: 2/3;
+                grid-row: 1;
+            }
+            #buscador
+            {
+                display:inline;
+                text-align: center;
+                grid-column: 4/5;
+                grid-row: 1;
+            }
+                #inputbuscar
+                {
+                    padding-right:0;
+                }
+                #boton_buscar
+                {
+                    background-color:#6E90EC; height: 25px; width: 48px; 
+                    border-style: solid; border-color: #4F6BB5; border-radius: 0px 5px 5px 0px;
+                }
+                i
+                {
+                    color: white;
+                }
+
+        #tabla
+        {
+            border-color: black; border-style: solid; border-width: 3px;border: none;
+            width: 100%;
+        }
+            #tabla thead
+            {
+                border-color: black; border-style: solid; border-width: 3px;border: none;
+                font-family: sans-serif;
+            }
+            #tabla tbody
+            {
+                border-color: black; border-style: solid; border-width: 3px;border: none;
+                font-family: sans-serif;
+            }
+    .boton #boton_buscar
+    {
+        background-color:red; height: 100px; width: 100px; border:none;
+    }
+    .input 
+    {
+        height: 25px; width: 60px; background-color: blue;border: none;
+    }
+        td .input
+        {
+            height: 25px; 60px; background-color: blue;border: none;
+        }
+    .status
+    {
+        height: 25px; width: 65px; background-color: red;border: none;
+    }
+        .expo
+        {
+            height: 25px; width: 65px; background-color: red;border: none;
+        }
+        .tipo_envio
+        {
+            height: 25px; background-color: red;border: none;
+        }
+    td
+    {
+        max-width: 100px;
+    }
+    th
+    {
+        max-width: 100px;
+    }
+    
 </style>
 
-<div class="bootstrap-wrapper">
-<div class="container" style="margin-top: 5%">
+<div class="container" style="">
 
-  <?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> 
+  <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
 
-<div class="col-lg-12 col-md-12 col-sm-12" style=" padding-top:20px;">
+<div class="opciones" style="" id="">
   
 
   <div class="row">
 
-    <div id="paginador" style="float: left;" class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+    <div id=""  class="paginador">
       <?php 
       if($pagina > 1){
         ?>
-        <a href="?page=mkf-product-entries&pagina=<?php echo ($pagina - 1) ?>">Anterior</a> | 
+        <a class="btn btn-primary btn-sm" style="font-size: 8px; width: 10px; height: 20px;" href="?page=mkf-product-entries&pagina=<?php echo ($pagina - 1) ?>" ><i class="fas fa-chevron-left"></i></a> | 
       <?php
       }else{
       ?>
@@ -231,37 +332,38 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       <?php
       }
       ?>
-      <a href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>">Siguiente</a>
+      <a class="btn btn-primary btn-sm" style="font-size: 8px; width: 10px; height: 20px;"href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>"><i class="fas fa-chevron-right"></i></a>
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-      Cambiar Selección: 
-      <select class="status" id="status_select" onChange="statusMasivo('mercadolibre', 'status', 'status_select')" >
-          <option>Status</option>
-          <option value="active" >Activa</option>
-          <option value="paused" >Pausada</option>
-          <option value="closed" >Finalizada</option> 
-      </select>
-      | 
-      Exposición: 
-      <select class="status" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de Exposición', 'exposicion_ml_select')" >
-          <option>Exposición</option>
-          <option value="free" >Gratis</option>
-          <option value="clasica" >Clásica</option>
-          <option value="premium" >Premium</option> 
-      </select>
+        <div class="selecciones" id="">
+          Cambiar Status: 
+          <select style="font-size: 12px;width: 80px; padding: 0; height: 25px;"class="custom-select" id="status_select" onChange="statusMasivo('mercadolibre', 'status', 'status_select')" >
+              <option>Status</option>
+              <option value="active" >Activa</option>
+              <option value="paused" >Pausada</option>
+              <option value="closed" >Finalizada</option> 
+          </select>
+            | 
+          Exposición: 
+          <select style="font-size: 12px;width: 90px; padding: 0; height: 25px;"class="custom-select" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de Exposición', 'exposicion_ml_select')" >
+              <option>Exposición</option>
+              <option value="free" >Gratis</option>
+              <option value="clasica" >Clásica</option>
+              <option value="premium" >Premium</option> 
+          </select>
+        </div>
     </div>
-    <div class="filtro col-lg-4 col-md-4 col-sm-4 col-xs-4">
+    <div class="filtro" id="buscador">
       <label> 
-        <input placeholder="Titulo" id="keyword_input">
+        <input type="text" class="form-control" placeholder="Titulo" id="keyword_input" style="height: 25px; width: 240px; " id="inputbuscar">
       </label>
-      <button id="boton_buscar" onClick="buscarResultados()">Buscar</button>
+      <button id="boton_buscar" onClick="buscarResultados()" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
     </div>
   </div>
 </div>
 
 
 
-  <table id="" class="table stripe tableMK" style="width:100%">
+  <table id="tabla" class="table stripe tableMK" >
     <thead>
       <tr>
         <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()"/> </th>
@@ -271,9 +373,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <th>Exposición</th>
         <th>Categoría ML</th>
         <th>Precio Woo Commerce</th>
-        <th style="max-width: 100px;">Precio Mercado Libre</th>
+        <th>Precio Mercado Libre</th>
         <th>Inventario Woo Commerce</th>
-        <th style="max-width: 100px;">Inventario Mercado Libre</th>
+        <th >Inventario Mercado Libre</th>
         <th>Tipo de Envío</th>
         <th>Ver Publicacion</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
@@ -299,40 +401,48 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 -  Dentro del select, se hace echo de 'Selected' para que sea la opcion seleccionada, en        caso de que el valor de $select_value sea igual a alguna de las opciones.
                 -  Se repite el procedimiento, pero en esta ocacion el dato que se utiliza es exposición_ml
                 -->
-            <select class="status" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre')" id="mercadolibre_<?php echo $product->ID;  ?>">
-            <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
-            <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
-            <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
+              <select style="font-size: 12px;width: 80px; padding: 0; height: 25px;"class="custom-select" id="mercadolibre_<?php echo $product->ID;  ?>" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre')" id="mercadolibre_<?php echo $product->ID;  ?>" >
+                <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
+                <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
+                <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
                 <option>...</option>
                 <option value="active" <?php echo ($select_value=="active")?'selected':''; ?>>Activa</option>
                 <option value="paused" <?php echo ($select_value=="paused")?'selected':''; ?>>Pausada</option>
                 <option value="closed" <?php echo ($select_value=="closed")?'selected':''; ?> >Finalizada</option> 
-            </select>
+              </select>
+            </div>
+            
         </td>
         <td>
-            <select onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml')" id="exposicion_ml_<?php echo $product->ID;  ?>">
-            <?php $select_value = $all_mlmeta[0]["data"][0]->exposicion; ?>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
+              <select style="font-size: 12px;width: 90px; padding: 0; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml')" id="exposicion_ml_<?php echo $product->ID;  ?>">
+                <?php $select_value = $all_mlmeta[0]["data"][0]->exposicion; ?>
                 <option>...</option>
                 <option value="free" <?php echo ($select_value=="free")?'selected':''; ?>>Gratis</option>
                 <option value="clasica" <?php echo ($select_value=="clasica")?'selected':''; ?>>Clasica</option>
                 <option value="premium" <?php echo ($select_value=="premium")?'selected':''; ?> >Premium</option> 
-            </select>
+              </select>
+            </div>
+            
         </td>
         <?php $categoria = get_post_meta($product->ID, "last_category_ml", $single = true ) ?>
         <td id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}'>categorizar</a>")) ?></td>
         <td><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
-        <td style="max-width: 100px;"><input onchange="cambioStatus('<?php echo $product->ID ?>', 'precio_ml')" style="max-width: 80px;" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
+        <td ><input onchange="cambioStatus('<?php echo $product->ID ?>', 'precio_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
         <td><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
-        <td style="max-width: 100px;"><input style="max-width: 80px;" onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
+        <td ><input  onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
         <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
         <td>
-          <select onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml')" id="metodo_envio_ml_<?php echo $product->ID;  ?>">
-            <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
+           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
+              <select style="font-size: 12px;width: 150px; padding: 0; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml')" id="metodo_envio_ml_<?php echo $product->ID;  ?>">
+                <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
                 <option>...</option>
                 <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envío Gratis</option>
                 <option value="me_c" <?php echo ($select_value=="me_c")?'selected':''; ?>>Mercado Envío Pago</option>
                 <option value="custom" <?php echo ($select_value=="custom")?'selected':''; ?> >Personalizado</option> 
-            </select>
+              </select>
+            </div>  
         </td>
         <td><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicación</a>" : "no hay ") ?>
           </td>
