@@ -224,28 +224,23 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
         .opciones
         {
-            display: grid;
-            grid-template-columns: 20% 20% 20% 20% 20%;
-            grid-template-rows: auto;
+            display: inline-grid;grid-template-areas: "izq cen1 der1 ";grid-gap: 10px 60px;justify-items: stretch;justify-content: space-between;
             text-align: center; 
         }
 
-            .paginador
+            .a
             {
-                grid-column: 1;
-                grid-row: 1;
+                grid-area: izq;
+                
             }
-            #selecciones
+            .b
             {
-                grid-column: 2/3;
-                grid-row: 1;
+                grid-area: cen1;
             }
-            #buscador
+            .c
             {
-                display:inline;
+                display:inline;grid-area: der1;
                 text-align: center;
-                grid-column: 4/5;
-                grid-row: 1;
             }
                 #inputbuscar
                 {
@@ -320,11 +315,11 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
   <div class="row">
 
-    <div id=""  class="paginador">
+    <div id=""  class="a">
       <?php 
       if($pagina > 1){
         ?>
-        <a class="btn btn-primary btn-sm" style="font-size: 8px; width: 10px; height: 20px;" href="?page=mkf-product-entries&pagina=<?php echo ($pagina - 1) ?>" ><i class="fas fa-chevron-left"></i></a> | 
+        <a class="" href="?page=mkf-product-entries&pagina=<?php echo ($pagina - 1) ?>" ><i class="fas fa-chevron-left"></i></a> | 
       <?php
       }else{
       ?>
@@ -332,9 +327,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       <?php
       }
       ?>
-      <a class="btn btn-primary btn-sm" style="font-size: 8px; width: 10px; height: 20px;"href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>"><i class="fas fa-chevron-right"></i></a>
+      <a class="" href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>"><i class="fas fa-chevron-right"></i></a>
     </div>
-        <div class="selecciones" id="">
+        <div class="b" id="">
           Cambiar Status: 
           <select style="font-size: 12px;width: 80px; padding: 0; height: 25px;"class="custom-select" id="status_select" onChange="statusMasivo('mercadolibre', 'status', 'status_select')" >
               <option>Status</option>
@@ -352,7 +347,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           </select>
         </div>
     </div>
-    <div class="filtro" id="buscador">
+    <div class="c" id="">
       <label> 
         <input type="text" class="form-control" placeholder="Titulo" id="keyword_input" style="height: 25px; width: 240px; " id="inputbuscar">
       </label>
