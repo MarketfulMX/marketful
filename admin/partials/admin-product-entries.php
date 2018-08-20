@@ -392,11 +392,11 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     
 </style>
 
-<div class="container" style="max-width: 95%; overflow: scroll;">
+<div class="container" style="max-width: 95%; overflow: hidden;">
 
   <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
   <div class="row">
-    <div id=""  class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+    <div id=""  class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
       <div style="background-color: #E2E5C4; width: 45px; text-align: center; float: left;" class="caja-de-botones">
         <?php 
         if($pagina > 1){
@@ -427,7 +427,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           <option value="premium" >Premium</option> 
       </select>
     </div>
-    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" >
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" >
       <button id="boton_buscar" onClick="buscarResultados()" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
       <label style="float: right;"> 
         <input type="text" placeholder="Titulo" id="keyword_input">
@@ -438,8 +438,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 
 
-
-  <table id="tabla" class="table stripe tableMK" >
+<div style="max-width: 100%; overflow-x: scroll;">
+  <table id="tabla" class="table stripe tableMK" style="overflow: auto;">
     <thead>
       <tr>
         <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
@@ -530,6 +530,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     <?php endforeach; //Fin Iteracion ?>
     </tbody>
   </table>
+</div>
 </div>
 
 
