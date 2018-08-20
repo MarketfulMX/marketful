@@ -3,9 +3,16 @@ Mauricio
 1) link de categorias debe incluir params pagina LISTO
 2) Hacer boton Regresar en vista Categorizar que lleve a la pagina en la q estabas LISTO
 3) hacer que el link tambien mande param keyword si esta presente LISTO
-
-Revisamos y...
-
 4) Hacer que si estoy focus (si escribo entonces se escribe en el intpu) en el input y le doy a enter entonces mandar el request como si le dieras a la lupa LISTO
+
+
+
 5) Notificacion de cambios guardados estilo google drive
+	- hacer un var que sea un hash var tareas = {}
+	= hacer un var qeu sea string var status_cambios = "cambios guardados"
+	- cuando se dispare un cambio (cambioStatus() y statusMasivo()) entonces se debe registrar en las tareas y se debe cambiar status_cambios = "Guardando..."
+		- en el caso de statusMasivo se debe hacer para cada registro que se cambie (cada vez q se mande un Ajax)
+	- cuando se complete se borra de las tareas y si tareas.length == 0 entonces se marca la variable status_cambios = "cambios guardados"
 6) Agregar campo ultima actiualizacion
+7) Limpiar codigo. los estilos que se agregaron para la tabla hay muchos que no se usan 
+8) Sacar css y js del archivo a las carpetas admin > css y admin > js y enqueue los files para que se carguen cuando se cargue la pagina
