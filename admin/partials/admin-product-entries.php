@@ -87,6 +87,11 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             console.log(product_id)
             var value = $('#' + key + "_" + product_id).val()
             console.log(key)
+            // registrar la tarea 
+            var tarea_id = "task_" + Math.random()
+            tareas[tarea_id] = false
+            $('#cambios_guardados').text("Guardando cambios...");
+
             jQuery.ajax({
                 type: 'post',
                 url: ajaxurl,
@@ -95,11 +100,19 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                     product_id: product_id, 
                     value: value, 
                     key: key, 
+                    tarea_id: tarea_id,
                     action: 'foobar'
                 },
                 success: function(response) { 
                   console.log("exito")
                   console.log(response)
+                  console.log(tareas)
+                  delete tareas[response.data["tarea_id"]]
+                  console.log(tareas.size)
+                  if(tareas.size == null){
+                    $('#cambios_guardados').text("Cambios guardados");
+                  }
+
                    
                 },
                 error: function(response) { 
@@ -153,6 +166,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       for(var i=0, n=checkboxes.length;i<n;i++) {
         var product_id = checkboxes[i].id.replace("checkbox_", "")
         console.log(product_id)
+        var tarea_id = "task_" + Math.random()
+        tareas[tarea_id] = false
+        $('#cambios_guardados').text("Guardando cambios...");
         // checkboxes[i].checked = true;
 
           jQuery.ajax({
@@ -163,6 +179,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                   product_id: product_id, 
                   value: value, 
                   key: key,
+                  tarea_id: tarea_id,
                   action: 'foobar'
               },
               success: function(response) { 
@@ -174,6 +191,14 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 console.log(nombre)
                 var element = document.getElementById(nombre);
                 element.value = el_valor;
+                delete tareas[response.data["tarea_id"]]
+                console.log(tareas.size)
+                if(tareas.size == null){
+                  $('#cambios_guardados').text("Cambios guardados");
+                }else{
+                  console.log(tareas)
+                  console.log(tareas.size)
+                }
               },
               error: function(response) { 
                 console.log("error")
@@ -205,6 +230,10 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       buscarResultados()
     }
   }
+
+
+  var tareas = {}
+  var status_cambios = ""
 
 
 
@@ -441,9 +470,18 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       <label style="float: right;"> 
         <input type="text" placeholder="Titulo" id="keyword_input" onkeypress="enterBuscar(event)">
       </label>
+
+      <h8 id="cambios_guardados"></h8>
       
     </div>
   </div>
+
+  <style>
+  #cambios_guardados{
+    font-size: 10px;
+  }
+  </style>
+
 
 <div style="max-width: 100%; overflow-x: scroll;">
   <table id="tabla" class="table stripe tableMK" style="overflow: auto;">

@@ -133,6 +133,7 @@ class MKF_ProductEntry extends MKF_DBCore
         $producto_id = $_POST['product_id'];
         $value = $_POST['value'];
         $key = $_POST['key'];
+        $tarea_id = $_POST['tarea_id'];
         $a = update_post_meta( $producto_id, $key, $value );
         // // // Notificar el cambio a Marketful para que lo envie a Mercadolibre
         $site_url = get_site_url();
@@ -142,7 +143,7 @@ class MKF_ProductEntry extends MKF_DBCore
         $http = _wp_http_get_object();
         $response = $http->post( $url ); 
 
-        wp_send_json_success(array('product_id' => $producto_id, 'value' => $value));
+        wp_send_json_success(array('product_id' => $producto_id, 'value' => $value, 'key' => $key, 'tarea_id'=>$tarea_id));
         wp_die();
     }
 
