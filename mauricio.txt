@@ -1,11 +1,11 @@
 Mauricio 
 
-1) link de categorias debe incluir params pagina 
-2) Hacer boton Regresar en vista Categorizar que lleve a la pagina en la q estabas 
-3) hacer que el link tambien mande param keyword si esta presente 
+1) link de categorias debe incluir params pagina LISTO
+2) Hacer boton Regresar en vista Categorizar que lleve a la pagina en la q estabas LISTO
+3) hacer que el link tambien mande param keyword si esta presente LISTO
 
 Revisamos y...
 
-4) Hacer que si estoy focus (si escribo entonces se escribe en el intpu) en el input y le doy a enter entonces mandar el request como si le dieras a la lupa 
+4) Hacer que si estoy focus (si escribo entonces se escribe en el intpu) en el input y le doy a enter entonces mandar el request como si le dieras a la lupa LISTO
 5) Notificacion de cambios guardados estilo google drive
 6) Agregar campo ultima actiualizacion
