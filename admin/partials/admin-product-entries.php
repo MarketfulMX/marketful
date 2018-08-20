@@ -328,13 +328,14 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     {
         background-color:red; height: 100px; width: 100px; border:none;
     }
-    .input 
+    td .input
     {
-        height: 25px; width: 60px; background-color: blue;border: none;
+        width: 40px; height: 25px;
+        border-radius: 3px; border-color: #7E7F6D;
     }
-        td .input
+        td .input:hover
         {
-            height: 25px; 60px; background-color: blue;border: none;
+            border-color: #7E7F6D;
         }
     .status
     {
