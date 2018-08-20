@@ -219,7 +219,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     }
         .imagen 
         {
-            
+           margin-left: 20px; margin-top: 20px; margin-bottom: 20px; 
         }
 
         .opciones
@@ -231,45 +231,62 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             .a
             {
                 grid-area: izq;
-                border-color: #ACAF87; border-style: solid; border-width: 2px; border-radius: 3px;
-                background-color: #DBDFAC;
+                border-color: #7E7F6D; border-style: solid; border-width: 1px; border-radius: 3px;
+                background-color: #E2E5C4;
                 width: 45px; height: 25px;
-                color:#ACAF87;text-decoration: none;
+                color:#7E7F6D;text-decoration: none;text-align: center
+                cursor: default;
             }
                 .a a
                 {
-                    text-decoration: none;
+                    text-decoration: none; color:#7E7F6D;   
                 }
                 #ant:hover
                 {
-                    font-size: 105%;
+                    color: #3F4036; 
+                    background-color: #3F4036;
                 }
                 #sig:hover
                 {
-                    font-size: 105%;
+                    color: #3F4036; 
+                    background-color: #3F4036;
                 }
             .b
             {
                 grid-area: cen1;
                 margin-left: 150px;
+                border-color: #7E7F6D; border-style: solid; border-width: 1px; border-radius: 3px;
+                background-color: #E2E5C4;
+                height: 25px;
+                padding-top: -20px;
+                cursor: default;
             }
+                .b select
+                {
+                    background-color: #E2E5C4; border-color: #7E7F6D; 
+                }
+                    .b:hover
+                    {
+                        
+                    }
             .c
             {
-                display:inline;grid-area: der1;
-                text-align: center;
+                display:inline; grid-area: der1;
             }
-                #inputbuscar
+                #keyword_input
                 {
-                    padding-right:0;
+                    margin-right: -10 px;
+                    width: 240px; height: 25px;
                 }
                 #boton_buscar
                 {
-                    background-color:#6E90EC; height: 25px; width: 48px; 
-                    border-style: solid; border-color: #4F6BB5; border-radius: 0px 5px 5px 0px;
+                    background-color:#E2E5C4; height: 25px; width: 48px; 
+                    border-style: solid; border-color: #7E7F6D; border-radius: 0px 5px 5px 0px;
+                    margin-left: -8px; margin-top: -8px;
                 }
                 i
                 {
-                    color: white;
+                    color: white; font-size: 10px;
                 }
 
         #tabla
@@ -339,7 +356,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       <?php
       }else{
       ?>
-        <i id="ant" class="fas fa-chevron-left"></i> 
+        <i id="" class="fas fa-chevron-left"></i> 
       <?php
       }
       ?>
@@ -347,7 +364,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     </div>
         <div class="b" id="">
           Cambiar Status: 
-          <select style="font-size: 12px;width: 80px; padding: 0; height: 25px;"class="custom-select" id="status_select" onChange="statusMasivo('mercadolibre', 'status', 'status_select')" >
+          <select style="background-color: #E2E5C4;font-size: 12px;width: 80px; padding: 0; height: 20px;"class="custom-select" id="status_select" onChange="statusMasivo('mercadolibre', 'status', 'status_select')" >
               <option>Status</option>
               <option value="active" >Activa</option>
               <option value="paused" >Pausada</option>
@@ -355,7 +372,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           </select>
             | 
           Exposición: 
-          <select style="font-size: 12px;width: 90px; padding: 0; height: 25px;"class="custom-select" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de Exposición', 'exposicion_ml_select')" >
+          <select style="background-color: #E2E5C4;font-size: 12px;width: 90px; padding: 0; height: 20px;"class="custom-select" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de Exposición', 'exposicion_ml_select')" >
               <option>Exposición</option>
               <option value="free" >Gratis</option>
               <option value="clasica" >Clásica</option>
@@ -365,7 +382,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     </div>
     <div class="c" id="">
       <label> 
-        <input type="text" class="form-control" placeholder="Titulo" id="keyword_input" style="height: 25px; width: 240px; " id="inputbuscar">
+        <input type="text" placeholder="Titulo" id="keyword_input">
       </label>
       <button id="boton_buscar" onClick="buscarResultados()" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
     </div>
