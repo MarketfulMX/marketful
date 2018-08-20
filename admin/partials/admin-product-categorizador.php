@@ -21,11 +21,17 @@
  * @script PHP
  *
  * - Tomamos el valor del $product_id que vamos a utilizar
- *
- * 
  */
 $product_id = $_GET['product_id'];
 //$product_id = $_REQUEST['product_id'];
+/**
+ * @script PHP
+ * Recibimos los @parametros $keyword y $pagina desde admin-product-entries.php para poder
+ * regresar a dicha pagina y dirigirlo directamente hacia la pagina correcta.
+ */
+error_reporting(E_ERROR | E_WARNING | E_PARSE); // Suprime errores de prueba
+$pagina = $_GET['pagina'];
+$keyword = $_GET['keyword'];
 
 /**
  * @scripts PHP
@@ -234,7 +240,8 @@ jQuery(document).ready(function($){
     }
   
 </style>
-<h4 id="leyenda"> Categorizador de productos </h4>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<p id="leyenda"> Categorizador de productos </p>
 <div id="contenedor">
     <div id="interno">
     <h2 id="titulo" class="margenCat">Producto: <?php echo $titulo; ?> </h2>
@@ -263,6 +270,7 @@ jQuery(document).ready(function($){
             </div>
         </div>
     </div>
+    <a href="?page=mkf-product-entries&product_id=<?php echo $product_id.'&pagina='.$pagina.'&keyword='.$keyword; ?>"><button type="button">Regresar</button></a>
 </div>
 
 
