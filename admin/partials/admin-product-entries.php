@@ -207,6 +207,10 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 
 <style>
+  .select-arriba{
+    margin-left: 50px;
+    float: left;
+  }
   .filtro
     {
         text-align: right;
@@ -228,29 +232,42 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             text-align: center; 
         }
 
-            .a
+            .caja-de-botones{
+              border-color: #7E7F6D; 
+              border-style: solid; 
+              border-width: 1px; 
+              border-radius: 3px;
+            }
+            .botones
             {
-                grid-area: izq;
-                border-color: #7E7F6D; border-style: solid; border-width: 1px; border-radius: 3px;
+                /*grid-area: izq;*/
+                border-color: #7E7F6D; 
+                /*border-style: solid; */
+                border-width: 1px; 
+                border-radius: 3px;
                 background-color: #E2E5C4;
-                width: 45px; height: 25px;
-                color:#7E7F6D;text-decoration: none;text-align: center
+                min-width: 45px; 
+                height: 25px;
+                color:#7E7F6D;
+                text-decoration: none;
+                text-align: center;
                 cursor: default;
             }
-                .a a
-                {
-                    text-decoration: none; color:#7E7F6D;   
-                }
-                #ant:hover
-                {
-                    color: #3F4036; 
-                    background-color: #BCBFA3;
-                }
-                #sig:hover
-                {
-                    color: #3F4036; 
-                    background-color: #BCBFA3;
-                }
+            .link-flecha
+            {
+                text-decoration: none; 
+                  
+            }
+            #ant:hover
+            {
+                color: #3F4036; 
+                background-color: #BCBFA3;
+            }
+            #sig:hover
+            {
+                color: #3F4036; 
+                background-color: #BCBFA3;
+            }
             .b
             {
                 grid-area: cen1;
@@ -258,7 +275,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             }
                 #status_select
                 {
-                    margin-left: 5px;
+                    margin-left: 10px;
                     border-color: #7E7F6D; border-style: solid; border-width: 1px; border-radius: 3px;
                     background-color: #E2E5C4;
                     height: 25px;width: 90px;
@@ -291,7 +308,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 {
                     margin-right: 2 px;
                     width: 240px; height: 25px;
-                    border-radius: 3px 0px 0px 3px; border-color: #7E7F6D;
+                    border-radius: 3px 0px 0px 3px; 
+                    border-color: #7E7F6D;
+                    float: right;
                 }
                     #keyword_input:hover
                     {
@@ -303,9 +322,15 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                     }
                 #boton_buscar
                 {
-                    background-color:#E2E5C4; height: 25px; width: 48px; 
-                    border-style: solid; border-color: #7E7F6D; border-radius: 0px 3px 3px 0px;
-                    margin-left: -8px; margin-top: -8px;
+                    background-color:#E2E5C4; 
+                    height: 25px; 
+                    width: 48px; 
+                    border-style: solid; 
+                    border-color: #7E7F6D; 
+                    border-radius: 0px 3px 3px 0px;
+                    /*margin-left: -8px; */
+                    /*margin-top: -8px;*/
+                    float: right;
                 }
                     #boton_buscar:hover
                     {
@@ -363,66 +388,54 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         {
             height: 25px; background-color: red;border: none;
         }
-    td
-    {
-        max-width: 100px;
-    }
-    th
-    {
-        max-width: 100px;
-    }
+
     
 </style>
 
-<div class="container" style="">
+<div class="container" style="max-width: 95%; overflow: scroll;">
 
   <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
-
-<div class="opciones" style="" id="">
-  
-
   <div class="row">
-
-    <div id=""  class="a">
-      <?php 
-      if($pagina > 1){
+    <div id=""  class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+      <div style="background-color: #E2E5C4; width: 45px; text-align: center; float: left;" class="caja-de-botones">
+        <?php 
+        if($pagina > 1){
+          ?>
+          <a class="link-flecha" style="color:#7E7F6D;" id="ant" href="?page=mkf-product-entries&pagina=<?php echo ($pagina - 1) ?>" ><i class="fas fa-chevron-left"></i></a> 
+        <?php
+        }else{
         ?>
-        <a class="" id="ant" href="?page=mkf-product-entries&pagina=<?php echo ($pagina - 1) ?>" ><i class="fas fa-chevron-left"></i></a> 
-      <?php
-      }else{
-      ?>
-        <i id="" class="fas fa-chevron-left"></i> 
-      <?php
-      }
-      ?>
-      <a class="" id="sig" href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>"><i class="fas fa-chevron-right"></i></a>
+          <i id="ant" style="color:#7E7F6D;" class="fas fa-chevron-left"></i> 
+        <?php
+        }
+        ?>
+        <a class="link-flecha" style="color:#7E7F6D;" id="sig" href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>"><i class="fas fa-chevron-right"></i></a>
+      </div>
+      <!--Cambiar Status: -->
+      <select style=""class="select-arriba" id="status_select" onChange="statusMasivo('mercadolibre', 'status', 'status_select')" >
+          <option>Status</option>
+          <option value="active" >Activa</option>
+          <option value="paused" >Pausada</option>
+          <option value="closed" >Finalizada</option> 
+      </select>
+     <!--   | 
+      Exposición: -->
+      <select style=""class="select-arriba" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de Exposición', 'exposicion_ml_select')" >
+          <option>Exposición</option>
+          <option  value="free" >Gratis</option>
+          <option value="clasica" >Clásica</option>
+          <option value="premium" >Premium</option> 
+      </select>
     </div>
-        <div class="b" id="">
-          <!--Cambiar Status: -->
-          <select style=""class="" id="status_select" onChange="statusMasivo('mercadolibre', 'status', 'status_select')" >
-              <option>Status</option>
-              <option value="active" >Activa</option>
-              <option value="paused" >Pausada</option>
-              <option value="closed" >Finalizada</option> 
-          </select>
-         <!--   | 
-          Exposición: -->
-          <select style=""class="" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de Exposición', 'exposicion_ml_select')" >
-              <option>Exposición</option>
-              <option  value="free" >Gratis</option>
-              <option value="clasica" >Clásica</option>
-              <option value="premium" >Premium</option> 
-          </select>
-        </div>
-    </div>
-    <div class="c" id="">
-      <label> 
+    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" >
+      <button id="boton_buscar" onClick="buscarResultados()" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
+      <label style="float: right;"> 
         <input type="text" placeholder="Titulo" id="keyword_input">
       </label>
-      <button id="boton_buscar" onClick="buscarResultados()" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
+      
     </div>
   </div>
-</div>
+
 
 
 
@@ -431,16 +444,16 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       <tr>
         <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
         <th style="min-width: 50px">SKU </th>
-        <th style="padding-left:30px"style="min-width: 50px">Título</th>
-        <th style="padding-left:30px"style="min-width: 50px">Status</th>
-        <th style="padding-left:30px" style="min-width: 50px">Exposición</th>
-        <th style="padding-left:30px"style="min-width: 50px">Categoría ML</th>
-        <th style="padding-left:30px" style="min-width: 50px">Precio Woo Commerce</th>
+        <th style="min-width: 150px">Título</th>
+        <th style="min-width: 50px">Status</th>
+        <th style="min-width: 50px">Exposición</th>
+        <th style="min-width: 130px">Categoría ML</th>
+        <th style="min-width: 50px">Precio Woo Commerce</th>
         <th style="min-width: 50px">Precio Mercado Libre</th>
         <th style="min-width: 50px">Inventario Woo Commerce</th>
         <th style="min-width: 50px">Inventario Mercado Libre</th>
-        <th style="padding-left: 30px"style="min-width: 50px">Tipo de Envío</th>
-        <th style="padding-left: 38px" style="min-width: 110px">Ver Publicacion</th>
+        <th style="min-width: 150px">Tipo de Envío</th>
+        <th style="min-width: 110px">Ver Publicacion</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
       </tr>
     </thead>
@@ -452,7 +465,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       <tr>
         <td class="dt_check"><input type="checkbox" class="ids" name="checkboxes" id="checkbox_<?php echo $product->ID; ?>" />  </td>
         <td><?php echo $product->sku; ?></td>
-        <td><?php echo $product->title; ?></td>
+        <td style="min-width: 150px"><?php echo $product->title; ?></td>
         <td><!--
             ******************************************************************
                 @Scripts PHP en esta sección:
@@ -465,7 +478,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 -  Se repite el procedimiento, pero en esta ocacion el dato que se utiliza es exposición_ml
                 -->
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
-              <select style="font-size: 10px;width: 80px; padding-left: 4px; height: 25px;"class="custom-select" id="mercadolibre_<?php echo $product->ID;  ?>" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre')" id="mercadolibre_<?php echo $product->ID;  ?>" >
+              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select" id="mercadolibre_<?php echo $product->ID;  ?>" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre')" id="mercadolibre_<?php echo $product->ID;  ?>" >
                 <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
                 <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
                 <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
@@ -479,7 +492,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         </td>
         <td>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
-              <select style="font-size: 10px;width: 80px; padding-left: 4px; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml')" id="exposicion_ml_<?php echo $product->ID;  ?>">
+              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml')" id="exposicion_ml_<?php echo $product->ID;  ?>">
                 <?php $select_value = $all_mlmeta[0]["data"][0]->exposicion; ?>
                 <option>...</option>
                 <option value="free" <?php echo ($select_value=="free")?'selected':''; ?>>Gratis</option>
@@ -490,15 +503,15 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             
         </td>
         <?php $categoria = get_post_meta($product->ID, "last_category_ml", $single = true ) ?>
-        <td style="padding-left:35px" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}'>categorizar</a>")) ?></td>
-        <td style="padding-left:30px"><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
+        <td style="min-width: 130px;" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}'>categorizar</a>")) ?></td>
+        <td style=""><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
         <td ><input   onchange="cambioStatus('<?php echo $product->ID ?>', 'precio_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
         <td><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
         <td ><input  onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
         <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
-        <td>
+        <td style="min-width: 150px;">
            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
-              <select style="font-size: 10px;width: 120px; padding: 0; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml')" id="metodo_envio_ml_<?php echo $product->ID;  ?>">
+              <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml')" id="metodo_envio_ml_<?php echo $product->ID;  ?>">
                 <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
                 <option>...</option>
                 <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envío Gratis</option>
@@ -507,7 +520,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               </select>
             </div>  
         </td>
-        <td style="padding-left: 38px"><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicación</a>" : "no hay ") ?>
+        <td ><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicación</a>" : "no hay ") ?>
           </td>
        <!--  <td>
           <a href="?page=mkf-product-edit&product_id=<?php echo $product->ID; ?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
