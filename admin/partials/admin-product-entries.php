@@ -330,11 +330,11 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     }
     .input 
     {
-        height: 25px; width: 60px; background-color: blue;border: none;
+        height: 25px; width: 60px; background-color:#fff;border: none;
     }
         td .input
         {
-            height: 25px; 60px; background-color: blue;border: none;
+            height: 25px; widht:120px; background-color: #fff;border-color: black;
         }
     .status
     {
@@ -394,7 +394,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           Exposición: -->
           <select style="background-color: #E2E5C4;font-size: 12px;width: 90px; padding: 0; height: 20px; border:none;"class="custom-select" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de Exposición', 'exposicion_ml_select')" >
               <option>Exposición</option>
-              <option value="free" >Gratis</option>
+              <option  value="free" >Gratis</option>
               <option value="clasica" >Clásica</option>
               <option value="premium" >Premium</option> 
           </select>
@@ -412,20 +412,20 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 
   <table id="tabla" class="table stripe tableMK" >
-    <thead>
+    <thead class="thead-light">
       <tr>
-        <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()"/> </th>
-        <th>SKU </th>
-        <th>Título</th>
-        <th>Status</th>
-        <th>Exposición</th>
-        <th>Categoría ML</th>
-        <th>Precio Woo Commerce</th>
-        <th>Precio Mercado Libre</th>
-        <th>Inventario Woo Commerce</th>
-        <th >Inventario Mercado Libre</th>
-        <th>Tipo de Envío</th>
-        <th>Ver Publicacion</th>
+        <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
+        <th scope="col" style="min-width: 140px">SKU </th>
+        <th scope="col" style="min-width: 140px">Título</th>
+        <th scope="col" style="min-width: 138px">Status</th>
+        <th scope="col" style="min-width: 140px">Exposición</th>
+        <th scope="col" style="min-width: 140px">Categoría ML</th>
+        <th scope="col" style="min-width: 140px">Precio Woo Commerce</th>
+        <th scope="col" style="min-width: 140px">Precio Mercado Libre</th>
+        <th scope="col" style="min-width: 140px">Inventario Woo Commerce</th>
+        <th scope="col" style="min-width: 140px">Inventario Mercado Libre</th>
+        <th scope="col" style="min-width: 140px">Tipo de Envío</th>
+        <th scope="col" style="min-width: 165px">Ver Publicacion</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
       </tr>
     </thead>
@@ -477,13 +477,13 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <?php $categoria = get_post_meta($product->ID, "last_category_ml", $single = true ) ?>
         <td id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}'>categorizar</a>")) ?></td>
         <td><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
-        <td ><input onchange="cambioStatus('<?php echo $product->ID ?>', 'precio_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
+        <td ><input style="width: 125px" onchange="cambioStatus('<?php echo $product->ID ?>', 'precio_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
         <td><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
-        <td ><input  onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
+        <td ><input style="width: 125px" onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
         <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
         <td>
            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
-              <select style="font-size: 12px;width: 150px; padding: 0; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml')" id="metodo_envio_ml_<?php echo $product->ID;  ?>">
+              <select style="font-size: 12px;width: 140px; padding: 0; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml')" id="metodo_envio_ml_<?php echo $product->ID;  ?>">
                 <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
                 <option>...</option>
                 <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envío Gratis</option>
