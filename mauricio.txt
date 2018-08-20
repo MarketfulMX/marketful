@@ -7,3 +7,5 @@ Mauricio
 Revisamos y...
 
 4) Hacer que si estoy focus (si escribo entonces se escribe en el intpu) en el input y le doy a enter entonces mandar el request como si le dieras a la lupa 
+5) Notificacion de cambios guardados estilo google drive
+6) Agregar campo ultima actiualizacion
