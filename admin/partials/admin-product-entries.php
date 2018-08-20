@@ -198,6 +198,17 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 
 
+
+
+  function enterBuscar(e){
+    if(e.which==13){
+      buscarResultados()
+    }
+  }
+
+
+
+
 </script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -428,7 +439,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" >
       <button id="boton_buscar" onClick="buscarResultados()" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
       <label style="float: right;"> 
-        <input type="text" placeholder="Titulo" id="keyword_input">
+        <input type="text" placeholder="Titulo" id="keyword_input" onkeypress="enterBuscar(event)">
       </label>
       
     </div>
