@@ -1,6 +1,4 @@
 <?php
-
-
 /*
  * Archivo: admin-product-edit-form.php
  * Ultima edición : 7 de agosto de 2018
@@ -89,6 +87,11 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             console.log(product_id)
             var value = $('#' + key + "_" + product_id).val()
             console.log(key)
+            // registrar la tarea 
+            var tarea_id = "task_" + Math.random()
+            tareas[tarea_id] = false
+            $('#cambios_guardados').text("Guardando cambios...");
+
             jQuery.ajax({
                 type: 'post',
                 url: ajaxurl,
@@ -97,11 +100,19 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                     product_id: product_id, 
                     value: value, 
                     key: key, 
+                    tarea_id: tarea_id,
                     action: 'foobar'
                 },
                 success: function(response) { 
                   console.log("exito")
                   console.log(response)
+                  console.log(tareas)
+                  delete tareas[response.data["tarea_id"]]
+                  console.log(tareas.size)
+                  if(tareas.size == null){
+                    $('#cambios_guardados').text("Cambios guardados");
+                  }
+
                    
                 },
                 error: function(response) { 
@@ -155,6 +166,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       for(var i=0, n=checkboxes.length;i<n;i++) {
         var product_id = checkboxes[i].id.replace("checkbox_", "")
         console.log(product_id)
+        var tarea_id = "task_" + Math.random()
+        tareas[tarea_id] = false
+        $('#cambios_guardados').text("Guardando cambios...");
         // checkboxes[i].checked = true;
 
           jQuery.ajax({
@@ -165,6 +179,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                   product_id: product_id, 
                   value: value, 
                   key: key,
+                  tarea_id: tarea_id,
                   action: 'foobar'
               },
               success: function(response) { 
@@ -176,6 +191,14 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 console.log(nombre)
                 var element = document.getElementById(nombre);
                 element.value = el_valor;
+                delete tareas[response.data["tarea_id"]]
+                console.log(tareas.size)
+                if(tareas.size == null){
+                  $('#cambios_guardados').text("Cambios guardados");
+                }else{
+                  console.log(tareas)
+                  console.log(tareas.size)
+                }
               },
               error: function(response) { 
                 console.log("error")
@@ -197,6 +220,21 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     console.log(element)
       element.value = "paused";
   }
+
+
+
+
+
+  function enterBuscar(e){
+    if(e.which==13){
+      buscarResultados()
+    }
+  }
+
+
+  var tareas = {}
+  var status_cambios = ""
+
 
 
 
@@ -373,7 +411,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     }
         td .input:hover
         {
-            height: 25px; widht:120px; background-color: #fff;border-color: black;
+            height: 25px; background-color: #fff;border-color: black;
             border-color: #7E7F6D;
         }
     .status
@@ -430,12 +468,19 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" >
       <button id="boton_buscar" onClick="buscarResultados()" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
       <label style="float: right;"> 
-        <input type="text" placeholder="Titulo" id="keyword_input">
+        <input type="text" placeholder="Titulo" id="keyword_input" onkeypress="enterBuscar(event)">
       </label>
+
+      <h8 id="cambios_guardados"></h8>
       
     </div>
   </div>
 
+  <style>
+  #cambios_guardados{
+    font-size: 10px;
+  }
+  </style>
 
 
 <div style="max-width: 100%; overflow-x: scroll;">
@@ -503,7 +548,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             
         </td>
         <?php $categoria = get_post_meta($product->ID, "last_category_ml", $single = true ) ?>
-        <td style="min-width: 130px;" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}'>categorizar</a>")) ?></td>
+        <td style="min-width: 130px;" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}&pagina={$pagina}&keyword={$keyword}'>categorizar</a>")) ?></td>
         <td style=""><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
         <td ><input   onchange="cambioStatus('<?php echo $product->ID ?>', 'precio_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
         <td><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
@@ -554,7 +599,7 @@ function getCategory() {
           });
           $('#' + el_id).text("");
           path_categoria = path_categoria.substring(3);
-          $('#' + el_id).append('<a href=?page=mkf-entries_categorizador&product_id=' + el_id.replace("categoria_", "") + ">" + path_categoria + "</a>");
+          $('#' + el_id).append('<a href=?page=mkf-entries_categorizador&' + '<?php echo"pagina=".$pagina."&keyword=".$keyword; ?>' + '&product_id=' + el_id.replace("categoria_", "") + ">" + path_categoria + "</a>");
         }
       });
     }
