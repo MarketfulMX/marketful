@@ -1,7 +1,4 @@
 <?php
-
-    echo $pagina;
-
 /*
  * Archivo: admin-product-edit-form.php
  * Ultima edición : 7 de agosto de 2018
@@ -43,7 +40,7 @@ if (is_null($pagina)){
 } else {
   error_log ("la pagina esta presente");
   error_log($pagina);
-  $offset = (intval($pagina)-1)*50;
+  $offset = ($pagina-1)*50;
 }
 if (is_null($tope)){
   error_log("el tope es nulo");
@@ -502,7 +499,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             
         </td>
         <?php $categoria = get_post_meta($product->ID, "last_category_ml", $single = true ) ?>
-        <td style="min-width: 130px;" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}&pagina={$pagina}&keyword={$keyword}>categorizar</a>")) ?></td>
+        <td style="min-width: 130px;" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}&pagina={$pagina}&keyword={$keyword}'>categorizar</a>")) ?></td>
         <td style=""><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
         <td ><input   onchange="cambioStatus('<?php echo $product->ID ?>', 'precio_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
         <td><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
@@ -553,7 +550,7 @@ function getCategory() {
           });
           $('#' + el_id).text("");
           path_categoria = path_categoria.substring(3);
-          $('#' + el_id).append('<a href=?page=mkf-entries_categorizador&product_id=' + el_id.replace("categoria_", "") + ">" + path_categoria + "</a>");
+          $('#' + el_id).append('<a href=?page=mkf-entries_categorizador&' + '<?php echo"pagina=".$pagina."&keyword=".$keyword; ?>' + '&product_id=' + el_id.replace("categoria_", "") + ">" + path_categoria + "</a>");
         }
       });
     }
