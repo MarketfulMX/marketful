@@ -238,6 +238,30 @@ jQuery(document).ready(function($){
     {
         font-size: 15px;
     }
+#regresar
+    {
+        background-color:#E2E5C4; 
+        height: 25px; 
+        width: auto; 
+        border-style: solid; 
+        border-color: #7E7F6D; 
+        border-radius: 3px;
+        font-size: 12px;
+        text-decoration: none;
+        cursor: pointer;
+        font-family: sans-serif;
+    }
+#regresar:hover
+    {
+        border-color: #7E7F6D;
+        background-color: #BCBFA3;
+    }
+#regresar:active
+    {
+        border-color: #3F4036;
+        background-color: #BCBFA3;
+    }
+
   
 </style>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -270,7 +294,7 @@ jQuery(document).ready(function($){
             </div>
         </div>
     </div>
-    <a href="?page=mkf-product-entries&product_id=<?php echo $product_id.'&pagina='.$pagina.'&keyword='.$keyword; ?>"><button type="button">Regresar</button></a>
+    <a href="?page=mkf-product-entries&product_id=<?php echo $product_id.'&pagina='.$pagina.'&keyword='.$keyword; ?>"><button type="button" id="regresar">Regresar</button></a>
 </div>
 
 
