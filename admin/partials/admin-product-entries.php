@@ -231,11 +231,27 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             .a
             {
                 grid-area: izq;
-                
+                border-color: #ACAF87; border-style: solid; border-width: 2px; border-radius: 3px;
+                background-color: #DBDFAC;
+                width: 45px; height: 25px;
+                color:#ACAF87;text-decoration: none;
             }
+                .a a
+                {
+                    text-decoration: none;
+                }
+                #ant:hover
+                {
+                    font-size: 105%;
+                }
+                #sig:hover
+                {
+                    font-size: 105%;
+                }
             .b
             {
                 grid-area: cen1;
+                margin-left: 150px;
             }
             .c
             {
@@ -319,15 +335,15 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       <?php 
       if($pagina > 1){
         ?>
-        <a class="" href="?page=mkf-product-entries&pagina=<?php echo ($pagina - 1) ?>" ><i class="fas fa-chevron-left"></i></a> | 
+        <a class="" id="ant" href="?page=mkf-product-entries&pagina=<?php echo ($pagina - 1) ?>" ><i class="fas fa-chevron-left"></i></a> 
       <?php
       }else{
       ?>
-        Anterior | 
+        <i id="ant" class="fas fa-chevron-left"></i> 
       <?php
       }
       ?>
-      <a class="" href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>"><i class="fas fa-chevron-right"></i></a>
+      <a class="" id="sig" href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>"><i class="fas fa-chevron-right"></i></a>
     </div>
         <div class="b" id="">
           Cambiar Status: 
