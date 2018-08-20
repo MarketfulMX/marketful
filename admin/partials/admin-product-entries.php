@@ -214,7 +214,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     
     .bootstrap-wrapper
     {
-        background-color:azure;
+        background-color:white;
         font-family: sans-serif;
     }
         .imagen 
@@ -244,26 +244,26 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 #ant:hover
                 {
                     color: #3F4036; 
-                    background-color: #3F4036;
+                    background-color: #BCBFA3;
                 }
                 #sig:hover
                 {
                     color: #3F4036; 
-                    background-color: #3F4036;
+                    background-color: #BCBFA3;
                 }
             .b
             {
                 grid-area: cen1;
-                margin-left: 150px;
+                margin-left: 5px;
                 border-color: #7E7F6D; border-style: solid; border-width: 1px; border-radius: 3px;
                 background-color: #E2E5C4;
-                height: 25px;
-                padding-top: -20px;
+                height: 25px;width: auto;
+                padding-left: 10px; padding-right: 10px; padding-bottom: 2px; 
                 cursor: default;
             }
                 .b select
                 {
-                    background-color: #E2E5C4; border-color: #7E7F6D; 
+                    background-color: #E2E5C4; 
                 }
                     .b:hover
                     {
@@ -271,22 +271,42 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                     }
             .c
             {
-                display:inline; grid-area: der1;
+                display:inline; grid-area: der1; 
+                margin-right: -1300px;
             }
                 #keyword_input
                 {
-                    margin-right: -10 px;
+                    margin-right: 2 px;
                     width: 240px; height: 25px;
+                    border-radius: 3px 0px 0px 3px; border-color: #7E7F6D;
                 }
+                    #keyword_input:hover
+                    {
+                        border-color: #7E7F6D;
+                    }
+                    #keyword_input:active
+                    {
+                        border-color: #3F4036;
+                    }
                 #boton_buscar
                 {
                     background-color:#E2E5C4; height: 25px; width: 48px; 
-                    border-style: solid; border-color: #7E7F6D; border-radius: 0px 5px 5px 0px;
+                    border-style: solid; border-color: #7E7F6D; border-radius: 0px 3px 3px 0px;
                     margin-left: -8px; margin-top: -8px;
                 }
-                i
+                    #boton_buscar:hover
+                    {
+                        border-color: #7E7F6D;
+                        background-color: #BCBFA3;
+                    }
+                    #boton_buscar:active
+                    {
+                        border-color: #3F4036;
+                        background-color: #BCBFA3;
+                    }
+                .c i
                 {
-                    color: white; font-size: 10px;
+                    color: #7E7F6D; font-size: 16px; vertical-align: top;
                 }
 
         #tabla
@@ -363,16 +383,16 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       <a class="" id="sig" href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>"><i class="fas fa-chevron-right"></i></a>
     </div>
         <div class="b" id="">
-          Cambiar Status: 
-          <select style="background-color: #E2E5C4;font-size: 12px;width: 80px; padding: 0; height: 20px;"class="custom-select" id="status_select" onChange="statusMasivo('mercadolibre', 'status', 'status_select')" >
+          <!--Cambiar Status: -->
+          <select style="background-color: #E2E5C4;font-size: 12px;width: 80px; padding: 0; height: 20px; border:none;"class="custom-select" id="status_select" onChange="statusMasivo('mercadolibre', 'status', 'status_select')" >
               <option>Status</option>
               <option value="active" >Activa</option>
               <option value="paused" >Pausada</option>
               <option value="closed" >Finalizada</option> 
           </select>
-            | 
-          Exposición: 
-          <select style="background-color: #E2E5C4;font-size: 12px;width: 90px; padding: 0; height: 20px;"class="custom-select" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de Exposición', 'exposicion_ml_select')" >
+         <!--   | 
+          Exposición: -->
+          <select style="background-color: #E2E5C4;font-size: 12px;width: 90px; padding: 0; height: 20px; border:none;"class="custom-select" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de Exposición', 'exposicion_ml_select')" >
               <option>Exposición</option>
               <option value="free" >Gratis</option>
               <option value="clasica" >Clásica</option>
