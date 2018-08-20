@@ -7,13 +7,13 @@ Mauricio
 
 
 
-5) Notificacion de cambios guardados estilo google drive
-	- hacer un var que sea un hash var tareas = {}
-	= hacer un var qeu sea string var status_cambios = "cambios guardados"
-	- cuando se dispare un cambio (cambioStatus() y statusMasivo()) entonces se debe registrar en las tareas y se debe cambiar status_cambios = "Guardando..."
-		- en el caso de statusMasivo se debe hacer para cada registro que se cambie (cada vez q se mande un Ajax)
-	- cuando se complete se borra de las tareas y si tareas.length == 0 entonces se marca la variable status_cambios = "cambios guardados"
-6) Agregar campo ultima actiualizacion
+5) Notificacion de cambios guardados estilo google drive LISTO
+	- hacer un var que sea un hash var tareas = {} LISTO
+	= hacer un var qeu sea string var status_cambios = "cambios guardados" LISTO
+	- cuando se dispare un cambio (cambioStatus() y statusMasivo()) entonces se debe registrar en las tareas y se debe cambiar status_cambios = "Guardando..." LISTO
+		- en el caso de statusMasivo se debe hacer para cada registro que se cambie (cada vez q se mande un Ajax) LISTO
+	- cuando se complete se borra de las tareas y si tareas.length == 0 entonces se marca la variable status_cambios = "cambios guardados" LISTO
+6) Agregar campo ultima actiualizacion (se llama error_ml en la base de datos)
 7) Limpiar codigo. los estilos que se agregaron para la tabla hay muchos que no se usan 
 8) Sacar css y js del archivo a las carpetas admin > css y admin > js y enqueue los files para que se carguen cuando se cargue la pagina
 	- no debe quedar una linea de codigo que no sea necesaria en los estilos 
