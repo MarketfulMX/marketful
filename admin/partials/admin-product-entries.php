@@ -431,11 +431,11 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       <tr>
         <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
         <th style="min-width: 50px">SKU </th>
-        <th style="min-width: 50px">Título</th>
-        <th style="min-width: 50px">Status</th>
-        <th style="min-width: 50px">Exposición</th>
-        <th style="min-width: 50px">Categoría ML</th>
-        <th style="min-width: 50px">Precio Woo Commerce</th>
+        <th style="padding-left:30px"style="min-width: 50px">Título</th>
+        <th style="padding-left:30px"style="min-width: 50px">Status</th>
+        <th style="padding-left:30px" style="min-width: 50px">Exposición</th>
+        <th style="padding-left:30px"style="min-width: 50px">Categoría ML</th>
+        <th style="padding-left:30px" style="min-width: 50px">Precio Woo Commerce</th>
         <th style="min-width: 50px">Precio Mercado Libre</th>
         <th style="min-width: 50px">Inventario Woo Commerce</th>
         <th style="min-width: 50px">Inventario Mercado Libre</th>
@@ -490,9 +490,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             
         </td>
         <?php $categoria = get_post_meta($product->ID, "last_category_ml", $single = true ) ?>
-        <td id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}'>categorizar</a>")) ?></td>
-        <td><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
-        <td ><input  onchange="cambioStatus('<?php echo $product->ID ?>', 'precio_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
+        <td style="padding-left:35px" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}'>categorizar</a>")) ?></td>
+        <td style="padding-left:30px"><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
+        <td ><input   onchange="cambioStatus('<?php echo $product->ID ?>', 'precio_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
         <td><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
         <td ><input  onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
         <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
