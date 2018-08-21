@@ -168,6 +168,15 @@ class MKF_Admin
       array( $this, 'entries_categorizador' )
     );
 
+    add_submenu_page(
+      NULL,
+      __( "{$this->plg_small_name}-descripcion_footer", 'textdomain' ),
+      __( 'Descripcion Común', 'textdomain' ),
+      $this->available_menu_to_editor_or_admin(),
+      "{$this->plg_small_name}-descripcion-footer",
+      array( $this, 'descripcion_footer' )
+    );
+
   }
 
   /**
@@ -231,6 +240,10 @@ class MKF_Admin
  */
   public function entries_categorizador() {
     include_once "partials/admin-product-categorizador.php";
+  }
+
+  public function descripcion_footer() {
+    include_once "partials/admin-descripcion-footer.php";
   }
 
 }
