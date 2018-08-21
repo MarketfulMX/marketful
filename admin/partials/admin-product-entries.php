@@ -66,8 +66,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 <!-- Fonstawesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-<!-- FUNCIONES Y SCRIPTS JS estan dentro de admin/js/plg-admin.js -->
-<!-- ESTILOS ESTAN DENTRO DE admin/css/styles.css -->
+<!-- FUNCIONES Y SCRIPTS JS estan dentro de admin/js/admin-product-entries.js -->
+<!-- ESTILOS ESTAN DENTRO DE admin/css/admin-product-entries.css -->
 
 
 <div class="container" style="max-width: 95%; overflow: hidden;">
