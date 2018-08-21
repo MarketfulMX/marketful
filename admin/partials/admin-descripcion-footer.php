@@ -1,7 +1,7 @@
 <?php
 /*
- * Archivo: admin-product-edit-form.php
- * Ultima edición : 7 de agosto de 2018
+ * Archivo: admin-description-footer.php
+ * Ultima edición : 21 de agosto de 2018
  *
  * @autor: Adolfo Yanes (adolfo@marketful.mx)
  * @autor: Administrador de Proyecto: Mauricio Alcala (mauricio@marketful.mx)
@@ -14,44 +14,9 @@
 
  /**
  * Descripción General: 
- * Sección de publicaciones dentro del plugin de Marketful
- * que muestra la lista de productos con opcion de modificar
- * los atributos de status, exposición y permite buscar 
- * entre tus productos.
  *
  *
  */
-
-/*
-* @Script PHP
-* Se toman los productos que se mostraran dentro de la tabla, y se guardan dentro de $products.
-* Se toma la imagen que se mostrara como cabecera.
-*/
-error_reporting(E_ERROR | E_WARNING | E_PARSE); // Suprime errores de prueba
-$pagina = $_GET['pagina'];
-$tope = $_GET['tope'];
-$keyword = $_GET['keyword'];
-
-$offset = 0;
-if (is_null($pagina)){
-  error_log("la pagina es nula");
-  $offset = 0;
-  $pagina = 1;
-} else {
-  error_log ("la pagina esta presente");
-  error_log($pagina);
-  $offset = ($pagina-1)*50;
-}
-if (is_null($tope)){
-  error_log("el tope es nulo");
-  $tope = 50;
-} else {
-  error_log ("el tope esta presente");
-}
-  
-
-
-$products = MKF_ProductEntry::GetInstance()->get_product_list($tope, $offset, $keyword);
 $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 ?>

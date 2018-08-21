@@ -32,3 +32,10 @@ Mauricio
      - plg_activate revisa qu no exista y en ese caso lo crea que revise que no exista ese producto.
      - plg_desactivate elimina el producto en caso de que exista.
      - Hacer una notificacion como la de product entries de que se realizo un cambio en la descripcion comun.
+     
+     
+     Obtener el URL y dejarlo solo con dos parametros, ?site={$site_url}&descomun=true;
+     
+9) Cuando la persona escriba, guarde esa descripcion en la descripcion del producto que se creo automaticamente. (Marketful_description_comun) Con AJAX
+10) Despues de guardar el producto, notificamos a Marketful el cambio ($site_url y $descomun=true) ?site={$site_url}&descomun=true;
+11) Cuando se complete el ajax, te nootifique como en product entries, que se esta guardando y ya se guardo.

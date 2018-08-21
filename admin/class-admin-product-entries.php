@@ -149,6 +149,19 @@ class MKF_ProductEntry extends MKF_DBCore
         wp_send_json_success(array('product_id' => $producto_id, 'value' => $value, 'key' => $key, 'tarea_id'=>$tarea_id));
         wp_die();
     }
+    
+    
+    /**METODO DE PRUEBA **/
+    public function my_theme_ajax_submit_test() 
+    {
+        $site_url = get_site_url();
+        $url = "https://woocommerce.marketful.mx/notifications?site={$site_url}&descomun=true";
+        $http = _wp_http_get_object();
+        $response = $http->post( $url ); 
+
+        wp_send_json_success(array($response));
+        wp_die();
+    }
 
     
     /**
