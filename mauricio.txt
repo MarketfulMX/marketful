@@ -22,3 +22,13 @@ Mauricio
 8) Sacar css y js del archivo a las carpetas admin > css y admin > js y enqueue los files para que se carguen cuando se cargue la pagina
 	- no debe quedar una linea de codigo que no sea necesaria en los estilos 
 	- no debe cambiar en nada la apariencia de la pagina
+
+
+9) Buscar como crear un producto de manera automatica cuendo se active el pluugin. (Nombre del producto: Marketful_descripcion_comun)
+    Apoyarse revisando: 
+     - Register_activation_hook
+     - Crear un nuevo producto checar el pgl_activatoe o en class activator 
+     - Es un producto en blanco. Solo el monbre....
+     - plg_activate revisa qu no exista y en ese caso lo crea que revise que no exista ese producto.
+     - plg_desactivate elimina el producto en caso de que exista.
+     - Hacer una notificacion como la de product entries de que se realizo un cambio en la descripcion comun.
