@@ -19,5 +19,7 @@ if (!document.getElementById(bootstrapCss))
     customStyles.href = '../wp-content/plugins/marketful/admin/css/styles.css';
     customStyles.media = 'all';
     head.appendChild(customStyles);
+    
+    
 }
 
