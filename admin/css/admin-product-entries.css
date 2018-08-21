@@ -1,16 +1,130 @@
-/* ESTILOS de admin-product-entries.php 
- * admin-product-entries.css 
+/***************************************************************************
+ * ESTILOS de admin-product-entries.php  
  * 
  */
+
+    /*** ESTILOS DE admin-product-entries.php ***/
+  
 
     .select-arriba
     {
         margin-left: 50px;
         float: left;
     }
-    .filtro
+    .imagen 
     {
-        text-align: right;
+        margin-left: 0px; 
+        margin-top: 20px; 
+        margin-bottom: 20px; 
     }
+    .caja-de-botones
+    {
+        border-color: #7E7F6D; 
+        border-style: solid; 
+        border-width: 1px; 
+        border-radius: 3px;
+    }
+    .link-flecha
+    {
+        text-decoration: none; 
+    }
+    #ant:hover
+    {
+        color: #3F4036; 
+        background-color: #BCBFA3;
+    }
+    #sig:hover
+    {
+        color: #3F4036; 
+        background-color: #BCBFA3;
+    }
+    #status_select
+    {
+        margin-left: 10px;
+        border-color: #7E7F6D; 
+        border-style: solid; 
+        border-width: 1px; 
+        border-radius: 3px;
+        background-color: #E2E5C4;
+        height: 25px;
+        width: 90px;
+        cursor: default;
+        font-size: 12px; 
+        padding-left: 10px; 
+    }
+    #exposicion_ml_select
+    {
+        margin-left: 5px;
+        border-color: #7E7F6D; 
+        border-style: solid; 
+        border-width: 1px; 
+        border-radius: 3px;
+        background-color: #E2E5C4;
+        height: 25px;
+        width: 90px;
+        cursor: default;
+        font-size: 12px; 
+        padding-left: 10px;
+    }
+    #keyword_input
+    {
+        margin-right: 2 px;
+        width: 240px; 
+        height: 25px;
+        border-radius: 3px 0px 0px 3px; 
+        border-color: #7E7F6D;
+        float: right;
+    }
+    #keyword_input:hover
+    {
+        border-color: #7E7F6D;
+    }
+    #keyword_input:active
+    {
+        border-color: #3F4036;
+    }
+    #boton_buscar
+    {
+        background-color:#E2E5C4; 
+        height: 25px; 
+        width: 48px; 
+        border-style: solid; 
+        border-color: #7E7F6D; 
+        border-radius: 0px 3px 3px 0px;
+        float: right;
+        }
+        #boton_buscar:hover
+        {
+            border-color: #7E7F6D;
+            background-color: #BCBFA3;
+        }
+        #boton_buscar:active
+        {
+            border-color: #3F4036;
+            background-color: #BCBFA3;          
+        }
+    #tabla
+    {            
+        font-family: sans-serif; 
+        font-size: 10px;
+        width: 100%;
+    }
+    td .input
+    {
+        width: 50px; height: 25px;
+        border-radius: 3px; 
+        border-color: #7E7F6D;
+    }
+        td .input:hover
+        {
+            height: 25px; 
+            background-color: #fff;
+            border-color: black;
+            border-color: #7E7F6D;
+        }
 
-    
+
+/********************************************************************/
+/********************************************************************/
+
+

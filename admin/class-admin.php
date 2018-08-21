@@ -74,6 +74,7 @@ class MKF_Admin
     wp_enqueue_style('category',plugin_dir_url( __FILE__ ) . 'css/category_selection.css',array(),'1.0.0','all');
     wp_enqueue_style('iconos',plugin_dir_url( __FILE__ ) . 'css/font-awesome.min.css',array(),'1.0.0','all');
     wp_enqueue_style('bootstrap-map',"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.css.map",array(),'4.1.0','all');
+    wp_enqueue_style('ape_style',plugin_dir_url( __FILE__ ) . 'css/admin-product-entries.css',array(),'1.0.0','all');
     
   }
   /**
@@ -87,6 +88,7 @@ class MKF_Admin
     wp_enqueue_script('Popper',"https://unpkg.com/popper.js@1.14.3/dist/umd/popper.min.js", array(), '1.14.3', false );wp_enqueue_script('bootstrap',"https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js",array(),'4.1.0', false );
     wp_enqueue_script('datatables',"https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js" , array(), '1.10.18', false );
     wp_enqueue_script('admin_js_bootstrap_hack', plugin_dir_url( __FILE__ ) . 'js/bootstrap-hack.js', false, '1.0.0', false);
+    wp_enqueue_script('ape_func', plugin_dir_url( __FILE__ ) . 'js/admin-product-entries.js', false, '1.0.1', false);
     wp_enqueue_script($this->plg_small_name, plugin_dir_url( __FILE__ ) . 'js/plg-admin.js', array('jquery'), $this->version, false);
     /**
      * El @Script que a continuación se utiliza la @función wp_create_nonce(@string) que genera un hash con 
