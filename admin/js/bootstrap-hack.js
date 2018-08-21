@@ -19,5 +19,23 @@ if (!document.getElementById(bootstrapCss))
     customStyles.href = '../wp-content/plugins/marketful/admin/css/styles.css';
     customStyles.media = 'all';
     head.appendChild(customStyles);
+    
+    var ape_style = document.createElement('link');
+    ape_style.id = "admin-product-entries";
+    ape_style.rel = 'stylesheet';
+    ape_style.type = 'text/javascript"';
+    ape_style.href = '../wp-content/plugins/marketful/admin/css/admin-product-entries.css';
+    ape_style.media = 'all';
+    head.appendChild(ape_style);
+    
+    /*
+    var ape_func = document.createElement('link');
+    ape_func.id = "admin-product-entries";
+    ape_func.rel = 'script';
+    ape_func.type = 'text/css';
+    ape_func.href = '../wp-content/plugins/marketful/admin/js/admin-product-entries.js';
+    ape_func.media = 'all';
+    head.appendChild(ape_func);
+    */
 }
 
