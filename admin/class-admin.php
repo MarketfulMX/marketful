@@ -156,6 +156,15 @@ class MKF_Admin
       "{$this->plg_small_name}-product-edit",
       array( $this, 'entries_edit' )
     );
+      
+    add_submenu_page(
+      NULL,
+      __( "{$this->plg_small_name}-entries_categorizador", 'textdomain' ),
+      __( 'Categorizador', 'textdomain' ),
+      $this->available_menu_to_editor_or_admin(),
+      "{$this->plg_small_name}-entries_categorizador",
+      array( $this, 'entries_categorizador' )
+    );
 
   }
 
@@ -213,6 +222,13 @@ class MKF_Admin
  */
   public function entries_edit() {
     include_once "partials/admin-product-edit-form.php";
+  }
+  /**
+ * @Función entries_categorizador()
+ * Método que manda a llamar el archivo admin-product-ecategorizador.php
+ */
+  public function entries_categorizador() {
+    include_once "partials/admin-product-categorizador.php";
   }
 
 }

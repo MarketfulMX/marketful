@@ -2,21 +2,33 @@
 
 
 admin-product-entries.php 
-0) Agregar campo categoria con url a categorizacion con el param product id
-1) Hacer funcional el campo Exposicion uno por uno 
-2) Agregar cambio masivo de Exposicion 
-3) Mejorar aspecto de area de botones para cambios masivos 
-4) Agregar campo para cambiar precio_ml 
-5) Agregar campo para cambiar inventario_ml 
-6) Hacer campo precio_ml funcional con ajax
-7) Hacer campo inventario_ml funcional con ajax
-8) Agregar campo url publicacion con link a la publicacion en mercadoibre target=_blank para que abra en ventana nueva
+
+1) Hacer funcional el campo Exposicion uno por uno YA ESTABA
+2) Agregar cambio masivo de Exposicion LISTO
+4) Agregar campo para cambiar precio_ml LISTO
+5) Agregar campo para cambiar inventario_ml LISTO
+6) Hacer campo precio_ml funcional con ajax LISTO
+7) Hacer campo inventario_ml funcional con ajax LISTO
+8) Agregar campo url publicacion con link a la publicacion en mercadolibre target=_blank para que abra en ventana nueva LISTO
+
+11) Agregar campo Tipo de Envio
 9) Agregar campo Ultima Actualizacion que muestre el campo error_ml
 
+Aspecto admin-product-entrie.php
+10) Disminuir tamaño de las letras. todo esta muy grande en la tabla
+3) Mejorar aspecto de area de botones para cambios masivos 
+
+
 Categorizacion 
-1) Crear vista categorizacion con el categorizador qeu aparece en edit form pero sin usar <form>
-2) Al completar, no se envia un form. Se envia un ajax que guarda el campo category_ml en meta y notifica a Marketful
+1) Crear vista categorizacion con el categorizador qeu aparece en edit form pero sin usar <form> LISTO
+2) Al completar, no se envia un form. Se envia un ajax que guarda el campo category_ml en meta y notifica a Marketful LISTO
+
+
 3) Probar y asegurarse que API funciona bien en Marketful 
+
+
+
+
 Release 2
 4) Seleccionar varias publicaciones para categorizar a la vez
 
@@ -52,3 +64,10 @@ Vista Atributos
 2) Recibe en params un string con los product_ids  que van a modificar
 3) Ddebe consultar con Mercadolibre los parametros que admite cada producto segun su categoria 
 4) Guarda los cambios y notifica a Marketful
+
+
+
+
+
+
+
