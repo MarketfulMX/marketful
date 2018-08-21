@@ -269,6 +269,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     jQuery(document).ready(function($){
       getCategory();
     });
+    
+
+
 </script>
 
 
