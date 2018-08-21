@@ -242,18 +242,10 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 <div class="bootstrap-wrapper">
-
+<link rel="stylesheet" href="../css/admin-product-entries.css" type="text/css">
 
 <style>
-  .select-arriba{
-    margin-left: 50px;
-    float: left;
-  }
-  .filtro
-    {
-        text-align: right;
-    }
-    
+  
     .bootstrap-wrapper
     {
         background-color:white;
@@ -426,8 +418,6 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         {
             height: 25px; background-color: red;border: none;
         }
-
-    
 </style>
 
 <div class="container" style="max-width: 95%; overflow: hidden;">
@@ -499,6 +489,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <th style="min-width: 50px">Inventario Mercado Libre</th>
         <th style="min-width: 150px">Tipo de Envío</th>
         <th style="min-width: 110px">Ver Publicacion</th>
+        <th style="min-width: 60px">Ultima Actualización</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
       </tr>
     </thead>
@@ -567,6 +558,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         </td>
         <td ><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicación</a>" : "no hay ") ?>
           </td>
+        <td><?php echo get_post_meta($product->ID, "error_ml", true);?></td>
        <!--  <td>
           <a href="?page=mkf-product-edit&product_id=<?php echo $product->ID; ?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
           <a href="<?php echo $product->url; ?>" target="_blank" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Preview</a>

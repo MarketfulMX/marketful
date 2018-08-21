@@ -78,6 +78,9 @@ class MKF_ProductEntry extends MKF_DBCore
     private $meta_lcat;
     private $meta_precio_ml;
     
+    // Agregando error_ml
+    private $meta_error_ml;
+    
     
     /**
      * @función __construct(@string = (PLUGIN_GSNAME), @string = (PLUGIN_GVERSION))
