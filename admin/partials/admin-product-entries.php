@@ -224,50 +224,10 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 <script>
     /**
-     * @Funciones embebidas
-     **
-     
-    /**
-     * @Función getCategory()
-     * Al ser llamada,a su vez manda a llamar a una @funcion Ajax que crea el path_categoria que contiene 
-     * la categoria del producto. Despues lo inserta con appenddentro de un link que lleva hacia
-     * entries-categorizador con los parametros $product_id, 
-     * 
-     */
-    function getCategory() 
-    {
-        var categorias = $(".category_field").map(function() 
-        {
-            var el_id = $(this).attr("id");
-            if($(this).text().length > 1 && $(this).text() != "categorizar")
-            {
-                jQuery.ajax(
-                {
-                    type: "GET", 
-                    url: "https://api.mercadolibre.com/categories/"+ $(this).text(),
-                    async: false,
-                    success: function(data)
-                    {
-                        var path_categoria = "";
-                        data.path_from_root.map(function(r)
-                        {
-                            path_categoria = path_categoria + " > " + r.name;
-                        });
-                        $('#' + el_id).text("");
-                        path_categoria = path_categoria.substring(3);
-                        $('#' + el_id).append('<a href=?page=mkf-entries_categorizador&' + '<?php echo"pagina=".$pagina."&keyword=".$keyword; ?>' + '&product_id=' + el_id.replace("categoria_", "") + ">" + path_categoria + "</a>");
-                    }
-                });
-            }
-
-        });
-    }
-
-    /**
      * @Función JQuery
      */
     jQuery(document).ready(function($){
-      getCategory();
+      getCategory(<?php echo $pagina; ?>,<?php echo $keyword; ?>);
     });
     
 
