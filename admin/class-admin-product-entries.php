@@ -152,9 +152,9 @@ class MKF_ProductEntry extends MKF_DBCore
     
     
     /** Descripcion Masiva **/
-    public function desc_comun_ajax() 
+    public function desc_comun_ajax_submit() 
     {
-
+        error_log("entramos en descomunajax");
         $product_id = $_POST['product_id'];
         $descripcion = $_POST['descripcion'];
         $a = update_post_meta($product_id, "description", $descripcion);

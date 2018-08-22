@@ -21,7 +21,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 // buscar el producto que guarda la descripcion comun
 $products = wc_get_products( array(
-    'title' => 'Marketful_description_comun',
+    'title' => 'marketful_descripcion_comun',
 ) );
 
 
@@ -44,9 +44,7 @@ $products = wc_get_products( array(
      * @Función JQuery
      */
     // jQuery(document).ready(function($){
-    <?php   if(isset($products[0])){ ?>
-      getDescription($('#footer_mostrar_texto'), <?php echo $products[0]->get_id() ?>);
-    <?php  } ?>
+    
     // });
     
 
@@ -113,7 +111,10 @@ $products = wc_get_products( array(
     <div class="footer_contenido">
         <p id="footer_texto_superior"> Escribe una descripción, presiona enviar y nosotros la agregaremos a todos tus productos de Mercado Libre</p>
         <textarea rows="4" cols="90" id="footer_textarea"></textarea><br>
-        <button id="footer_enviar" onClick="getDescription()"> Enviar</button>
+        <button id="footer_enviar" onClick="
+        <?php   if(isset($products[0])){ ?>
+                    getDescription(<?php echo $products[0]->get_id() ?>);
+    <?php  } ?>"> Enviar</button>
         <p id="footer_mostrar_texto">
             <?php 
            if(isset($products[0])){

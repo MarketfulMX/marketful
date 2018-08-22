@@ -1,7 +1,9 @@
 console.log("entramos en myjquery.js")
 
 
-function getDescription(descripcion, product_id){
+function getDescription( product_id){
+	console.log('entramos en get descripcion')
+	var descripcion = $('#footer_mostrar_texto');
   jQuery.ajax(
   {
       type: 'post',
@@ -11,7 +13,7 @@ function getDescription(descripcion, product_id){
       { 
           descripcion: descripcion, 
           product_id: product_id, 
-          action: 'desc_comun_ajax'
+          action: 'desc_comun'
       },
       success: function(response) 
       { 

@@ -87,4 +87,4 @@ mkf_run_core();
 add_action( 'wp_ajax_foobar', ['MKF_ProductEntry', 'my_theme_ajax_submit']);
 
 // Descripcion //
-add_action('wp_ajax_desc_comun_ajax', ['MKF_ProductEntry', 'desc_comun_ajax']);
+add_action('wp_ajax_desc_comun', ['MKF_ProductEntry', 'desc_comun_ajax_submit']);
