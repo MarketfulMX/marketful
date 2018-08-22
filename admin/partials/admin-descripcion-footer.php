@@ -57,8 +57,13 @@ $products = wc_get_products( array(
 <style>
     #footer_texto_superior
     {
-        max-width: 700px;
+        max-width: 660px;
+        margin-top: 20px;
         display: inline-block;
+        padding: 5px;
+        border-width: 1px 0px 1px 0px;
+        border-color: #D9D9D9;
+        border-style: solid;
     }
     .footer_contenido
     {
@@ -74,16 +79,42 @@ $products = wc_get_products( array(
     {
         font-size: 16px;
     }
+    #footer_titulo_mostrar_texto
+    {
+        margin-top: 25px;
+        width: auto;
+        border-width: 1px 0px 1px 0px;
+        border-color: #D9D9D9;
+        border-style: solid;
+        padding: 5px;
+    }
+    #footer_mostrar
+    {
+        width: 662px;
+        align-content: center;
+        margin: auto;
+    }
     #footer_mostrar_texto
     {
-        margin-top: 45px;
-        color: crimson;
+        display: inline-block;
+        padding: 10px 20px;
+        text-align: center;
+        color: #4C4E34;
+        border-color: #D9D9D9;
+        border-style: solid;
+        border-radius: 3px;
+        border-width: 1px;
+        width: 660px;
+        height: auto;
+        min-height: 30px;
+        background-color: white;
     }
     #footer_enviar
     {
         background-color:#E2E5C4; 
         height: 25px; 
         width: auto; 
+        border-width: 1px;
         border-style: solid; 
         border-color: #7E7F6D; 
         border-radius: 3px;
@@ -109,26 +140,29 @@ $products = wc_get_products( array(
         <?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> 
     </div>
     <div class="footer_contenido">
-        <p id="footer_texto_superior"> Escribe una descripción, presiona enviar y nosotros la agregaremos a todos tus productos de Mercado Libre</p>
+        <p id="footer_texto_superior"> Escribe una descripción para agregarla a todos tus productos de Mercado Libre. Esta descripción se agregara sin borrar la descripción actual de cada producto. </p>
         <textarea rows="4" cols="90" id="footer_textarea"></textarea><br>
         <button id="footer_enviar" onClick="
         <?php   if(isset($products[0])){ ?>
                     getDescription(<?php echo $products[0]->get_id() ?>);
-    <?php  } ?>"> Enviar</button> 
+        <?php  } ?>"> Enviar</button> <a href="?page=mkf-product-entries"><button type="button" id="footer_enviar">Regresar</button></a>
             <p id="status_cambios"></p>
-        <p id="footer_mostrar_texto">
-            <?php 
-           if(isset($products[0])){
+        <div id="footer_mostrar">
+            <p id="footer_titulo_mostrar_texto"> Descripción Actual</p>
+            <p id="footer_mostrar_texto">
+                <?php 
+               if(isset($products[0])){
 
-                echo $products[0]->get_description();
+                    echo $products[0]->get_description();
 
-            }else{
-                echo "No hay producto de prueba creado";
-            }
-            ?> 
-            <br>
-            <br>
-        </p>
+                }else{
+                    echo "No hay producto de prueba creado";
+                }
+                ?> 
+                <br>
+                <br>
+            </p>
+        </div>
     </div>
 </div>
 

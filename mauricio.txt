@@ -5,7 +5,7 @@ Mauricio
  1) En Publicaciones (admin product entries) agregar boton para ir a Descripcion General LISTO
 
  2) Escribir instrucciones que especifiquen que esta descrpcion se le agregara a las pubilcaciones existentes en Mercadolibre. 
- No sustituye la descripcion del item, solo agrega lo que escribas
+ No sustituye la descripcion del item, solo agrega lo que escribas LISTO
  3) El texto rojo. cambiarlo de color a engro y colocarlo en un cuadro y un subtitulo que diga "Descripcion Comun Actual:"
 
  4) En publicaciones, el select de Status debe estar disabled si el producto no tiene categoria, exposicion y tipo de envio
