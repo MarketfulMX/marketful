@@ -19,6 +19,16 @@
  */
 $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
+
+// $query = new WC_Product_Query();
+// $query->set( '_name', 'Camiseta' );
+// $query->set( 'limit', 10 );
+// $products = $query->get_products();
+
+$products = wc_get_products( array(
+    'title' => 'Marketful_description_comun',
+) );
+
 ?>
 
 
@@ -96,7 +106,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <p id="footer_texto_superior"> Escribe una descripción, presiona enviar y nosotros la agregaremos a todos tus productos de Mercado Libre</p>
         <textarea rows="4" cols="90" id="footer_textarea"></textarea><br>
         <button id="footer_enviar" onClick="getDescription()"> Enviar</button>
-        <p id="footer_mostrar_texto"></p>
+        <p id="footer_mostrar_texto">
+                                    Descripcion: <?php echo $products[0]->get_description() ?> 
+        </p>
     </div>
 </div>
 
