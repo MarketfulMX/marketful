@@ -71,13 +71,17 @@ class MKF_Activator extends MKF_DBCore
     /**
      * @script que crea un nuevo producto dentro de MKF
      */
-      $new_simple_product = new WC_Product_Simple();
-      $new_simple_product->set_name("marketful_descripcion_comun");
-      $new_simple_product->set_sku("");
-      $new_simple_product->set_status("draft");
-      $new_simple_product->set_regular_price(0);
-      $new_simple_product->set_sale_price(0);
-      $new_simple_product->save();
+      $producto = MKF_ProductEntry::GetInstance()->get_product_list(50, 0, 'marketful_descripcion_comun');
+      if(! $producto)
+      {
+          $new_simple_product = new WC_Product_Simple();
+          $new_simple_product->set_name("marketful_descripcion_comun");
+          $new_simple_product->set_sku("");
+          $new_simple_product->set_status("draft");
+          $new_simple_product->set_regular_price(0);
+          $new_simple_product->set_sale_price(0);
+          $new_simple_product->save();
+      }
   }
   /**
    * @función RunUninstall()
