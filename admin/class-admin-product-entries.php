@@ -152,13 +152,12 @@ class MKF_ProductEntry extends MKF_DBCore
     
     
     /**METODO DE PRUEBA **/
-    public function my_theme_ajax_submit_test() 
+    public function desc_comun_ajax($product_id) 
     {
         $site_url = get_site_url();
-        $url = "https://woocommerce.marketful.mx/notifications?site={$site_url}&descomun=true";
+        $url = "https://woocommerce.marketful.mx/notifications?site={$site_url}&descomun=true&product_id={$product_id}";
         $http = _wp_http_get_object();
         $response = $http->post( $url ); 
-
         wp_send_json_success(array($response));
         wp_die();
     }
