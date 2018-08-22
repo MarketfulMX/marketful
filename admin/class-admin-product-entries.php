@@ -152,8 +152,12 @@ class MKF_ProductEntry extends MKF_DBCore
     
     
     /** Descripcion Masiva **/
-    public function desc_comun_ajax($descripcion, $product_id) 
+    public function desc_comun_ajax() 
     {
+
+        $product_id = $_POST['product_id'];
+        $descripcion = $_POST['descripcion'];
+        $a = update_post_meta($product_id, "description", $descripcion);
         $site_url = get_site_url();
         $url = "https://woocommerce.marketful.mx/notifications?site={$site_url}&descomun=true&product_id={$product_id}";
         $http = _wp_http_get_object();

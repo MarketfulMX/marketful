@@ -90,6 +90,7 @@ class MKF_Admin
     wp_enqueue_script('admin_js_bootstrap_hack', plugin_dir_url( __FILE__ ) . 'js/bootstrap-hack.js', false, '1.0.0', false);
     wp_enqueue_script('ape_func', plugin_dir_url( __FILE__ ) . 'js/admin-product-entries.js', false, '1.0.1', false);
     wp_enqueue_script($this->plg_small_name, plugin_dir_url( __FILE__ ) . 'js/plg-admin.js', array('jquery'), $this->version, false);
+    wp_enqueue_script('footer_js', plugin_dir_url( __FILE__ ) . 'js/myjquery.js', false, '1.0.1', false);
     /**
      * El @Script que a continuación se utiliza la @función wp_create_nonce(@string) que genera un hash con 
      * esa informacion para despues ser utilizada para validar la información que se envia.

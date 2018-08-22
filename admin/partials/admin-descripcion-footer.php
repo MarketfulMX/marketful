@@ -37,12 +37,7 @@ $products = wc_get_products( array(
 <!-- Fonstawesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-<script>
-    // function getDescription()
-    // {
-    //     $('#footer_mostrar_texto').text($('#footer_textarea').val());
-    // }
-</script>
+
 
 <script>
     /**
