@@ -151,8 +151,8 @@ class MKF_ProductEntry extends MKF_DBCore
     }
     
     
-    /**METODO DE PRUEBA **/
-    public function desc_comun_ajax($product_id) 
+    /** Descripcion Masiva **/
+    public function desc_comun_ajax($descripcion, $product_id) 
     {
         $site_url = get_site_url();
         $url = "https://woocommerce.marketful.mx/notifications?site={$site_url}&descomun=true&product_id={$product_id}";

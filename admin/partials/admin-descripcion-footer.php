@@ -24,6 +24,7 @@ $products = wc_get_products( array(
     'title' => 'Marketful_description_comun',
 ) );
 
+
 ?>
 
 
@@ -37,11 +38,28 @@ $products = wc_get_products( array(
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 <script>
-    function getDescription()
-    {
-        $('#footer_mostrar_texto').text($('#footer_textarea').val());
-    }
+    // function getDescription()
+    // {
+    //     $('#footer_mostrar_texto').text($('#footer_textarea').val());
+    // }
 </script>
+
+<script>
+    /**
+     * @Función JQuery
+     */
+    // jQuery(document).ready(function($){
+    <?php   if(isset($products[0])){ ?>
+      getDescription($('#footer_mostrar_texto'), <?php echo $products[0]->get_id() ?>);
+    <?php  } ?>
+    // });
+    
+
+
+</script>
+
+
+
 
 <style>
     #footer_texto_superior
@@ -102,7 +120,17 @@ $products = wc_get_products( array(
         <textarea rows="4" cols="90" id="footer_textarea"></textarea><br>
         <button id="footer_enviar" onClick="getDescription()"> Enviar</button>
         <p id="footer_mostrar_texto">
-                                    Descripcion: <?php echo $products[0]->get_description() ?> 
+            <?php 
+           if(isset($products[0])){
+
+                echo $products[0]->get_description();
+
+            }else{
+                echo "No hay producto de prueba creado";
+            }
+            ?> 
+            <br>
+            <br>
         </p>
     </div>
 </div>
