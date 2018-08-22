@@ -69,10 +69,12 @@ class MKF_Activator extends MKF_DBCore
   private function RunInstall() 
   {
     /**
-     * @script que crea un nuevo producto dentro de MKF
+     * @script que crea un nuevo producto dentro de MKF en caso de que no exista
      */
-      $producto = MKF_ProductEntry::GetInstance()->get_product_list(50, 0, 'marketful_descripcion_comun');
-      if(! $producto)
+      $products = wc_get_products( array(
+        'title' => 'marketful_descripcion_comun',
+      ));
+      if(! $products)
       {
           $new_simple_product = new WC_Product_Simple();
           $new_simple_product->set_name("marketful_descripcion_comun");
@@ -88,13 +90,22 @@ class MKF_Activator extends MKF_DBCore
    */
   private function RunUninstall()
   {
-      $producto = MKF_ProductEntry::GetInstance()->get_product_list(50, 0, 'marketful_descripcion_comun');
+      //$producto = MKF_ProductEntry::GetInstance()->get_post('marketful_descripcion_comun');
       //wc_delete_product_transients( $producto->id);
-      //wp_delete_post($producto->ID);
+      //wp_delete_post($producto);
       //$producto->delete(true);
       //$result = ! ( $producto->get_id() > 0 );
       //echo $result;
       //WC_API_Products :: delete_product ($producto->ID, true);
+      
+      $products = wc_get_products( array(
+        'title' => 'marketful_descripcion_comun',
+      ));
+      if(isset($products[0]))
+      {
+          $producto = $products[0]->get_id();
+      }
+      wp_delete_post($producto);
   }
   
 

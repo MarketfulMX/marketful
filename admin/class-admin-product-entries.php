@@ -266,7 +266,6 @@ class MKF_ProductEntry extends MKF_DBCore
         array_push($out, array("data"=> $this->execute_custom_query($sql)));
         return $out;
     }
-
     
     /** 
      * @fución publica get_ml_metadata(@string = (NULL))
