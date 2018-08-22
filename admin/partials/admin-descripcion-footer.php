@@ -114,7 +114,8 @@ $products = wc_get_products( array(
         <button id="footer_enviar" onClick="
         <?php   if(isset($products[0])){ ?>
                     getDescription(<?php echo $products[0]->get_id() ?>);
-    <?php  } ?>"> Enviar</button>
+    <?php  } ?>"> Enviar</button> 
+            <p id="status_cambios"></p>
         <p id="footer_mostrar_texto">
             <?php 
            if(isset($products[0])){

@@ -157,12 +157,17 @@ class MKF_ProductEntry extends MKF_DBCore
         error_log("entramos en descomunajax");
         $product_id = $_POST['product_id'];
         $descripcion = $_POST['descripcion'];
-        $a = update_post_meta($product_id, "description", $descripcion);
+        error_log($product_id);
+        error_log($descripcion);
+        $my_post = array();
+        $my_post['ID'] = $product_id;
+        $my_post['post_content'] = $descripcion;
+        wp_update_post( $my_post );
         $site_url = get_site_url();
         $url = "https://woocommerce.marketful.mx/notifications?site={$site_url}&descomun=true&product_id={$product_id}";
         $http = _wp_http_get_object();
         $response = $http->post( $url ); 
-        wp_send_json_success(array($response));
+        wp_send_json_success(array($descripcion));
         wp_die();
     }
 
