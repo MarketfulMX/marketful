@@ -68,14 +68,31 @@ class MKF_Activator extends MKF_DBCore
    */
   private function RunInstall() 
   {
-    
+    /**
+     * @script que crea un nuevo producto dentro de MKF
+     */
+      $producto = new WC_Product();
+      $producto->set_name('marketful_descripcion_comun');
+      $producto->set_sku('');
+      $producto->set_regular_price(0);   
+      $producto->set_sale_price(0);      
+      $result=$producto->save();
+      $product = MKF_ProductEntry::GetInstance()->get_product_list(50, 0, 'marketful_descripcion_comun');
+      //$consulta = array('ID' => $product->ID, 'post_status' => 'draft')
+      //update_post($consulta); 
   }
   /**
    * @función RunUninstall()
    */
   private function RunUninstall()
   {
-    
+      $producto = MKF_ProductEntry::GetInstance()->get_product_list(50, 0, 'marketful_descripcion_comun');
+      //wc_delete_product_transients( $producto->id);
+      //wp_delete_post($producto->ID);
+      //$producto->delete(true);
+      //$result = ! ( $producto->get_id() > 0 );
+      //echo $result;
+      //WC_API_Products :: delete_product ($producto->ID, true);
   }
   
 

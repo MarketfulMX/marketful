@@ -277,7 +277,6 @@ if ( !class_exists( 'MKF_DBCore', false ) ):
       }
       return $result_set;
     }
-
   }
 
 endif; // Se cierra el IF
