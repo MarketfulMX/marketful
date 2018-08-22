@@ -2,7 +2,7 @@ Mauricio
 
 
 
- 1) En Publicaciones (admin product entries) agregar boton para ir a Descripcion General
+ 1) En Publicaciones (admin product entries) agregar boton para ir a Descripcion General LISTO
 
  2) Escribir instrucciones que especifiquen que esta descrpcion se le agregara a las pubilcaciones existentes en Mercadolibre. 
  No sustituye la descripcion del item, solo agrega lo que escribas
