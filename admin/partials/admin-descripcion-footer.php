@@ -19,12 +19,7 @@
  */
 $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
-
-// $query = new WC_Product_Query();
-// $query->set( '_name', 'Camiseta' );
-// $query->set( 'limit', 10 );
-// $products = $query->get_products();
-
+// buscar el producto que guarda la descripcion comun
 $products = wc_get_products( array(
     'title' => 'Marketful_description_comun',
 ) );
