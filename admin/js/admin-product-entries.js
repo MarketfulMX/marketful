@@ -259,15 +259,16 @@ function check_status(id)
     var expo_ml = $('#exposicion_ml_'+id+' option:selected').text();
     var categoria_ml = $('#categoria_'+id).text();
     var metodo_envio_ml = $('#metodo_envio_ml_'+id+' option:selected').text();
-    console.log(id +' '+expo_ml +' '+ categoria_ml +' '+ metodo_envio_ml);
+    //console.log(id +' '+expo_ml +' '+ categoria_ml +' '+ metodo_envio_ml);
     if(expo_ml == '...' || categoria_ml == 'categorizar' || metodo_envio_ml == '...')
     {
-        console.log('disabled = true');
+        //console.log('disabled = true');
+        $('#mercadolibre_'+id).val('...');
         $('#mercadolibre_'+id).prop('disabled', true);
     }
     else
     {
-        console.log('enabled = false');
+        //console.log('enabled = false');
         $('#mercadolibre_'+id).prop('disabled', false);
     }
 }
@@ -285,9 +286,9 @@ function check_status(id)
  */
 function notifica_status(id)
 {
-    alert(id + ' hola');
-    if($('#mercado_libre_'+id).prop('disabled') == true)
+    console.log(' Se activo porque el select esta desabilitado');
+    if($('#mercadolibre_'+id).prop('disabled') == true)
     {
-         alert('Try to set a value for the category, the exposition and the kind of shipping');
+        alert('Try to set a value for the category, the exposition and the kind of shipping');
     }
 }
