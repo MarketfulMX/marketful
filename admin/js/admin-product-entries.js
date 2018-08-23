@@ -249,7 +249,8 @@ var status_cambios = ""
 
 
 /** 
- * @función Valida si el producto no tiene categoria, exposicion y tipo de envio, en tal caso desabilita el select pub_status
+ * @función check_status(@parametro: id del producto)
+ * Valida si el producto no tiene categoria, exposicion y tipo de envio, en tal caso desabilita el select pub_status
  * Con el parametro del id, valida que se pueda o no habilitar el select_status
  */
 
@@ -264,13 +265,29 @@ function check_status(id)
         console.log('disabled = true');
         $('#mercadolibre_'+id).prop('disabled', true);
     }
+    else
+    {
+        console.log('enabled = false');
+        $('#mercadolibre_'+id).prop('disabled', false);
+    }
 }
+    /**
+     * @Jquery @Función 
+     * Dispara el evento onLoad en los select de status para poder validar se estan habilitados o no.
+     * 
+     */ 
+    jQuery(function()
+    {
+        $('.pub_status').trigger('onload');
+    });
 /**
- * @Jquery @Función 
- * Dispara el evento onLoad en los select de status.
- * 
- */ 
-jQuery(function()
+ * @función notifica_status(@parametro: id del producto)
+ */
+function notifica_status(id)
 {
-	$('.pub_status').trigger('onload');
-});
+    alert(id + ' hola');
+    if($('#mercado_libre_'+id).prop('disabled') == true)
+    {
+         alert('Try to set a value for the category, the exposition and the kind of shipping');
+    }
+}

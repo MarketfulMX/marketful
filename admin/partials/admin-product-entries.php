@@ -168,8 +168,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 -  Dentro del select, se hace echo de 'Selected' para que sea la opcion seleccionada, en        caso de que el valor de $select_value sea igual a alguna de las opciones.
                 -  Se repite el procedimiento, pero en esta ocacion el dato que se utiliza es exposición_ml
                 -->
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
-              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select pub_status" id="mercadolibre_<?php echo $product->ID;  ?>" onload="check_status(<?php echo $product->ID; ?>)" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre')" id="mercadolibre_<?php echo $product->ID;  ?>" >
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones" onClick="notifica_status(<?php echo $product->ID; ?>)">
+              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select pub_status" id="mercadolibre_<?php echo $product->ID;  ?>" onload="check_status(<?php echo $product->ID; ?>)" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre')"  id="mercadolibre_<?php echo $product->ID;  ?>" >
                 <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
                 <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
                 <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
@@ -179,7 +179,6 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 <option value="closed" <?php echo ($select_value=="closed")?'selected':''; ?> >Finalizada</option> 
               </select>
             </div>
-            
         </td>
         <td>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">

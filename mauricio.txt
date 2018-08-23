@@ -8,7 +8,7 @@ Mauricio
  No sustituye la descripcion del item, solo agrega lo que escribas LISTO
  3) El texto rojo. cambiarlo de color a engro y colocarlo en un cuadro y un subtitulo que diga "Descripcion Comun Actual:" LISTO
 
- 4) En publicaciones, el select de Status debe estar disabled si el producto no tiene categoria, exposicion y tipo de envio
+ 4) En publicaciones, el select de Status debe estar disabled si el producto no tiene categoria, exposicion y tipo de envio LISTO
  
  5) con jquery on Click si lo tratas de activar entonces te salga un alert que diga Debes tener categoria, exposicion y tipo de envio para 
  poder publicar un producto. 
