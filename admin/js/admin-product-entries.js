@@ -246,3 +246,32 @@ var status_cambios = ""
 
         });
     }
+
+
+/** 
+ * @función Valida si el producto no tiene categoria, exposicion y tipo de envio, en tal caso desabilita el select pub_status
+ */
+window.onload = function ()
+{
+    
+}
+
+function check_status(id)
+{
+    var expo_ml = $('#exposicion_ml_'+id+' option:selected').text();
+    var categoria_ml = $('#categoria_'+id).text();
+    var metodo_envio_ml = $('#metodo_envio_ml_'+id+' option:selected').text();
+    console.log(id +' '+expo_ml +' '+ categoria_ml +' '+ metodo_envio_ml);
+    if(expo_ml == '...' || categoria_ml == 'categorizar' || metodo_envio_ml == '...')
+    {
+        console.log('disabled = true');
+        $('#mercadolibre_'+id).prop('disabled', true);
+    }
+    
+	
+    
+}
+jQuery(function()
+{
+	$('.pub_status').trigger('onload');
+});
