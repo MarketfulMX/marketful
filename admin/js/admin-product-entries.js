@@ -250,11 +250,8 @@ var status_cambios = ""
 
 /** 
  * @función Valida si el producto no tiene categoria, exposicion y tipo de envio, en tal caso desabilita el select pub_status
+ * Con el parametro del id, valida que se pueda o no habilitar el select_status
  */
-window.onload = function ()
-{
-    
-}
 
 function check_status(id)
 {
@@ -267,10 +264,12 @@ function check_status(id)
         console.log('disabled = true');
         $('#mercadolibre_'+id).prop('disabled', true);
     }
-    
-	
-    
 }
+/**
+ * @Jquery @Función 
+ * Dispara el evento onLoad en los select de status.
+ * 
+ */ 
 jQuery(function()
 {
 	$('.pub_status').trigger('onload');
