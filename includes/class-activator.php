@@ -106,7 +106,7 @@ class MKF_Activator extends MKF_DBCore
       //$result = ! ( $producto->get_id() > 0 );
       //echo $result;
       //WC_API_Products :: delete_product ($producto->ID, true);
-      
+    if(function_exists(wc_get_products)){
       $products = wc_get_products( array(
         'title' => 'marketful_descripcion_comun',
       ));
@@ -115,6 +115,7 @@ class MKF_Activator extends MKF_DBCore
           $producto = $products[0]->get_id();
       }
       wp_delete_post($producto);
+    }
   }
   
 
