@@ -139,7 +139,7 @@ if(function_exists(wc_get_productssss)){
 </style>
 
 <div class="container" style="max-width: 95%; overflow: hidden;">
-    <?php $product = $products[0]["data"]["0"] ?>
+    <?php $product = $products[0]["data"]["0"]; ?>
     <div class="imagen">
         <?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> 
     </div>
