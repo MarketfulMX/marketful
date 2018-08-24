@@ -112,12 +112,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" id="dg">
         <a href="?page=mkf-descripcion-footer"><button id="boton_dg"> Agregar descripción general</button></a>
     </div>
-<<<<<<< HEAD
     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
         <h8 id="cambios_guardados"></h8>
     </div>
-=======
->>>>>>> 0b937d2060b71ca33533443a68d8d942d2e7ce05
     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" >
       <button id="boton_buscar" onClick="buscarResultados()" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
       <label style="float: right;"> 
