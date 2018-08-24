@@ -115,7 +115,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
         <h8 id="cambios_guardados"></h8>
     </div>
-    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" >
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >
       <button id="boton_buscar" onClick="buscarResultados()" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
       <label style="float: right;"> 
         <input type="text" placeholder="Titulo" id="keyword_input" onkeypress="enterBuscar(event)">
@@ -174,24 +174,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               </div>
             </div>
           </div>
-          <!-- Modal para confirmar que se quiere finalizar una publicación -->
-          <div class="modal fade" id="modal_fn_<?php echo $product->ID; ?>" role="dialog">
-            <div class="modal-dialog">
-              <div class="modal-content" >
-                <div class="modal-header" onclick="location.reload();">
-                  <h4 class="modal-title">Actualiza la información del producto</h4>
-                  <button type="button" class="close" data-dismiss="modal" onclick="location.reload();">&times;</button>
-                </div>
-                <div class="modal-body" onclick="location.reload();">
-                  <p>Si finalizas una publicación en MercadoLibre tendras que crear una nueva para volver a activarla, ¿Finalizar publicacion?</p>
-                </div>
-                <div class="modal-footer">
-                  <button class="boton_fin_pub_<?php echo $product->ID; ?> btn btn-default" id=""> Actualizar </button>
-                  <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="location.reload();">Cerrar</button>
-                </div>
-              </div>
-            </div>
-          </div>
+          
         <td class="dt_check"><input type="checkbox" class="ids" name="checkboxes" id="checkbox_<?php echo $product->ID; ?>" />  </td>
         <td><?php echo $product->sku; ?></td>
         <td style="min-width: 150px">

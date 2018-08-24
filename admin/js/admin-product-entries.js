@@ -36,7 +36,12 @@ function cambioStatus(product_id, key)
     // Validamos si seleccionan status y que sea finalizar
     if(key == 'mercadolibre' && value == 'closed')
     {
-                
+        console.log('Se va a finalizar -> Lanzar alerta para validar');
+        if(!confirm('Si finalizas una publicación en MercadoLibre tendras que crear una nueva para volver a activarla, ¿Finalizar publicacion?'))
+        {
+            $('#' + key + "_" + product_id).val('...');
+            return false;
+        }
     }
     console.log(key)
     // registrar la tarea 
