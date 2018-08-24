@@ -71,9 +71,15 @@ class MKF_Activator extends MKF_DBCore
     /**
      * @script que crea un nuevo producto dentro de MKF en caso de que no exista
      */
+    if(function_exists(wc_get_products)){
       $products = wc_get_products( array(
         'title' => 'marketful_descripcion_comun',
       ));
+    }else{
+      $products = get_products( array(
+        'title' => 'marketful_descripcion_comun',
+      ));
+    }
       if(! $products)
       {
           $new_simple_product = new WC_Product_Simple();
@@ -84,6 +90,7 @@ class MKF_Activator extends MKF_DBCore
           $new_simple_product->set_sale_price(0);
           $new_simple_product->save();
       }
+    }
   }
   /**
    * @función RunUninstall()

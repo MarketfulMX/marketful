@@ -20,10 +20,15 @@
 $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 // buscar el producto que guarda la descripcion comun
-$products = wc_get_products( array(
-    'title' => 'marketful_descripcion_comun',
-) );
-
+if(function_exists(wc_get_products)){
+    $products = wc_get_products( array(
+        'title' => 'marketful_descripcion_comun',
+    ) );
+}else{
+    $products = get_products( array(
+        'title' => 'marketful_descripcion_comun',
+    ) );
+}
 
 ?>
 
