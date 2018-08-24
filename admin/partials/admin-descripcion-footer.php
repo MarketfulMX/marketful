@@ -20,10 +20,13 @@
 $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 // buscar el producto que guarda la descripcion comun
-$products = wc_get_products( array(
-    'title' => 'marketful_descripcion_comun',
-) );
-
+if(function_exists(wc_get_productssss)){
+    $products = wc_get_products( array(
+        'title' => 'marketful_descripcion_comun',
+    ) );
+}else{
+    $products = MKF_ProductEntry::GetInstance()->get_product_list(1, 0, "marketful_descripcion_comun");
+}
 
 ?>
 
@@ -136,6 +139,7 @@ $products = wc_get_products( array(
 </style>
 
 <div class="container" style="max-width: 95%; overflow: hidden;">
+    <?php $product = $products[0]["data"]["0"]; ?>
     <div class="imagen">
         <?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> 
     </div>
@@ -143,20 +147,29 @@ $products = wc_get_products( array(
         <p id="footer_texto_superior"> Escribe una descripción para agregarla a todos tus productos de Mercado Libre. Esta descripción se agregara sin borrar la descripción actual de cada producto. </p>
         <textarea rows="4" cols="90" id="footer_textarea"></textarea><br>
         <button id="footer_enviar" onClick="
-        <?php   if(isset($products[0])){ ?>
-                    getDescription(<?php echo $products[0]->get_id() ?>);
-        <?php  } ?>"> Enviar</button> <a href="?page=mkf-product-entries"><button type="button" id="footer_enviar">Regresar</button></a>
+        <?php  
+         if(isset($product)){ 
+            ?>
+                    getDescription(
+                    <?php 
+                        echo $product->ID; 
+                    ?>
+                    )
+        <?php  
+                } 
+                ?>
+        "> Enviar</button> <a href="?page=mkf-product-entries"><button type="button" id="footer_enviar">Regresar</button></a>
             <p id="status_cambios"></p>
         <div id="footer_mostrar">
             <p id="footer_titulo_mostrar_texto"> Descripción Actual</p>
             <p id="footer_mostrar_texto">
                 <?php 
-               if(isset($products[0])){
+               if(isset($product)){
 
-                    echo $products[0]->get_description();
+                    echo get_post($product->ID)->post_content;
 
                 }else{
-                    echo "No hay producto de prueba creado";
+                    echo "Error! No hay producto de prueba creado";
                 }
                 ?> 
                 <br>
