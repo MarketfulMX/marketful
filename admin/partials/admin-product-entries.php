@@ -157,18 +157,36 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     ?>
       <tr>
         <!-- Modal para actualizar información -->
-          <div class="modal fade" id="modal_ad_<?php echo $product->ID; ?>" role="dialog">
+          <div class="modal fade" id="modal_ad_<?php echo $product->ID; ?>" role="alert">
             <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header" >
+              <div class="modal-content" >
+                <div class="modal-header" onclick="location.reload();">
                   <h4 class="modal-title">Actualiza la información del producto</h4>
                   <button type="button" class="close" data-dismiss="modal" onclick="location.reload();">&times;</button>
                 </div>
-                <div class="modal-body">
-                  <p>Para poder asignar el tipo de status, primero debes actualizar la categoría, el tipo de exposición y el tipo de envión en MercadoLibre. ¿Deseas actualizarlo ahora?</p>
+                <div class="modal-body" onclick="location.reload();">
+                  <p>Para poder asignar el tipo de status, primero debes actualizar la categoría, el tipo de exposición y el tipo de envió en MercadoLibre. ¿Deseas actualizarlo ahora?</p>
                 </div>
                 <div class="modal-footer">
                   <button class="boton_redirige_cat_<?php echo $product->ID; ?> btn btn-default" id=""> Actualizar </button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="location.reload();">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal para confirmar que se quiere finalizar una publicación -->
+          <div class="modal fade" id="modal_fn_<?php echo $product->ID; ?>" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content" >
+                <div class="modal-header" onclick="location.reload();">
+                  <h4 class="modal-title">Actualiza la información del producto</h4>
+                  <button type="button" class="close" data-dismiss="modal" onclick="location.reload();">&times;</button>
+                </div>
+                <div class="modal-body" onclick="location.reload();">
+                  <p>Si finalizas una publicación en MercadoLibre tendras que crear una nueva para volver a activarla, ¿Finalizar publicacion?</p>
+                </div>
+                <div class="modal-footer">
+                  <button class="boton_fin_pub_<?php echo $product->ID; ?> btn btn-default" id=""> Actualizar </button>
                   <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="location.reload();">Cerrar</button>
                 </div>
               </div>

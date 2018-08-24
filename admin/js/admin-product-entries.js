@@ -33,6 +33,11 @@ function cambioStatus(product_id, key)
 {
     console.log(product_id+' entro en cambiostatus')
     var value = $('#' + key + "_" + product_id).val()
+    // Validamos si seleccionan status y que sea finalizar
+    if(key == 'mercadolibre' && value == 'closed')
+    {
+                
+    }
     console.log(key)
     // registrar la tarea 
     var tarea_id = "task_" + Math.random()
