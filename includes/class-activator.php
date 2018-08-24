@@ -75,13 +75,13 @@ class MKF_Activator extends MKF_DBCore
       $products = wc_get_products( array(
         'title' => 'marketful_descripcion_comun',
       ));
-    }else{
-      // $products = get_products( array(
-      //   'title' => 'marketful_descripcion_comun',
-      // ));
-      $products = MKF_ProductEntry::GetInstance()->get_product_list(1, 0, "marketful_descripcion_comun");
-      $products = $products[0]["data"]["0"];
-    }
+    // }else{
+    //   // $products = get_products( array(
+    //   //   'title' => 'marketful_descripcion_comun',
+    //   // ));
+    //   $products = MKF_ProductEntry::GetInstance()->get_product_list(1, 0, "marketful_descripcion_comun");
+    //   $products = $products[0]["data"]["0"];
+    // }
       if(! $products)
       {
           $new_simple_product = new WC_Product_Simple();
@@ -92,6 +92,7 @@ class MKF_Activator extends MKF_DBCore
           $new_simple_product->set_sale_price(0);
           $new_simple_product->save();
       }
+    }
   }
   /**
    * @función RunUninstall()
