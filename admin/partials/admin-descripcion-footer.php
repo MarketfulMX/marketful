@@ -26,7 +26,6 @@ if(function_exists(wc_get_productssss)){
     ) );
 }else{
     $products = MKF_ProductEntry::GetInstance()->get_product_list(1, 0, "marketful_descripcion_comun");
-    // $product = $products[0]["data"][0]
 }
 
 ?>
