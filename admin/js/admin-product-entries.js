@@ -31,7 +31,7 @@
  */
 function cambioStatus(product_id, key)
 {
-    console.log(product_id)
+    console.log(product_id+' entro en cambiostatus')
     var value = $('#' + key + "_" + product_id).val()
     console.log(key)
     // registrar la tarea 
@@ -247,7 +247,6 @@ var status_cambios = ""
         });
     }
 
-
 /** 
  * @función check_status(@parametro: id del producto)
  * Valida si el producto no tiene categoria, exposicion y tipo de envio, en tal caso desabilita el select pub_status
@@ -259,17 +258,25 @@ function check_status(id)
     var expo_ml = $('#exposicion_ml_'+id+' option:selected').text();
     var categoria_ml = $('#categoria_'+id).text();
     var metodo_envio_ml = $('#metodo_envio_ml_'+id+' option:selected').text();
+    var link = 'redirige_cat(\'?page=mkf-entries_categorizador&pagina=1&keyword=&product_id='+id+'\')'; // Variable link para redirigir posteriormente
     //console.log(id +' '+expo_ml +' '+ categoria_ml +' '+ metodo_envio_ml);
     if(expo_ml == '...' || categoria_ml == 'categorizar' || metodo_envio_ml == '...')
     {
         //console.log('disabled = true');
         $('#mercadolibre_'+id).val('...');
-        $('#mercadolibre_'+id).prop('disabled', true);
+        $('#mercadolibre_'+id).attr('data-toggle','modal');
+        $('#mercadolibre_'+id).attr('data-target','#modal_ad_'+id);
+        $('#mercadolibre_'+id).attr('onClick','deshabilitar_select('+id+');')
+        $('.boton_redirige_cat_'+id).attr('onClick',link);
     }
     else
     {
         //console.log('enabled = false');
         $('#mercadolibre_'+id).prop('disabled', false);
+        $('#mercadolibre_'+id).attr('data-toggle',' ');
+        $('#mercadolibre_'+id).attr('data-target',' ');
+        $('#mercadolibre_'+id).attr('onClick',' ');
+        $('.boton_redirige_cat_'+id).attr('onClick',' ');
     }
 }
     /**
@@ -281,14 +288,45 @@ function check_status(id)
     {
         $('.pub_status').trigger('onload');
     });
-/**
- * @función notifica_status(@parametro: id del producto)
- */
-function notifica_status(id)
-{
-    console.log(' Se activo porque el select esta desabilitado');
-    if($('#mercadolibre_'+id).prop('disabled') == true)
+    /**
+     * @función 
+     * impide que el usuario seleccione alguna opcion cuando un select_status esta deshabilitado.
+     */
+    function deshabilitar_select(id)
     {
-        alert('Try to set a value for the category, the exposition and the kind of shipping');
+        $('#mercadolibre_'+id).val('...');
     }
+/**
+ * @función redirige_cat(@parametro: id del producto)
+ *
+ * Funcion que redirige hacia pa pagna de categorizador
+ */
+function redirige_cat(link)
+{
+    //console.log(link);
+    window.location = link;    
+}
+
+/** 
+ * @funcion se ejecuta y guarda el titulo del nombre.
+ *
+ * Valida el largo del titulo en caso de que sea mayor a 60 caracteres regresa un 
+ * alert y setea el color del texto en rojo. En caso contrario lo deja en color negro.
+ */
+function guardar_nombre(e,id)
+{
+    console.log('ok, si entro');
+    if(e.which==13)
+    {
+        if($('#title_'+id).val().length > 60)
+        {   
+            alert('El nombre debe de ser menor a 60 caracteres');
+            $('#title_'+id).css('color','firebrick');
+            $('#title_'+id).css('onchange','cambioStatus('+id+',\'titulo_ml\')');
+        }
+        else
+        {
+            $('#title_'+id).css('color','black');
+        }
+    }    
 }

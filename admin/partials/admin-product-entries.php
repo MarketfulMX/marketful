@@ -60,8 +60,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 <!-- // creo que sobra  -->
 <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 
-<!-- Bootstrap -->
+<!-- Bootstrap CSS and JS-->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Fonstawesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -75,6 +76,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 <div class="bootstrap-wrapper">
 
   <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
+    
   <div class="row">
     <div id=""  class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
       <div style="background-color: #E2E5C4; width: 45px; text-align: center; float: left;" class="caja-de-botones">
@@ -107,17 +109,17 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           <option value="premium" >Premium</option> 
       </select>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" id="dg">
+    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" id="dg">
         <a href="?page=mkf-descripcion-footer"><button id="boton_dg"> Agregar descripción general</button></a>
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" >
+    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+        <h8 id="cambios_guardados"></h8>
+    </div>
+    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" >
       <button id="boton_buscar" onClick="buscarResultados()" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
       <label style="float: right;"> 
         <input type="text" placeholder="Titulo" id="keyword_input" onkeypress="enterBuscar(event)">
       </label>
-
-      <h8 id="cambios_guardados"></h8>
-      
     </div>
   </div>
 
@@ -134,7 +136,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       <tr>
         <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
         <th style="min-width: 50px">SKU </th>
-        <th style="min-width: 150px">Título</th>
+        <th style="min-width: 150px">Título en MercadoLibre</th>
         <th style="min-width: 50px">Status</th>
         <th style="min-width: 50px">Exposición</th>
         <th style="min-width: 130px">Categoría ML</th>
@@ -154,10 +156,39 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       foreach ($products[0]["data"] as $key => $product) :
     ?>
       <tr>
+        <!-- Modal para actualizar información -->
+          <div class="modal fade" id="modal_ad_<?php echo $product->ID; ?>" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header" >
+                  <h4 class="modal-title">Actualiza la información del producto</h4>
+                  <button type="button" class="close" data-dismiss="modal" onclick="location.reload();">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <p>Para poder asignar el tipo de status, primero debes actualizar la categoría, el tipo de exposición y el tipo de envión en MercadoLibre. ¿Deseas actualizarlo ahora?</p>
+                </div>
+                <div class="modal-footer">
+                  <button class="boton_redirige_cat_<?php echo $product->ID; ?> btn btn-default" id=""> Actualizar </button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="location.reload();">Cerrar</button>
+                </div>
+              </div>
+            </div>
+          </div>
         <td class="dt_check"><input type="checkbox" class="ids" name="checkboxes" id="checkbox_<?php echo $product->ID; ?>" />  </td>
         <td><?php echo $product->sku; ?></td>
-        <td style="min-width: 150px"><?php echo $product->title; ?></td>
-        <td><!--
+        <td style="min-width: 150px">
+            <?php 
+                if(strlen($product->title) > 60)
+                {
+                    echo '<input type="text" class="input" style="width: 200px;" id="titulo_ml_'.$product->ID.'" placeholder="'.$product->title.'" onkeypress="cambioStatus('.$product->ID.', \'titulo_ml\')"'.'onChange="">';
+                }
+                else
+                {
+                    echo $product->title;
+                } 
+            ?>
+          </td>
+        <!--
             ******************************************************************
                 @Scripts PHP en esta sección:
                 -  Hacemos un Echo al valor de ID del producto para mandarlo como parametro a la @función
@@ -168,15 +199,16 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 -  Dentro del select, se hace echo de 'Selected' para que sea la opcion seleccionada, en        caso de que el valor de $select_value sea igual a alguna de las opciones.
                 -  Se repite el procedimiento, pero en esta ocacion el dato que se utiliza es exposición_ml
                 -->
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones" onClick="notifica_status(<?php echo $product->ID; ?>)">
-              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select pub_status" id="mercadolibre_<?php echo $product->ID;  ?>" onload="check_status(<?php echo $product->ID; ?>)" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre')"  id="mercadolibre_<?php echo $product->ID;  ?>" >
+          <td>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones" >              
+              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select pub_status" id="mercadolibre_<?php echo $product->ID;  ?>" onload="check_status(<?php echo $product->ID; ?>)" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre')" on mouseover="notifica_status(<?php echo $product->ID; ?>)" >
                 <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
                 <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
                 <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
                 <option>...</option>
                 <option value="active" <?php echo ($select_value=="active")?'selected':''; ?>>Activa</option>
                 <option value="paused" <?php echo ($select_value=="paused")?'selected':''; ?>>Pausada</option>
-                <option value="closed" <?php echo ($select_value=="closed")?'selected':''; ?> >Finalizada</option> 
+                <option value="closed" <?php echo ($select_value=="closed")?'selected':''; ?>>Finalizada</option> 
               </select>
             </div>
         </td>
@@ -195,10 +227,10 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <?php $categoria = get_post_meta($product->ID, "last_category_ml", $single = true ) ?>
         <td style="min-width: 130px;" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}&pagina={$pagina}&keyword={$keyword}'>categorizar</a>")) ?></td>
         <td style=""><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
-        <td ><input   onchange="cambioStatus('<?php echo $product->ID ?>', 'precio_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
+        <td><input onchange="cambioStatus('<?php echo $product->ID ?>', 'precio_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
         <td><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
-        <td ><input  onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
-        <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
+            <td ><input  onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
+            <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
         <td style="min-width: 150px;">
            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
               <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml'); check_status(<?php echo $product->ID; ?>);" id="metodo_envio_ml_<?php echo $product->ID;  ?>">

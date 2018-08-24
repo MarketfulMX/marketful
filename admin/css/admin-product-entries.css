@@ -50,7 +50,6 @@
         width: 90px;
         cursor: default;
         font-size: 12px; 
-        padding-left: 10px; 
     }
     #exposicion_ml_select
     {
@@ -69,7 +68,6 @@
     #dg
     {   
         padding-left: 0px;
-        margin-left: -13px;
     }
         #boton_dg
         {
@@ -153,7 +151,6 @@
             border-color: black;
             border-color: #7E7F6D;
         }
-
 
 /********************************************************************/
 /********************************************************************/
