@@ -90,7 +90,6 @@ class MKF_Activator extends MKF_DBCore
           $new_simple_product->set_sale_price(0);
           $new_simple_product->save();
       }
-    }
   }
   /**
    * @función RunUninstall()
