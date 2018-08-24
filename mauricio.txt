@@ -11,19 +11,19 @@ Mauricio
  4) En publicaciones, el select de Status debe estar disabled si el producto no tiene categoria, exposicion y tipo de envio LISTO
  
  5) con jquery on Click si lo tratas de activar entonces te salga un alert que diga Debes tener categoria, exposicion y tipo de envio para 
- poder publicar un producto con un Modal de bootstrap. --
+ poder publicar un producto con un Modal de bootstrap. LISTO (Mejorable)
  
  6) En titulo, si el titulo tiene mas de 60 caracteres, entonces colocar un input en lugar del titulo qeu tenga como placeholder el titulo LISTO
  
- 7) El input tiene que tener como id "titulo_ml_<?php echo $product->ID; ?>" y onChange="cambioStatus(<?php echo $product->ID;  ?>, 'titulo_ml')"
+ 7) El input tiene que tener como id "titulo_ml_<?php echo $product->ID; ?>" y onChange="cambioStatus(<?php echo $product->ID;  ?>, 'titulo_ml')" LISTO
  
- 8) Cambiar el nombre de la columna Titulo por Titulo en Mercadolibre 
+ 8) Cambiar el nombre de la columna Titulo por Titulo en Mercadolibre LISTO
  
- 9) Select mercadolibre tiene dos veces el id. quitar uno (mercadolibre_)
+ 9) Select mercadolibre tiene dos veces el id. quitar uno (mercadolibre_) LISTO
  
  9.5) Poner una confirmación cuando en el status le den finalizar, ya que es permanente el cambio.
  
- 9.6) Actualizar la query de admin-product-entries para que no muestre los que esten en la papelera.
+ 9.6) Actualizar la query de admin-product-entries para que no muestre los que esten en la papelera.    
 
 
 

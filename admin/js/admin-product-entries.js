@@ -299,34 +299,10 @@ function check_status(id)
 /**
  * @función redirige_cat(@parametro: id del producto)
  *
- * Funcion que redirige hacia pa pagna de categorizador
+ * Funcion que redirige hacia la pagina de categorizador
  */
 function redirige_cat(link)
 {
     //console.log(link);
     window.location = link;    
-}
-
-/** 
- * @funcion se ejecuta y guarda el titulo del nombre.
- *
- * Valida el largo del titulo en caso de que sea mayor a 60 caracteres regresa un 
- * alert y setea el color del texto en rojo. En caso contrario lo deja en color negro.
- */
-function guardar_nombre(e,id)
-{
-    console.log('ok, si entro');
-    if(e.which==13)
-    {
-        if($('#title_'+id).val().length > 60)
-        {   
-            alert('El nombre debe de ser menor a 60 caracteres');
-            $('#title_'+id).css('color','firebrick');
-            $('#title_'+id).css('onchange','cambioStatus('+id+',\'titulo_ml\')');
-        }
-        else
-        {
-            $('#title_'+id).css('color','black');
-        }
-    }    
 }
