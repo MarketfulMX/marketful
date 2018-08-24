@@ -156,7 +156,7 @@ $products = wc_get_products( array(
                     echo $products[0]->get_description();
 
                 }else{
-                    echo "No hay producto de prueba creado";
+                    echo "Error! No hay producto de prueba creado";
                 }
                 ?> 
                 <br>
