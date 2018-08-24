@@ -80,7 +80,7 @@ class MKF_Activator extends MKF_DBCore
       //   'title' => 'marketful_descripcion_comun',
       // ));
       $products = MKF_ProductEntry::GetInstance()->get_product_list(1, 0, "marketful_descripcion_comun");
-      $products = $products[0]["data"]["0"]
+      $products = $products[0]["data"]["0"];
     }
       if(! $products)
       {
