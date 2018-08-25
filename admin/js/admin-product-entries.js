@@ -316,3 +316,13 @@ function redirige_cat(link)
     //console.log(link);
     window.location = link;    
 }
+
+/**
+ * @función resize_window()
+ * Re define el tamaño de la pantalla
+ */
+function resize_window()
+{
+    console.log('resize()');
+    $('#maximo').css('max-width','1300px');
+}

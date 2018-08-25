@@ -8,10 +8,10 @@ Mauricio
  No sustituye la descripcion del item, solo agrega lo que escribas LISTO
  3) El texto rojo. cambiarlo de color a engro y colocarlo en un cuadro y un subtitulo que diga "Descripcion Comun Actual:" LISTO
 
- 4) En publicaciones, el select de Status debe estar disabled si el producto no tiene categoria, exposicion y tipo de envio LISTO
+ 4) En publicaciones, el select de Status debe estar disabled si el producto no tiene categoria, exposicion y tipo de envio LISTO (FALTA validar que no cambie status con el select status masivo)
  
  5) con jquery on Click si lo tratas de activar entonces te salga un alert que diga Debes tener categoria, exposicion y tipo de envio para 
- poder publicar un producto con un Modal de bootstrap. LISTO 
+ poder publicar un producto con un Modal de bootstrap. LISTO (FALTA arreglar que no cambie el ancho de la pagina cada que aparece el MODAL)
  
  6) En titulo, si el titulo tiene mas de 60 caracteres, entonces colocar un input en lugar del titulo qeu tenga como placeholder el titulo LISTO
  
@@ -21,7 +21,7 @@ Mauricio
  
  9) Select mercadolibre tiene dos veces el id. quitar uno (mercadolibre_) LISTO
  
- 9.5) Poner una confirmación cuando en el status le den finalizar, ya que es permanente el cambio. 
+ 9.5) Poner una confirmación cuando en el status le den finalizar, ya que es permanente el cambio. LISTO
  
  9.6) Actualizar la query de admin-product-entries para que no muestre los que esten en la papelera.    
 

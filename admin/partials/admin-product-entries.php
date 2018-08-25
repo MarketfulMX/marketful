@@ -71,9 +71,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 <!-- ESTILOS ESTAN DENTRO DE admin/css/admin-product-entries.css -->
 
 
-<div class="container" style="max-width: 95%; overflow: hidden;">
+<div class="container" style="max-width: 95%; overflow: hidden;" >
     
-<div class="bootstrap-wrapper">
+<div class="bootstrap-wrapper"id="maximo" >
 
   <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
     
@@ -169,7 +169,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 </div>
                 <div class="modal-footer">
                   <button class="boton_redirige_cat_<?php echo $product->ID; ?> btn btn-default" id=""> Actualizar </button>
-                  <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="location.reload();">Cerrar</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="resize_window();">Cerrar</button>
                 </div>
               </div>
             </div>
