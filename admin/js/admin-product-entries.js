@@ -103,10 +103,10 @@ function buscarResultados()
  */
 function selectTodos()
 {
-    console.log("entramos en select otodos")
+    //console.log("entramos en select otodos")
     checkboxes = document.getElementsByName('checkboxes');
     var source = $('#checkbox_master')
-    console.log(source)
+    //console.log(source)
     for(var i=0, n=checkboxes.length;i<n;i++) 
     {
         checkboxes[i].checked = source.is(":checked");
@@ -122,67 +122,84 @@ function selectTodos()
  */
 function statusMasivo(key, nombre_key, id)
 {
-    console.log("vamos a hacer un cambio masivo")
+    //console.log("vamos a hacer un cambio masivo")
     // console.log(product_id)
     var value = $('#' + id).val()
+    //console.log('Entramos a statusMasivo, Tipo = '+ key +' Id = '+id +' Valor = '+ value + '');
     // var key = "mercadolibre"
-    console.log(key)
-    console.log(value)
+    //console.log(key)
+    //console.log(value)
     var isGood=confirm('Confirmar hacer cambio masivo de ' + nombre_key + ' a ' + value + '?');
     if (isGood) 
     {
-        console.log("se prendio")
+        //console.log("se prendio")
         var checkboxes = $( '[name="checkboxes"]:checked');
         for(var i=0, n=checkboxes.length;i<n;i++) 
-        {
+        {   
             var product_id = checkboxes[i].id.replace("checkbox_", "")
-            console.log(product_id)
-            var tarea_id = "task_" + Math.random()
-            tareas[tarea_id] = false
-            $('#cambios_guardados').text("Guardando cambios...");
-            // checkboxes[i].checked = true;
-            jQuery.ajax({
-              url: ajaxurl,
-              type: 'post',
-              dataType: 'json',
-              data: 
-                { 
-                    product_id: product_id, 
-                    value: value, 
-                    key: key,
-                    tarea_id: tarea_id,
-                    action: 'foobar'
-                },
-                success: function(response) 
-                { 
-                    console.log(response.data)
-                    console.log("success")
-                    var nombre = key + "_" + response.data["product_id"]
-                    var el_valor = response.data["value"]
-                    console.log("el nombre es")
-                    console.log(nombre)
-                    var element = document.getElementById(nombre);
-                    element.value = el_valor;
-                    delete tareas[response.data["tarea_id"]]
-                    console.log(tareas.size)
-                    if(tareas.size == null)
-                    {
-                        $('#cambios_guardados').text("Cambios guardados");
-                    }
-                    else
-                    {
-                        console.log(tareas)
+            //console.log(product_id)
+            // ------------------------------------------------------------------------
+            // -- VALIDANDO QUE EL SELECT_STATUS ESTE DISPNIBLE PARA SER MODIFICADO ---
+            // ------------------------------------------------------------------------
+            // Se toman los valores de exposición, categoria y tipo de envío
+            var expo_ml = $('#exposicion_ml_'+product_id+' option:selected').text();
+            var categoria_ml = $('#categoria_'+product_id).text();
+            var metodo_envio_ml = $('#metodo_envio_ml_'+product_id+' option:selected').text();
+            // En caso de que alguno de los atributos necesarios para realizar la publicacion no este definido Y se este haciendo un cambio de status (mercadolibre) omitira el cambio.
+            if((expo_ml == '...' || categoria_ml == 'categorizar' || metodo_envio_ml == '...') && key == 'mercadolibre')
+            {
+                //console.log('El producto con el ID '+product_id+' no sera modificado.');
+            }
+            else
+            {
+                //console.log('El producto con el ID '+product_id+' si sera modificado.');
+                var tarea_id = "task_" + Math.random()
+                tareas[tarea_id] = false
+                $('#cambios_guardados').text("Guardando cambios...");
+                // checkboxes[i].checked = true;
+                jQuery.ajax({
+                  url: ajaxurl,
+                  type: 'post',
+                  dataType: 'json',
+                  data: 
+                    { 
+                        product_id: product_id, 
+                        value: value, 
+                        key: key,
+                        tarea_id: tarea_id,
+                        action: 'foobar'
+                    },
+                    success: function(response) 
+                    { 
+                        console.log(response.data)
+                        console.log("success")
+                        var nombre = key + "_" + response.data["product_id"]
+                        var el_valor = response.data["value"]
+                        console.log("el nombre es")
+                        console.log(nombre)
+                        var element = document.getElementById(nombre);
+                        element.value = el_valor;
+                        delete tareas[response.data["tarea_id"]]
                         console.log(tareas.size)
-                    }
-                },
-                error: function(response) 
-                { 
-                    console.log("error")
-                    console.log(response.responseText)
-                    console.log(response.data)
-                  // jQuery('#fire').text("...error!");
-                },
-            });
+                        if(tareas.size == null)
+                        {
+                            $('#cambios_guardados').text("Cambios guardados");
+                        }
+                        else
+                        {
+                            console.log(tareas)
+                            console.log(tareas.size)
+                        }
+                    },
+                    error: function(response) 
+                    { 
+                        console.log("error")
+                        console.log(response.responseText)
+                        console.log(response.data)
+                      // jQuery('#fire').text("...error!");
+                    },
+                });
+            }
         }
     }
 }
