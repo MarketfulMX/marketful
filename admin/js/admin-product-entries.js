@@ -146,11 +146,7 @@ function statusMasivo(key, nombre_key, id)
             var categoria_ml = $('#categoria_'+product_id).text();
             var metodo_envio_ml = $('#metodo_envio_ml_'+product_id+' option:selected').text();
             // En caso de que alguno de los atributos necesarios para realizar la publicacion no este definido Y se este haciendo un cambio de status (mercadolibre) omitira el cambio.
-            if((expo_ml == '...' || categoria_ml == 'categorizar' || metodo_envio_ml == '...') && key == 'mercadolibre')
-            {
-                //console.log('El producto con el ID '+product_id+' no sera modificado.');
-            }
-            else
+            if(!((expo_ml == '...' || categoria_ml == 'categorizar' || metodo_envio_ml == '...') && key == 'mercadolibre'))
             {
                 //console.log('El producto con el ID '+product_id+' si sera modificado.');
                 var tarea_id = "task_" + Math.random()
@@ -341,5 +337,6 @@ function redirige_cat(link)
 function resize_window()
 {
     console.log('resize()');
-    $('#maximo').css('max-width','1300px');
+    $('#wpbody-content').css('width','1200px');
+    console.log($('wpbody-content').css('width'));
 }

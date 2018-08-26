@@ -157,14 +157,14 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     ?>
       <tr>
         <!-- Modal para actualizar información -->
-          <div class="modal fade" id="modal_ad_<?php echo $product->ID; ?>" role="alert">
+          <div class="modal fade" id="modal_ad_<?php echo $product->ID; ?>" onClick="resize_window();"role="alert">
             <div class="modal-dialog">
               <div class="modal-content" >
-                <div class="modal-header" onclick="location.reload();">
+                <div class="modal-header" onclick="resize_window();">
                   <h4 class="modal-title">Actualiza la información del producto</h4>
-                  <button type="button" class="close" data-dismiss="modal" onclick="location.reload();">&times;</button>
+                  <button type="button" class="close" data-dismiss="modal" onclick="resize_window();">&times;</button>
                 </div>
-                <div class="modal-body" onclick="location.reload();">
+                <div class="modal-body" onclick="resize_window();">
                   <p>Para poder asignar el tipo de status, primero debes actualizar la categoría, el tipo de exposición y el tipo de envió en MercadoLibre. ¿Deseas actualizarlo ahora?</p>
                 </div>
                 <div class="modal-footer">
