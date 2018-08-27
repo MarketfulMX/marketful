@@ -14,7 +14,7 @@
  * @wordpress-plugin
  * Plugin Name:       Marketful
  * Plugin URI:        http://www.marketful.mx
- * Description:       Conecta tu tienda de WooCommerce con Mercado Libre y manten actualizada tu informaciÃ³n desde Marketful.
+ * Description:       Conecta tu tienda de WooCommerce con Mercado Libre y manten actualizada tu información desde Marketful.
  * Version:           1.0.0
  * Author:            MarketFul
  * Author URI:        http://www.marketful.mx/
