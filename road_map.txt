@@ -15,7 +15,7 @@ admin-product-entries.php
 9) Agregar campo Ultima Actualizacion que muestre el campo error_ml
 
 Aspecto admin-product-entrie.php
-10) Disminuir tamaÃ±o de las letras. todo esta muy grande en la tabla
+10) Disminuir tamaño de las letras. todo esta muy grande en la tabla
 3) Mejorar aspecto de area de botones para cambios masivos 
 
 
