@@ -1,4 +1,4 @@
- <?php
+<?php
 
 /**
  * Archivo: class-admin-product-entries.php
