@@ -66,8 +66,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 <!-- Fonstawesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-<!-- FUNCIONES Y SCRIPTS JS estan dentro de admin/js/plg-admin.js -->
-<!-- ESTILOS ESTAN DENTRO DE admin/css/styles.css -->
+<!-- FUNCIONES Y SCRIPTS JS estan dentro de admin/js/admin-product-entries.js -->
+<!-- ESTILOS ESTAN DENTRO DE admin/css/admin-product-entries.css -->
 
 
 <div class="container" style="max-width: 95%; overflow: hidden;">
@@ -76,7 +76,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
   <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
   <div class="row">
-    <div id=""  class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+    <div id=""  class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
       <div style="background-color: #E2E5C4; width: 45px; text-align: center; float: left;" class="caja-de-botones">
         <?php 
         if($pagina > 1){
@@ -106,6 +106,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           <option value="clasica" >Clásica</option>
           <option value="premium" >Premium</option> 
       </select>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" id="dg">
+        <a href="?page=mkf-descripcion-footer"><button id="boton_dg"> Agregar descripción general</button></a>
     </div>
     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" >
       <button id="boton_buscar" onClick="buscarResultados()" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
@@ -165,8 +168,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 -  Dentro del select, se hace echo de 'Selected' para que sea la opcion seleccionada, en        caso de que el valor de $select_value sea igual a alguna de las opciones.
                 -  Se repite el procedimiento, pero en esta ocacion el dato que se utiliza es exposición_ml
                 -->
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
-              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select" id="mercadolibre_<?php echo $product->ID;  ?>" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre')" id="mercadolibre_<?php echo $product->ID;  ?>" >
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones" onClick="notifica_status(<?php echo $product->ID; ?>)">
+              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select pub_status" id="mercadolibre_<?php echo $product->ID;  ?>" onload="check_status(<?php echo $product->ID; ?>)" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre')"  id="mercadolibre_<?php echo $product->ID;  ?>" >
                 <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
                 <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
                 <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
@@ -176,11 +179,10 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 <option value="closed" <?php echo ($select_value=="closed")?'selected':''; ?> >Finalizada</option> 
               </select>
             </div>
-            
         </td>
         <td>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
-              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml')" id="exposicion_ml_<?php echo $product->ID;  ?>">
+              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml'); check_status(<?php echo $product->ID; ?>);" id="exposicion_ml_<?php echo $product->ID;  ?>">
                 <?php $select_value = $all_mlmeta[0]["data"][0]->exposicion; ?>
                 <option>...</option>
                 <option value="free" <?php echo ($select_value=="free")?'selected':''; ?>>Gratis</option>
@@ -199,7 +201,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
         <td style="min-width: 150px;">
            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
-              <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml')" id="metodo_envio_ml_<?php echo $product->ID;  ?>">
+              <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml'); check_status(<?php echo $product->ID; ?>);" id="metodo_envio_ml_<?php echo $product->ID;  ?>">
                 <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
                 <option>...</option>
                 <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envío Gratis</option>

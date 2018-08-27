@@ -1,24 +1,47 @@
 Mauricio 
 
-1) link de categorias debe incluir params pagina LISTO
-2) Hacer boton Regresar en vista Categorizar que lleve a la pagina en la q estabas LISTO
-3) hacer que el link tambien mande param keyword si esta presente LISTO
-4) Hacer que si estoy focus (si escribo entonces se escribe en el intpu) en el input y le doy a enter entonces mandar el request como si le dieras a la lupa LISTO
+
+
+ 1) En Publicaciones (admin product entries) agregar boton para ir a Descripcion General LISTO
+
+ 2) Escribir instrucciones que especifiquen que esta descrpcion se le agregara a las pubilcaciones existentes en Mercadolibre. 
+ No sustituye la descripcion del item, solo agrega lo que escribas LISTO
+ 3) El texto rojo. cambiarlo de color a engro y colocarlo en un cuadro y un subtitulo que diga "Descripcion Comun Actual:" LISTO
+
+ 4) En publicaciones, el select de Status debe estar disabled si el producto no tiene categoria, exposicion y tipo de envio LISTO
+ 
+ 5) con jquery on Click si lo tratas de activar entonces te salga un alert que diga Debes tener categoria, exposicion y tipo de envio para 
+ poder publicar un producto. 
+ 6) En titulo, si el titulo tiene mas de 60 caracteres, entonces colocar un input en lugar del titulo qeu tenga como placeholder el titulo
+ 7) El input tiene que tener como id "titulo_ml_<?php echo $product->ID; ?>" y onChange="cambioStatus(<?php echo $product->ID;  ?>, 'titulo_ml')"
+ 8) Cambiar el nombre de la columna Titulo por Titulo en Mercadolibre 
+ 9) Select mercadolibre tiene dos veces el id. quitar uno (mercadolibre_)
 
 
 
-5) Notificacion de cambios guardados estilo google drive LISTO
-	- hacer un var que sea un hash var tareas = {} LISTO
-	= hacer un var qeu sea string var status_cambios = "cambios guardados" LISTO
-	- cuando se dispare un cambio (cambioStatus() y statusMasivo()) entonces se debe registrar en las tareas y se debe cambiar status_cambios = "Guardando..." LISTO
-		- en el caso de statusMasivo se debe hacer para cada registro que se cambie (cada vez q se mande un Ajax) LISTO
-	- cuando se complete se borra de las tareas y si tareas.length == 0 entonces se marca la variable status_cambios = "cambios guardados" LISTO
+ Onboarding:
+ 10) Preparar la vista Dashboard para que tenga varios tabs de Bootstrap
+ 	- Instalacion
+ 		- vas agregando instrucciones de instalacion
+ 	- Instrucciones
+ 		Instrucciones de como subir una publicacion. Especificar que se tomaran las fotos de woo commerce y la descripcion. 
+ 		Tambien aclarar que si no pones inventario entonces se toma el de Woo Commerce
+ 		Titulo de menos de 60
+ 		Publicaciones por encima de 470 pesos solo admiten envio gratis
+
+ 	- Preguntas Frecuentes
+ 		Cuando le ensenes a los demas las instrucciones y el plugin, las preguntas que te hagan 
+ 	- Soporte
+ 		- Bugs de software abrir un ticket en el repo y link al repo
+ 		- Dudas o comentarios escribir a mauricio@marketful.mx o marcar al 449-392-5230
 
 
 
-	
-6) Agregar campo ultima actiualizacion (se llama error_ml en la base de datos)
-7) Limpiar codigo. los estilos que se agregaron para la tabla hay muchos que no se usan 
-8) Sacar css y js del archivo a las carpetas admin > css y admin > js y enqueue los files para que se carguen cuando se cargue la pagina
-	- no debe quedar una linea de codigo que no sea necesaria en los estilos 
-	- no debe cambiar en nada la apariencia de la pagina
+
+
+
+
+
+
+ ### API Juan y Charly
+ 1) Agregar la descripcion comun a los items nuevos en SubirMlListings

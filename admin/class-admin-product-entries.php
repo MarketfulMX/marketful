@@ -1,4 +1,4 @@
- <?php
+<?php
 
 /**
  * Archivo: class-admin-product-entries.php
@@ -149,6 +149,27 @@ class MKF_ProductEntry extends MKF_DBCore
         wp_send_json_success(array('product_id' => $producto_id, 'value' => $value, 'key' => $key, 'tarea_id'=>$tarea_id));
         wp_die();
     }
+    
+    
+    /** Descripcion Masiva **/
+    public function desc_comun_ajax_submit() 
+    {
+        error_log("entramos en descomunajax");
+        $product_id = $_POST['product_id'];
+        $descripcion = $_POST['descripcion'];
+        error_log($product_id);
+        error_log($descripcion);
+        $my_post = array();
+        $my_post['ID'] = $product_id;
+        $my_post['post_content'] = $descripcion;
+        wp_update_post( $my_post );
+        $site_url = get_site_url();
+        $url = "https://woocommerce.marketful.mx/notifications?site={$site_url}&descomun=true&product_id={$product_id}";
+        $http = _wp_http_get_object();
+        $response = $http->post( $url ); 
+        wp_send_json_success(array($descripcion));
+        wp_die();
+    }
 
     
     /**
@@ -245,7 +266,6 @@ class MKF_ProductEntry extends MKF_DBCore
         array_push($out, array("data"=> $this->execute_custom_query($sql)));
         return $out;
     }
-
     
     /** 
      * @fución publica get_ml_metadata(@string = (NULL))

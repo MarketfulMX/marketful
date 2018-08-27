@@ -66,6 +66,37 @@
         font-size: 12px; 
         padding-left: 10px;
     }
+    #dg
+    {   
+        padding-left: 0px;
+        margin-left: -13px;
+    }
+        #boton_dg
+        {
+            float: left;
+            margin-left:0px; 
+            padding-left: 3px;
+            background-color:#E2E5C4; 
+            height: 25px; 
+            width: auto; 
+            border-style: solid; 
+            border-color: #7E7F6D; 
+            border-radius: 3px;
+            border-width: 1px;
+            font-size: 12px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #boton_dg:hover
+        {
+            border-color: #7E7F6D;
+            background-color: #BCBFA3;
+        }
+        #boton_dg:active
+        {
+            border-color: #3F4036;
+            background-color: #BCBFA3;
+        }
     #keyword_input
     {
         margin-right: 2 px;

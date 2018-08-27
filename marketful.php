@@ -14,11 +14,11 @@
  * @wordpress-plugin
  * Plugin Name:       Marketful
  * Plugin URI:        http://www.marketful.mx
- * Description:       Small description
+ * Description:       Conecta tu tienda de WooCommerce con Mercado Libre y manten actualizada tu información desde Marketful.
  * Version:           1.0.0
  * Author:            MarketFul
  * Author URI:        http://www.marketful.mx/
- * License:           GPL
+ * License:           GPL2
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       mkf
  * Domain Path:       /languages
@@ -85,3 +85,6 @@ function mkf_run_core() {
 //
 mkf_run_core();
 add_action( 'wp_ajax_foobar', ['MKF_ProductEntry', 'my_theme_ajax_submit']);
+
+// Descripcion //
+add_action('wp_ajax_desc_comun', ['MKF_ProductEntry', 'desc_comun_ajax_submit']);

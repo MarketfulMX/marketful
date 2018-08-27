@@ -68,14 +68,54 @@ class MKF_Activator extends MKF_DBCore
    */
   private function RunInstall() 
   {
-    
+    /**
+     * @script que crea un nuevo producto dentro de MKF en caso de que no exista
+     */
+    if(function_exists(wc_get_products)){
+      $products = wc_get_products( array(
+        'title' => 'marketful_descripcion_comun',
+      ));
+    // }else{
+    //   // $products = get_products( array(
+    //   //   'title' => 'marketful_descripcion_comun',
+    //   // ));
+    //   $products = MKF_ProductEntry::GetInstance()->get_product_list(1, 0, "marketful_descripcion_comun");
+    //   $products = $products[0]["data"]["0"];
+    // }
+      if(! $products)
+      {
+          $new_simple_product = new WC_Product_Simple();
+          $new_simple_product->set_name("marketful_descripcion_comun");
+          $new_simple_product->set_sku("");
+          $new_simple_product->set_status("draft");
+          $new_simple_product->set_regular_price(0);
+          $new_simple_product->set_sale_price(0);
+          $new_simple_product->save();
+      }
+    }
   }
   /**
    * @función RunUninstall()
    */
   private function RunUninstall()
   {
-    
+      //$producto = MKF_ProductEntry::GetInstance()->get_post('marketful_descripcion_comun');
+      //wc_delete_product_transients( $producto->id);
+      //wp_delete_post($producto);
+      //$producto->delete(true);
+      //$result = ! ( $producto->get_id() > 0 );
+      //echo $result;
+      //WC_API_Products :: delete_product ($producto->ID, true);
+    if(function_exists(wc_get_products)){
+      $products = wc_get_products( array(
+        'title' => 'marketful_descripcion_comun',
+      ));
+      if(isset($products[0]))
+      {
+          $producto = $products[0]->get_id();
+      }
+      wp_delete_post($producto);
+    }
   }
   
 
