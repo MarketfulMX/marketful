@@ -236,7 +236,7 @@ class MKF_ProductEntry extends MKF_DBCore
                    tmp.sku,
                    IFNULL(tmp.titulo_ml, tmp.title) title,
                    CASE WHEN tmp.mercadolibre = 'A' THEN 'Activo' 
-                        WHEN tmp.mercadolibre = 'I' THEN 'Inactivo'
+                        WHEN tmp.mercadolibre = 'I' THEN 'Invalido1'
                    ELSE tmp.mercadolibre
                    END status,
                    CASE WHEN tmp.exposicion_ml = 'C' THEN 'Clasica' 
@@ -253,15 +253,14 @@ class MKF_ProductEntry extends MKF_DBCore
                      p.post_title title,
                      (SELECT meta_value 
                       FROM {$this->getPostMetaTableName()} 
-                      WHERE post_id = p.ID AND meta_key = '{$this->meta_status}') mercadolibre,
+                      WHERE post_id = p.ID AND meta_key = '{$this->meta_status}' AND meta_value != 'closed') mercadolibre,
                      (SELECT meta_value 
                       FROM {$this->getPostMetaTableName()} 
-                      WHERE post_id = p.ID AND meta_key = '$this->meta_exp') exposicion_ml
-
-
+                      WHERE post_id = p.ID AND meta_key = '{$this->meta_exp}') exposicion_ml
+                      
               FROM {$this->getPostTableName()} p
               INNER JOIN {$this->getPostMetaTableName()} pm1 ON pm1.post_id = p.ID and pm1.meta_key = '_sku'
-              WHERE p.post_type = 'product' and p.post_title LIKE '%{$keyword}%') tmp limit {$tope} offset {$offset} ";
+              WHERE p.post_type = 'product' and p.post_title LIKE '%{$keyword}%')  tmp limit {$tope} offset {$offset} ";
 
         array_push($out, array("data"=> $this->execute_custom_query($sql)));
         return $out;

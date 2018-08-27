@@ -23,7 +23,7 @@ Mauricio
  
  9.5) Poner una confirmación cuando en el status le den finalizar, ya que es permanente el cambio. LISTO
  
- 9.6) Actualizar la query de admin-product-entries para que no muestre los que esten en la papelera. 
+ 9.6) Actualizar la query de admin-product-entries para que no muestre los que esten en la papelera. (NO LISTO)
 
 
 

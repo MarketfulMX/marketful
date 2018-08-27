@@ -342,3 +342,5 @@ function resize_window()
     $('#wpbody-content').css('width','1200px');
     console.log($('wpbody-content').css('width'));
 }
+
+
