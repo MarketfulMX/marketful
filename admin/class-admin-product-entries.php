@@ -236,7 +236,7 @@ class MKF_ProductEntry extends MKF_DBCore
                    tmp.sku,
                    IFNULL(tmp.titulo_ml, tmp.title) title,
                    CASE WHEN tmp.mercadolibre = 'A' THEN 'Activo' 
-                        WHEN tmp.mercadolibre = 'I' THEN 'Invalido1'
+                        WHEN tmp.mercadolibre = 'I' THEN 'Inactivo'
                    ELSE tmp.mercadolibre
                    END status,
                    CASE WHEN tmp.exposicion_ml = 'C' THEN 'Clasica' 
