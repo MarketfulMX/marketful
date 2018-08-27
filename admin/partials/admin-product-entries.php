@@ -202,7 +202,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 -->
           <td>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones" >              
-              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select pub_status" id="mercadolibre_<?php echo $product->ID;  ?>" onload="check_status(<?php echo $product->ID; ?>)" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre')" on mouseover="notifica_status(<?php echo $product->ID; ?>)" >
+              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select pub_status" id="mercadolibre_<?php echo $product->ID;  ?>" onload="check_status(<?php echo $product->ID; ?>)" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre')" >
                 <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
                 <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
                 <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
