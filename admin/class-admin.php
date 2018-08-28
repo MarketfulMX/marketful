@@ -85,16 +85,23 @@ class MKF_Admin
   //Register the JavaScript for the admin area. Since 1.0.0 
   public function enqueue_scripts() 
   {
-    wp_enqueue_script('Popper',"https://unpkg.com/popper.js@1.14.3/dist/umd/popper.min.js", array(), '1.14.3', false );wp_enqueue_script('bootstrap',"https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js",array(),'4.1.0', false );
-    wp_enqueue_script('datatables',"https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js" , array(), '1.10.18', false );
-    wp_enqueue_script('admin_js_bootstrap_hack', plugin_dir_url( __FILE__ ) . 'js/bootstrap-hack.js', false, '1.0.0', false);
-    wp_enqueue_script('ape_func', plugin_dir_url( __FILE__ ) . 'js/admin-product-entries.js', false, '1.0.1', false);
-    wp_enqueue_script($this->plg_small_name, plugin_dir_url( __FILE__ ) . 'js/plg-admin.js', array('jquery'), $this->version, false);
-    wp_enqueue_script('footer_js', plugin_dir_url( __FILE__ ) . 'js/myjquery.js', false, '1.0.1', false);
-    /**
-     * El @Script que a continuación se utiliza la @función wp_create_nonce(@string) que genera un hash con 
-     * esa informacion para despues ser utilizada para validar la información que se envia.
-     */    
+    //aqui va el if+
+    // if(is_page(array('mkf-product-entries', 'mkf-entries_categorizador', 'mkf_dashboard', 'mkf-product-orders', 'mkf-product-questions', 'mkf-product-messages'))){
+    if($_GET['page'] == 'mkf-product-entries' || $_GET['page'] == 'mkf-descripcion-footer'){  
+      wp_enqueue_script('Popper',"https://unpkg.com/popper.js@1.14.3/dist/umd/popper.min.js", array(), '1.14.3', false );wp_enqueue_script('bootstrap',"https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js",array(),'4.1.0', false );
+      wp_enqueue_script('datatables',"https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js" , array(), '1.10.18', false );
+      wp_enqueue_script('admin_js_bootstrap_hack', plugin_dir_url( __FILE__ ) . 'js/bootstrap-hack.js', false, '1.0.0', false);
+      wp_enqueue_script('ape_func', plugin_dir_url( __FILE__ ) . 'js/admin-product-entries.js', false, '1.0.1', false);
+      wp_enqueue_script($this->plg_small_name, plugin_dir_url( __FILE__ ) . 'js/plg-admin.js', array('jquery'), $this->version, false);
+      wp_enqueue_script('footer_js', plugin_dir_url( __FILE__ ) . 'js/myjquery.js', false, '1.0.1', false);
+      /**
+       * El @Script que a continuación se utiliza la @función wp_create_nonce(@string) que genera un hash con 
+       * esa informacion para despues ser utilizada para validar la información que se envia.
+       */   
+    }else{
+      error_log("no consiguio la pagina");
+    }
+     
   }
     
   /**
