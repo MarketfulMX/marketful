@@ -13,7 +13,7 @@
     function clic(num)
     {
         switch (num)
-            {
+            {   
                 case 1:
                     $('#1').attr('class','nav-link active'); $('#dashboard').css('display','inline');
                     $('#2').attr('class','nav-link'); $('#instalacion').css('display','none');
@@ -76,15 +76,14 @@ body
         display: inline;
         margin-top: 20px;
         margin: 10px;
-        font-size: 12px;
+        font-size: 14px;
         
     }
     .maximo
     {
-        border-color: #dee2e6 #dee2e6 #fff;
+        border-color: #dee2e6;
         border-width: .5px;
         border-top-width: 0px;
-        border-bottom-width: 5px;
         border-style: solid;
         border-radius: 0px 0px 3px 3px;
         padding: 40px;
@@ -110,12 +109,31 @@ body
         border-radius: 3px;
         background-color: white;
     }
+    #boton_db
+    {
+        border-color: white; border-style: solid; border-width: 2px; border-radius: 4px;
+        box-shadow: 5px 10px;
+        color: white; 
+        background-color: #A06DE5;
+        padding: 8px;
+        cursor: pointer;
+    }
+        #boton_db:hover
+        {
+            border-color: #F9F3FF;
+            background-color: #8359BD;
+        }
+        #boton_db:active
+        {
+            border-color: #F9F3FF;
+            background-color: #8359BD;
+        }
     
 </style>
 <div class="head"> <h3> Dashboard </h3> </div>
 <ul class="nav nav-tabs tab-superior" id= tab-superior style="max-width: 98%;">
         <li class="nav-item"><a href="#" id="1" class="nav-link active" onclick="clic(1)" >Inicio</a></li>
-        <li class="nav-item"><a href="#" id="2" class="nav-link" onclick="clic(2)" >Instalacion</a></li>
+        <li class="nav-item"><a href="#" id="2" class="nav-link" onclick="clic(2)" >Activacion</a></li>
         <li class="nav-item"><a href="#" id="3" class="nav-link" onclick="clic(3)" >Instrucciones</a></li>
         <li class="nav-item"><a href="#" id="4" class="nav-link" onclick="clic(4)" >Preguntas Frecuentes</a></li>
         <li class="nav-item"><a href="#" id="5" class="nav-link" onclick="clic(5)" >Soporte</a></li>
@@ -126,8 +144,8 @@ body
             <div class="row">
                 <div class="col" id="db_1">
                     <img style="max-width: 40%; margin-left: 0px; margin-top:10px;"src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png">
-                    <p>Ponemos a tu alcance una poderosa herramienta tecnologica especializada para administrar todas tus plataformas de venta en linea y sincronizar la Informacion de tus publicaciones, ordenes de compra e inventario.</p>
-                    <img style="max-width: 100%; margin-right: auto;" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/df54ec67afd2c73ac1aada2c683ab07e6c1a45ff/Documentacion/img/page-02(3).jpeg?token=Ajnc0XzeluUqr5JuKkQhvLs-1kbsUyP8ks5bjW41wA%3D%3D">
+                    <p>Marketful Seller Center, es la nueva experiencia que revolucionara la manera en la que conectas con tus clientes de WooCommerce y MercadoLibre. <button id="boton_db" onclick="clic(2)"> Empieza aqui </button></p>
+                    <img style="max-width: 100%; margin-right: auto; border-radius: 3px; padding-bottom: 20px; " src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/dfff438a4546eb0fe69fc3e01e9dba2bcccacf03/Documentacion/img/screen.gif?token=Ajnc0cgQDdX9entMvkCFqQTVH7T9bKW0ks5bjqWPwA%3D%3D">
                 </div>
                 <div class="col" id="db_2">
                     <h3> Version 1.0</h3>
@@ -152,7 +170,7 @@ body
             </div>
         </div>
         <div id="instalacion">
-            <p>Contenido de instalacion</p>
+            <p>Contenido de activacion</p>
             <img src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png">
         </div>
         <div id="instrucciones">
