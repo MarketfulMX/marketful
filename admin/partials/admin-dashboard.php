@@ -59,6 +59,19 @@
 
 body
 {background-color: #F8F5FF;}
+    #alfav, #nuevov
+    {
+        border-radius: 3px;
+        background-color: #E8612F;
+        color: white;
+        padding: 5px;
+        font-size: 10px;
+        vertical-align: middle;
+    }
+    #nuevov
+    {
+        background-color: #44BBFF;
+    }
     .nav-item:active
     {
         border-bottom-color: white;
@@ -113,7 +126,11 @@ body
                 border-radius: 3px;
                 background-color: white;
             }
-    #boton_db
+    #activacion
+    {
+        font-size: 13px;
+    }
+    #boton_db,#boton_ac
     {
         border-color: white; border-style: solid; border-width: 2px; border-radius: 4px;
         box-shadow: 5px 10px;
@@ -122,19 +139,50 @@ body
         padding: 8px;
         cursor: pointer;
     }
-        #boton_db:hover
+        #boton_db:hover, #boton_ac:hover
         {
             border-color: #F9F3FF;
             background-color: #8359BD;
         }
-        #boton_db:active
+        #boton_db:active, #boton_ac:active
         {
             border-color: #F9F3FF;
             background-color: #8359BD;
+        }
+    #boton_ac
+    {
+        background-color: #44BBFF;
+        padding: 5px;
+        text-decoration: none;
+        margin-right: 5px;
+        height: 20px;
+    }
+        #boton_ac:hover
+        {
+            background-color: #4980CC;
+        }
+        #boton_ac:active
+        {
+            background-color: #4980CC;
+        }
+    #texto_ac
+    {
+        width: 150px; height: 30px;
+        font-size: 24px;
+        border-color: #AFE0E8; border-style: solid; border-width: .5px; border-radius: 3px;
+        background-color: #F3FFFF;
+    }
+        #tecto_ac:hover
+        {
+            border-width: .5px;
+        }
+        #texto_ac:active
+        {
+            border-width: .5px;
         }
     
 </style>
-<div class="head"> <h3> Dashboard </h3> </div>
+<div class="head"> <h3> Dashboard <b id="alfav"> v1.0.0 </b></h3> </div>
 <ul class="nav nav-tabs tab-superior" id= tab-superior style="max-width: 98%;">
         <li class="nav-item"><a href="#" id="1" class="nav-link active" onclick="clic(1)" >Inicio</a></li>
         <li class="nav-item"><a href="#" id="2" class="nav-link" onclick="clic(2)" >Activacion</a></li>
@@ -148,21 +196,19 @@ body
             <div class="row">
                 <div class="col" id="db_1">
                     <img style="max-width: 40%; margin-left: 0px; margin-top:10px;"src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png">
-                    <p>Marketful Seller Center, revolucionara la manera en la que conectas con tus clientes de WooCommerce y MercadoLibre. <button id="boton_db" onclick="clic(2)"> Activa tu tienda aqui </button></p>
+                    <p><b>Marketful Seller Center</b>, revolucionara la manera en la que conectas con tus clientes de <i>WooCommerce</i> y <i>MercadoLibre</i>.  Te ofrecemos un entorno dedicado a hacer tu trabajo mas sencillo, eficiente y personalizado.<button id="boton_db" onclick="clic(2)"> Activa tu tienda aqui </button></p>
                     <img style="max-width: 100%; margin-right: auto; border-radius: 3px; padding-bottom: 20px; " src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/dfff438a4546eb0fe69fc3e01e9dba2bcccacf03/Documentacion/img/screen.gif?token=Ajnc0cgQDdX9entMvkCFqQTVH7T9bKW0ks5bjqWPwA%3D%3D">
                 </div>
                 <div class="col" id="db_2">
-                    <h3> Version 1.0</h3>
-                    <li>Publicaciones Con *Marketful Seller Center* simplicidad es la norma, todos tus productos en un solo lugar y esto se refleja en el poder de publicar tus productos desde un solo lugar y esto se refleje en todos tus canales de venta, con Marketful Seller Center estas en buenas manos.</li>
-                    <li>Ordenes Con Marketful Seller Center tus ordenes de envio jamas estuvieron en tan buenas manos. Monitorea, da seguimiento y da soporte a tus clientes desde un solo lugar, podras monitorear envios no importa en donde realizaste la venta, tu Seller Center lo tiene bajo control.</li>
-                    <li>Preguntas Imagina algo tan sencillo como un centro unico de preguntas en donde podras administrar todos tus canales de comunicacion con tus clientes desde una sola pantalla, esto y mas te ofrece Marketful Seller Center.</li>
-                    <li>Comunicacion posventa Dentro de Marketful Seller Center podras mantener contacto directo con tus clientes despues de la venta y sin importar el canal por donde se haya realizado.</li>
+                    <h3> Version 1.0 <b id="nuevov">NUEVO</b></h3>
+                    <li> <b>Publicaciones : </b> Con nuestro Seller Center maneja todos tus productos de <i>WooCommerce</i> y publicalos en <i>Mercado Libre</i> con solo un clic de <b> Marketful </b>. </li>
+                    <li> <b>Practicidad :</b> Con <b> Marketful </b> la practicidad es la norma, con nuestro Seller Center en una misma pantalla y con solo un clic podras cambiar el status de todas las publicaciones que desees.</li>
                 </div>
             </div>
             <div class="row">
                 <div class="col" id="db_3">
                     <h3>marketful seller center &#160;</h3>
-                    <li> Marketful Seller Center Es una poderosa herramienta open source que te ayuda a unir todos tus canales de venta en un solo lugar de la manera mas sencilla e intuitiva, lo cual facilitara tu experiencia de venta y lo mas importante la de tus clientes. </li>
+                    <li> <b>Marketful Seller Center</b> Es una poderosa herramienta open source que te ayuda a unir todos tus canales de venta en un solo lugar de la manera mas sencilla e intuitiva, lo cual facilitara tu experiencia de venta y lo mas importante la de tus clientes. </li>
                     <li> Controla todos tus canales de venta con marketful seller center puedes administrar todas tus cuentas de venta en un solo lugar.</li>
                     <li> Cambios controlados Los cambios dentro de Marketful Seller Center se reflejan en todas tus plataformas.</li>
                     <li> Adios complicaciones Con Marketful Seller Center se acabaron las horas de modificar productos iguales en plataformas diferentes. </li>
@@ -177,9 +223,9 @@ body
             <div>
                 <h3>Bienvenido a la activacion</h3>
                 <p> El proceso de activacion consiste en los siguientes 3 pasos: </p>
-                <li> Da clic <a id="boton_db" target="_blank" href="https://www.marketful.mx/login"> aqui </a>  y registrate en Marketful.</li>
-                <li> </li>
-                <li></li>
+                <li> Da clic <a id="boton_ac" target="_blank" href="https://www.marketful.mx/login"> aqui </a> para registrate en Marketful.</li>
+                <li> Ya te has registrado, ahora ingresa el link de tu tienda. <input type="text" id="texto_ac" placeholder="          tu link">.marketful.mx</li>
+                <li> Por ultimo de manera opcional, logueate con tu pagina de Mercado Libre.</li>
             </div>
         </div>
         <div id="instrucciones">
