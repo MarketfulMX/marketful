@@ -16,35 +16,35 @@
             {   
                 case 1:
                     $('#1').attr('class','nav-link active'); $('#dashboard').css('display','inline');
-                    $('#2').attr('class','nav-link'); $('#instalacion').css('display','none');
+                    $('#2').attr('class','nav-link'); $('#activacion').css('display','none');
                     $('#3').attr('class','nav-link'); $('#instrucciones').css('display','none');
                     $('#4').attr('class','nav-link'); $('#preguntas_frecuentes').css('display','none');
                     $('#5').attr('class','nav-link'); $('#soporte').css('display','none');
                     break;
                 case 2:
                     $('#1').attr('class','nav-link'); $('#dashboard').css('display','none');
-                    $('#2').attr('class','nav-link active'); $('#instalacion').css('display','inline');
+                    $('#2').attr('class','nav-link active'); $('#activacion').css('display','inline');
                     $('#3').attr('class','nav-link'); $('#instrucciones').css('display','none');
                     $('#4').attr('class','nav-link'); $('#preguntas_frecuentes').css('display','none');
                     $('#5').attr('class','nav-link'); $('#soporte').css('display','none');
                     break;
                 case 3:
                     $('#1').attr('class','nav-link'); $('#dashboard').css('display','none');
-                    $('#2').attr('class','nav-link'); $('#instalacion').css('display','none');
+                    $('#2').attr('class','nav-link'); $('#activacion').css('display','none');
                     $('#3').attr('class','nav-link active'); $('#instrucciones').css('display','inline');
                     $('#4').attr('class','nav-link'); $('#preguntas_frecuentes').css('display','none');
                     $('#5').attr('class','nav-link'); $('#soporte').css('display','none');
                     break;
                 case 4:
                     $('#1').attr('class','nav-link'); $('#dashboard').css('display','none');
-                    $('#2').attr('class','nav-link'); $('#instalacion').css('display','none');
+                    $('#2').attr('class','nav-link'); $('#activacion').css('display','none');
                     $('#3').attr('class','nav-link'); $('#instrucciones').css('display','none');
                     $('#4').attr('class','nav-link active'); $('#preguntas_frecuentes').css('display','inline');
                     $('#5').attr('class','nav-link'); $('#soporte').css('display','none');
                     break;
                 case 5:
                     $('#1').attr('class','nav-link'); $('#dashboard').css('display','none');
-                    $('#2').attr('class','nav-link'); $('#instalacion').css('display','none');
+                    $('#2').attr('class','nav-link'); $('#activacion').css('display','none');
                     $('#3').attr('class','nav-link'); $('#instrucciones').css('display','none');
                     $('#4').attr('class','nav-link'); $('#preguntas_frecuentes').css('display','none');
                     $('#5').attr('class','nav-link active'); $('#soporte').css('display','inline');
@@ -59,6 +59,10 @@
 
 body
 {background-color: #F8F5FF;}
+    .nav-item:active
+    {
+        border-bottom-color: white;
+    }
     .head
     {
         margin: 20px;
@@ -67,7 +71,7 @@ body
     {
         text-decoration: none;
     }
-    #instalacion, #instrucciones, #preguntas_frecuentes, #soporte
+    #activacion, #instrucciones, #preguntas_frecuentes, #soporte
     {
         display: none;
     }
@@ -79,36 +83,36 @@ body
         font-size: 14px;
         
     }
-    .maximo
-    {
-        border-color: #dee2e6;
-        border-width: .5px;
-        border-top-width: 0px;
-        border-style: solid;
-        border-radius: 0px 0px 3px 3px;
-        padding: 40px;
-        background-color: white;    
-        margin-right: 2%;
-    }
-    #db_1, #db_2
-    {
-        margin: 20px;
-        margin-top: -20px;
-        border-color: #C2B9E8;
-        border-style: solid;
-        border-width: 1px;
-        border-radius: 3px;
-        background-color: white;
-    }
-    #db_3, #db_4
-    {
-        margin: 20px;
-        border-color: #C2B9E8;
-        border-style: solid;
-        border-width: 1px;
-        border-radius: 3px;
-        background-color: white;
-    }
+        .maximo
+        {
+            border-color: #dee2e6;
+            border-width: .5px;
+            border-top-width: 0px;
+            border-style: solid;
+            border-radius: 0px 0px 3px 3px;
+            padding: 40px;
+            background-color: white;    
+            margin-right: 2%;
+        }
+            #db_1, #db_2
+            {
+                margin: 20px;
+                margin-top: -20px;
+                border-color: #dee2e6;
+                border-style: solid;
+                border-width: 1px;
+                border-radius: 3px;
+                background-color: white;
+            }
+            #db_3, #db_4
+            {
+                margin: 20px;
+                border-color:#dee2e6;
+                border-style: solid;
+                border-width: 1px;
+                border-radius: 3px;
+                background-color: white;
+            }
     #boton_db
     {
         border-color: white; border-style: solid; border-width: 2px; border-radius: 4px;
@@ -144,7 +148,7 @@ body
             <div class="row">
                 <div class="col" id="db_1">
                     <img style="max-width: 40%; margin-left: 0px; margin-top:10px;"src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png">
-                    <p>Marketful Seller Center, es la nueva experiencia que revolucionara la manera en la que conectas con tus clientes de WooCommerce y MercadoLibre. <button id="boton_db" onclick="clic(2)"> Empieza aqui </button></p>
+                    <p>Marketful Seller Center, revolucionara la manera en la que conectas con tus clientes de WooCommerce y MercadoLibre. <button id="boton_db" onclick="clic(2)"> Activa tu tienda aqui </button></p>
                     <img style="max-width: 100%; margin-right: auto; border-radius: 3px; padding-bottom: 20px; " src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/dfff438a4546eb0fe69fc3e01e9dba2bcccacf03/Documentacion/img/screen.gif?token=Ajnc0cgQDdX9entMvkCFqQTVH7T9bKW0ks5bjqWPwA%3D%3D">
                 </div>
                 <div class="col" id="db_2">
@@ -169,9 +173,14 @@ body
                 </div>
             </div>
         </div>
-        <div id="instalacion">
-            <p>Contenido de activacion</p>
-            <img src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png">
+        <div id="activacion">
+            <div>
+                <h3>Bienvenido a la activacion</h3>
+                <p> El proceso de activacion consiste en los siguientes 3 pasos: </p>
+                <li> Da clic <a id="boton_db" target="_blank" href="https://www.marketful.mx/login"> aqui </a>  y registrate en Marketful.</li>
+                <li> </li>
+                <li></li>
+            </div>
         </div>
         <div id="instrucciones">
             <p>Contenido de instrucciones</p>
