@@ -253,7 +253,7 @@ class MKF_ProductEntry extends MKF_DBCore
                      p.post_title title,
                      (SELECT meta_value 
                       FROM {$this->getPostMetaTableName()} 
-                      WHERE post_id = p.ID AND meta_key = '{$this->meta_status}' AND meta_value != 'closed') mercadolibre,
+                      WHERE post_id = p.ID AND meta_key = '{$this->meta_status}') mercadolibre,
                      (SELECT meta_value 
                       FROM {$this->getPostMetaTableName()} 
                       WHERE post_id = p.ID AND meta_key = '{$this->meta_exp}') exposicion_ml

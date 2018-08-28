@@ -56,6 +56,9 @@
 </script>
 
 <style>
+
+body
+{background-color: #F8F5FF;}
     .head
     {
         margin: 20px;
@@ -78,17 +81,41 @@
     }
     .maximo
     {
-        border-color: #C2C3E8;
-        border-width: 1px;
+        border-color: #dee2e6 #dee2e6 #fff;
+        border-width: .5px;
+        border-top-width: 0px;
+        border-bottom-width: 5px;
         border-style: solid;
+        border-radius: 0px 0px 3px 3px;
+        padding: 40px;
+        background-color: white;    
+        margin-right: 2%;
+    }
+    #db_1, #db_2
+    {
+        margin: 20px;
+        margin-top: -20px;
+        border-color: #C2B9E8;
+        border-style: solid;
+        border-width: 1px;
         border-radius: 3px;
+        background-color: white;
+    }
+    #db_3, #db_4
+    {
+        margin: 20px;
+        border-color: #C2B9E8;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 3px;
+        background-color: white;
     }
     
 </style>
 <div class="head"> <h3> Dashboard </h3> </div>
-<ul class="nav nav-tabs tab-superior" id= tab-superior>
+<ul class="nav nav-tabs tab-superior" id= tab-superior style="max-width: 98%;">
         <li class="nav-item"><a href="#" id="1" class="nav-link active" onclick="clic(1)" >Inicio</a></li>
-        <li class="nav-item"><a href="#" id="2" class="nav-link" onclick="clic(2)" >Instalación</a></li>
+        <li class="nav-item"><a href="#" id="2" class="nav-link" onclick="clic(2)" >Instalacion</a></li>
         <li class="nav-item"><a href="#" id="3" class="nav-link" onclick="clic(3)" >Instrucciones</a></li>
         <li class="nav-item"><a href="#" id="4" class="nav-link" onclick="clic(4)" >Preguntas Frecuentes</a></li>
         <li class="nav-item"><a href="#" id="5" class="nav-link" onclick="clic(5)" >Soporte</a></li>
@@ -97,28 +124,29 @@
     <div class="contenedor">
         <div id="dashboard">
             <div class="row">
-                <div class="col" id=uno>
+                <div class="col" id="db_1">
                     <img style="max-width: 40%; margin-left: 0px; margin-top:10px;"src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png">
-                    <p>Ponemos a tu alcance una poderosa herramienta tecnológica diseñada para administrar todas tus plataformas de venta en línea y sincronizar la Información de tus publicaciones, órdenes de compra e inventario.</p>
+                    <p>Ponemos a tu alcance una poderosa herramienta tecnologica especializada para administrar todas tus plataformas de venta en linea y sincronizar la Informacion de tus publicaciones, ordenes de compra e inventario.</p>
                     <img style="max-width: 100%; margin-right: auto;" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/df54ec67afd2c73ac1aada2c683ab07e6c1a45ff/Documentacion/img/page-02(3).jpeg?token=Ajnc0XzeluUqr5JuKkQhvLs-1kbsUyP8ks5bjW41wA%3D%3D">
                 </div>
-                <div class="col">
-                    <h3> Versión 1.0</h3>
-                    <li>Publicaciones Con *Marketful Seller Center *simplicidad es la norma, todos tus productos en un solo lugar y esto se refleja en el poder de publicar tus productos desde un solo lugar y esto se refleje en todos tus canales de venta, con Marketful Seller Center estas en buenas manos.</li>
-                    <li>Ordenes Con Marketful Seller Center tus ordenes de envió jamás estuvieron en tan buenas manos. Monitorea, da seguimiento y da soporte a tus clientes desde un solo lugar, podrás monitorear envíos no importa en donde realizaste la venta, tu Seller Center lo tiene bajo control.</li>
-                    <li>Preguntas Imagina algo tan sencillo como un centro único de preguntas en donde podrás administrar todos tus canales de comunicación con tus clientes desde una sola pantalla, esto y más te ofrece Marketful Seller Center.</li>
-                    <li>Comunicación posventa Dentro de Marketful Seller Center podrás mantener contacto directo con tus clientes después de la venta y sin importar el canal por donde se haya realizado.</li>
+                <div class="col" id="db_2">
+                    <h3> Version 1.0</h3>
+                    <li>Publicaciones Con *Marketful Seller Center* simplicidad es la norma, todos tus productos en un solo lugar y esto se refleja en el poder de publicar tus productos desde un solo lugar y esto se refleje en todos tus canales de venta, con Marketful Seller Center estas en buenas manos.</li>
+                    <li>Ordenes Con Marketful Seller Center tus ordenes de envio jamas estuvieron en tan buenas manos. Monitorea, da seguimiento y da soporte a tus clientes desde un solo lugar, podras monitorear envios no importa en donde realizaste la venta, tu Seller Center lo tiene bajo control.</li>
+                    <li>Preguntas Imagina algo tan sencillo como un centro unico de preguntas en donde podras administrar todos tus canales de comunicacion con tus clientes desde una sola pantalla, esto y mas te ofrece Marketful Seller Center.</li>
+                    <li>Comunicacion posventa Dentro de Marketful Seller Center podras mantener contacto directo con tus clientes despues de la venta y sin importar el canal por donde se haya realizado.</li>
                 </div>
             </div>
             <div class="row">
-                <div class="col" id="dos">
+                <div class="col" id="db_3">
                     <h3>marketful seller center &#160;</h3>
-                    <li> Marketful Seller Center Es una poderosa herramienta open source que te ayuda a unir todos tus canales de venta en un solo lugar de la manera más sencilla e intuitiva, lo cual facilitara tu experiencia de venta y lo más importante la de tus clientes. </li>
+                    <li> Marketful Seller Center Es una poderosa herramienta open source que te ayuda a unir todos tus canales de venta en un solo lugar de la manera mas sencilla e intuitiva, lo cual facilitara tu experiencia de venta y lo mas importante la de tus clientes. </li>
                     <li> Controla todos tus canales de venta con marketful seller center puedes administrar todas tus cuentas de venta en un solo lugar.</li>
                     <li> Cambios controlados Los cambios dentro de Marketful Seller Center se reflejan en todas tus plataformas.</li>
-                    <li> Adiós complicaciones Con Marketful Seller Center se acabaron las horas de modificar productos iguales en plataformas diferentes. </li>
+                    <li> Adios complicaciones Con Marketful Seller Center se acabaron las horas de modificar productos iguales en plataformas diferentes. </li>
                 </div>
-                <div class="col">
+                <div class="col" id="db_4">
+                    <h3>Empieza ahora</h3>
                     <img style="max-width: 100%; margin-right: auto;"src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/df54ec67afd2c73ac1aada2c683ab07e6c1a45ff/Documentacion/img/page-01(4).jpeg?token=Ajnc0Tw_tq-2fUpCkVbukToDDkeKeoVfks5bjW8SwA%3D%3D">
                 </div>
             </div>

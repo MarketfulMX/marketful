@@ -15,7 +15,7 @@
 - En *Marketful* tenemos muy en cuenta la gran comunidad de programadores que desean participar con nosotros y todo lo que puede aportar la colaboracion de todos, por lo cual *Marketful Seller Center* es un proyecto Open Source que se enfoca en la colaboración para mejorar de manera sustanciosa el desarrollo de este proyecto. Te dejamos el [Contibutors Book]() para saber como puedes colaborar en esta comunidad creando el Seller Center mas utilizado de México.
 
 ## Versión 1.0
-- **Publicaciones** Con *Marketful Seller Center* simplicidad es la norma, todos tus productos en un solo lugar y esto se refleja en el poder de publicar tus productos desde un solo lugar y esto se refleje en todos tus canales de venta, con *Marketful Seller Center* estas en buenas manos.
+- **Publicaciones** Con *Marketful Seller Center *simplicidad es la norma, todos tus productos en un solo lugar y esto se refleja en el poder de publicar tus productos desde un solo lugar y esto se refleje en todos tus canales de venta, con *Marketful Seller Center* estas en buenas manos.
 - **Ordenes** Con *Marketful Seller Center* tus ordenes de envió jamás estuvieron en tan buenas manos. Monitorea, da seguimiento y da soporte a tus clientes desde un solo lugar, podrás monitorear envíos no importa en donde realizaste la venta, tu Seller Center lo tiene bajo control.
 - **Preguntas** Imagina algo tan sencillo como un centro único de preguntas en donde podrás administrar todos tus canales de comunicación con tus clientes desde una sola pantalla, esto y más te ofrece *Marketful Seller Center*.
 - **Comunicación posventa** Dentro de *Marketful Seller Center* podrás mantener contacto directo con tus clientes después de la venta y sin importar el canal por donde se haya realizado.
