@@ -145,7 +145,7 @@ body
     }
         #ob
         {
-            margin: 20px;
+            margin: 20px; padding: 10px;
             border-color: #dee2e6;
             border-style: solid;
             border-width: 1px;
@@ -275,10 +275,7 @@ body
             <div class="row">
                 <div class="col" id="db_3">
                     <h3>Somos Marketful &#160;</h3>
-                    <li> <b>Marketful Seller Center</b> Es una poderosa herramienta open source que te ayuda a unir todos tus canales de venta en un solo lugar de la manera mas sencilla e intuitiva, lo cual facilitara tu experiencia de venta y lo mas importante la de tus clientes. </li>
-                    <li> Controla todos tus canales de venta con marketful seller center puedes administrar todas tus cuentas de venta en un solo lugar.</li>
-                    <li> Cambios controlados Los cambios dentro de Marketful Seller Center se reflejan en todas tus plataformas.</li>
-                    <li> Adios complicaciones Con Marketful Seller Center se acabaron las horas de modificar productos iguales en plataformas diferentes. </li>
+                    <p> Tenemos un Onboarding que concentra las herramientas clave que te ayudara a comprender de manera sencilla el funcionamiento de nuestro <i>Seller Center</i> da una miradita de manera gratuita. <a href="#onboarding"><button id="resaltar_ob" style="padding: 10px;"onclick="clic(3)">Empezar Onboarding</button></a></p>
                 </div>
                 <div class="col" id="db_4">
                     <h3>Empieza ahora</h3>
@@ -310,13 +307,16 @@ body
                 <div class="col" id="ob">
                     <p style="font-size: 16px"><b>Vamos a comenzar observando tus productos,</b> como ya leiste anteriormente <i>Marketful Seller Center</i> esta enfocado en facilitar los procedimientos que conlleva el manejar una tienda en WooCommerce y Mercado Libre. Desde dar de alta una publicacion junto con todos sus diferentes atributos hasta el pausarlas todas de una vez sin tener que hacerlo para cada producto. En esta introduccion te mostraremos lo mas basico para poder empezar a utilizarlo. Primero comenzaremos observado nuestros productos en la vista del <i>Seller Center</i>. En caso de que no tengas productos la lista no mostrara nungun elemento, en caso contrario se veran todos tus productos con su informacion propia:<i> SKU, Titulo en Mercado Libre, Status, Categoria en Mercado Libre, Precio en WooCommerce, Precio en Mercado Libre, Inventario en WooCommerce, Inventario en Mercado Libre, Tipo de envio, Ver publicacion y Ultima Actualizacion.</i></p>
                     <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/445e06da1556b5154ea0da16e5b35bad60288dd3/admin/img/ob/focus.png?token=Ajnc0RF-vWk8fxaJPjIF8mdKPw1n-4faks5bkAQgwA%3D%3D"> <a href="?page=mkf-product-entries" id="resaltar_ob" style="font-size: 20px; cursor: pointer; padding: 5px;" target="_blank">Probar</a>
-                    <p style="font-size: 16px"><b>Ahora veremos las opciones,</b> que tenemos disponibles en la barra de titulo del Seller Center:</p>
-                    <li> <i>Botones <b>atras</b> y <b>adelante</b>:</i> Estan en la parte superior izquierda y te permiten navegar entre todos tus productos. Cada pantalla te muestra 50 productos, para ver los siguientes puedes presionar siguiente o para regresar puedes dar clic hacia atras.</li>
-                    <li> <i><b>Status</b> Masivo:</i> Este boton en conjunto con el checkbox masivo, te permite cambiar el status de uno o muchos productos de una sola vez.</li>
-                    <li> <i><b>Exposicion</b> Masiva:</i> Este boton como el anterior, permite que se cambie masivamente la exposicion de uno o muchos productos de una sola vez.</li>
-                    <li> <i>Agregar <b>descripcion general</b>:</i> Este boton te redirige hacia la pantalla en la cual podras asignar una descripcion comun debajo de su descripcion actual a todos los productos.</li>
-                    <li> <i><b>Buscar</b>:</i> La caja de texto en la parte superior derecha de la pantalla te permite ingresar algun nombre de algun producto, dar clic en el boton de la lupa que se encuentra a un lado y te cargara los productos que coincidan con ese nombre en caso de tener alguno.</li>
-                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/445e06da1556b5154ea0da16e5b35bad60288dd3/admin/img/ob/ob_header.gif?token=Ajnc0aTB5s_7OY5clNrTAYjL9QrqXlxWks5bkA2hwA%3D%3D"> <a href="?page=mkf-product-entries" id="resaltar_ob" style="font-size: 20px; cursor: pointer; padding: 5px;" target="_blank">Probar</a>
+                    <p style="font-size: 16px; margin-top:20px;"><b>Ahora veremos las opciones,</b> que tenemos disponibles en la barra de titulo del Seller Center:</p>
+                    <li style="font-size: 16px"> <i>Botones <b>atras</b> y <b>adelante</b>:</i> Estan en la parte superior izquierda y te permiten navegar entre todos tus productos. Cada pantalla te muestra 50 productos, para ver los siguientes puedes presionar siguiente o para regresar puedes dar clic hacia atras.</li>
+                    <li style="font-size: 16px"> <i><b>Status</b> Masivo:</i> Este boton en conjunto con el checkbox masivo, te permite cambiar el status de uno o muchos productos de una sola vez.</li>
+                    <li style="font-size: 16px"> <i><b>Exposicion</b> Masiva:</i> Este boton como el anterior, permite que se cambie masivamente la exposicion de uno o muchos productos de una sola vez.</li>
+                    <li style="font-size: 16px"> <i>Agregar <b>descripcion general</b>:</i> Este boton te redirige hacia la pantalla en la cual podras asignar una descripcion comun debajo de su descripcion actual a todos los productos.</li>
+                    <li style="font-size: 16px"> <i><b>Buscar</b>:</i> La caja de texto en la parte superior derecha de la pantalla te permite ingresar algun nombre de algun producto, dar clic en el boton de la lupa que se encuentra a un lado y te cargara los productos que coincidan con ese nombre en caso de tener alguno.</li>
+                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/3f36b367769acbb3f59176a52cde80cb7578f4ab/admin/img/ob/ob_header.gif?token=Ajnc0UIbncr0S70w9_qWMg4nUhwyCaS7ks5bkBefwA%3D%3D"><a href="?page=mkf-product-entries" id="resaltar_ob" style="font-size: 20px; cursor: pointer; padding: 5px;" target="_blank">Probar</a>
+                    <p style="font-size: 16px; margin-top:20px;"><i><b>Modificando</b> la informacion de los productos :</i> Con <i>Marketful </i> cambiar los datos de tus productos de <i>WooCommerce</i> es muy sencillo. Esta es la distribucion de los datos que tiene cada producto:</p>
+                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/3f36b367769acbb3f59176a52cde80cb7578f4ab/admin/img/ob/tablafocus.png?token=Ajnc0WqNFjLigqKqe5giaH6Bu2yeuq18ks5bkBqJwA%3D%3D"><a href="?page=mkf-product-entries" id="resaltar_ob" style="font-size: 20px; cursor: pointer; padding: 5px;" target="_blank">Probar</a>
+                    <p style="font-size: 16px; margin-top: 20px;"> Puedes modificar el Status, la Exposicion, la Categoria, el precio en <i>Mercado Libre</i>, en inventario en <i>Mercado Libre </i> y el tipo de envio. Recuerda que todos los cambios que realizes se guardaran dentro de <i>WooCommerce</i> y se actualizaran en <i>Mercado Libre</i> por lo cual no es necesario realizar dichos cambios en esas aplicaciones tambien.</p>
                 </div>
             </div>
         </div>
