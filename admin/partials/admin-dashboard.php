@@ -163,6 +163,12 @@ body
         {
             background-color: #83E800;
         }
+        #muestra_ob
+        {
+            width: 100%;
+            border-radius: 3px;
+            border-color: black; border-width: 1px;
+        }
     #boton_db,#boton_ac
     {
         border-color: white; border-style: solid; border-width: 2px; border-radius: 4px;
@@ -300,7 +306,7 @@ body
             <div class="row">
                 <div class="col" id="ob">
                     <p>Vamos a comenzar, como ya leiste anteriormente <i>Marketful Seller Center</i> esta enfocado en facilitar los procedimientos que conlleva el manejar una tienda en WooCommerce y Mercado Libre. Desde dar de alta una publicacion junto con todos sus diferentes atributos hasta el pausarlas todas de una vez sin tener que hacerlo para cada producto. En esta introduccion te mostraremos lo mas basico para poder empezar a utilizarlo. Primero comenzaremos observado nuestros productos en la vista del <i>Seller Center</i></p>
-                    <img src="../img/basic.png"> <button id="">Probar</button>
+                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/5da117fc779f3765260c4ca92f42807cde89fcc2/admin/img/basic.png?token=Ajnc0bcO_hGL3kYxTl9Gwo9tdq4xloTiks5bkACuwA%3D%3D"> <button id="">Probar</button>
 
                 </div>
             </div>
