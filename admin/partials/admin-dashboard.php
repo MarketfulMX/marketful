@@ -389,14 +389,16 @@ body
             <div class="row">
                 <div class="col" id="tc_9">
                     <h4> Como me suscribo?</h4>
-                    <p style="font-size: 13px;"> La suscripcion es muy sencilla, por el momento el procedimiento consiste en registrarte via telefonica a los telefonos de Marketful +52 449 300 9067 </p>
+                    <p style="font-size: 13px;"> La suscripcion es muy sencilla, por el momento el procedimiento consiste en registrarte via telefonica a los telefonos de Marketful +52 449 392 5230 </p>
                 </div>
             </div>
-            <a href="#preguntas_frecuentes"> Ir arriba </a>
+            <a href="#preguntas_frecuentes"> Ir arriba </a> 
         </div>
         <div id="soporte">
-            <p>Contenido de soporte</p>
-            <img src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png">
+            <h4>Creando un Ticket en Github</h4>
+            <p> Ayudanos reportando un error en nuestro repositorio en GitHub. Sigue los pasos y forma parte de esta gran comunidad. <a href="https://github.com/Skepsis-Consulting/wcplugin/wiki" target="_blank"> Clic aqui</a></p>
+            <h4>Contacto directo</h4>
+            <p>Estamos a tus ordenes a travez de mauricio@marketful.mx o marcanos al +52 449 392 5230</p>
         </div>
     </div>
 </div>
