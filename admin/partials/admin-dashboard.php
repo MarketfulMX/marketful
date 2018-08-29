@@ -151,13 +151,16 @@ body
             border-width: 1px;
             border-radius: 3px;
             background-color: white;
+            font-size: 13px;
+            align-content: center;
         }
         #resaltar_ob
         {
-            background-color: #83FF00;
+            background-color: #83FF00; border-style: solid; border-color: white;
             border-radius: 3px;
             color:white;
             cursor:default;
+            text-decoration: none;
         }
         #resaltar_ob:hover
         {
@@ -165,9 +168,9 @@ body
         }
         #muestra_ob
         {
-            width: 100%;
+            width: 90%;
             border-radius: 3px;
-            border-color: black; border-width: 1px;
+            border-color: black; border-width: 1px; 
         }
     #boton_db,#boton_ac
     {
@@ -200,8 +203,8 @@ body
         background-color: #44BBFF;
         padding: 5px;
         text-decoration: none;
-        margin-right: 5px; border-color: white;
-        height: 20px;
+        margin-right: 5px;
+        height: auto;
     }
         #boton_ac:hover
         {
@@ -288,7 +291,7 @@ body
                 <h3>Bienvenido a la activacion</h3>
                 <p> El proceso de activacion consiste en los siguientes 3 pasos: </p>
                 <li> Da clic <a id="boton_ac" target="_blank" href="https://www.marketful.mx/login"> aqui </a> para registrate en Marketful.</li>
-                <li style="vertical-align: middle;"> Ya te has registrado, ahora ingresa el link de tu tienda. <input type="text" id="texto_ac" placeholder="           tu link" value="    ">.marketful.mx <button onClick="tomar_url();" id="boton_link"> Obtener Link </button></li>
+                <li style="vertical-align: middle;"> Ya te has registrado, ahora ingresa el link de tu tienda. <input type="text" id="texto_ac" placeholder="Tu Link en WooCommerce" value="">.marketful.mx <button onClick="tomar_url();" id="boton_link"> Obtener Link </button></li>
                 <!--li> Por ultimo de manera opcional, logueate con tu pagina de Mercado Libre.</li-->
             </div>
         </div>
@@ -305,9 +308,15 @@ body
             </div>
             <div class="row">
                 <div class="col" id="ob">
-                    <p>Vamos a comenzar, como ya leiste anteriormente <i>Marketful Seller Center</i> esta enfocado en facilitar los procedimientos que conlleva el manejar una tienda en WooCommerce y Mercado Libre. Desde dar de alta una publicacion junto con todos sus diferentes atributos hasta el pausarlas todas de una vez sin tener que hacerlo para cada producto. En esta introduccion te mostraremos lo mas basico para poder empezar a utilizarlo. Primero comenzaremos observado nuestros productos en la vista del <i>Seller Center</i></p>
-                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/5da117fc779f3765260c4ca92f42807cde89fcc2/admin/img/basic.png?token=Ajnc0bcO_hGL3kYxTl9Gwo9tdq4xloTiks5bkACuwA%3D%3D"> <button id="">Probar</button>
-
+                    <p style="font-size: 16px"><b>Vamos a comenzar observando tus productos,</b> como ya leiste anteriormente <i>Marketful Seller Center</i> esta enfocado en facilitar los procedimientos que conlleva el manejar una tienda en WooCommerce y Mercado Libre. Desde dar de alta una publicacion junto con todos sus diferentes atributos hasta el pausarlas todas de una vez sin tener que hacerlo para cada producto. En esta introduccion te mostraremos lo mas basico para poder empezar a utilizarlo. Primero comenzaremos observado nuestros productos en la vista del <i>Seller Center</i>. En caso de que no tengas productos la lista no mostrara nungun elemento, en caso contrario se veran todos tus productos con su informacion propia:<i> SKU, Titulo en Mercado Libre, Status, Categoria en Mercado Libre, Precio en WooCommerce, Precio en Mercado Libre, Inventario en WooCommerce, Inventario en Mercado Libre, Tipo de envio, Ver publicacion y Ultima Actualizacion.</i></p>
+                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/445e06da1556b5154ea0da16e5b35bad60288dd3/admin/img/ob/focus.png?token=Ajnc0RF-vWk8fxaJPjIF8mdKPw1n-4faks5bkAQgwA%3D%3D"> <a href="?page=mkf-product-entries" id="resaltar_ob" style="font-size: 20px; cursor: pointer; padding: 5px;" target="_blank">Probar</a>
+                    <p style="font-size: 16px"><b>Ahora veremos las opciones,</b> que tenemos disponibles en la barra de titulo del Seller Center:</p>
+                    <li> <i>Botones <b>atras</b> y <b>adelante</b>:</i> Estan en la parte superior izquierda y te permiten navegar entre todos tus productos. Cada pantalla te muestra 50 productos, para ver los siguientes puedes presionar siguiente o para regresar puedes dar clic hacia atras.</li>
+                    <li> <i><b>Status</b> Masivo:</i> Este boton en conjunto con el checkbox masivo, te permite cambiar el status de uno o muchos productos de una sola vez.</li>
+                    <li> <i><b>Exposicion</b> Masiva:</i> Este boton como el anterior, permite que se cambie masivamente la exposicion de uno o muchos productos de una sola vez.</li>
+                    <li> <i>Agregar <b>descripcion general</b>:</i> Este boton te redirige hacia la pantalla en la cual podras asignar una descripcion comun debajo de su descripcion actual a todos los productos.</li>
+                    <li> <i><b>Buscar</b>:</i> La caja de texto en la parte superior derecha de la pantalla te permite ingresar algun nombre de algun producto, dar clic en el boton de la lupa que se encuentra a un lado y te cargara los productos que coincidan con ese nombre en caso de tener alguno.</li>
+                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/445e06da1556b5154ea0da16e5b35bad60288dd3/admin/img/ob/ob_header.gif?token=Ajnc0aTB5s_7OY5clNrTAYjL9QrqXlxWks5bkA2hwA%3D%3D"> <a href="?page=mkf-product-entries" id="resaltar_ob" style="font-size: 20px; cursor: pointer; padding: 5px;" target="_blank">Probar</a>
                 </div>
             </div>
         </div>
