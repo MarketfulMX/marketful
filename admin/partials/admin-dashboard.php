@@ -17,41 +17,48 @@
                 case 1:
                     $('#1').attr('class','nav-link active'); $('#dashboard').css('display','inline');
                     $('#2').attr('class','nav-link'); $('#activacion').css('display','none');
-                    $('#3').attr('class','nav-link'); $('#instrucciones').css('display','none');
+                    $('#3').attr('class','nav-link'); $('#onboarding').css('display','none');
                     $('#4').attr('class','nav-link'); $('#preguntas_frecuentes').css('display','none');
                     $('#5').attr('class','nav-link'); $('#soporte').css('display','none');
                     break;
                 case 2:
                     $('#1').attr('class','nav-link'); $('#dashboard').css('display','none');
                     $('#2').attr('class','nav-link active'); $('#activacion').css('display','inline');
-                    $('#3').attr('class','nav-link'); $('#instrucciones').css('display','none');
+                    $('#3').attr('class','nav-link'); $('#onboarding').css('display','none');
                     $('#4').attr('class','nav-link'); $('#preguntas_frecuentes').css('display','none');
                     $('#5').attr('class','nav-link'); $('#soporte').css('display','none');
                     break;
                 case 3:
                     $('#1').attr('class','nav-link'); $('#dashboard').css('display','none');
                     $('#2').attr('class','nav-link'); $('#activacion').css('display','none');
-                    $('#3').attr('class','nav-link active'); $('#instrucciones').css('display','inline');
+                    $('#3').attr('class','nav-link active'); $('#onboarding').css('display','inline');
                     $('#4').attr('class','nav-link'); $('#preguntas_frecuentes').css('display','none');
                     $('#5').attr('class','nav-link'); $('#soporte').css('display','none');
                     break;
                 case 4:
                     $('#1').attr('class','nav-link'); $('#dashboard').css('display','none');
                     $('#2').attr('class','nav-link'); $('#activacion').css('display','none');
-                    $('#3').attr('class','nav-link'); $('#instrucciones').css('display','none');
+                    $('#3').attr('class','nav-link'); $('#onboarding').css('display','none');
                     $('#4').attr('class','nav-link active'); $('#preguntas_frecuentes').css('display','inline');
                     $('#5').attr('class','nav-link'); $('#soporte').css('display','none');
                     break;
                 case 5:
                     $('#1').attr('class','nav-link'); $('#dashboard').css('display','none');
                     $('#2').attr('class','nav-link'); $('#activacion').css('display','none');
-                    $('#3').attr('class','nav-link'); $('#instrucciones').css('display','none');
+                    $('#3').attr('class','nav-link'); $('#onboarding').css('display','none');
                     $('#4').attr('class','nav-link'); $('#preguntas_frecuentes').css('display','none');
                     $('#5').attr('class','nav-link active'); $('#soporte').css('display','inline');
                     break;
                 default :
                     break;
             }
+    }
+    function tomar_url()
+    {
+        console.log(' Tomar URL');
+        var url = $(location).attr('href');// Returns full URL
+        $('#texto_ac').attr('value',url);
+        console.log(window.location.href);
     }
 </script>
 
@@ -84,7 +91,7 @@ body
     {
         text-decoration: none;
     }
-    #activacion, #instrucciones, #preguntas_frecuentes, #soporte
+    #activacion, #onboarding, #preguntas_frecuentes, #soporte
     {
         display: none;
     }
@@ -132,6 +139,30 @@ body
     {
         font-size: 13px;
     }
+    #onboarding
+    {
+        padding: 20px:;
+    }
+        #ob
+        {
+            margin: 20px;
+            border-color: #dee2e6;
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 3px;
+            background-color: white;
+        }
+        #resaltar_ob
+        {
+            background-color: #83FF00;
+            border-radius: 3px;
+            color:white;
+            cursor:default;
+        }
+        #resaltar_ob:hover
+        {
+            background-color: #83E800;
+        }
     #boton_db,#boton_ac
     {
         border-color: white; border-style: solid; border-width: 2px; border-radius: 4px;
@@ -144,6 +175,7 @@ body
         #boton_db
         {
             padding: 20px;
+            margin-left: 20px;
             font-size: 18px;
             margin-top: 10px;
         }
@@ -162,7 +194,7 @@ body
         background-color: #44BBFF;
         padding: 5px;
         text-decoration: none;
-        margin-right: 5px;
+        margin-right: 5px; border-color: white;
         height: 20px;
     }
         #boton_ac:hover
@@ -175,8 +207,8 @@ body
         }
     #texto_ac
     {
-        width: 150px; height: 30px;
-        font-size: 24px;
+        width: 150px; height: 20px;
+        font-size: 16px;
         border-color: #3964A1; border-style: solid; border-width: .5px; border-radius: 2px;
         background-color: #FFFFFF;
     }
@@ -188,13 +220,29 @@ body
         {
             border-width: .5px;
         }
-    
+    #boton_link
+    {
+        border-style: solid; border-width: 1px; border-radius: 3px; border-color: white; 
+        background-color: #A06DE5;
+        padding: 5px;
+        text-decoration: none; color: white;
+        height: auto; width: auto;
+        cursor: pointer;
+    }
+        #boton_link:hover
+        {
+            background-color: #8359BD;
+        }
+        #boton_link:active
+        {
+            background-color: #8359BD;
+        }
 </style>
 <div class="head"> <h3> Dashboard <b id="alfav"> v1.0.0 </b></h3> </div>
 <ul class="nav nav-tabs tab-superior" id= tab-superior style="max-width: 98%;">
         <li class="nav-item"><a href="#" id="1" class="nav-link active" onclick="clic(1)" >Inicio</a></li>
         <li class="nav-item"><a href="#" id="2" class="nav-link" onclick="clic(2)" >Activacion</a></li>
-        <li class="nav-item"><a href="#" id="3" class="nav-link" onclick="clic(3)" >Instrucciones</a></li>
+        <li class="nav-item"><a href="#" id="3" class="nav-link" onclick="clic(3)" >OnBoarding</a></li>
         <li class="nav-item"><a href="#" id="4" class="nav-link" onclick="clic(4)" >Preguntas Frecuentes</a></li>
         <li class="nav-item"><a href="#" id="5" class="nav-link" onclick="clic(5)" >Soporte</a></li>
     </ul>
@@ -204,7 +252,7 @@ body
             <div class="row">
                 <div class="col" id="db_1">
                     <img style="max-height:20%; margin-left: 0px; margin-top:0px;"src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png"> <button id="boton_db" onclick="clic(2)"> Activa tu tienda </button>
-                    <p><b>Marketful Seller Center</b>, revolucionara la manera en la que conectas con tus clientes de <i>WooCommerce</i> y <i>MercadoLibre</i>.  Te ofrecemos un entorno dedicado a hacer tu trabajo mas sencillo, eficiente y personalizado. </p>                   <img style="max-width: 100%; margin-right: auto; border-radius: 3px; padding-bottom: 20px; " src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/dfff438a4546eb0fe69fc3e01e9dba2bcccacf03/Documentacion/img/screen.gif?token=Ajnc0cgQDdX9entMvkCFqQTVH7T9bKW0ks5bjqWPwA%3D%3D">
+                    <p><b>Marketful Seller Center</b>, revolucionara la manera en la que conectas con tus clientes de <i>WooCommerce</i> y <i>MercadoLibre</i>.  Te ofrecemos un entorno dedicado a hacer tu trabajo mas sencillo, eficiente y personalizado. </p>                <img style="max-width: 100%; margin-right: auto; border-radius: 3px; padding-bottom: 20px; " src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/dfff438a4546eb0fe69fc3e01e9dba2bcccacf03/Documentacion/img/screen.gif?token=Ajnc0cgQDdX9entMvkCFqQTVH7T9bKW0ks5bjqWPwA%3D%3D">
                 </div>
                 <div class="col" id="db_2">
                     <h3> Version 1.0 <b id="nuevov">NUEVO</b></h3>
@@ -234,13 +282,28 @@ body
                 <h3>Bienvenido a la activacion</h3>
                 <p> El proceso de activacion consiste en los siguientes 3 pasos: </p>
                 <li> Da clic <a id="boton_ac" target="_blank" href="https://www.marketful.mx/login"> aqui </a> para registrate en Marketful.</li>
-                <li> Ya te has registrado, ahora ingresa el link de tu tienda. <input type="text" id="texto_ac" placeholder="           tu link">.marketful.mx</li>
+                <li style="vertical-align: middle;"> Ya te has registrado, ahora ingresa el link de tu tienda. <input type="text" id="texto_ac" placeholder="           tu link" value="    ">.marketful.mx <button onClick="tomar_url();" id="boton_link"> Obtener Link </button></li>
                 <!--li> Por ultimo de manera opcional, logueate con tu pagina de Mercado Libre.</li-->
             </div>
         </div>
-        <div id="instrucciones">
-            <p>Contenido de instrucciones</p>
-            <img src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png">
+        <div id="onboarding">
+            <div class="row">
+                <div class="col">
+                    <h3>Bienvenido a la nueva experiencia en E-Commerce</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" id="">
+                    Te damos la bievenida al <mark id="resaltar_ob">onboarding</mark>, en los siguientes minutos aprenderas a administrar tus productos de <i>WooCommerce</i> y poder modificar los atributos de la publicacion de ese producto dentro de <i>Mercado Libre</i>.
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" id="ob">
+                    <p>Vamos a comenzar, como ya leiste anteriormente <i>Marketful Seller Center</i> esta enfocado en facilitar los procedimientos que conlleva el manejar una tienda en WooCommerce y Mercado Libre. Desde dar de alta una publicacion junto con todos sus diferentes atributos hasta el pausarlas todas de una vez sin tener que hacerlo para cada producto. En esta introduccion te mostraremos lo mas basico para poder empezar a utilizarlo. Primero comenzaremos observado nuestros productos en la vista del <i>Seller Center</i></p>
+                    <img src="../img/basic.png"> <button id="">Probar</button>
+
+                </div>
+            </div>
         </div>
         <div id="preguntas_frecuentes">
             <p>Contenido de preguntas frecuentes</p>
