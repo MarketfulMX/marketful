@@ -91,9 +91,11 @@ body
     #dashboard
     {
         display: inline;
+        vertical-align: middle;
         margin-top: 20px;
         margin: 10px;
         font-size: 14px;
+        vertical-align: middle;
         
     }
         .maximo
@@ -139,6 +141,12 @@ body
         padding: 8px;
         cursor: pointer;
     }
+        #boton_db
+        {
+            padding: 20px;
+            font-size: 18px;
+            margin-top: 10px;
+        }
         #boton_db:hover, #boton_ac:hover
         {
             border-color: #F9F3FF;
@@ -169,8 +177,8 @@ body
     {
         width: 150px; height: 30px;
         font-size: 24px;
-        border-color: #AFE0E8; border-style: solid; border-width: .5px; border-radius: 3px;
-        background-color: #F3FFFF;
+        border-color: #3964A1; border-style: solid; border-width: .5px; border-radius: 2px;
+        background-color: #FFFFFF;
     }
         #tecto_ac:hover
         {
@@ -195,19 +203,21 @@ body
         <div id="dashboard">
             <div class="row">
                 <div class="col" id="db_1">
-                    <img style="max-width: 40%; margin-left: 0px; margin-top:10px;"src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png">
-                    <p><b>Marketful Seller Center</b>, revolucionara la manera en la que conectas con tus clientes de <i>WooCommerce</i> y <i>MercadoLibre</i>.  Te ofrecemos un entorno dedicado a hacer tu trabajo mas sencillo, eficiente y personalizado.<button id="boton_db" onclick="clic(2)"> Activa tu tienda aqui </button></p>
-                    <img style="max-width: 100%; margin-right: auto; border-radius: 3px; padding-bottom: 20px; " src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/dfff438a4546eb0fe69fc3e01e9dba2bcccacf03/Documentacion/img/screen.gif?token=Ajnc0cgQDdX9entMvkCFqQTVH7T9bKW0ks5bjqWPwA%3D%3D">
+                    <img style="max-height:20%; margin-left: 0px; margin-top:0px;"src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png"> <button id="boton_db" onclick="clic(2)"> Activa tu tienda </button>
+                    <p><b>Marketful Seller Center</b>, revolucionara la manera en la que conectas con tus clientes de <i>WooCommerce</i> y <i>MercadoLibre</i>.  Te ofrecemos un entorno dedicado a hacer tu trabajo mas sencillo, eficiente y personalizado. </p>                   <img style="max-width: 100%; margin-right: auto; border-radius: 3px; padding-bottom: 20px; " src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/dfff438a4546eb0fe69fc3e01e9dba2bcccacf03/Documentacion/img/screen.gif?token=Ajnc0cgQDdX9entMvkCFqQTVH7T9bKW0ks5bjqWPwA%3D%3D">
                 </div>
                 <div class="col" id="db_2">
                     <h3> Version 1.0 <b id="nuevov">NUEVO</b></h3>
                     <li> <b>Publicaciones : </b> Con nuestro Seller Center maneja todos tus productos de <i>WooCommerce</i> y publicalos en <i>Mercado Libre</i> con solo un clic de <b> Marketful </b>. </li>
-                    <li> <b>Practicidad :</b> Con <b> Marketful </b> la practicidad es la norma, con nuestro Seller Center en una misma pantalla y con solo un clic podras cambiar el status de todas las publicaciones que desees.</li>
+                    <li> <b>Practicidad :</b> Con <b> Marketful </b> la practicidad es la norma, con nuestro Seller Center en una misma pantalla podras manejar todos tus productos y publicaciones facilitando tu trabajo y suprimiendo las tareas mas repetitivas.</li>
+                    <li> <b>Cambios masivos :</b> Con <b> Marketful </b> realizar cambios multiples nunca habia sido tan sencillo, con nuestras herramientas de cambios masivos actualiza el estado de tus publicaciones con tan solo un par de clics.</li>
+                    <li><b> La API de Mercado Libre en tus manos: </b> Gracias a la tecnologia de <i>Mercado Libre </i> y de <b>Marketful</b> dejamos en tus manos un complemento de <i>WooCommerce</i> totalmente adaptado para trabajar junto a tu tienda de <i>Mercado Libre</i>.</li>
+                    <li><b>Todo el soporte de Marketful : </b> Esta en tus manos, todo un equipo  de profesionales listos para trabajar junto a ti creando el Seller Center mas exitoso de Mexico.</li>
                 </div>
             </div>
             <div class="row">
                 <div class="col" id="db_3">
-                    <h3>marketful seller center &#160;</h3>
+                    <h3>Somos Marketful &#160;</h3>
                     <li> <b>Marketful Seller Center</b> Es una poderosa herramienta open source que te ayuda a unir todos tus canales de venta en un solo lugar de la manera mas sencilla e intuitiva, lo cual facilitara tu experiencia de venta y lo mas importante la de tus clientes. </li>
                     <li> Controla todos tus canales de venta con marketful seller center puedes administrar todas tus cuentas de venta en un solo lugar.</li>
                     <li> Cambios controlados Los cambios dentro de Marketful Seller Center se reflejan en todas tus plataformas.</li>
@@ -224,8 +234,8 @@ body
                 <h3>Bienvenido a la activacion</h3>
                 <p> El proceso de activacion consiste en los siguientes 3 pasos: </p>
                 <li> Da clic <a id="boton_ac" target="_blank" href="https://www.marketful.mx/login"> aqui </a> para registrate en Marketful.</li>
-                <li> Ya te has registrado, ahora ingresa el link de tu tienda. <input type="text" id="texto_ac" placeholder="          tu link">.marketful.mx</li>
-                <li> Por ultimo de manera opcional, logueate con tu pagina de Mercado Libre.</li>
+                <li> Ya te has registrado, ahora ingresa el link de tu tienda. <input type="text" id="texto_ac" placeholder="           tu link">.marketful.mx</li>
+                <!--li> Por ultimo de manera opcional, logueate con tu pagina de Mercado Libre.</li-->
             </div>
         </div>
         <div id="instrucciones">
