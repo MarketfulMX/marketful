@@ -63,9 +63,8 @@
 </script>
 
 <style>
-a{text-decoration: none;}
-body
-{background-color: #F8F5FF;}
+    a{text-decoration: none;}
+    body{background-color: #F8F5FF;}
     #alfav, #nuevov
     {
         border-radius: 3px;
@@ -255,11 +254,11 @@ body
             background-color: #8359BD;
         }
 </style>
-<div class="head"> <h3> Dashboard <b id="alfav"> v1.0.0 </b></h3> </div>
+<div class="head"> <h3> Dashboard </h3> </div>
 <ul class="nav nav-tabs tab-superior" id= tab-superior style="max-width: 98%;">
         <li class="nav-item"><a href="#" id="1" class="nav-link active" onclick="clic(1)" >Inicio</a></li>
         <li class="nav-item"><a href="#" id="2" class="nav-link" onclick="clic(2)" >Activacion</a></li>
-        <li class="nav-item"><a href="#" id="3" class="nav-link" onclick="clic(3)" >OnBoarding</a></li>
+        <li class="nav-item"><a href="#" id="3" class="nav-link" onclick="clic(3)" >OnBoarding <b id="alfav"> v0.1 </b></a></li>
         <li class="nav-item"><a href="#" id="4" class="nav-link" onclick="clic(4)" >Preguntas Frecuentes</a></li>
         <li class="nav-item"><a href="#" id="5" class="nav-link" onclick="clic(5)" >Soporte</a></li>
     </ul>
@@ -286,8 +285,8 @@ body
                     <p> Tenemos un Onboarding que concentra las herramientas clave que te ayudara a comprender de manera sencilla el funcionamiento de nuestro <i>Seller Center</i> da una miradita de manera gratuita. <a href="#onboarding"><button id="resaltar_ob" style="padding: 10px;"onclick="clic(3)">Empezar Onboarding</button></a></p>
                 </div>
                 <div class="col" id="db_4">
-                    <h3>Empieza ahora</h3>
-                    <img style="max-width: 100%; margin-right: auto;"src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/df54ec67afd2c73ac1aada2c683ab07e6c1a45ff/Documentacion/img/page-01(4).jpeg?token=Ajnc0Tw_tq-2fUpCkVbukToDDkeKeoVfks5bjW8SwA%3D%3D">
+                    <h3>Apoyo paso a paso</h3>
+                    <p> Te apoyamos paso a paso para que tu tienda quede espectacular teniendo tus publicaciones de <i>Mercado Libre</i> y <i>WooCommerce</i> para lo cual te apoyamos con una guia completa para que sea sencillo y eficiente para ti controlar tus ventas a travez de nuestra plataforma. Tienes alguna duda? <a style="margin: auto;" href="#soporte" onclick="clic(5)" id="boton_ac"> Soporte </a></p>
                 </div>
             </div>
         </div>
@@ -325,6 +324,7 @@ body
                     <p style="font-size: 16px; margin-top:20px;"><i><b>Modificando</b> la informacion de los productos :</i> Con <i>Marketful </i> cambiar los datos de tus productos de <i>WooCommerce</i> es muy sencillo. Esta es la distribucion de los datos que tiene cada producto:</p>
                     <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/3f36b367769acbb3f59176a52cde80cb7578f4ab/admin/img/ob/tablafocus.png?token=Ajnc0WqNFjLigqKqe5giaH6Bu2yeuq18ks5bkBqJwA%3D%3D"><a href="?page=mkf-product-entries" id="resaltar_ob" style="font-size: 20px; cursor: pointer; padding: 5px;" target="_blank">Probar</a>
                     <p style="font-size: 16px; margin-top: 20px;"> Puedes modificar el Status, la Exposicion, la Categoria, el precio en <i>Mercado Libre</i>, en inventario en <i>Mercado Libre </i> y el tipo de envio. Recuerda que todos los cambios que realizes se guardaran dentro de <i>WooCommerce</i> y se actualizaran en <i>Mercado Libre</i> por lo cual no es necesario realizar dichos cambios en esas aplicaciones tambien.</p>
+                    <p><b>Datos importantes: </b> Instrucciones de como subir una publicacion. Especificar que se tomaran las fotos de woo commerce y la descripcion. Tambien aclarar que si no pones inventario entonces se toma el de Woo Commerce Titulo de menos de 60 Publicaciones por encima de 470 pesos solo admiten envio gratis</p>
                 </div>
             </div>
         </div>
@@ -358,7 +358,7 @@ body
             </div>
             <div class="row">
                 <div class="col" id="tc_4">
-                    <h4> Que es Fulfillment?</h4>
+                    <h4> Como funciona el Fulfillment?</h4>
                     <p style="font-size: 13px;"> Fulfillment es un termino empleado en logistica, para definir el proceso que incluye todas las etapas de planificacion, fabricacion, almacenamiento y distribucion desde que se recibe un pedido del cliente, hasta que se le entrega el producto final.</p>
                 </div>
             </div>
