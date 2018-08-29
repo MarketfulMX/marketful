@@ -63,7 +63,7 @@
 </script>
 
 <style>
-
+a{text-decoration: none;}
 body
 {background-color: #F8F5FF;}
     #alfav, #nuevov
@@ -116,7 +116,7 @@ body
             background-color: white;    
             margin-right: 2%;
         }
-            #db_1, #db_2
+            #db_1, #db_2, #pf_1, #tc_1, #tc_2, #tc_3, #tc_4, #tc_5, #tc_6, #tc_7, #tc_8, #tc_9
             {
                 margin: 20px;
                 margin-top: -20px;
@@ -172,6 +172,14 @@ body
             border-radius: 3px;
             border-color: black; border-width: 1px; 
         }
+    #tc, #tc_1, #tc_2, #tc_3, #tc_4, #tc_5, #tc_6, #tc_7, #tc_8, #tc_9
+    {
+        margin: 20px;
+    }
+    #tc
+    {
+        padding-bottom: 20px;
+    }
     #boton_db,#boton_ac
     {
         border-color: white; border-style: solid; border-width: 2px; border-radius: 4px;
@@ -321,8 +329,70 @@ body
             </div>
         </div>
         <div id="preguntas_frecuentes">
-            <p>Contenido de preguntas frecuentes</p>
-            <img src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png">
+            <h3>Preguntas Frecuentes</h3>
+            <p style="font-size: 13px;"> Hemos recopilado un conjunto de preguntas dentro de las que mas nos han hecho en <i>Marketful</i>, te dejamos el indice y todas con una respuesta completa para ti. En caso de no encontrar la respuesta que estas buscando consulta nuestra seccion de <a href="#soporte" onclick="clic(5)">Soporte</a>.</p>
+            <div class="row">
+                <div class="col" id="tc_1">
+                    <h4>Tabla de contenido</h4>
+                    <li> <a href="#tc_2">Que es Marketful?</a></li>
+                    <li> <a href="#tc_3">Que es Fulfillment?</a></li>
+                    <li> <a href="#tc_4">Como funciona el Fulfillment?</a></li>
+                    <li> <a href="#tc_5">Cuanto tiempo se tardan en recibir y enviar mis pedidos?</a></li>
+                    <li> <a href="#tc_6">Que pasa si se extravia un envio?</a></li>
+                    <li> <a href="#tc_7">Que pasa si el pedido llega equivocado?</a></li>
+                    <li> <a href="#tc_8">Cual es el esquema de cobro?</a></li>
+                    <li> <a href="#tc_9">Como me suscribo?</a></li>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" id="tc_2">
+                    <h4> Que es Marketful?</h4>
+                    <p style="font-size: 13px;"> <b>Marketful</b> es el conjunto de herramientas (Shipping, Fulfillment y Seller-Center) que conforman el ecosistema en linea enfocado a manejar puntos criticos para los vendedores, simplificandolos y convirtiendolos en puntod fuertes de su ecosistema de ventas gracias a nuestras multiples herramientas.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" id="tc_3">
+                    <h4> Que es Fulfillment?</h4>
+                    <p style="font-size: 13px;"> Fulfillment es un termino empleado en logistica, para definir el proceso que incluye todas las etapas de planificacion, fabricacion, almacenamiento y distribucion desde que se recibe un pedido del cliente, hasta que se le entrega el producto final.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" id="tc_4">
+                    <h4> Que es Fulfillment?</h4>
+                    <p style="font-size: 13px;"> Fulfillment es un termino empleado en logistica, para definir el proceso que incluye todas las etapas de planificacion, fabricacion, almacenamiento y distribucion desde que se recibe un pedido del cliente, hasta que se le entrega el producto final.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" id="tc_5">
+                    <h4> Cuanto tiempo se tardan en recibir y enviar mis productos?</h4>
+                    <p style="font-size: 13px;"> Al estar dentro del Seller Center y confirmar una venta se despliegan diferentes alternativas de envio, dependiendo del tipo de envio que se haya seleccionado es el tiempo que tardara en iniciar el envio. Ademas es importante tomar en cuenta que el corte de envios es a las 13:00 hrs hora del centro de Mexico, por lo cual un envio posterior a esa hora se reflejara hasta el dia siguiente. En Marketful tus envios estan asegurados, por lo cual cuentas con el soporte de Marketful sin importar lo que pase.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" id="tc_6">
+                    <h4> Que pasa si se extravia un envio?</h4>
+                    <p style="font-size: 13px;"> En tal caso, cuentas con nuestro respaldo en todo momento. Dependiendo la situacion podremos rembolsar hasta dar seguimiento con la empresa de envios.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" id="tc_7">
+                    <h4> Que pasa si el pedido llega equivocado?</h4>
+                    <p style="font-size: 13px;"> En tal caso sin costo extra tendras apoyo completo para la sustitucion del producto.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" id="tc_8">
+                    <h4> Cual es el esquema de cobro?</h4>
+                    <p style="font-size: 13px;"> El pago es mensual en el caso del Seller Center y por producto en stock en caso de Fulfillment.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" id="tc_9">
+                    <h4> Como me suscribo?</h4>
+                    <p style="font-size: 13px;"> La suscripcion es muy sencilla, por el momento el procedimiento consiste en registrarte via telefonica a los telefonos de Marketful +52 449 300 9067 </p>
+                </div>
+            </div>
+            <a href="#preguntas_frecuentes"> Ir arriba </a>
         </div>
         <div id="soporte">
             <p>Contenido de soporte</p>
