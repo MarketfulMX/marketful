@@ -95,11 +95,58 @@
      */
     window.addEventListener("scroll", function()
     {
-       //document.body.scrollHeight
+       //document.body.scrollHeight para obtener el tamaño de la pantalla
        var st = window.pageYOffset || document.documentElement.scrollTop;
-       $('#progress_ob').attr('value',((st/136)*10))
-       console.log(st);
+       var cont = (st/136)*10; 
+       if(cont == 100)
+       {
+            $('#progress_ob').attr('value',cont);
+            $('#finaliza_ob').text('Onboarding Finalizado <a href="">Clic aqui</a> para continuar.');
+       }
+       else
+       {
+            $('#progress_ob').attr('value',cont);
+       }
     });
+
+    /**
+     * @Funcion bien_ac()
+     * Oculta el mensaje en activacion y resalta el boton de clic en mkf
+     */
+     function bien_ac()
+     {
+        $('#mensaje_ac').css('display','none');
+        $('.boton_ac_link').css('background-color','#E8E400');
+        $('.boton_ac_link').css('border-color','#E8E400');
+        $('.boton_ac_link').css('font-size','40');
+        $('.boton_ac_link').css('padding','auto');
+        $('.boton_ac_link').attr('onclick','segundo_paso_ac()');
+     }
+
+     /**
+      * @Funcion segundo_paso_ac()
+      * Te muestra el segundo paso de activacion
+      */
+      function segundo_paso_ac()
+      {
+            $('#mensaje_ac h3').text('Ya que te has logueado, vamos a conectar tu tienda de WooCommerce, da clic en el boton "Obtener Link"');
+            $("#mensaje_ac").css('display','inline');
+            $('.btn_msj_1').attr('onclick','$("#mensaje_ac").css("display","none");');
+            $(".boton_obtener_ac").attr('onclick','tercer_paso_ac();tomar_url();');
+            $('.boton_ac_link').css('background-color','#44BBFF');
+            $('.boton_ac_link').css('border-color','#44BBFF');
+            $('.boton_obtener_ac').css('background-color','#E8E400');
+            $('.boton_obtener_ac').css('border-color','#E8E400');
+      }
+
+      /**
+       * @function tercer_paso_ac()
+       * Te muestra un tercer mensaje de notificacion de que has activado tu cuenta.
+       */
+       function tercer_paso_ac()
+       {
+
+       }
 </script>
 
 <style>
@@ -134,6 +181,24 @@
     {
         display: none;
     }
+        #mensaje_ac
+        {
+            height: 250px; width: 40%;
+            border-radius: 5px;
+            background-color: #B33AEB;
+            text-align: center;
+            padding-left: 30px; padding-right: 30px;
+            color: white;
+            position: fixed;
+            z-index: 10;
+            margin-left: 20%;
+            display: none;
+        }
+        #mensaje_ac h3
+        {
+            padding-top: 50px;
+            cursor: default;
+        }
     #dashboard
     {
         display: inline;
@@ -195,15 +260,17 @@
         }
         #resaltar_ob
         {
-            background-color: #83FF00; border-style: solid; border-color: white;
+            background-color: #83FF00; border-style: solid; border-color: #83FF00;
             border-radius: 3px;
             color:white;
             cursor:default;
             text-decoration: none;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
         }
         #resaltar_ob:hover
         {
             background-color: #83E800;
+            border-color:#83E800;
         }
         #muestra_ob
         {
@@ -263,12 +330,13 @@
     }
     #boton_db,#boton_ac
     {
-        border-color: white; border-style: solid; border-width: 2px; border-radius: 4px;
+        border-color: #A06DE5; border-style: solid; border-width: 2px; border-radius: 4px;
         box-shadow: 5px 10px;
         color: white; 
         background-color: #A06DE5;
         padding: 8px;
         cursor: pointer;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
     }
         #boton_db
         {
@@ -279,17 +347,18 @@
         }
         #boton_db:hover, #boton_ac:hover
         {
-            border-color: #F9F3FF;
+            border-color: #8359BD;
             background-color: #8359BD;
         }
         #boton_db:active, #boton_ac:active
         {
-            border-color: #F9F3FF;
+            border-color: #8359BD;
             background-color: #8359BD;
         }
     #boton_ac
     {
         background-color: #44BBFF;
+        border-color:#44BBFF;
         padding: 5px;
         text-decoration: none;
         margin-right: 5px;
@@ -298,10 +367,12 @@
         #boton_ac:hover
         {
             background-color: #4980CC;
+            border-color: #4980CC;
         }
         #boton_ac:active
         {
             background-color: #4980CC;
+            border-color: #4980CC;
         }
     #texto_ac
     {
@@ -320,12 +391,13 @@
         }
     #boton_link
     {
-        border-style: solid; border-width: 1px; border-radius: 3px; border-color: white; 
+        border-style: solid; border-width: 1px; border-radius: 3px; border-color: #A06DE5; 
         background-color: #A06DE5;
         padding: 5px;
         text-decoration: none; color: white;
         height: auto; width: auto;
         cursor: pointer;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
     }
         #boton_link:hover
         {
@@ -355,7 +427,7 @@
         <div id="dashboard">
             <div class="row">
                 <div class="col" id="db_1">
-                    <img style="max-height:20%; margin-left: 0px; margin-top:0px;"src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png"> <button id="boton_db" onclick="clic(2)"> Activa tu tienda </button>
+                    <img style="max-height:20%; margin-left: 0px; margin-top:0px;"src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png"> <button id="boton_db" onclick="clic(2); $('#mensaje_ac').css('display','inline');"> Activa tu tienda </button>
                     <p><b>Marketful Seller Center</b>, revolucionara la manera en la que conectas con tus clientes de <i>WooCommerce</i> y <i>MercadoLibre</i>.  Te ofrecemos un entorno dedicado a hacer tu trabajo mas sencillo, eficiente y personalizado. </p>                <img style="max-width: 100%; margin-right: auto; border-radius: 3px; padding-bottom: 20px; " src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/dfff438a4546eb0fe69fc3e01e9dba2bcccacf03/Documentacion/img/screen.gif?token=Ajnc0cgQDdX9entMvkCFqQTVH7T9bKW0ks5bjqWPwA%3D%3D">
                 </div>
                 <div class="col" id="db_2">
@@ -380,17 +452,22 @@
         </div>
         <!-- Tab 2 "Activacion" ------------------------------------------------------------------------------------------------------------------->
         <div id="activacion">
+            <div id="mensaje_ac">
+                <h3> Primero logueate en <b>marketful.mx</b> para poder enlazar tu tienda.</h3>
+                <button id="boton_ac" style=" font-size: 20px; margin-top: 30px; margin-bottom: -30px;" onclick="bien_ac()" 
+                class="btn_msj_1"> Entendido </button>
+            </div>
             <div>
                 <h3>Bienvenido a la activacion</h3>
                 <p> El proceso de activacion consiste en los siguientes 3 pasos: </p>
-                <li> Da clic <a id="boton_ac" target="_blank" href="https://www.marketful.mx/login"> aqui </a> para registrate en Marketful.</li>
-                <li style="vertical-align: middle;"> Ya te has registrado, ahora ingresa el link de tu tienda. <input type="text" id="texto_ac" placeholder="Tu Link en WooCommerce" value="">.marketful.mx <button onClick="tomar_url();" id="boton_link"> Obtener Link </button></li>
+                <li> Da clic <a id="boton_ac" class="boton_ac_link" target="_blank" href="https://www.marketful.mx/login" onclick=""> aqui </a> para loguearte en Marketful.</li>
+                <li style="vertical-align: middle;"> Ya te has registrado, ahora ingresa el link de tu tienda. <input type="text" id="texto_ac" placeholder="Tu Link en WooCommerce" value="">.marketful.mx <button onClick="tomar_url();" class="boton_obtener_ac"id="boton_link"> Obtener Link </button></li>
                 <!--li> Por ultimo de manera opcional, logueate con tu pagina de Mercado Libre.</li-->
             </div>
         </div>
         <!-- Tab 3 "OnBoarding" ------------------------------------------------------------------------------------------------------------------>
         <div id="onboarding">
-            <div id="flotante_db"><progress style=" margin:10px; z-index: 50;" id="progress_ob" max="100" value="30"></progress>  <p style="font-size: 16px;color:white;"> Progreso del Onboarding</p></div>
+            <div id="flotante_db"><progress style=" margin:10px; z-index: 50;" id="progress_ob" max="100" value="30"></progress> <p id="finaliza_ob"style="font-size: 16px;color:white;"> Progreso del Onboarding</p></div>
             <div class="row">
                 <div class="col">
                     <h3>Bienvenido a la nueva experiencia en E-Commerce</h3>
