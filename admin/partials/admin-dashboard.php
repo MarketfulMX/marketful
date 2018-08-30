@@ -1,3 +1,21 @@
+<!-- 
+ * Archivo: admin-dashboard.php
+ * Ultima edición : 30 de agosto de 2018
+ *
+ * @autor: Adolfo Yanes (adolfo@marketful.mx)
+ * @autor: Administrador de Proyecto: Mauricio Alcala (mauricio@marketful.mx)
+ * @versión: 1.01
+ * 
+ * @package    mkf
+ * @subpackage mkf/admin/partials
+ *
+ *
+ * Descripcion general:
+ * Este archivo contiene la seccion dashbord y se enfoca en mostrar al usuario un breve
+ * resumen de las duncionalidades del plugin, asi como la version que es. Le permite 
+ * realizar la introduccion u "onboarding" de manera sencilla, le presenta una seccion
+ * de preguntas y respuestas y otra de soporte.
+-->
 <!-- // creo que sobra  -->
 <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 
@@ -10,6 +28,11 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 <script>
+    /**
+     * @función clic(@string: numero entero de 1 a 5)
+     * 
+     * Esta funcio de JS al recibir el @parametro muestra cierto div relacionado con un tab y oculta los demas.
+     */
     function clic(num)
     {
         switch (num)
@@ -53,12 +76,16 @@
                     break;
             }
     }
+
+    /**
+     * @Funcion tomar_url()
+     * 
+     * Funcion que toma el URL y lo asigna como value en el input #texto_ac
+     */ 
     function tomar_url()
     {
-        console.log(' Tomar URL');
-        var url = $(location).attr('href');// Returns full URL
+        var url = $(location).attr('href');
         $('#texto_ac').attr('value',url);
-        console.log(window.location.href);
     }
 </script>
 
@@ -223,7 +250,7 @@
         }
     #texto_ac
     {
-        width: 150px; height: 20px;
+        width: 150px; height: 30px;
         font-size: 16px;
         border-color: #3964A1; border-style: solid; border-width: .5px; border-radius: 2px;
         background-color: #FFFFFF;
@@ -253,17 +280,23 @@
         {
             background-color: #8359BD;
         }
+    .nav-item:focus, .nav-link:focus, .active:focus
+    {
+        border: none;
+    }
 </style>
+
 <div class="head"> <h3> Dashboard </h3> </div>
 <ul class="nav nav-tabs tab-superior" id= tab-superior style="max-width: 98%;">
         <li class="nav-item"><a href="#" id="1" class="nav-link active" onclick="clic(1)" >Inicio</a></li>
         <li class="nav-item"><a href="#" id="2" class="nav-link" onclick="clic(2)" >Activacion</a></li>
-        <li class="nav-item"><a href="#" id="3" class="nav-link" onclick="clic(3)" >OnBoarding <b id="alfav"> v0.1 </b></a></li>
+        <li class="nav-item"><a href="#" id="3" class="nav-link" onclick="clic(3)" >OnBoarding <b id="alfav"> v1.0 </b></a></li>
         <li class="nav-item"><a href="#" id="4" class="nav-link" onclick="clic(4)" >Preguntas Frecuentes</a></li>
         <li class="nav-item"><a href="#" id="5" class="nav-link" onclick="clic(5)" >Soporte</a></li>
     </ul>
 <div class="maximo">
     <div class="contenedor">
+        <!-- Tab 1 "Dashboard" ---------------------------------------------------------------------------------------------------------------------->
         <div id="dashboard">
             <div class="row">
                 <div class="col" id="db_1">
@@ -290,6 +323,7 @@
                 </div>
             </div>
         </div>
+        <!-- Tab 2 "Activacion" ------------------------------------------------------------------------------------------------------------------->
         <div id="activacion">
             <div>
                 <h3>Bienvenido a la activacion</h3>
@@ -299,6 +333,7 @@
                 <!--li> Por ultimo de manera opcional, logueate con tu pagina de Mercado Libre.</li-->
             </div>
         </div>
+        <!-- Tab 3 "OnBoarding" ------------------------------------------------------------------------------------------------------------------>
         <div id="onboarding">
             <div class="row">
                 <div class="col">
@@ -312,7 +347,7 @@
             </div>
             <div class="row">
                 <div class="col" id="ob">
-                    <p style="font-size: 16px"><b>Vamos a comenzar observando tus productos,</b> como ya leiste anteriormente <i>Marketful Seller Center</i> esta enfocado en facilitar los procedimientos que conlleva el manejar una tienda en WooCommerce y Mercado Libre. Desde dar de alta una publicacion junto con todos sus diferentes atributos hasta el pausarlas todas de una vez sin tener que hacerlo para cada producto. En esta introduccion te mostraremos lo mas basico para poder empezar a utilizarlo. Primero comenzaremos observado nuestros productos en la vista del <i>Seller Center</i>. En caso de que no tengas productos la lista no mostrara nungun elemento, en caso contrario se veran todos tus productos con su informacion propia:<i> SKU, Titulo en Mercado Libre, Status, Categoria en Mercado Libre, Precio en WooCommerce, Precio en Mercado Libre, Inventario en WooCommerce, Inventario en Mercado Libre, Tipo de envio, Ver publicacion y Ultima Actualizacion.</i></p>
+                    <p style="font-size: 16px"><b>Vamos a comenzar observando tus productos,</b> como leiste anteriormente <i>Marketful Seller Center</i> esta enfocado en facilitar los procedimientos que conlleva el manejar una tienda en WooCommerce y Mercado Libre. Desde dar de alta una publicacion junto con todos sus diferentes atributos hasta el pausarlas todas de una vez sin tener que hacerlo para cada producto. En esta introduccion te mostraremos lo mas basico para poder empezar a utilizarlo. Primero comenzaremos observado nuestros productos en la vista del <i>Seller Center</i>. En caso de que no tengas productos la lista no mostrara nungun elemento, en caso contrario se veran todos tus productos con su informacion propia:<i> SKU, Titulo en Mercado Libre, Status, Categoria en Mercado Libre, Precio en WooCommerce, Precio en Mercado Libre, Inventario en WooCommerce, Inventario en Mercado Libre, Tipo de envio, Ver publicacion y Ultima Actualizacion.</i> Dar tus productos de alta es muy sencillo, solo da clic en "<a target="_blank" href="http://localhost/wp/wp-admin/post-new.php?post_type=product">Productos</a>" y ahi podras dar un nuevo producto de alta.</p>
                     <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/445e06da1556b5154ea0da16e5b35bad60288dd3/admin/img/ob/focus.png?token=Ajnc0RF-vWk8fxaJPjIF8mdKPw1n-4faks5bkAQgwA%3D%3D"> <a href="?page=mkf-product-entries" id="resaltar_ob" style="font-size: 20px; cursor: pointer; padding: 5px;" target="_blank">Probar</a>
                     <p style="font-size: 16px; margin-top:20px;"><b>Ahora veremos las opciones,</b> que tenemos disponibles en la barra de titulo del Seller Center:</p>
                     <li style="font-size: 16px"> <i>Botones <b>atras</b> y <b>adelante</b>:</i> Estan en la parte superior izquierda y te permiten navegar entre todos tus productos. Cada pantalla te muestra 50 productos, para ver los siguientes puedes presionar siguiente o para regresar puedes dar clic hacia atras.</li>
@@ -324,10 +359,13 @@
                     <p style="font-size: 16px; margin-top:20px;"><i><b>Modificando</b> la informacion de los productos :</i> Con <i>Marketful </i> cambiar los datos de tus productos de <i>WooCommerce</i> es muy sencillo. Esta es la distribucion de los datos que tiene cada producto:</p>
                     <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/3f36b367769acbb3f59176a52cde80cb7578f4ab/admin/img/ob/tablafocus.png?token=Ajnc0WqNFjLigqKqe5giaH6Bu2yeuq18ks5bkBqJwA%3D%3D"><a href="?page=mkf-product-entries" id="resaltar_ob" style="font-size: 20px; cursor: pointer; padding: 5px;" target="_blank">Probar</a>
                     <p style="font-size: 16px; margin-top: 20px;"> Puedes modificar el Status, la Exposicion, la Categoria, el precio en <i>Mercado Libre</i>, en inventario en <i>Mercado Libre </i> y el tipo de envio. Recuerda que todos los cambios que realizes se guardaran dentro de <i>WooCommerce</i> y se actualizaran en <i>Mercado Libre</i> por lo cual no es necesario realizar dichos cambios en esas aplicaciones tambien.</p>
-                    <p><b>Datos importantes: </b> Instrucciones de como subir una publicacion. Especificar que se tomaran las fotos de woo commerce y la descripcion. Tambien aclarar que si no pones inventario entonces se toma el de Woo Commerce Titulo de menos de 60 Publicaciones por encima de 470 pesos solo admiten envio gratis</p>
+                    <p style="font-size: 16px;"> Al ingresar un nuevo producto es importante recordar que el titulo del mismo debera de ser igual o menor a 60 caracteres, ya que <i>Mercado Libre</i> requiere un titulo de esas dimensiones.</p>
+                    <p style="font-size: 16px;"> Por otro lado es importante tomar en cuenta que al momento de publicar algun producto en <i> Mercado Libre </i> se tomaran las fotografias que se ingresen en <i>WooCommerce</i> ademas de la descripcion que se ingreso ahi mismo.</p>
+                    <p style="font-size: 16px;">Es preciso recordar que solo los productos con un precio menor o igual a 470 pesos tendran disponible la opcion de <i> envio gratis.</i></p>
                 </div>
             </div>
         </div>
+        <!-- Tab 4 "Preguntas Frecuentes" ----------------------------------------------------------------------------------------------------------->
         <div id="preguntas_frecuentes">
             <h3>Preguntas Frecuentes</h3>
             <p style="font-size: 13px;"> Hemos recopilado un conjunto de preguntas dentro de las que mas nos han hecho en <i>Marketful</i>, te dejamos el indice y todas con una respuesta completa para ti. En caso de no encontrar la respuesta que estas buscando consulta nuestra seccion de <a href="#soporte" onclick="clic(5)">Soporte</a>.</p>
@@ -394,6 +432,7 @@
             </div>
             <a href="#preguntas_frecuentes"> Ir arriba </a> 
         </div>
+        <!-- Tab 5 "Soporte" ------------------------------------------------------------------------------------------------------------------------>
         <div id="soporte">
             <h4>Creando un Ticket en Github</h4>
             <p> Ayudanos reportando un error en nuestro repositorio en GitHub. Sigue los pasos y forma parte de esta gran comunidad. <a href="https://github.com/Skepsis-Consulting/wcplugin/wiki" target="_blank"> Clic aqui</a></p>

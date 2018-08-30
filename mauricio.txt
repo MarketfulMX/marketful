@@ -28,18 +28,18 @@ Mauricio
 
 
  Onboarding:
- 10) Preparar la vista Dashboard para que tenga varios tabs de Bootstrap
- 	- Instalacion
+ 10) Preparar la vista Dashboard para que tenga varios tabs de Bootstrap LISTO
+ 	- Instalacion/Activacion LISTO 
  		- vas agregando instrucciones de instalacion
- 	- Instrucciones
+ 	- Instrucciones/OnBoarding LISTO
  		Instrucciones de como subir una publicacion. Especificar que se tomaran las fotos de woo commerce y la descripcion. 
  		Tambien aclarar que si no pones inventario entonces se toma el de Woo Commerce
  		Titulo de menos de 60
  		Publicaciones por encima de 470 pesos solo admiten envio gratis
 
- 	- Preguntas Frecuentes
+ 	- Preguntas Frecuentes LISTO
  		Cuando le ensenes a los demas las instrucciones y el plugin, las preguntas que te hagan 
- 	- Soporte
+ 	- Soporte LISTO
  		- Bugs de software abrir un ticket en el repo y link al repo
  		- Dudas o comentarios escribir a mauricio@marketful.mx o marcar al 449-392-5230
 
