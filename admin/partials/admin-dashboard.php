@@ -87,6 +87,19 @@
         var url = $(location).attr('href');
         $('#texto_ac').attr('value',url);
     }
+
+    /** 
+     * @funcion Scroll test
+     **********************
+     * Scroll para llenar la progressbar
+     */
+    window.addEventListener("scroll", function()
+    {
+       //document.body.scrollHeight
+       var st = window.pageYOffset || document.documentElement.scrollTop;
+       $('#progress_ob').attr('value',((st/136)*10))
+       console.log(st);
+    });
 </script>
 
 <style>
@@ -197,6 +210,48 @@
             width: 90%;
             border-radius: 3px;
             border-color: black; border-width: 1px; 
+        }
+        #flotante_db
+        {
+            margin-top: -100px;
+            position: fixed;
+            width: 220px; height: 100px;
+            margin-right: 0px;
+            margin-left:68%;
+            background-color: #8DFA40;
+            border-radius: 5px;
+            z-index: 1;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+            text-align: center;
+        }
+        progress 
+        {
+            -webkit-appearance: none; 
+            appearance: none;
+         
+            width: 180px;
+            height: 20px;
+         
+        }
+        progress::-webkit-progress-bar 
+        {
+             background-color: #F8F5FF;
+             border-radius: 2px;
+             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+        }
+        progress::-webkit-progress-value 
+        {
+             background-image:
+             -webkit-linear-gradient(-45deg, 
+             transparent 33%, rgba(0, 0, 0, .1) 33%, 
+             rgba(0,0, 0, .1) 66%, transparent 66%),
+             -webkit-linear-gradient(top, 
+             rgba(255, 255, 255, .25), 
+             rgba(0, 0, 0, .25)),
+             -webkit-linear-gradient(left, #83E800, #66D600);
+             
+             border-radius: 2px; 
+             background-size: 35px 20px, 100% 100%, 100% 100%;
         }
     #tc, #tc_1, #tc_2, #tc_3, #tc_4, #tc_5, #tc_6, #tc_7, #tc_8, #tc_9
     {
@@ -335,6 +390,7 @@
         </div>
         <!-- Tab 3 "OnBoarding" ------------------------------------------------------------------------------------------------------------------>
         <div id="onboarding">
+            <div id="flotante_db"><progress style=" margin:10px; z-index: 50;" id="progress_ob" max="100" value="30"></progress>  <p style="font-size: 16px;color:white;"> Progreso del Onboarding</p></div>
             <div class="row">
                 <div class="col">
                     <h3>Bienvenido a la nueva experiencia en E-Commerce</h3>
@@ -348,22 +404,24 @@
             <div class="row">
                 <div class="col" id="ob">
                     <p style="font-size: 16px"><b>Vamos a comenzar observando tus productos,</b> como leiste anteriormente <i>Marketful Seller Center</i> esta enfocado en facilitar los procedimientos que conlleva el manejar una tienda en WooCommerce y Mercado Libre. Desde dar de alta una publicacion junto con todos sus diferentes atributos hasta el pausarlas todas de una vez sin tener que hacerlo para cada producto. En esta introduccion te mostraremos lo mas basico para poder empezar a utilizarlo. Primero comenzaremos observado nuestros productos en la vista del <i>Seller Center</i>. En caso de que no tengas productos la lista no mostrara nungun elemento, en caso contrario se veran todos tus productos con su informacion propia:<i> SKU, Titulo en Mercado Libre, Status, Categoria en Mercado Libre, Precio en WooCommerce, Precio en Mercado Libre, Inventario en WooCommerce, Inventario en Mercado Libre, Tipo de envio, Ver publicacion y Ultima Actualizacion.</i> Dar tus productos de alta es muy sencillo, solo da clic en "<a target="_blank" href="http://localhost/wp/wp-admin/post-new.php?post_type=product">Productos</a>" y ahi podras dar un nuevo producto de alta.</p>
-                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/445e06da1556b5154ea0da16e5b35bad60288dd3/admin/img/ob/focus.png?token=Ajnc0RF-vWk8fxaJPjIF8mdKPw1n-4faks5bkAQgwA%3D%3D"> <a href="?page=mkf-product-entries" id="resaltar_ob" style="font-size: 20px; cursor: pointer; padding: 5px;" target="_blank">Probar</a>
+                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/445e06da1556b5154ea0da16e5b35bad60288dd3/admin/img/ob/focus.png?token=Ajnc0RF-vWk8fxaJPjIF8mdKPw1n-4faks5bkAQgwA%3D%3D"> <a href="?page=mkf-product-entries" id="resaltar_ob" style="font-size: 15px; cursor: pointer; padding: 5px;" target="_blank">Pruebalo </a>
                     <p style="font-size: 16px; margin-top:20px;"><b>Ahora veremos las opciones,</b> que tenemos disponibles en la barra de titulo del Seller Center:</p>
                     <li style="font-size: 16px"> <i>Botones <b>atras</b> y <b>adelante</b>:</i> Estan en la parte superior izquierda y te permiten navegar entre todos tus productos. Cada pantalla te muestra 50 productos, para ver los siguientes puedes presionar siguiente o para regresar puedes dar clic hacia atras.</li>
                     <li style="font-size: 16px"> <i><b>Status</b> Masivo:</i> Este boton en conjunto con el checkbox masivo, te permite cambiar el status de uno o muchos productos de una sola vez.</li>
                     <li style="font-size: 16px"> <i><b>Exposicion</b> Masiva:</i> Este boton como el anterior, permite que se cambie masivamente la exposicion de uno o muchos productos de una sola vez.</li>
                     <li style="font-size: 16px"> <i>Agregar <b>descripcion general</b>:</i> Este boton te redirige hacia la pantalla en la cual podras asignar una descripcion comun debajo de su descripcion actual a todos los productos.</li>
                     <li style="font-size: 16px"> <i><b>Buscar</b>:</i> La caja de texto en la parte superior derecha de la pantalla te permite ingresar algun nombre de algun producto, dar clic en el boton de la lupa que se encuentra a un lado y te cargara los productos que coincidan con ese nombre en caso de tener alguno.</li>
-                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/3f36b367769acbb3f59176a52cde80cb7578f4ab/admin/img/ob/ob_header.gif?token=Ajnc0UIbncr0S70w9_qWMg4nUhwyCaS7ks5bkBefwA%3D%3D"><a href="?page=mkf-product-entries" id="resaltar_ob" style="font-size: 20px; cursor: pointer; padding: 5px;" target="_blank">Probar</a>
+                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/3f36b367769acbb3f59176a52cde80cb7578f4ab/admin/img/ob/ob_header.gif?token=Ajnc0UIbncr0S70w9_qWMg4nUhwyCaS7ks5bkBefwA%3D%3D"><a href="?page=mkf-product-entries" id="resaltar_ob" style="font-size: 15px; cursor: pointer; padding: 5px;" target="_blank">Pruebalo </a>
                     <p style="font-size: 16px; margin-top:20px;"><i><b>Modificando</b> la informacion de los productos :</i> Con <i>Marketful </i> cambiar los datos de tus productos de <i>WooCommerce</i> es muy sencillo. Esta es la distribucion de los datos que tiene cada producto:</p>
-                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/3f36b367769acbb3f59176a52cde80cb7578f4ab/admin/img/ob/tablafocus.png?token=Ajnc0WqNFjLigqKqe5giaH6Bu2yeuq18ks5bkBqJwA%3D%3D"><a href="?page=mkf-product-entries" id="resaltar_ob" style="font-size: 20px; cursor: pointer; padding: 5px;" target="_blank">Probar</a>
+                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/3f36b367769acbb3f59176a52cde80cb7578f4ab/admin/img/ob/tablafocus.png?token=Ajnc0WqNFjLigqKqe5giaH6Bu2yeuq18ks5bkBqJwA%3D%3D"><a href="?page=mkf-product-entries" id="resaltar_ob" style="font-size: 15x; cursor: pointer; padding: 5px;" target="_blank">Pruebalo </a>
                     <p style="font-size: 16px; margin-top: 20px;"> Puedes modificar el Status, la Exposicion, la Categoria, el precio en <i>Mercado Libre</i>, en inventario en <i>Mercado Libre </i> y el tipo de envio. Recuerda que todos los cambios que realizes se guardaran dentro de <i>WooCommerce</i> y se actualizaran en <i>Mercado Libre</i> por lo cual no es necesario realizar dichos cambios en esas aplicaciones tambien.</p>
                     <p style="font-size: 16px;"> Al ingresar un nuevo producto es importante recordar que el titulo del mismo debera de ser igual o menor a 60 caracteres, ya que <i>Mercado Libre</i> requiere un titulo de esas dimensiones.</p>
                     <p style="font-size: 16px;"> Por otro lado es importante tomar en cuenta que al momento de publicar algun producto en <i> Mercado Libre </i> se tomaran las fotografias que se ingresen en <i>WooCommerce</i> ademas de la descripcion que se ingreso ahi mismo.</p>
                     <p style="font-size: 16px;">Es preciso recordar que solo los productos con un precio menor o igual a 470 pesos tendran disponible la opcion de <i> envio gratis.</i></p>
+                    <p style="font-size: 16px;"> Ahora estamos listos para crear nuestro producto de prueba <a id="resaltar_ob" style="padding: 5px; cursor: pointer;" href="">Iniciar Prueba</a></p>
                 </div>
             </div>
+            <a href="#onboarding"> Ir arriba </a> 
         </div>
         <!-- Tab 4 "Preguntas Frecuentes" ----------------------------------------------------------------------------------------------------------->
         <div id="preguntas_frecuentes">
