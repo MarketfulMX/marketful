@@ -9,7 +9,7 @@
 - **Controla todos tus canales de venta** con *marketful seller center* puedes administrar todas tus cuentas de venta en un solo lugar.
 - **Cambios controlados** Los cambios dentro de *Marketful Seller Center* se reflejan en todas tus plataformas.
 - **Adiós complicaciones** Con Marketful Seller Center se acabaron las horas de modificar productos iguales en plataformas diferentes.
-![header](Documentacion/img/page-02(3).jpeg)
+![header](admin/img/rm/page-02(3).jpeg)
 
 ## Colaboración
 - En *Marketful* tenemos muy en cuenta la gran comunidad de programadores que desean participar con nosotros y todo lo que puede aportar la colaboracion de todos, por lo cual *Marketful Seller Center* es un proyecto Open Source que se enfoca en la colaboración para mejorar de manera sustanciosa el desarrollo de este proyecto. Te dejamos el [Contibutors Book]() para saber como puedes colaborar en esta comunidad creando el Seller Center mas utilizado de México.
@@ -55,23 +55,23 @@ Instalarlo es sencillo:
 
 ## Comenzando a usar Marketful
 Después de instalar y acceder a **Marketful Seller Center** es muy sencillo comenzar a utilizarlo, con nuestra [guia](Documentacion/iniciando.md) de inicio podrás fácilmente y en cuestión de minutos enlazar tus tiendas y dar de alta tus productos.
-![comenzando](Documentacion/img/page-01(4).jpeg)
+![comenzando](admin/img/rm/page-01(4).jpeg)
 
 ## Conectar tus diferentes tiendas
 **Marketful Seller Center** te permite conectar tus diferentes tiendas, actualizar tus productos, el stock, los precios y más dentro de ellas desde la pantalla de Marketful. Todo en un solo lugar asegurando que lo que hagas en **Marketful Seller Center** se reflejara en todos tus canales de venta.
-![NProductos](Documentacion/img/Artboard15.png)
+![NProductos](admin/img/rm//Artboard15.png)
 
 ## Creando tus productos desde Marketful
 **Marketful Seller Center** te permite agregar tus productos en nuestro plugin lo cual se puede ver reflejado en las tiendas y canales de venta que tengas conectados con nosotros. Tú decides que vender en qué lugar de la manera más sencilla.
-![Conectar](Documentacion/img/Artboard18.png)
+![Conectar](admin/img/rm/Artboard18.png)
 
 ## Manejando tus ordenes desde Marketful
 **Marketful Selleer Center** a través del Seller Center te permite llevar seguimiento de tu envió, desde el primer minuto hasta que llegue a la puerta de tu cliente. Te ofrecemos el manejo de guías de una manera sencilla y completamente confiable.
-![MOrdenes](Documentacion/img/Artboard19.png)
+![MOrdenes](admin/img/rm/Artboard19.png)
 
 ## Interfaz Amigable
 **Marketful Seller Center** te ofrece un diseño y una interfaz totalmente amigable, en cuestión de minutos podrás estar donde de alta tus primeros productos y manejando tus ordenes existentes gracias a su interfaz amigable y basada en los principales sitios de venta online.
-![Marketful](Documentacion/img/screen.gif)
+![Marketful](admin/img/rm/screen.gif)
 
 ## Totalmente Personalizable
 **Marketful Seller Center** y su licencia te permiten que adaptes el plugin a tus necesidades de la manera que mejor te convenga.
