@@ -363,6 +363,8 @@
         font-size: 12px;
         text-decoration: none;
         cursor: pointer;
+        padding: 3px;
+        vertical-align: middle;
         box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
         color: black;
     }
@@ -405,7 +407,7 @@
             <div class="row">
                 <div class="col" id="db_1">
                     <img style="max-height:20%; margin-left: 0px; margin-top:0px;"src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png"> <button class="boton_db" onclick="clic(2); $('#mensaje_ac').css('display','inline');"> Activa tu tienda </button>
-                    <p><b>Marketful Seller Center</b>, revolucionara la manera en la que conectas con tus clientes de <i>WooCommerce</i> y <i>MercadoLibre</i>.  Te ofrecemos un entorno dedicado a hacer tu trabajo mas sencillo, eficiente y personalizado. </p>                <img style="max-width: 100%; margin-right: auto; border-radius: 3px; padding-bottom: 20px; " src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/dfff438a4546eb0fe69fc3e01e9dba2bcccacf03/Documentacion/img/screen.gif?token=Ajnc0cgQDdX9entMvkCFqQTVH7T9bKW0ks5bjqWPwA%3D%3D">
+                    <p><b>Marketful Seller Center</b>, revolucionara la manera en la que conectas con tus clientes de <i>WooCommerce</i> y <i>MercadoLibre</i>.  Te ofrecemos un entorno dedicado a hacer tu trabajo mas sencillo, eficiente y personalizado. </p><img style="max-width: 100%; margin-right: auto; border-radius: 3px; padding-bottom: 20px; " src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/dfff438a4546eb0fe69fc3e01e9dba2bcccacf03/Documentacion/img/screen.gif?token=Ajnc0cgQDdX9entMvkCFqQTVH7T9bKW0ks5bjqWPwA%3D%3D">
                 </div>
                 <div class="col" id="db_2">
                     <h3> Version 1.0 </h3>
@@ -419,7 +421,7 @@
             <div class="row">
                 <div class="col" id="db_3">
                     <h3>Somos Marketful &#160;</h3>
-                    <p> Tenemos un Onboarding que concentra las herramientas clave que te ayudara a comprender de manera sencilla el funcionamiento de nuestro <i>Seller Center</i> da una miradita de manera gratuita. <a href="#onboarding" style="text-decoration: none;"><button class="boton_db" style="margin: auto; padding: auto;"onclick="clic(3)">Empezar Onboarding</button></a></p>
+                    <p> Tenemos un Onboarding que concentra las herramientas clave que te ayudara a comprender de manera sencilla el funcionamiento de nuestro <i>Seller Center</i> da una miradita de manera gratuita. <a href="#onboarding" style="text-decoration: none;"><button class="boton_db" style=""onclick="clic(3)">Empezar Onboarding</button></a></p>
                 </div>
                 <div class="col" id="db_4">
                     <h3>Apoyo paso a paso</h3>

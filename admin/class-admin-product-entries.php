@@ -358,7 +358,7 @@ class MKF_ProductEntry extends MKF_DBCore
             if(! $products)
             {
                 $new_simple_product = new WC_Product_Simple();
-                $new_simple_product->set_name("marketf-ul_test_product");
+                $new_simple_product->set_name("marketful_test_product");
                 $new_simple_product->set_description(" Este es un producto de prueba. ");
                 $new_simple_product->set_sku("");
                 $new_simple_product->set_status("publish");
