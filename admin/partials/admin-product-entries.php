@@ -102,14 +102,14 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
      <!--   | 
       Exposición: -->
       <select style=""class="select-arriba" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de Exposición', 'exposicion_ml_select')" >
-          <option>Exposición</option>
+          <option>Exposicion</option>
           <option  value="free" >Gratis</option>
-          <option value="clasica" >Clásica</option>
+          <option value="clasica" >Clasica</option>
           <option value="premium" >Premium</option> 
       </select>
     </div>
     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" id="dg">
-        <a href="?page=mkf-descripcion-footer"><button id="boton_dg"> Agregar descripción general</button></a>
+        <a href="?page=mkf-descripcion-footer"><button id="boton_dg"> Agregar descripcion general</button></a>
     </div>
     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
         <h8 id="cambios_guardados"></h8>
@@ -135,15 +135,15 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       <tr>
         <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
         <th style="min-width: 50px">SKU </th>
-        <th style="min-width: 150px">Título en MercadoLibre</th>
+        <th style="min-width: 150px">Titulo en MercadoLibre</th>
         <th style="min-width: 50px">Status</th>
-        <th style="min-width: 50px">Exposición</th>
-        <th style="min-width: 130px">Categoría ML</th>
+        <th style="min-width: 50px">Exposicion</th>
+        <th style="min-width: 130px">Categoria ML</th>
         <th style="min-width: 50px">Precio Woo Commerce</th>
         <th style="min-width: 50px">Precio Mercado Libre</th>
         <th style="min-width: 50px">Inventario Woo Commerce</th>
         <th style="min-width: 50px">Inventario Mercado Libre</th>
-        <th style="min-width: 150px">Tipo de Envío</th>
+        <th style="min-width: 150px">Tipo de Envio</th>
         <th style="min-width: 110px">Ver Publicacion</th>
         <th style="min-width: 60px">Ultima Actualización</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
@@ -160,11 +160,11 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             <div class="modal-dialog">
               <div class="modal-content" >
                 <div class="modal-header" onclick="resize_window();">
-                  <h4 class="modal-title">Actualiza la información del producto</h4>
+                  <h4 class="modal-title">Actualiza la informacion del producto</h4>
                   <button type="button" class="close" data-dismiss="modal" onclick="resize_window();">&times;</button>
                 </div>
                 <div class="modal-body" onclick="resize_window();">
-                  <p>Para poder asignar el tipo de status, primero debes actualizar la categoría, el tipo de exposición y el tipo de envió en MercadoLibre. ¿Deseas actualizarlo ahora?</p>
+                  <p>Para poder asignar el tipo de status, primero debes actualizar la categoria, el tipo de exposicion y el tipo de envio en MercadoLibre. Deseas actualizarlo ahora?</p>
                 </div>
                 <div class="modal-footer">
                   <button class="boton_redirige_cat_<?php echo $product->ID; ?> btn btn-default" id=""> Actualizar </button>

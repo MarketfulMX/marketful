@@ -289,7 +289,9 @@ function check_status(id)
         $('#mercadolibre_'+id).val('...');
         $('#mercadolibre_'+id).attr('data-toggle','modal');
         $('#mercadolibre_'+id).attr('data-target','#modal_ad_'+id);
-        $('#mercadolibre_'+id).attr('onClick','deshabilitar_select('+id+');')
+        $('#mercadolibre_'+id).attr('onChange','');
+        cambioStatus(id, 'mercadolibre');
+        $('#mercadolibre_'+id).attr('onClick','deshabilitar_select('+id+');');
         $('.boton_redirige_cat_'+id).attr('onClick',link);
         $('.boton_redirige_cat_'+id).attr('onChange','');
     }
@@ -300,6 +302,7 @@ function check_status(id)
         $('#mercadolibre_'+id).attr('data-toggle',' ');
         $('#mercadolibre_'+id).attr('data-target',' ');
         $('#mercadolibre_'+id).attr('onClick',' ');
+        $('#mercadolibre_'+id).attr('onChange','cambioStatus('+id+',\'mercadolibre\')');
         $('.boton_redirige_cat_'+id).attr('onClick',' ');
         $('.boton_redirige_cat_'+id).attr('onChange','cambioStatus('+id+',\'mercadolibre\')');
     }
