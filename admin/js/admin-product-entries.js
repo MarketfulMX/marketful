@@ -153,6 +153,7 @@ function statusMasivo(key, nombre_key, id)
                 tareas[tarea_id] = false
                 $('#cambios_guardados').text("Guardando cambios...");
                 // checkboxes[i].checked = true;
+                console.log('status masivo link: '+ajaxurl);
                 jQuery.ajax({
                   url: ajaxurl,
                   type: 'post',
@@ -286,12 +287,13 @@ function check_status(id)
     if(expo_ml == '...' || categoria_ml == 'categorizar' || metodo_envio_ml == '...')
     {
         //console.log('disabled = true');
-        $('#mercadolibre_'+id).val('...');
+        $('#mercadolibre_'+id).val('paused');
+        cambioStatus(id, 'mercadolibre'); console.log('Se cambio el status');
         $('#mercadolibre_'+id).attr('data-toggle','modal');
         $('#mercadolibre_'+id).attr('data-target','#modal_ad_'+id);
         $('#mercadolibre_'+id).attr('onClick','deshabilitar_select('+id+');')
         $('.boton_redirige_cat_'+id).attr('onClick',link);
-        $('.boton_redirige_cat_'+id).attr('onChange','');
+        $('#mercadolibre_'+id).attr('onChange','');
     }
     else
     {
@@ -301,7 +303,7 @@ function check_status(id)
         $('#mercadolibre_'+id).attr('data-target',' ');
         $('#mercadolibre_'+id).attr('onClick',' ');
         $('.boton_redirige_cat_'+id).attr('onClick',' ');
-        $('.boton_redirige_cat_'+id).attr('onChange','cambioStatus('+id+',\'mercadolibre\')');
+        $('#mercadolibre_'+id).attr('onChange','cambioStatus('+id+',\'mercadolibre\')');
     }
 }
     /**
@@ -319,7 +321,10 @@ function check_status(id)
      */
     function deshabilitar_select(id)
     {
-        $('#mercadolibre_'+id).val('...');
+        if($('#mercadolibre_'+id).val() =!= 'paused')
+            {
+                $('#mercadolibre_'+id).val('...'); 
+            }
     }
 /**
  * @función redirige_cat(@parametro: id del producto)

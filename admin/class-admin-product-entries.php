@@ -343,4 +343,47 @@ class MKF_ProductEntry extends MKF_DBCore
         $response = $client->request('GET', 'categories#json');
         return $response;
     }
+
+    /**
+     * @funcion test_product()
+     * Crea un producto de prueba para el obboarding
+     */
+    public function test_product()
+    {
+        if(function_exists(wc_get_products))
+        {
+            $products = wc_get_products( array(
+                'title' => 'marketful_test_product',
+                ));
+            if(! $products)
+            {
+                $new_simple_product = new WC_Product_Simple();
+                $new_simple_product->set_name("marketf-ul_test_product");
+                $new_simple_product->set_description(" Este es un producto de prueba. ");
+                $new_simple_product->set_sku("");
+                $new_simple_product->set_status("publish");
+                $new_simple_product->set_regular_price(10);
+                $new_simple_product->set_sale_price(5);
+                $new_simple_product->save();
+            }
+        }
+    }
+    /**
+     * @Funcion test_product_delete()
+     * Borra el producto de prueba
+     */
+    public function test_product_delete()
+    {
+        if(function_exists(wc_get_products))
+        {
+            $products = wc_get_products( array(
+                'title' => 'marketful_test_product',
+                ));
+            if(isset($products[0]))
+            {
+                $producto = $products[0]->get_id();
+            }
+            wp_delete_post($producto);
+        }
+    }
 }

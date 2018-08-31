@@ -16,6 +16,9 @@
  * realizar la introduccion u "onboarding" de manera sencilla, le presenta una seccion
  * de preguntas y respuestas y otra de soporte.
 -->
+<?php
+
+?>
 <!-- // creo que sobra  -->
 <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 
@@ -97,7 +100,7 @@
     {
        //document.body.scrollHeight para obtener el tamaño de la pantalla
        var st = window.pageYOffset || document.documentElement.scrollTop;
-       var cont = (st/136)*10; 
+       var cont = (st/120)*10; 
        if(cont == 100)
        {
             $('#progress_ob').attr('value',cont);
@@ -144,11 +147,60 @@
             $('#mensaje_ac h3').text('Listo! lograste conectar tu tienda con el Seller Center, ahora crearemos un producto de prueba');
             $("#mensaje_ac").css('display','inline');
        }
+    /**
+     * @funcion create_test_product()
+     */    
+     function create_test_product()
+     {
+        console.log('Estamos creando el producto de prueba');
+        jQuery.ajax(
+            {
+                type: 'post',
+                url: ajaxurl,
+                dataType: 'json',
+                data:
+                {
+                    action: 'test'
+                },
+                success: function(response)
+                {
+                    console.log('Hecho, se creo el producto de prueba.');
+                },
+                error: function(response)
+                {
+                    console.log('No se pudo crear el producto de prueba.');
+                }
+            });
+     }
+    /**
+     * @funcion delete_test_product()
+     */
+     function delete_test_product()
+     {
+        console.log('Estamos borrando el producto de prueba');
+        jQuery.ajax(
+            {
+                type: 'post',
+                url: ajaxurl,
+                dataType: 'json',
+                data:
+                {
+                    action: 'test_delete'
+                },
+                success: function(response)
+                {
+                    console.log('Hecho, se borro el producto de prueba.');
+                },
+                error: function(response)
+                {
+                    console.log('No se pudo borrar el producto de prueba.');
+                }
+            });
+     }
 </script>
 
 <style>
     a{text-decoration: none;}
-    
     #nuevov
     {
         background-color: #44BBFF;
@@ -299,22 +351,19 @@
     }
     .boton_db
     {
+        background-color:#E2E5C4; 
+        height: 25px; 
+        width: auto; 
+        border-style: solid; 
+        border-color: #7E7F6D; 
+        border-radius: 3px;
+        border-width: 1px;
+        font-size: 12px;
+        text-decoration: none;
         cursor: pointer;
         box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+        color: black;
     }
-        .boton_db
-        {
-            background-color:#E2E5C4; 
-            height: 25px; 
-            width: auto; 
-            border-style: solid; 
-            border-color: #7E7F6D; 
-            border-radius: 3px;
-            border-width: 1px;
-            font-size: 12px;
-            text-decoration: none;
-            cursor: pointer;
-        }
         .boton_db:hover
         {
             border-color: #7E7F6D;
@@ -324,6 +373,14 @@
         {
             border-color: #3F4036;
             background-color: #BCBFA3;
+        }
+        .boton_db:visited
+        {
+            color: black;
+        }
+        .boton_db a
+        {
+            color: black;
         }
     .nav-item:focus, .nav-link:focus, .active:focus
     {
@@ -364,7 +421,7 @@
                 </div>
                 <div class="col" id="db_4">
                     <h3>Apoyo paso a paso</h3>
-                    <p> Te apoyamos paso a paso para que tu tienda quede espectacular teniendo tus publicaciones de <i>Mercado Libre</i> y <i>WooCommerce</i> para lo cual te apoyamos con una guia completa para que sea sencillo y eficiente para ti controlar tus ventas a travez de nuestra plataforma. Tienes alguna duda? <a style="text-decoration: none; padding: auto;" href="#soporte" onclick="clic(5)" class="boton_db"> Soporte </a></p>
+                    <p> Te apoyamos paso a paso para que tu tienda quede espectacular teniendo tus publicaciones de <i>Mercado Libre</i> y <i>WooCommerce</i> para lo cual te apoyamos con una guia completa para que sea sencillo y eficiente para ti controlar tus ventas a travez de nuestra plataforma. Tienes alguna duda? <a style="" href="#soporte" onclick="clic(5)" class="boton_db"> Soporte </a></p>
                 </div>
             </div>
         </div>
@@ -372,7 +429,7 @@
         <div id="activacion">
             <div id="mensaje_ac">
                 <h3> Primero logueate en <b>marketful.mx</b> para poder enlazar tu tienda.</h3>
-                <button class="boton_db" style=" margin-top: 20px; " onclick="bien_ac()" 
+                <button class="boton_db" onclick="bien_ac()" 
                 class="btn_msj_1"> Entendido </button>
             </div>
             <div>
@@ -385,7 +442,7 @@
         </div>
         <!-- Tab 3 "OnBoarding" ------------------------------------------------------------------------------------------------------------------>
         <div id="onboarding">
-            <div id="flotante_db"><progress style=" margin:10px; z-index: 50;" id="progress_ob" max="100" value="30"></progress> <p id="finaliza_ob"style="font-size: 16px;color:white;"> Progreso del Onboarding</p></div>
+            <!--div id="flotante_db"><progress style=" margin:10px; z-index: 50;" id="progress_ob" max="100" value="30"></progress> <p id="finaliza_ob"style="font-size: 16px;color:white;"> Progreso del Onboarding</p></div-->
             <div class="row">
                 <div class="col">
                     <h3>Bienvenido a la nueva experiencia en E-Commerce</h3>
@@ -413,7 +470,8 @@
                     <p style="font-size: 16px;"> Al ingresar un nuevo producto es importante recordar que el titulo del mismo debera de ser igual o menor a 60 caracteres, ya que <i>Mercado Libre</i> requiere un titulo de esas dimensiones.</p>
                     <p style="font-size: 16px;"> Por otro lado es importante tomar en cuenta que al momento de publicar algun producto en <i> Mercado Libre </i> se tomaran las fotografias que se ingresen en <i>WooCommerce</i> ademas de la descripcion que se ingreso ahi mismo.</p>
                     <p style="font-size: 16px;">Es preciso recordar que solo los productos con un precio menor o igual a 470 pesos tendran disponible la opcion de <i> envio gratis.</i></p>
-                    <p style="font-size: 16px;"> Ahora estamos listos para crear nuestro producto de prueba <a class="boton_db" style="" href="">Iniciar Prueba</a></p>
+                    <p style="font-size: 16px;"> Ahora estamos listos para crear nuestro producto de prueba <button class="boton_db" style="" onclick="create_test_product()">Crear producto de prueba</button>
+                    <button class="boton_db" onclick="delete_test_product()"> Borrar producto de Prueba </button></p>
                 </div>
             </div>
             <a href="#onboarding"> Ir arriba </a> 
