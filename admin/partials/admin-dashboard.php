@@ -149,6 +149,7 @@
        }
     /**
      * @funcion create_test_product()
+     * Crea el producto de prueba.
      */    
      function create_test_product()
      {
@@ -174,6 +175,7 @@
      }
     /**
      * @funcion delete_test_product()
+     * Borra el producto de prueba
      */
      function delete_test_product()
      {
