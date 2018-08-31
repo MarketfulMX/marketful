@@ -1,11 +1,11 @@
 <?php
 /*
  * Archivo: admin-product-edit-form.php
- * Ultima ediciÃ³n : 7 de agosto de 2018
+ * Ultima edición : 7 de agosto de 2018
  *
  * @autor: Adolfo Yanes (adolfo@marketful.mx)
  * @autor: Administrador de Proyecto: Mauricio Alcala (mauricio@marketful.mx)
- * @versiÃ³n: 1.02
+ * @versión: 1.02
  * 
  * @package    mkf
  * @subpackage mkf/admin/partials
@@ -13,10 +13,10 @@
  */
 
  /**
- * DescripciÃ³n General: 
- * SecciÃ³n de publicaciones dentro del plugin de Marketful
+ * Descripción General: 
+ * Sección de publicaciones dentro del plugin de Marketful
  * que muestra la lista de productos con opcion de modificar
- * los atributos de status, exposiciÃ³n y permite buscar 
+ * los atributos de status, exposición y permite buscar 
  * entre tus productos.
  *
  *
@@ -100,16 +100,16 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           <option value="closed" >Finalizada</option> 
       </select>
      <!--   | 
-      ExposiciÃ³n: -->
-      <select style=""class="select-arriba" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de ExposiciÃ³n', 'exposicion_ml_select')" >
-          <option>ExposiciÃ³n</option>
+      Exposición: -->
+      <select style=""class="select-arriba" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de Exposición', 'exposicion_ml_select')" >
+          <option>Exposición</option>
           <option  value="free" >Gratis</option>
-          <option value="clasica" >ClÃ¡sica</option>
+          <option value="clasica" >Clásica</option>
           <option value="premium" >Premium</option> 
       </select>
     </div>
     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" id="dg">
-        <a href="?page=mkf-descripcion-footer"><button id="boton_dg"> Agregar descripciÃ³n general</button></a>
+        <a href="?page=mkf-descripcion-footer"><button id="boton_dg"> Agregar descripción general</button></a>
     </div>
     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
         <h8 id="cambios_guardados"></h8>
@@ -135,18 +135,18 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       <tr>
         <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
         <th style="min-width: 50px">SKU </th>
-        <th style="min-width: 150px">TÃ­tulo en MercadoLibre</th>
+        <th style="min-width: 150px">Título en MercadoLibre</th>
         <th style="min-width: 50px">Status</th>
-        <th style="min-width: 50px">ExposiciÃ³n</th>
-        <th style="min-width: 130px">CategorÃ­a ML</th>
+        <th style="min-width: 50px">Exposición</th>
+        <th style="min-width: 130px">Categoría ML</th>
         <th style="min-width: 50px">Precio Woo Commerce</th>
         <th style="min-width: 50px">Precio Mercado Libre</th>
         <th style="min-width: 50px">Inventario Woo Commerce</th>
         <th style="min-width: 50px">Inventario Mercado Libre</th>
-        <th style="min-width: 150px">Tipo de EnvÃ­o</th>
+        <th style="min-width: 150px">Tipo de Envío</th>
         <th style="min-width: 110px">Ver Publicacion</th>
-        <th style="min-width: 60px">Ultima ActualizaciÃ³n</th>
-        <!-- <th style="min-width: 215px;">AcciÃ³n</th> -->
+        <th style="min-width: 60px">Ultima Actualización</th>
+        <!-- <th style="min-width: 215px;">Acción</th> -->
       </tr>
     </thead>
     <tbody id="tbody_productos">
@@ -155,16 +155,16 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       foreach ($products[0]["data"] as $key => $product) :
     ?>
       <tr>
-        <!-- Modal para actualizar informaciÃ³n -->
+        <!-- Modal para actualizar información -->
           <div class="modal fade" id="modal_ad_<?php echo $product->ID; ?>" onClick="resize_window();"role="alert">
             <div class="modal-dialog">
               <div class="modal-content" >
                 <div class="modal-header" onclick="resize_window();">
-                  <h4 class="modal-title">Actualiza la informaciÃ³n del producto</h4>
+                  <h4 class="modal-title">Actualiza la información del producto</h4>
                   <button type="button" class="close" data-dismiss="modal" onclick="resize_window();">&times;</button>
                 </div>
                 <div class="modal-body" onclick="resize_window();">
-                  <p>Para poder asignar el tipo de status, primero debes actualizar la categorÃ­a, el tipo de exposiciÃ³n y el tipo de enviÃ³ en MercadoLibre. Â¿Deseas actualizarlo ahora?</p>
+                  <p>Para poder asignar el tipo de status, primero debes actualizar la categoría, el tipo de exposición y el tipo de envió en MercadoLibre. ¿Deseas actualizarlo ahora?</p>
                 </div>
                 <div class="modal-footer">
                   <button class="boton_redirige_cat_<?php echo $product->ID; ?> btn btn-default" id=""> Actualizar </button>
@@ -190,14 +190,14 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           </td>
         <!--
             ******************************************************************
-                @Scripts PHP en esta secciÃ³n:
-                -  Hacemos un Echo al valor de ID del producto para mandarlo como parametro a la @funciÃ³n
+                @Scripts PHP en esta sección:
+                -  Hacemos un Echo al valor de ID del producto para mandarlo como parametro a la @función
                    cambioStatus(@string,@string)
                 -  Se toman los datos de los productos en $productObject.
                 -  Se capta toda la metadata desde el objeto $productObject
                 -  Se selecciona de la matriz resultante, el valor relacionado con el status
                 -  Dentro del select, se hace echo de 'Selected' para que sea la opcion seleccionada, en        caso de que el valor de $select_value sea igual a alguna de las opciones.
-                -  Se repite el procedimiento, pero en esta ocacion el dato que se utiliza es exposiciÃ³n_ml
+                -  Se repite el procedimiento, pero en esta ocacion el dato que se utiliza es exposición_ml
                 -->
           <td>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones" >              
@@ -236,13 +236,13 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml'); check_status(<?php echo $product->ID; ?>);" id="metodo_envio_ml_<?php echo $product->ID;  ?>">
                 <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
                 <option>...</option>
-                <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado EnvÃ­o Gratis</option>
-                <option value="me_c" <?php echo ($select_value=="me_c")?'selected':''; ?>>Mercado EnvÃ­o Pago</option>
+                <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envío Gratis</option>
+                <option value="me_c" <?php echo ($select_value=="me_c")?'selected':''; ?>>Mercado Envío Pago</option>
                 <option value="custom" <?php echo ($select_value=="custom")?'selected':''; ?> >Personalizado</option> 
               </select>
             </div>  
         </td>
-        <td ><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-search' aria-hidden='true'></i> Ver PublicaciÃ³n</a>" : "no hay ") ?>
+        <td ><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicación</a>" : "no hay ") ?>
           </td>
         <td><?php echo get_post_meta($product->ID, "error_ml", true);?></td>
        <!--  <td>
@@ -258,7 +258,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 <script>
     /**
-     * @FunciÃ³n JQuery
+     * @Función JQuery
      */
     jQuery(document).ready(function($){
       getCategory(<?php echo $pagina; ?>,<?php echo $keyword; ?>);
