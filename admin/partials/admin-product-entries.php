@@ -236,8 +236,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml'); check_status(<?php echo $product->ID; ?>);" id="metodo_envio_ml_<?php echo $product->ID;  ?>">
                 <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
                 <option>...</option>
-                <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envío Gratis</option>
-                <option value="me_c" <?php echo ($select_value=="me_c")?'selected':''; ?>>Mercado Envío Pago</option>
+                <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envio Gratis</option>
+                <option value="me_c" <?php echo ($select_value=="me_c")?'selected':''; ?>>Mercado Envio Pago</option>
                 <option value="custom" <?php echo ($select_value=="custom")?'selected':''; ?> >Personalizado</option> 
               </select>
             </div>  
