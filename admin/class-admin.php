@@ -185,6 +185,23 @@ class MKF_Admin
       array( $this, 'descripcion_footer' )
     );
 
+    add_submenu_page(
+      NULL,
+      __( "{$this->plg_small_name}-error-list", 'textdomain' ),
+      __( 'Lista de Errores', 'textdomain' ),
+      $this->available_menu_to_editor_or_admin(),
+      "{$this->plg_small_name}-error-list",
+      array( $this, 'error_list' )
+    );
+    add_submenu_page(
+      NULL,
+      __( "{$this->plg_small_name}-error-list-detail", 'textdomain' ),
+      __( 'Lista de Errores Detalles', 'textdomain' ),
+      $this->available_menu_to_editor_or_admin(),
+      "{$this->plg_small_name}-error-list-detail",
+      array( $this, 'error_list_detail' )
+    );
+
   }
 
   /**
@@ -252,6 +269,14 @@ class MKF_Admin
 
   public function descripcion_footer() {
     include_once "partials/admin-descripcion-footer.php";
+  }
+
+  public function error_list() {
+    include_once "partials/admin-error-list.php";
+  }
+
+  public function error_list_detail() {
+    include_once "partials/admin-error-list-detail.php";
   }
 
 }
