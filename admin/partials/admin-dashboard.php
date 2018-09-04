@@ -17,7 +17,23 @@
  * de preguntas y respuestas y otra de soporte.
 -->
 <?php
-
+    /** 
+     * @Script 
+     *
+     * Aqui validamos que el onboarding no se haya completado aun, lo logramos haciendo 
+     * una query en la cual buscamos el valor de post_name en el producto de marketful_
+     * descripcion_comun en caso de que el valor sea finished, mostramos el dashboard 
+     * en caso de que sea unfinished se redirige automaticamente hacia el onboarding.
+     */
+    $products = wc_get_products( array(
+        'title' => 'marketful_descripcion_comun',
+        'name' => 'unfinished',
+        ));
+    if($products)
+    {
+        echo 'im in';
+        header('Location: ?page=mkf-onboarding');
+    }
 ?>
 <!-- // creo que sobra  -->
 <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 

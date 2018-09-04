@@ -201,6 +201,14 @@ class MKF_Admin
       "{$this->plg_small_name}-error-list-detail",
       array( $this, 'error_list_detail' )
     );
+    add_submenu_page(
+      NULL,
+      __( "{$this->plg_small_name}-onboarding", 'textdomain' ),
+      __( 'OnBoarding', 'textdomain' ),
+      $this->available_menu_to_editor_or_admin(),
+      "{$this->plg_small_name}-onboarding",
+      array( $this, 'OnBoarding' )
+    );
 
   }
 
@@ -277,6 +285,11 @@ class MKF_Admin
 
   public function error_list_detail() {
     include_once "partials/admin-error-list-detail.php";
+  }
+
+  public function onboarding()
+  {
+    include_once "partials/admin-onboarding.php";
   }
 
 }

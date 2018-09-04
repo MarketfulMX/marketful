@@ -130,7 +130,6 @@ class MKF_ProductEntry extends MKF_DBCore
      * Para finalizar la @función wp_die() finaliza la ejecución y muestra el error
      * en caso de que suceda alguno.
      */
-
     public function my_theme_ajax_submit() 
     {
         $producto_id = $_POST['product_id'];
