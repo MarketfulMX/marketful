@@ -327,7 +327,6 @@ function check_status(id)
         console.log('Desabilitar Select ahora');
         $('#mercadolibre_'+id).val('...');
         $('#subir_ml_'+id).attr('disabled','false');
-        $('#subir_ml_'+id).attr('onClick','');
     }
 /**
  * @función redirige_cat(@parametro: id del producto)
