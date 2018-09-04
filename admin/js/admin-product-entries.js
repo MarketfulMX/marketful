@@ -285,7 +285,7 @@ function check_status(id)
     //console.log(id +' '+expo_ml +' '+ categoria_ml +' '+ metodo_envio_ml);
     if(expo_ml == '...' || categoria_ml == 'categorizar' || metodo_envio_ml == '...')
     {
-        console.log('disabled = true : '+id);
+        //console.log('disabled = true : '+id);
         $('#mercadolibre_'+id).val('...');
         $('#mercadolibre_'+id).attr('data-toggle','modal');
         $('#mercadolibre_'+id).attr('data-target','#modal_ad_'+id);
@@ -298,7 +298,7 @@ function check_status(id)
     }
     else
     {
-        console.log('enabled = true : '+id);
+        //console.log('enabled = true : '+id);
         $('#mercadolibre_'+id).prop('disabled', false);
         $('#mercadolibre_'+id).attr('data-toggle',' ');
         $('#mercadolibre_'+id).attr('data-target',' ');
@@ -307,7 +307,6 @@ function check_status(id)
         $('.boton_redirige_cat_'+id).attr('onClick',' ');
         $('.boton_redirige_cat_'+id).attr('onChange','cambioStatus('+id+',\'mercadolibre\')');
         $('#subir_ml_'+id).attr('disabled',false);
-        $('#subir_ml_'+id).attr('onClick','');
     }
 }
     /**
@@ -352,9 +351,71 @@ function resize_window()
 }
 
 /**
- * @funcion valida_subir_cambios(@parametro: id)
- * Valida que el registro tenga un valor para la exposicion, para tipo de envio y tenga categoria, 
- * para mostrar o no el boton de subir cambios.
+ * @funcion subir_cambios(@string: product_id)
+ * 
+ * La @funcion de subir cambios a Marketful. Cuando se manda a llamar se recibe como parametro 
+ * el id del producto que actualizara sus datos. Toma los valores de la exposicion, el status
+ * el precio, el valor del inventario y el tipo de envio.
  */
+ function subir_cambios(product_id)
+{
+    console.log(product_id+' Se esta subiendo a Mkf los cambios ------------------------------------------------------------------');
+    $('#cambios_guardados').text("Guardando cambios...");
+
+    var values = [$('#mercadolibre_' + product_id).val(), $('#exposicion_ml_'+ product_id).val(), $('#precio_ml_'+ product_id).val(), $('#inventario_ml_'+ product_id).val(), $('#metodo_envio_ml_'+ product_id).val()];
+    var keys = ['mercadolibre', 'exposicion_ml', 'precio_ml', 'inventario_ml', 'metodo_envio_ml'];
+    var c = 0;
+    var c2 = 0;
+
+    // Status -- mercadolibre
+    if(values[0] == 'closed')
+    {
+        console.log('Se va a finalizar la publicacion -> Lanzar alerta para validar ooooooooooooooooooooooooooooooooooooooooooooooo');
+        if(!confirm('Si finalizas una publicación en MercadoLibre tendras que crear una nueva para volver a activarla, ¿Finalizar publicacion?'))
+        {
+            $('#' + key + "_" + product_id).val('...');
+            c2 = 1;
+        }
+    }
+    for(c = c2; c<4; c++)
+    {
+        jQuery.ajax(
+        {
+            type: 'post',
+            url: ajaxurl,
+            dataType: 'json',
+            data: 
+            { 
+                product_id: product_id, 
+                value: values[c], 
+                key: keys[c], 
+                tarea_id: tarea_id,
+                action: 'act_mkf'
+            },
+            success: function(response) 
+            { 
+                delete tareas[response.data["tarea_id"]];
+                if(tareas.size == null)
+                {
+                    if(c == 4)
+                    {
+                        $('#cambios_guardados').text(" Cambios guardados. ");
+                    }
+                    else
+                    {
+                        $('#cambios_guardados').text("Guardando "+(c+1)+" de 5 ");
+                    }
+                }     
+            },
+            error: function(response) 
+            { 
+                console.log("fracaso");
+            },
+        });
+    }
+    // registrar la tarea 
+    var tarea_id = "task_" + Math.random();
+    tareas[tarea_id] = false;   
+};
 
 

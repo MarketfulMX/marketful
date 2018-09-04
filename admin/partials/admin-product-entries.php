@@ -176,7 +176,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           </div>
           
         <td class="dt_check"><input type="checkbox" class="ids" name="checkboxes" id="checkbox_<?php echo $product->ID; ?>" />  </td>
-        <td><button style=""id="subir_ml_<?php echo $product->ID;?>" class="boton_dg"> Subir cambios</button></td>
+        <td><button style=""id="subir_ml_<?php echo $product->ID;?>" class="boton_dg" onclick="subir_cambios(<?php echo $product->ID; ?>);"> Subir cambios</button></td>
         <td><?php echo $product->sku; ?></td>
         <td style="min-width: 150px">
             <?php 

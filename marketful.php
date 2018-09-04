@@ -86,10 +86,14 @@ function mkf_run_core() {
 mkf_run_core();
 add_action( 'wp_ajax_foobar', ['MKF_ProductEntry', 'my_theme_ajax_submit']);
 
+// Actualizando Marketful
+add_action( 'wp_ajax_act_mkf', ['MKF_ProductEntry', 'actualiza_mkf']);
+
 // Descripcion //
 add_action('wp_ajax_desc_comun', ['MKF_ProductEntry', 'desc_comun_ajax_submit']);
 
 // Creando producto de prueba en el Oboarding //
 add_action('wp_ajax_test', ['MKF_ProductEntry', 'test_product']);
+
 // Eliminando producto de prueba en el Onboarding //
 add_action('wp_ajax_test_delete', ['MKF_ProductEntry', 'test_product_delete']);
