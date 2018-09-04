@@ -134,7 +134,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     <thead>
       <tr>
         <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
-        <th style="min-width: 100px">Subir Cambios a Mercado Libre</th>
+        <th style="min-width: 100px">Subir cambios a Mercado Libre</th>
         <th style="min-width: 50px">SKU </th>
         <th style="min-width: 150px">Titulo en MercadoLibre</th>
         <th style="min-width: 50px">Status</th>
@@ -203,7 +203,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 -->
           <td>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones" >              
-              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select pub_status" id="mercadolibre_<?php echo $product->ID;  ?>" onload="check_status(<?php echo $product->ID; ?>)" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre')" >
+              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select pub_status" id="mercadolibre_<?php echo $product->ID;  ?>" onload="check_status(<?php echo $product->ID; ?>)" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre');" >
                 <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
                 <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
                 <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
@@ -216,7 +216,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         </td>
         <td>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
-              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml'); check_status(<?php echo $product->ID; ?>);" id="exposicion_ml_<?php echo $product->ID;  ?>">
+              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml'); check_status(<?php echo $product->ID; ?>); " id="exposicion_ml_<?php echo $product->ID;  ?>">
                 <?php $select_value = $all_mlmeta[0]["data"][0]->exposicion; ?>
                 <option>...</option>
                 <option value="free" <?php echo ($select_value=="free")?'selected':''; ?>>Gratis</option>

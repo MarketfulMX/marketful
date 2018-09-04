@@ -6,27 +6,27 @@
 
 
 /*
- * - @FunciÃ³n JQuery/Ajax: cambioStatus(@string,@string)
- * Esta funciÃ³n recibe dos @parÃ¡metros que son el id del producto y el tipo de
+ * - @Función JQuery/Ajax: cambioStatus(@string,@string)
+ * Esta función recibe dos @parámetros que son el id del producto y el tipo de
  * metadato que modificara.
- * La @funciÃ³n console log muestra en la consola del navegador la informaciÃ³n del objeto
+ * La @función console log muestra en la consola del navegador la información del objeto
  * product_id.
  *
- * Se crea una variable con el valor del select que se modificÃ³, se obtiene dicha
- * informaciÃ³n obteniendo el id del select con el tipo de metadato que se modificara
- * mÃ¡s guion bajo mÃ¡s el id del producto.
+ * Se crea una variable con el valor del select que se modificó, se obtiene dicha
+ * información obteniendo el id del select con el tipo de metadato que se modificara
+ * más guion bajo más el id del producto.
  *
- * Se envÃ­a con console.log el valor de key
- * Se crea una funciÃ³n AJAX que pide el tipo de solicitud que se hace 'POST'
- * y se envÃ­an los @parÃ¡metros ademÃ¡s que se manda a llamar a la funciÃ³n de PHP 
- * my_theme_ajax_submit. Se le envÃ­an los @parÃ¡metros: product_id, value y key .
+ * Se envía con console.log el valor de key
+ * Se crea una función AJAX que pide el tipo de solicitud que se hace 'POST'
+ * y se envían los @parámetros además que se manda a llamar a la función de PHP 
+ * my_theme_ajax_submit. Se le envían los @parámetros: product_id, value y key .
  *
- * La @funciÃ³n Ajax que nombramos response nos responde a la solicitud con un archivo Json.
+ * La @función Ajax que nombramos response nos responde a la solicitud con un archivo Json.
  *
- * En caso de que la @funciÃ³n haya resultado exitosa, la reflejamos en consola con
+ * En caso de que la @función haya resultado exitosa, la reflejamos en consola con
  * console.log y lo mostramos en el @boton #fire cambiando su texto a "Cambio
  * correcto".
- * En caso de que la @funciÃ³n Ajax no haya resultado exitosa, reflejamos en
+ * En caso de que la @función Ajax no haya resultado exitosa, reflejamos en
  * consola el error y actualizamos el @boton #fire cambiando su texto a "error".
  */
 function cambioStatus(product_id, key)
@@ -37,7 +37,7 @@ function cambioStatus(product_id, key)
     if(key == 'mercadolibre' && value == 'closed')
     {
         console.log('Se va a finalizar -> Lanzar alerta para validar');
-        if(!confirm('Si finalizas una publicaciÃ³n en MercadoLibre tendras que crear una nueva para volver a activarla, Â¿Finalizar publicacion?'))
+        if(!confirm('Si finalizas una publicación en MercadoLibre tendras que crear una nueva para volver a activarla, ¿Finalizar publicacion?'))
         {
             $('#' + key + "_" + product_id).val('...');
             return false;
@@ -82,7 +82,7 @@ function cambioStatus(product_id, key)
 };
 
 /**
- * @FunciÃ³n buscarResultados()
+ * @Función buscarResultados()
  * Recarga la pagina enviando como parametro 
  * el texto dentro del input #keyword_input.
  */
@@ -94,7 +94,7 @@ function buscarResultados()
 }
 
 /**
- * @FunciÃ³n selectTodos()
+ * @Función selectTodos()
  * Primero obtiene el numero de checkboxes que existen 
  * en la pagina.
  * Despues mediante un for que va de cero hasta el numero
@@ -116,7 +116,7 @@ function selectTodos()
 }
 
 /**
- * @funciÃ³n statusMasivo(@string, @string, @string)
+ * @función statusMasivo(@string, @string, @string)
  * Recibe los @parametros del atributo a modificar, 
  * el valor que asignara y el id del elemento.
  */
@@ -141,7 +141,7 @@ function statusMasivo(key, nombre_key, id)
             // ------------------------------------------------------------------------
             // -- VALIDANDO QUE EL SELECT_STATUS ESTE DISPNIBLE PARA SER MODIFICADO ---
             // ------------------------------------------------------------------------
-            // Se toman los valores de exposiciÃ³n, categoria y tipo de envÃ­o
+            // Se toman los valores de exposición, categoria y tipo de envío
             var expo_ml = $('#exposicion_ml_'+product_id+' option:selected').text();
             var categoria_ml = $('#categoria_'+product_id).text();
             var metodo_envio_ml = $('#metodo_envio_ml_'+product_id+' option:selected').text();
@@ -201,7 +201,7 @@ function statusMasivo(key, nombre_key, id)
 }
 
 /**
- * @funciÃ³n setSelect()
+ * @función setSelect()
  * 
  */
 function setSelect()
@@ -214,7 +214,7 @@ function setSelect()
 }
 
 /**
- * @funciÃ³n enterBuscar()
+ * @función enterBuscar()
  *
  */
 function enterBuscar(e)
@@ -235,7 +235,7 @@ var status_cambios = ""
      **
      
     /**
-     * @FunciÃ³n getCategory()
+     * @Función getCategory()
      * Al ser llamada,a su vez manda a llamar a una @funcion Ajax que crea el path_categoria que contiene 
      * la categoria del producto. Despues lo inserta con appenddentro de un link que lleva hacia
      * entries-categorizador con los parametros $product_id, 
@@ -271,7 +271,7 @@ var status_cambios = ""
     }
 
 /** 
- * @funciÃ³n check_status(@parametro: id del producto)
+ * @función check_status(@parametro: id del producto)
  * Valida si el producto no tiene categoria, exposicion y tipo de envio, en tal caso desabilita el select pub_status
  * Con el parametro del id, valida que se pueda o no habilitar el select_status
  */
@@ -285,7 +285,7 @@ function check_status(id)
     //console.log(id +' '+expo_ml +' '+ categoria_ml +' '+ metodo_envio_ml);
     if(expo_ml == '...' || categoria_ml == 'categorizar' || metodo_envio_ml == '...')
     {
-        //console.log('disabled = true');
+        console.log('disabled = true : '+id);
         $('#mercadolibre_'+id).val('...');
         $('#mercadolibre_'+id).attr('data-toggle','modal');
         $('#mercadolibre_'+id).attr('data-target','#modal_ad_'+id);
@@ -294,10 +294,11 @@ function check_status(id)
         $('#mercadolibre_'+id).attr('onClick','deshabilitar_select('+id+');');
         $('.boton_redirige_cat_'+id).attr('onClick',link);
         $('.boton_redirige_cat_'+id).attr('onChange','');
+        $('#subir_ml_'+id).attr('disabled',true);
     }
     else
     {
-        //console.log('enabled = false');
+        console.log('enabled = true : '+id);
         $('#mercadolibre_'+id).prop('disabled', false);
         $('#mercadolibre_'+id).attr('data-toggle',' ');
         $('#mercadolibre_'+id).attr('data-target',' ');
@@ -305,10 +306,12 @@ function check_status(id)
         $('#mercadolibre_'+id).attr('onChange','cambioStatus('+id+',\'mercadolibre\')');
         $('.boton_redirige_cat_'+id).attr('onClick',' ');
         $('.boton_redirige_cat_'+id).attr('onChange','cambioStatus('+id+',\'mercadolibre\')');
+        $('#subir_ml_'+id).attr('disabled',false);
+        $('#subir_ml_'+id).attr('onClick','');
     }
 }
     /**
-     * @Jquery @FunciÃ³n 
+     * @Jquery @Función 
      * Dispara el evento onLoad en los select de status para poder validar se estan habilitados o no.
      * 
      */ 
@@ -317,15 +320,18 @@ function check_status(id)
         $('.pub_status').trigger('onload');
     });
     /**
-     * @funciÃ³n 
+     * @función 
      * impide que el usuario seleccione alguna opcion cuando un select_status esta deshabilitado.
      */
     function deshabilitar_select(id)
     {
+        console.log('Desabilitar Select ahora');
         $('#mercadolibre_'+id).val('...');
+        $('#subir_ml_'+id).attr('disabled','false');
+        $('#subir_ml_'+id).attr('onClick','');
     }
 /**
- * @funciÃ³n redirige_cat(@parametro: id del producto)
+ * @función redirige_cat(@parametro: id del producto)
  *
  * Funcion que redirige hacia la pagina de categorizador
  */
@@ -336,13 +342,19 @@ function redirige_cat(link)
 }
 
 /**
- * @funciÃ³n resize_window()
- * Re define el tamaÃ±o de la pantalla
+ * @función resize_window()
+ * Re define el tamaño de la pantalla
  */
 function resize_window()
 {
     var ancho = window.innerWidth;
     $('#wpbody-content').css('width',ancho - 200);
 }
+
+/**
+ * @funcion valida_subir_cambios(@parametro: id)
+ * Valida que el registro tenga un valor para la exposicion, para tipo de envio y tenga categoria, 
+ * para mostrar o no el boton de subir cambios.
+ */
 
 
