@@ -69,7 +69,7 @@
     {   
         padding-left: 0px;
     }
-        #boton_dg
+        #boton_dg, .boton_dg
         {
             float: left;
             margin-left:0px; 
@@ -85,12 +85,12 @@
             text-decoration: none;
             cursor: pointer;
         }
-        #boton_dg:hover
+        #boton_dg:hover, .boton_dg:hover
         {
             border-color: #7E7F6D;
             background-color: #BCBFA3;
         }
-        #boton_dg:active
+        #boton_dg:active, .boton_dg:active
         {
             border-color: #3F4036;
             background-color: #BCBFA3;
