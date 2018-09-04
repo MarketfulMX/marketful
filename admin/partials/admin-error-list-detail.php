@@ -36,7 +36,8 @@
 </script>
 
 <style type="text/css">
-	body{
+	body
+    {
 		font-family: sans-serif;
 	}
 	.boton_eld
@@ -48,29 +49,55 @@
         border-color: #7E7F6D; 
         border-width: 2px;
         border-radius: 3px;
-        font-size: 14px;
+        font-size: 15px;
         padding: 5px;
-        color: black;
         text-decoration: none;
         cursor: pointer;
-        font-family: sans-serif;
     }
     	.boton_eld:hover
     	{
+            text-decoration: none;
+            color: black;
     		border-color: #7E7F6D;
         	background-color: #BCBFA3;
         	text-decoration: none;
     	}
     	.boton_eld:active
     	{
+            text-decoration: none;
+            color: black;
     		border-color: #7E7F6D;
         	background-color: #BCBFA3;
         	text-decoration: none;
     	}
+        .boton_eld:focus
+        {
+            text-decoration: none;
+            color: black;
+        }
+    .contenedor_eld
+    {
+        border-width: 1px;
+        border-color: #dee2e6;
+        border-radius: 5px;
+        border-style: solid;
+        background-color: white;
+        padding: 10px;
+        width: 60%;
+    }
+    .informacion_eld h3
+    {
+        border-bottom-width: 1px;
+        border-color: #dee2e6;
+    }
+    .inferior_eld
+    {
+        margin:20px 12px;
+    }
 </style>
 
 <div>
-	<div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> <a class="boton_eld" href="?page=mkf-error-list">Volver</a> </div>
+	<div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?>  </div>
 	<div class="er_titulo">
 		<h3>Error: <?php echo $_GET['error']; ?></h3>
 	</div>
@@ -80,10 +107,13 @@
 			<h3>ID de Error en WooCommerce: 586499<?php echo $_GET['error']; ?></h3>
 			<h3>ID del producto en WooCommerce: <?php echo $_GET['error']; ?> </h3>
 			<h3>Fecha de Error: 09/03/2018 12:05:13</h3>
-			<h3><a class="boton_eld" href='http://localhost/wp/wp-admin/post.php?post=<?php echo $_GET['error']; ?>&action=edit' target='_blank'> Ver en WooCommerce </a><a class="boton_eld" href=''> Ver en Mercado Libre</a></h3>
+			<h3><a class="boton_eld" href='post.php?post=<?php echo $_GET['error']; ?>&action=edit' style="color:black;" target='_blank'> Ver en WooCommerce </a><a class="boton_eld" style="margin-left: 10px; color:black;" href=''> Ver en Mercado Libre</a></h3>
 		</div>
 		<div class="detalles_eld">
 
 		</div>
 	</div>
+    <div class="inferior_eld">
+        <a class="boton_eld" style="color:black;"href="?page=mkf-error-list">Volver</a>
+    </div>
 </div>

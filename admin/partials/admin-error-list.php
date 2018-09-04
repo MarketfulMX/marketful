@@ -49,9 +49,22 @@
 		text-align: left;
 		margin: 20px;
 	}
+	.er_titulo
+	{
+		width: 30%;
+		margin: 0% 35%;
+		text-align: center;	
+	}
 	.contenedor_el
 	{
-
+		text-align: center;
+		border-color:  #dee2e6;
+		border-width: 1px;
+		border-top-width: 5px;
+		border-style: solid;
+		width: 40%;
+		margin: 0px 30%;
+		border-radius: 5px;
 	}
 	.table
     {            

@@ -341,9 +341,8 @@ function redirige_cat(link)
  */
 function resize_window()
 {
-    console.log('resize()');
-    $('#wpbody-content').css('width','1200px');
-    console.log($('wpbody-content').css('width'));
+    var ancho = window.innerWidth;
+    $('#wpbody-content').css('width',ancho - 200);
 }
 
 
