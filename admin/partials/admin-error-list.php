@@ -89,7 +89,6 @@
         border-color: #7E7F6D; 
         border-radius: 3px;
         font-size: 12px;
-        text-decoration: none;
         cursor: pointer;
         font-family: sans-serif;
     }
@@ -97,11 +96,17 @@
     	{
     		border-color: #7E7F6D;
         	background-color: #BCBFA3;
+        	text-decoration: none;
     	}
     	.boton_el:active
     	{
     		border-color: #7E7F6D;
         	background-color: #BCBFA3;
+        	text-decoration: none;
+    	}
+    	.boton_el:focus
+    	{
+    		text-decoration: none;
     	}
 </style>
 
@@ -139,7 +144,7 @@
 								586499'.$i.'
 							</td>
 							<td>
-								<button class="boton_el" id="detalles_'.$i.'" onClick="ver_detalles('.$i.')"> Ver detalles </button>
+								<a style="text-decoration: none;" href="?page=mkf-error-list-detail&error='.$i.'" target="_blank"><button class="boton_el" id="detalles_'.$i.'""> Ver detalles </button></a>
 							</td>
 						</tr>
 						';
