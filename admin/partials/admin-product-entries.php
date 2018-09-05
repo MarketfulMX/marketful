@@ -37,18 +37,6 @@ $keyword = $_GET['keyword'];
  * Recibimos el valor de Onb en caso de ser 1 se activa la vista "onboarding"
  */
 $onb = $_GET['onb'];
-if($onb == 1)
-{
-    echo '<script>
-            console.log("Entramos a onboarding");
-            jQuery(".caja-de-botones").css("disable",true);
-            jQuery("#status_select").css("disable",true);
-            jQuery("#exposicion_ml_select").css("disable",true);
-            jQuery("#boton_dg").css("disable",true);
-            jQuery("#keyword_input").css("disable",true);
-            jQuery("#boton_buscar").css("disable",true);
-          </script>';
-}
 
 $offset = 0;
 if (is_null($pagina)){
@@ -173,7 +161,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     <?php
       foreach ($products[0]["data"] as $key => $product) :
     ?>
-      <tr style="border-color: #ADB2FF; border-style: solid; border-width: 4px; border-radius: 5px; background-color: #ADB2FF; color:black;  ">
+      <tr id="tr_<?php echo $product->ID; ?>">
         <!-- Modal para actualizar información -->
           <div class="modal fade" id="modal_ad_<?php echo $product->ID; ?>" onClick="resize_window();"role="alert">
             <div class="modal-dialog">
@@ -281,11 +269,14 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
      * @Función JQuery
      */
     jQuery(document).ready(function($){
+      <?php 
+      // En caso de que onb tenga valor de uno. Y se este ejecutando el onboarding
+      if($onb == 1)
+      {
+          echo 'onboarding_1(); console.log("entroa ready");';      
+      } ?>
       getCategory(<?php echo $pagina; ?>,'<?php echo $keyword; ?>');
     });
-    
-
-
 </script>
 
 

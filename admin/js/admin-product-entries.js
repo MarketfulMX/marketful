@@ -418,3 +418,23 @@ function resize_window()
 };
 
 
+/**
+ * @funcion onboarding_1()
+ *
+ */
+function onboarding_1()
+{
+    console.log("Entramos a onboarding");
+    jQuery(".caja-de-botones").attr("disabled",true); 
+    jQuery("#status_select").attr("disabled",true); 
+    jQuery("#exposicion_ml_select").attr("disabled",true);
+    jQuery("#boton_dg").attr("disabled",true);
+    jQuery("#keyword_input").attr("disabled",true);
+    jQuery("#boton_buscar").attr("disabled",true);
+    jQuery("#tr_1").css("border-color","#ADB2FF"); 
+    jQuery("#tr_1").css("border-style","solid"); 
+    jQuery("#tr_1").css("border-width","4px"); 
+    jQuery("#tr_1").css("border-radius","5px"); 
+    jQuery("#tr_1").css("background-color","#ADB2FF"); 
+    jQuery("#tr_1").css("color","black");
+}
