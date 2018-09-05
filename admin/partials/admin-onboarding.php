@@ -26,11 +26,81 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 <script type="text/javascript">
-	
+	/**
+     * @funcion create_test_product()
+     * Crea el producto de prueba.
+     */    
+     function create_test_product()
+     {
+        console.log('Estamos creando el producto de prueba');
+        jQuery.ajax(
+            {
+                type: 'post',
+                url: ajaxurl,
+                dataType: 'json',
+                data:
+                {
+                    action: 'test'
+                },
+                success: function(response)
+                {
+                    console.log('Hecho, se creo el producto de prueba.');
+                },
+                error: function(response)
+                {
+                    console.log('No se pudo crear el producto de prueba.');
+                }
+            });
+     }
+    /**
+     * @funcion delete_test_product()
+     * Borra el producto de prueba
+     */
+     function delete_test_product()
+     {
+        console.log('Estamos borrando el producto de prueba');
+        jQuery.ajax(
+            {
+                type: 'post',
+                url: ajaxurl,
+                dataType: 'json',
+                data:
+                {
+                    action: 'test_delete'
+                },
+                success: function(response)
+                {
+                    console.log('Hecho, se borro el producto de prueba.');
+                },
+                error: function(response)
+                {
+                    console.log('No se pudo borrar el producto de prueba.');
+                }
+            });
+     }
+
+    /**
+	 * @funcion display(@parametro: pagina)
+	 * 
+	 * Recibe el numero de pagina que se quiere mostrar en pantalla
+	 */
+	 function display(numero)
+	 {
+	 	$('.panel_'+(numero - 1)).css('display','none');
+	 	window.setTimeout("temp("+numero+")", 500);
+	 }
+	 	/**
+	 	 * @funcion temp(@parametro: numero)
+	 	 * Muestra un panel dependiendo el parametro que se le envia
+	 	 */
+		 function temp(numero)
+	 	 {
+	 		$('.panel_'+numero).css('display','grid');	
+	 	 }
 </script>
 
 <style type="text/css">
-	.onb_1
+	.onb
 	{
 		border-color:#707070;
 		border-style: solid;
@@ -76,6 +146,18 @@
 				margin-top: -10px;
 				font-size: 12px;
 			}
+	.panel_1
+	{
+
+	}
+	.panel_2
+	{
+		display: none;
+	}
+	.panel_3
+	{
+		display: none;
+	}
 	.boton_onb
 	{
 		font-size: 25px;
@@ -103,13 +185,13 @@
 
 <div class="contenedor_onb">
 	
-	<div class="onb_1">
+	<div class="onb panel_1">
 		<div class="left_container">
 			<div class="lc_titulo">Felicidades!</div>
 			<div class="lc_tc">
 				Has llegado lejos, marketful seller center esta casi listo para funcionar, solo nos falta mostrarte la simpleza de su funcionamiento. Preparate en los siguientes minutos aprenderas a administrar tus productos de WooCommerce y poder modificar los atributos de la publicacion de ese producto dentro de Mercado Libre, ¡comenzemos!
 			</div>
-			<div class="lc_boton"><button class="boton_onb"> Iniciar Onboarding</button></div>
+			<div class="lc_boton"><button class="boton_onb" onclick="display(2);"> Iniciar Onboarding</button></div>
 		</div>
 		<div class="right_container">
 			<div></div>
@@ -125,13 +207,13 @@
 		</div>
 	</div>
 
-	<div class="onb_1">
+	<div class="onb panel_2">
 		<div class="left_container">
 			<div class="lc_titulo">Vamos a crear un producto de prueba</div>
 			<div class="lc_tc">
 				Crearemos un producto de prueba directo en tu base de datos de WooCommerce para empezar este OnBoarding, Usaremos este producto para todo el Onboarding con datod ficticios, no te preocupes, al terminar el Onboarding podras borrarlo.
 			</div>
-			<div class="lc_boton"><button class="boton_onb">Crear producto</button></div>
+			<div class="lc_boton"><button class="boton_onb" onclick="create_test_product();display(3);">Crear producto</button></div>
 		</div>
 		<div class="right_container">
 			<div></div>
@@ -141,13 +223,13 @@
 		</div>
 	</div>
 
-	<div class="onb_1">
+	<div class="onb panel_3">
 		<div class="left_container">
 			<div class="lc_titulo">Lo hemos creado, ahora vamos a verlo</div>
 			<div class="lc_tc">
 				Ya hemos creado un producto de prueba, ahora veremos en donde podemos verlo de manera sencilla y posteriormente podremos editar todos los atributos de su publicacion.
 			</div>
-			<div class="lc_boton"><button class="boton_onb">Ver producto</button></div>
+			<div class="lc_boton"><a style="text-decoration: none;"href="?page=mkf-product-entries&keyword='Producto+de+Prueba'&onb=1"><button class="boton_onb">Ver producto</button></a></div>
 		</div>
 		<div class="right_container">
 			<div></div>
@@ -158,3 +240,4 @@
 	</div>
 </div>
 <div class="img_footer"><img style="width: 100px; height: 38px;" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/00f28e9a6a24311ff4d3aea11bd89f1c03d87a41/admin/img/Marketful.jpeg?token=Ajnc0Rrrd4YGKSbhuadXRdrqYR-le5-tks5bmAOMwA%3D%3D"></div>
+<!-- //Funcion para borrar producto de prueba// onclick="delete_test_product()" -->

@@ -363,7 +363,7 @@ class MKF_ProductEntry extends MKF_DBCore
         if(function_exists(wc_get_products))
         {
             $products = wc_get_products( array(
-                'title' => 'marketful_test_product',
+                'title' => 'Producto de Prueba',
                 ));
             if(! $products)
             {

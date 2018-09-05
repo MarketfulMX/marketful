@@ -163,58 +163,7 @@
             $('#mensaje_ac h3').text('Listo! lograste conectar tu tienda con el Seller Center, ahora crearemos un producto de prueba');
             $("#mensaje_ac").css('display','inline');
        }
-    /**
-     * @funcion create_test_product()
-     * Crea el producto de prueba.
-     */    
-     function create_test_product()
-     {
-        console.log('Estamos creando el producto de prueba');
-        jQuery.ajax(
-            {
-                type: 'post',
-                url: ajaxurl,
-                dataType: 'json',
-                data:
-                {
-                    action: 'test'
-                },
-                success: function(response)
-                {
-                    console.log('Hecho, se creo el producto de prueba.');
-                },
-                error: function(response)
-                {
-                    console.log('No se pudo crear el producto de prueba.');
-                }
-            });
-     }
-    /**
-     * @funcion delete_test_product()
-     * Borra el producto de prueba
-     */
-     function delete_test_product()
-     {
-        console.log('Estamos borrando el producto de prueba');
-        jQuery.ajax(
-            {
-                type: 'post',
-                url: ajaxurl,
-                dataType: 'json',
-                data:
-                {
-                    action: 'test_delete'
-                },
-                success: function(response)
-                {
-                    console.log('Hecho, se borro el producto de prueba.');
-                },
-                error: function(response)
-                {
-                    console.log('No se pudo borrar el producto de prueba.');
-                }
-            });
-     }
+    
 </script>
 
 <style>
@@ -490,8 +439,8 @@
                     <p style="font-size: 16px;"> Al ingresar un nuevo producto es importante recordar que el titulo del mismo debera de ser igual o menor a 60 caracteres, ya que <i>Mercado Libre</i> requiere un titulo de esas dimensiones.</p>
                     <p style="font-size: 16px;"> Por otro lado es importante tomar en cuenta que al momento de publicar algun producto en <i> Mercado Libre </i> se tomaran las fotografias que se ingresen en <i>WooCommerce</i> ademas de la descripcion que se ingreso ahi mismo.</p>
                     <p style="font-size: 16px;">Es preciso recordar que solo los productos con un precio menor o igual a 470 pesos tendran disponible la opcion de <i> envio gratis.</i></p>
-                    <p style="font-size: 16px;"> Ahora estamos listos para crear nuestro producto de prueba <button class="boton_db" style="" onclick="create_test_product()">Crear producto de prueba</button>
-                    <button class="boton_db" onclick="delete_test_product()"> Borrar producto de Prueba </button></p>
+                    <p style="font-size: 16px;"> Ahora estamos listos para crear nuestro producto de prueba <button class="boton_db" style="" >Crear producto de prueba</button>
+                    <button class="boton_db" > Borrar producto de Prueba </button></p>
                 </div>
             </div>
             <a href="#onboarding"> Ir arriba </a> 
