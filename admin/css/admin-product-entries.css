@@ -151,10 +151,22 @@
             border-color: black;
             border-color: #7E7F6D;
         }
-#maximo
-{
-    
-}
+    .onb_flotante
+    {
+        width: 30%;
+        height: 250px;
+        border-color:#707070;
+        border-radius: 5px;
+        border-style: solid;
+        border-width: 1px;
+        background-color: red;  
+        color :#707070;
+        z-index: 10;
+        position: absolute;
+        margin-top: -800px;
+        margin-left: 30%;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+    }
 
 /********************************************************************/
 /********************************************************************/

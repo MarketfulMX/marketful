@@ -263,6 +263,10 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   </table>
 </div>
 </div>
+<div class="onb_flotante">
+    <p>texto</p>
+    <p>boton</p>
+</div>
 
 <script>
     /**

@@ -440,7 +440,7 @@ function onboarding_1()
     jQuery("#tr_onb").css("background-color","#ADB2FF"); 
     jQuery("#tr_onb").css("color","black");
     jQuery('#tr_onb').attr('onclick','onboarding_2()');
-    jQuery('.container').append("<div style='margin-top: 10px; border-color: #878181; border-radius: 5px; border-width: 1px; border-style: solid; background-color: #F5F5F5; color: #878181; font-size: 25px; width: 100%; padding: 5px; padding-left: 10px;'>Da clic en el producto que se encuentra marcado en color azul.</div>");
+    jQuery('.container').append("<div style='margin-top: 10px; border-color: #878181; border-radius: 5px; border-width: 1px; border-style: solid; background-color: #F5F5F5; color: #878181; font-size: 25px; width: 100%; padding: 5px; padding-left: 10px;'>Da clic en el producto de prueba que se encuentra marcado en color azul.</div>");
 }
 /**
  * @funcion onboarding_2()
@@ -448,5 +448,5 @@ function onboarding_1()
  */
 function onboarding_2()
 {
-    
+    alert("step 5");
 }
