@@ -135,7 +135,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   </style>
 
 
-<div style="max-width: 100%; overflow-x: scroll;">
+<div style="max-width: 100%; overflow-x: scroll;" >
   <table id="tabla" class="table stripe tableMK" style="overflow: auto;">
     <thead>
       <tr>
@@ -161,7 +161,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     <?php
       foreach ($products[0]["data"] as $key => $product) :
     ?>
-      <tr id="tr_<?php echo $product->ID; ?>">
+      <tr <?php if($onb == 1){ echo 'id="tr_onb"'; } ?>">
         <!-- Modal para actualizar información -->
           <div class="modal fade" id="modal_ad_<?php echo $product->ID; ?>" onClick="resize_window();"role="alert">
             <div class="modal-dialog">

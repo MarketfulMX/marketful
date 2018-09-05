@@ -229,7 +229,7 @@
 			<div class="lc_tc">
 				Ya hemos creado un producto de prueba, ahora veremos en donde podemos verlo de manera sencilla y posteriormente podremos editar todos los atributos de su publicacion.
 			</div>
-			<div class="lc_boton"><a style="text-decoration: none;"href="?page=mkf-product-entries&keyword='Producto+de+Prueba'&onb=1"><button class="boton_onb">Ver producto</button></a></div>
+			<div class="lc_boton"><a style="text-decoration: none;"href="?page=mkf-product-entries&keyword=Producto+de+Prueba&onb=1"><button class="boton_onb">Ver producto</button></a></div>
 		</div>
 		<div class="right_container">
 			<div></div>

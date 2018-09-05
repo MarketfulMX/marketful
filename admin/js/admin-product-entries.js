@@ -418,6 +418,8 @@ function resize_window()
 };
 
 
+
+//******************************************************************************************************************
 /**
  * @funcion onboarding_1()
  *
@@ -431,10 +433,20 @@ function onboarding_1()
     jQuery("#boton_dg").attr("disabled",true);
     jQuery("#keyword_input").attr("disabled",true);
     jQuery("#boton_buscar").attr("disabled",true);
-    jQuery("#tr_1").css("border-color","#ADB2FF"); 
-    jQuery("#tr_1").css("border-style","solid"); 
-    jQuery("#tr_1").css("border-width","4px"); 
-    jQuery("#tr_1").css("border-radius","5px"); 
-    jQuery("#tr_1").css("background-color","#ADB2FF"); 
-    jQuery("#tr_1").css("color","black");
+    jQuery("#tr_onb").css("border-color","#ADB2FF"); 
+    jQuery("#tr_onb").css("border-style","solid"); 
+    jQuery("#tr_onb").css("border-width","4px"); 
+    jQuery("#tr_onb").css("border-radius","5px"); 
+    jQuery("#tr_onb").css("background-color","#ADB2FF"); 
+    jQuery("#tr_onb").css("color","black");
+    jQuery('#tr_onb').attr('onclick','onboarding_2()');
+    jQuery('.container').append("<div style='margin-top: 10px; border-color: #878181; border-radius: 5px; border-width: 1px; border-style: solid; background-color: #F5F5F5; color: #878181; font-size: 25px; width: 100%; padding: 5px; padding-left: 10px;'>Da clic en el producto que se encuentra marcado en color azul.</div>");
+}
+/**
+ * @funcion onboarding_2()
+ *
+ */
+function onboarding_2()
+{
+    
 }
