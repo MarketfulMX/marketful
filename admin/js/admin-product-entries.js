@@ -434,6 +434,7 @@ function onboarding_1()
     jQuery("#boton_dg").attr("disabled",true);
     jQuery("#keyword_input").attr("disabled",true);
     jQuery("#boton_buscar").attr("disabled",true);
+    jQuery(".subir").attr("disabled","true");
     jQuery("#tr_onb").attr("class","elemento_active"); 
     jQuery('#tr_onb').attr('onClick','onboarding_2()');
     jQuery('.container').append("<div class='caja_onb' style='margin-top: 10px; border-color: #878181; border-radius: 5px; border-width: 1px; border-style: solid; background-color: #F5F5F5; color: #878181; font-size: 25px; width: 100%; padding: 5px; padding-left: 10px;'>Da clic en el producto de prueba que se encuentra marcado en color azul.</div>");
@@ -442,11 +443,16 @@ function onboarding_1()
  * @funcion onboarding_2()
  *
  */
+ var clic_c = 0;
 function onboarding_2()
 {
-    console.log("Entramos a onboarding_2");
-    $('.onb_flotante').css('display','inline');
-    $('.onb_flotante').append('La categoria es un atributo que Mercado Libre utiliza para categorizar los productos y hacerlos mas visibles al comprador, asignale una categoria a nuestro producto de prueba para continuar.<br><button class="boton_onb" onclick="onboarding_3()"> Aceptar</button>');
+    if(clic_c == 0)
+    {
+        console.log("Entramos a onboarding_2");
+        $('.onb_flotante').css('display','inline');
+        $('.onb_flotante').append('La categoria es un atributo que Mercado Libre utiliza para categorizar los productos y hacerlos mas visibles al comprador, asignale una categoria a nuestro producto de prueba para continuar.<br><button class="boton_onb" onclick="onboarding_3()"> Aceptar</button>');
+        clic_c = 1;
+    }
 }
 /**
  * @Funcion onboarding_3()
@@ -454,12 +460,16 @@ function onboarding_2()
  */
  function onboarding_3()
  {
-    console.log("Entramos a onboarding_3");
-    $('#tr_onb').attr('class','null')
-    jQuery(".category_field").attr('class','elemento_active');
-    jQuery('.onb_flotante').css('display','none');
-    jQuery('.category_field').attr('onclick','onboarding_4()');
-    jQuery('.caja_onb').text("Da clic en el link resaltado con azul que dice 'Categorizar' para asignar una categoria.");
+    if(clic_c == 1)
+    {
+        console.log("Entramos a onboarding_3");
+        $('#tr_onb').attr('class','null');
+        $('#tr_onb').attr('onClick',' ');
+        jQuery(".category_field").attr('class','elemento_active');
+        jQuery('.onb_flotante').css('display','none');
+        jQuery('.caja_onb').text("Da clic en el link resaltado con azul que dice 'Categorizar' para asignar una categoria.");
+        clic_c = 2;
+    }
  }
 /**
  * @funcion onboarding_4()

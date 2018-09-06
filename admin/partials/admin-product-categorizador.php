@@ -32,6 +32,7 @@ $product_id = $_GET['product_id'];
 error_reporting(E_ERROR | E_WARNING | E_PARSE); // Suprime errores de prueba
 $pagina = $_GET['pagina'];
 $keyword = $_GET['keyword'];
+$onb = $_GET['onb'];
 
 /**
  * @scripts PHP
@@ -262,14 +263,36 @@ jQuery(document).ready(function($){
         background-color: #BCBFA3;
     }
 
+
+/* Estilos de Onboarding *****************************************************************************/
+.caja_onb
+{
+  margin-top: 20px;
+  margin-left: 20px; 
+  border-color: #878181; 
+  border-radius: 5px; 
+  border-width: 1px; 
+  border-style: solid; 
+  background-color: #F5F5F5; 
+  color: #878181; 
+  width: 95%;
+  font-size: 25px; 
+  padding: 15px; 
+  padding-left: 20px;
+  font-family:sans-serif;
+}
+.caja_onb_not
+{
+  display: none;
+}
   
 </style>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 <p id="leyenda"> Categorizador de productos </p>
 <div id="contenedor">
     <div id="interno">
-    <h2 id="titulo" class="margenCat">Producto: <?php echo $titulo; ?> </h2>
-    <h2 class="margenCat">Categoría: <h5 id="categoria" ></h5></h2>
+      <h2 id="titulo" class="margenCat">Producto: <?php echo $titulo; ?> </h2>
+      <h2 class="margenCat">Categoría: <h5 id="categoria" ></h5></h2>
     </div>
     <hr>
     <div class="syi-category-tree">
@@ -294,7 +317,11 @@ jQuery(document).ready(function($){
             </div>
         </div>
     </div>
-    <a href="?page=mkf-product-entries&product_id=<?php echo $product_id.'&pagina='.$pagina.'&keyword='.$keyword; ?>"><button type="button" id="regresar">Regresar</button></a>
+    <a href="?page=mkf-product-entries&product_id=<?php echo $product_id.'&pagina='.$pagina.'&keyword='.$keyword; ?>"><button type="button" id="regresar" <?php if($onb == 1){echo 'disabled';} ?>>Regresar</button></a>
+</div>
+
+<div <?php if($onb == 1){echo 'class="caja_onb"';}else{echo 'class="caja_onb_not"';} // En caso de onboarding ?>>
+  Elige una categoria, cuando lo hayas hecho presina el boton azul que dice "continuar".
 </div>
 
 
@@ -325,6 +352,7 @@ jQuery(document).ready(function($){
  */
 
  var value = ""
+ var onb = <?php echo $onb; ?>
 
 
  function cambioStatus()
@@ -345,7 +373,14 @@ jQuery(document).ready(function($){
           success: function(response) { 
             console.log("exito")
             console.log(response)
-            location.reload();
+            if(onb != 1)
+            {
+              location.reload();
+            }
+            else
+            {
+              window.location.replace("?page=mkf-product-entries&product_id=120&pagina=1&keyword=Producto+de+Prueba&onb=2");
+            }
              
           },
           error: function(response) { 

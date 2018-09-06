@@ -182,7 +182,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           </div>
           
         <td class="dt_check"><input type="checkbox" class="ids" name="checkboxes" id="checkbox_<?php echo $product->ID; ?>" />  </td>
-        <td><button style=""id="subir_ml_<?php echo $product->ID;?>" class="boton_dg" onclick="subir_cambios(<?php echo $product->ID; ?>);"> Subir cambios</button></td>
+        <td><button style=""id="subir_ml_<?php echo $product->ID;?>" class="boton_dg subir" onclick="subir_cambios(<?php echo $product->ID; ?>);"> Subir cambios</button></td>
         <td><?php echo $product->sku; ?></td>
         <td style="min-width: 150px">
             <?php 
@@ -233,7 +233,17 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             
         </td>
         <?php $categoria = get_post_meta($product->ID, "last_category_ml", $single = true ) ?>
-        <td style="min-width: 130px;" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}&pagina={$pagina}&keyword={$keyword}'>categorizar</a>")) ?></td>
+        <td style="min-width: 130px;" id="categoria_<?php echo $product->ID; ?>" class="category_field" >
+          <?php 
+            if($onb != 1)
+            {
+              echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}&pagina={$pagina}&keyword={$keyword}'>categorizar</a>"));
+            }
+            else
+            {
+              echo "<a href='?page=mkf-entries_categorizador&product_id={$product->ID}&pagina={$pagina}&keyword={$keyword}&onb=1'>categorizar</a>";
+            }
+          ?></td>
         <td style=""><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
         <td><input onchange="cambioStatus('<?php echo $product->ID ?>', 'precio_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
         <td><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
