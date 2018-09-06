@@ -420,27 +420,23 @@ function resize_window()
 
 
 //******************************************************************************************************************
+//  Here are only on-boarding functions ->->->
 /**
  * @funcion onboarding_1()
  *
  */
 function onboarding_1()
 {
-    console.log("Entramos a onboarding");
+    console.log("Entramos a onboarding_1");
     jQuery(".caja-de-botones").attr("disabled",true); 
     jQuery("#status_select").attr("disabled",true); 
     jQuery("#exposicion_ml_select").attr("disabled",true);
     jQuery("#boton_dg").attr("disabled",true);
     jQuery("#keyword_input").attr("disabled",true);
     jQuery("#boton_buscar").attr("disabled",true);
-    jQuery("#tr_onb").css("border-color","#ADB2FF"); 
-    jQuery("#tr_onb").css("border-style","solid"); 
-    jQuery("#tr_onb").css("border-width","4px"); 
-    jQuery("#tr_onb").css("border-radius","5px"); 
-    jQuery("#tr_onb").css("background-color","#ADB2FF"); 
-    jQuery("#tr_onb").css("color","black");
-    jQuery('#tr_onb').attr('onclick','onboarding_2()');
-    jQuery('.container').append("<div style='margin-top: 10px; border-color: #878181; border-radius: 5px; border-width: 1px; border-style: solid; background-color: #F5F5F5; color: #878181; font-size: 25px; width: 100%; padding: 5px; padding-left: 10px;'>Da clic en el producto de prueba que se encuentra marcado en color azul.</div>");
+    jQuery("#tr_onb").attr("class","elemento_active"); 
+    jQuery('#tr_onb').attr('onClick','onboarding_2()');
+    jQuery('.container').append("<div class='caja_onb' style='margin-top: 10px; border-color: #878181; border-radius: 5px; border-width: 1px; border-style: solid; background-color: #F5F5F5; color: #878181; font-size: 25px; width: 100%; padding: 5px; padding-left: 10px;'>Da clic en el producto de prueba que se encuentra marcado en color azul.</div>");
 }
 /**
  * @funcion onboarding_2()
@@ -448,5 +444,23 @@ function onboarding_1()
  */
 function onboarding_2()
 {
-    alert("step 5");
+    console.log("Entramos a onboarding_2");
+    $('.onb_flotante').css('display','inline');
+    $('.onb_flotante').append('La categoria es un atributo que Mercado Libre utiliza para categorizar los productos y hacerlos mas visibles al comprador, asignale una categoria a nuestro producto de prueba para continuar.<br><button class="boton_onb" onclick="onboarding_3()"> Aceptar</button>');
 }
+/**
+ * @Funcion onboarding_3()
+ *
+ */
+ function onboarding_3()
+ {
+    console.log("Entramos a onboarding_3");
+    $('#tr_onb').attr('class','null')
+    jQuery(".category_field").attr('class','elemento_active');
+    jQuery('.onb_flotante').css('display','none');
+    jQuery('.category_field').attr('onclick','onboarding_4()');
+    jQuery('.caja_onb').text("Da clic en el link resaltado con azul que dice 'Categorizar' para asignar una categoria.");
+ }
+/**
+ * @funcion onboarding_4()
+ */

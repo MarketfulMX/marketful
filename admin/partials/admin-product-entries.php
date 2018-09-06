@@ -161,7 +161,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     <?php
       foreach ($products[0]["data"] as $key => $product) :
     ?>
-      <tr <?php if($onb == 1){ echo 'id="tr_onb"'; } ?>">
+      <tr <?php if($onb == 1){ echo 'id="tr_onb"'; } // onboarding script, dont erase ?>>
         <!-- Modal para actualizar información -->
           <div class="modal fade" id="modal_ad_<?php echo $product->ID; ?>" onClick="resize_window();"role="alert">
             <div class="modal-dialog">
@@ -263,9 +263,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   </table>
 </div>
 </div>
-<div class="onb_flotante">
-    <p>texto</p>
-    <p>boton</p>
+
+<!-- On boarding div, dont erase -->
+<div class="onb_flotante">    
 </div>
 
 <script>
