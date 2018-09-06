@@ -251,7 +251,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
         <td style="min-width: 150px;">
            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
-              <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml'); check_status(<?php echo $product->ID; ?>);" id="metodo_envio_ml_<?php echo $product->ID;  ?>">
+              <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select tipo_envi" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml'); check_status(<?php echo $product->ID; ?>);" id="metodo_envio_ml_<?php echo $product->ID;  ?>">
                 <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
                 <option>...</option>
                 <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envio Gratis</option>

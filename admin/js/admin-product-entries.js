@@ -440,7 +440,7 @@ function onboarding_1()
 }
 /**
  * @funcion onboarding_2()
- *
+ * 
  */
  var clic_c = 0;
 function onboarding_2()
@@ -502,7 +502,18 @@ function onboarding_6()
  */
 function onboarding_7()
 {
-    alert('hello');
+    $('.onb_flotante').css('display','none'); 
+    $('.caja_onb').text('Da clic en tipo de envio que esta resaltado en color azul y selecciona alguna opcion.');
+    $('.tipo_envi').attr('class','custom-select tipo_envi elemento_active');
+    var onchanges = $('.tipo_envi').attr('onChange');
+    $('.tipo_envi').attr('onChange',onchanges+'onboarding_8();');
+}
+/**
+ * @funcion onboarding_8()
+ */
+function onboarding_8()
+{
+   alert('step_11'); 
 }
 /**
 * @funcion Para cargar de manera automatica onboarding_4() despues de la seccion de categorizar.
