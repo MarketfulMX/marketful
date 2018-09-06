@@ -222,7 +222,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         </td>
         <td>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
-              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml'); check_status(<?php echo $product->ID; ?>); " id="exposicion_ml_<?php echo $product->ID;  ?>">
+              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select expo_ml" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml'); check_status(<?php echo $product->ID; ?>); " id="exposicion_ml_<?php echo $product->ID;  ?>">
                 <?php $select_value = $all_mlmeta[0]["data"][0]->exposicion; ?>
                 <option>...</option>
                 <option value="free" <?php echo ($select_value=="free")?'selected':''; ?>>Gratis</option>
@@ -275,7 +275,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 </div>
 
 <!-- On boarding div, dont erase -->
-<div class="onb_flotante">    
+<div class="onb_flotante" <?php if($onb == 2){ echo 'onload="onboarding_4()"'; } ?>>    
 </div>
 
 <script>

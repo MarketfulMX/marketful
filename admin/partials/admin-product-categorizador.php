@@ -373,7 +373,7 @@ jQuery(document).ready(function($){
           success: function(response) { 
             console.log("exito")
             console.log(response)
-            if(onb != 1)
+            if(onb != 1) // En caso de onboarding, al presionar enviar te redirige hacia publicaciones enviandoo el parametro onb = 2
             {
               location.reload();
             }

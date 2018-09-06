@@ -427,17 +427,16 @@ function resize_window()
  */
 function onboarding_1()
 {
-    console.log("Entramos a onboarding_1");
-    jQuery(".caja-de-botones").attr("disabled",true); 
-    jQuery("#status_select").attr("disabled",true); 
-    jQuery("#exposicion_ml_select").attr("disabled",true);
-    jQuery("#boton_dg").attr("disabled",true);
-    jQuery("#keyword_input").attr("disabled",true);
-    jQuery("#boton_buscar").attr("disabled",true);
-    jQuery(".subir").attr("disabled","true");
-    jQuery("#tr_onb").attr("class","elemento_active"); 
-    jQuery('#tr_onb').attr('onClick','onboarding_2()');
-    jQuery('.container').append("<div class='caja_onb' style='margin-top: 10px; border-color: #878181; border-radius: 5px; border-width: 1px; border-style: solid; background-color: #F5F5F5; color: #878181; font-size: 25px; width: 100%; padding: 5px; padding-left: 10px;'>Da clic en el producto de prueba que se encuentra marcado en color azul.</div>");
+    $(".caja-de-botones").attr("disabled",true); 
+    $("#status_select").attr("disabled",true); 
+    $("#exposicion_ml_select").attr("disabled",true);
+    $("#boton_dg").attr("disabled",true);
+    $("#keyword_input").attr("disabled",true);
+    $("#boton_buscar").attr("disabled",true);
+    $(".subir").attr("disabled","true");
+    $("#tr_onb").attr("class","elemento_active"); 
+    $('#tr_onb').attr('onClick','onboarding_2()');
+    $('.container').append("<div class='caja_onb' style='margin-top: 10px; border-color: #878181; border-radius: 5px; border-width: 1px; border-style: solid; background-color: #F5F5F5; color: #878181; font-size: 25px; width: 100%; padding: 5px; padding-left: 10px;'>Da clic en el producto de prueba que se encuentra marcado en color azul.</div>");
 }
 /**
  * @funcion onboarding_2()
@@ -448,7 +447,6 @@ function onboarding_2()
 {
     if(clic_c == 0)
     {
-        console.log("Entramos a onboarding_2");
         $('.onb_flotante').css('display','inline');
         $('.onb_flotante').append('La categoria es un atributo que Mercado Libre utiliza para categorizar los productos y hacerlos mas visibles al comprador, asignale una categoria a nuestro producto de prueba para continuar.<br><button class="boton_onb" onclick="onboarding_3()"> Aceptar</button>');
         clic_c = 1;
@@ -462,15 +460,54 @@ function onboarding_2()
  {
     if(clic_c == 1)
     {
-        console.log("Entramos a onboarding_3");
         $('#tr_onb').attr('class','null');
         $('#tr_onb').attr('onClick',' ');
-        jQuery(".category_field").attr('class','elemento_active');
-        jQuery('.onb_flotante').css('display','none');
-        jQuery('.caja_onb').text("Da clic en el link resaltado con azul que dice 'Categorizar' para asignar una categoria.");
+        $(".category_field").attr('class','elemento_active');
+        $('.onb_flotante').css('display','none');
+        $('.caja_onb').text("Da clic en el link resaltado con azul que dice 'Categorizar' para asignar una categoria.");
         clic_c = 2;
     }
  }
 /**
  * @funcion onboarding_4()
  */
+function onboarding_4()
+{
+    $('.onb_flotante').css('display','inline');
+    $('.onb_flotante').append('La exposicion de un producto es un atributo que indica que tan visible sera tu publicacion dentro de Mercado Libre, asigna algun tipo de exposicion para el producto de prueba.<br><button class="boton_onb" onclick="onboarding_5()"> Aceptar</button>');
+}
+/**
+ * @funcion onboarding_5()
+ */
+function onboarding_5()
+{
+    $('.onb_flotante').css('display','none');
+    $('.expo_ml').attr('class','custom_select elemento_active expo_ml');
+    var onchanges = $('.expo_ml').attr('onChange');
+    $('.expo_ml').attr('onChange',onchanges+'onboarding_6();');
+    $('.container').append("<div class='caja_onb' style='margin-top: 10px; border-color: #878181; border-radius: 5px; border-width: 1px; border-style: solid; background-color: #F5F5F5; color: #878181; font-size: 25px; width: 100%; padding: 5px; padding-left: 10px;'>Da clic en exposicion que esta resaltada en color azul y selecciona algun valor.</div>");
+}
+/**
+ * @funcion onboarding_6()
+ */
+function onboarding_6()
+{
+    $('.expo_ml').attr('class','custom_select expo_ml');
+    $('.onb_flotante').text(' ');
+    $('.onb_flotante').append('El tipo de envio es la forma en la que se enviara tu producto y lo que se le cobrara a tu cliente, por lo cual es importante asignarle un valor, vayamos a hacerlo. <br><button class="boton_onb" onclick="onboarding_7()"> Aceptar</button>');
+    $('.onb_flotante').css('display','inline'); 
+}
+/**
+ * @funcion onboarding_7()
+ */
+function onboarding_7()
+{
+    alert('hello');
+}
+/**
+* @funcion Para cargar de manera automatica onboarding_4() despues de la seccion de categorizar.
+*/
+jQuery(function()
+{
+    $('.onb_flotante').trigger('onload');
+});
