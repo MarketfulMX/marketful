@@ -189,7 +189,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             <?php 
                 if(strlen($product->title) > 60)
                 {
-                    echo '<input type="text" class="input" style="width: 200px;" id="titulo_ml_'.$product->ID.'" placeholder="'.$product->title.'" onkeypress="cambioStatus('.$product->ID.', \'titulo_ml\')"'.'onChange="guardar_nombre(event,'.$product->ID.')">';
+                    echo '<input type="text" class="input" style="width: 200px;" id="titulo_ml_'.$product->ID.'" placeholder="'.$product->title.'" onkeypress="cambioStatus('.$product->ID.', \'titulo_ml\')">';
                 }
                 else
                 {

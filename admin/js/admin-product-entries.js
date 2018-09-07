@@ -547,7 +547,10 @@ function onboarding_10()
  */ 
 function onboarding_11()
 {
-    alert('step_15()');
+    $('.input').attr('class','input elemento_active')
+    $('.input').css('background-color','#fff');
+    $('.onb_flotante').css('display','none'); 
+    $('.caja_onb').text('Ingresa un nombre menor a 60 caracteres en la caja de texto resaltada de color azul.');
 }
 /**
  * @funcion onboarding_nn(@string: id)
