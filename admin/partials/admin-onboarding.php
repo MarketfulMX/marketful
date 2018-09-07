@@ -14,7 +14,19 @@
  * Vista con el contenido del onboardig introductorio al WooCommerce Seller Center
  * 
 -->
-
+<?php
+	error_reporting(E_ERROR | E_WARNING | E_PARSE); // Suprime errores de prueba
+	$fin = $_GET['fin'];
+	if($fin == 1)
+	{
+		$actualizar = array(
+	      'post_title'   => 'marketful_descripcion_comun',
+	      'post_name' => 'finished',
+	  	);
+		wp_update_post($actualizar);
+		echo 'Actualizado';
+	}
+?>
 <!-- // creo que sobra  -->
 <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 
@@ -158,6 +170,10 @@
 	{
 		display: none;
 	}
+	.panel_4
+	{
+		display: none;
+	}
 	.boton_onb
 	{
 		font-size: 25px;
@@ -185,7 +201,23 @@
 
 <div class="contenedor_onb">
 	
-	<div class="onb panel_1">
+	<div class="onb panel_<?php if($fin == 1){echo '1';}else{echo '4';} ?>">
+		<div class="left_container">
+			<div class="lc_titulo">Felicidades! has completado el Onboarding</div>
+			<div class="lc_tc">
+				Ahora estas listo para comenzar a utilizar Marketful Seller Center, si tienes alguna duda contacta a soporte.
+			</div>
+			<div class="lc_boton"><a style="text-decoration: none;" href="?page=mkf_dashboard"<button class="boton_onb"> Terminar</button></a></div>
+		</div>
+		<div class="right_container">
+			<div></div>
+			<div class="rc_lc">
+				<p>El onboarding se centra en mostrarte las funciones princiapes per sabermos que siempre podemos querer mas informacion, en tal caso contactanos al correo mauricio@marketful.mx y te responderemos cuaquier duda.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="onb panel_<?php if($fin != 1){echo '1';}else{echo'2';} ?>">
 		<div class="left_container">
 			<div class="lc_titulo">Felicidades!</div>
 			<div class="lc_tc">

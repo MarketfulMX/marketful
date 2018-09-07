@@ -547,17 +547,48 @@ function onboarding_10()
  */ 
 function onboarding_11()
 {
-    $('.input').attr('class','input elemento_active')
-    $('.input').css('background-color','#fff');
+    $('.titulo_onb').focus()
     $('.onb_flotante').css('display','none'); 
-    $('.caja_onb').text('Ingresa un nombre menor a 60 caracteres en la caja de texto resaltada de color azul.');
+    $('.caja_onb').text('Ingresa un nombre menor a 60 caracteres en la caja de texto resaltada, cuando termines da clic fuera de la caja.');
+    $('.titulo_onb').attr('onblur','onboarding_12();');
+}
+/**
+ * @funcion onboarding_12()
+ */
+function onboarding_12()
+{
+    $('.pub_status').attr('class','custom_select pub_status');
+    $('.onb_flotante').text(' ');
+    $('.onb_flotante').append('Ya hemos agregado la informacion clave para que nuestra publicacion pueda estar en Mercado Libre, Solo queda subir los cambios para eso tienes que darle clic al boton que dice "subir cambios". <br><button class="boton_onb" onclick="onboarding_13()"> Aceptar</button>');
+    $('.onb_flotante').css('display','inline'); 
+}
+/**
+ * @funcion onboarding_13()
+ */
+function onboarding_13()
+{
+    $('.onb_flotante').css('display','none'); 
+    $('.caja_onb').text('Da clic en el boton "subir cambios" que esta resaltado en color azul.');
+    $('.subir').attr('class','subir boton_dg elemento_active');
+    var onclicks = $('.subir').attr('onclick');
+    $('.subir').attr('onclick',onclicks+'onboarding_14();');
+}
+/**
+ * @funcion onboarding_14()
+ */
+function onboarding_14()
+{
+    $('.subir').attr('class','subir boton_dg');
+    $('.pub_status').attr('class','custom_select pub_status');
+    $('.onb_flotante').text(' ');
+    $('.onb_flotante').append('¡Hecho! has logrado subir la publicacion de prueba a Mercado Libre con todos los atributos que seleccionaste durante el onboarding. <br><a href="?page=mkf-onboarding&fin=1"><button class="boton_onb" > Aceptar</button></a>');
+    $('.onb_flotante').css('display','inline');
 }
 /**
  * @funcion onboarding_nn(@string: id)
  */
 function onboarding_nn(valor)
 {
-
     jQuery.ajax(
     {
         type: 'post',

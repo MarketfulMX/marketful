@@ -27,9 +27,8 @@
      */
     $products = wc_get_products( array(
         'title' => 'marketful_descripcion_comun',
-        'name' => 'unfinished',
         ));
-    if($products)
+    if($products->name == 'unfinished')
     {
         echo 'im in';
         header('Location: ?page=mkf-onboarding');
