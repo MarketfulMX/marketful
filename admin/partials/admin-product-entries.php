@@ -234,8 +234,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             
         </td>
         <?php $categoria = get_post_meta($product->ID, "last_category_ml", $single = true ) ?>
-        <td style="min-width: 130px;" id="categoria_<?php echo $product->ID; ?>" class="category_field" >
-          <?php 
+        <td style="min-width: 130px;" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php 
             if($onb != 1)
             {
               echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}&pagina={$pagina}&keyword={$keyword}'>categorizar</a>"));
@@ -284,6 +283,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
      * @Función JQuery
      */
     jQuery(document).ready(function($){
+      getCategory(<?php echo $pagina; ?>,'<?php echo $keyword; ?>');
       <?php 
       // En caso de que onb tenga valor de uno. Y se este ejecutando el onboarding
       if($onb == 1)
@@ -291,7 +291,6 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           echo 'onboarding_1(); console.log("entroa ready");';     
       } 
       ?>
-      getCategory(<?php echo $pagina; ?>,'<?php echo $keyword; ?>');
     });
 </script>
 
