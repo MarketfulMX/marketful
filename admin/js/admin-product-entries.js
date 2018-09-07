@@ -369,7 +369,7 @@ function resize_window()
     // Status -- mercadolibre
     if(values[0] == 'closed')
     {
-        console.log('Se va a finalizar la publicacion -> Lanzar alerta para validar ooooooooooooooooooooooooooooooooooooooooooooooo');
+        //console.log('Se va a finalizar la publicacion -> Lanzar alerta para validar ooooooooooooooooooooooooooooooooooooooooooooooo');
         if(!confirm('Si finalizas una publicación en MercadoLibre tendras que crear una nueva para volver a activarla, ¿Finalizar publicacion?'))
         {
             $('#' + key + "_" + product_id).val('...');
@@ -504,7 +504,7 @@ function onboarding_7()
 {
     $('.onb_flotante').css('display','none'); 
     $('.caja_onb').text('Da clic en tipo de envio que esta resaltado en color azul y selecciona alguna opcion.');
-    $('.tipo_envi').attr('class','custom-select tipo_envi elemento_active');
+    $('.tipo_envi').attr('class','tipo_envi elemento_active');
     var onchanges = $('.tipo_envi').attr('onChange');
     $('.tipo_envi').attr('onChange',onchanges+'onboarding_8();');
 }
@@ -513,12 +513,77 @@ function onboarding_7()
  */
 function onboarding_8()
 {
-   alert('step_11'); 
+   $('.tipo_envi').attr('class','custom_select tipo_envi');
+   $('.onb_flotante').text(' ');
+   $('.onb_flotante').append('Ahora asignaremos un valor al status, en caso de que se finalize se debera confirmar ya que para activarlo de nuevo se debera hacer una nueva publicacion de Mercado Libre. <br><button class="boton_onb" onclick="onboarding_9()"> Aceptar</button>');
+   $('.onb_flotante').css('display','inline'); 
+
 }
 /**
-* @funcion Para cargar de manera automatica onboarding_4() despues de la seccion de categorizar.
+ * @funcion onboarding_9()
+ */
+function onboarding_9()
+{
+    $('.onb_flotante').css('display','none'); 
+    $('.caja_onb').text('Da clic en el status del producto que se encuentra marcado en color azul y selecciona algun valor.');
+    $('.pub_status').attr('class',' pub_status elemento_active');
+    var onchanges = $('.tipo_envi').attr('onChange');
+    $('.pub_status').attr('onChange',onchanges+'onboarding_10();');
+}
+/**
+ * @funcion onboarding_10()
+ *
+ */
+function onboarding_10()
+{
+    $('.pub_status').attr('class','custom_select pub_status');
+    $('.onb_flotante').text(' ');
+    $('.onb_flotante').append('Los nombres de las publicaciones no deben exceder los 60 caracteres segun las especificaciones de Mercado Libre, por lo cual cuando el nombre del producto sea mayor a 60 se podra modificar directamente en la vista de publicaciones. <br><button class="boton_onb" onclick="onboarding_11()"> Aceptar</button>');
+    $('.onb_flotante').css('display','inline'); 
+
+}
+/** 
+ * @funcion onbozrding_11()
+ */ 
+function onboarding_11()
+{
+    alert('step_15()');
+}
+/**
+ * @funcion onboarding_nn(@string: id)
+ */
+function onboarding_nn(valor)
+{
+
+    jQuery.ajax(
+    {
+        type: 'post',
+        url: ajaxurl,
+        dataType: 'json',
+        data: 
+        { 
+            product_id: valor, 
+            value: 'Nombre de prueba superior a 60 caracteres. Nombre de prueba superior a 60 caracteres. Nombre de prueba superior a 60 caracteres. Nombre de prueba superior a 60 caracteres.', 
+            key: 'titulo_ml', 
+            action: 'foobar'
+        },
+        success: function(response) 
+        { 
+            console.log("Se modifico el tamaño del titulo para el onb")
+            delete tareas[response.data["tarea_id"]]
+        },
+        error: function(response) 
+        { 
+            console.log("fracaso, no se modifico el titulo para el onb")
+        },
+    });
+}
+/**
+* @funcion Para cargar de manera automatica onboarding_4() y onboarding_nn despues de la seccion de categorizar.
+* 
 */
 jQuery(function()
 {
     $('.onb_flotante').trigger('onload');
+    $('.dt_check').trigger('onload');
 });

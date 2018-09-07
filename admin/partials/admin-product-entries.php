@@ -181,7 +181,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             </div>
           </div>
           
-        <td class="dt_check"><input type="checkbox" class="ids" name="checkboxes" id="checkbox_<?php echo $product->ID; ?>" />  </td>
+        <td class="dt_check" <?php if($onb == 1){echo 'onload="onboarding_nn('.$product->ID.');"';} // Modifica el tamaño del nombre del titulo_ml para el onboarding?>>
+          <input type="checkbox" class="ids" name="checkboxes" id="checkbox_<?php echo $product->ID; ?>" />  </td>
         <td><button style=""id="subir_ml_<?php echo $product->ID;?>" class="boton_dg subir" onclick="subir_cambios(<?php echo $product->ID; ?>);"> Subir cambios</button></td>
         <td><?php echo $product->sku; ?></td>
         <td style="min-width: 150px">
@@ -251,7 +252,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
         <td style="min-width: 150px;">
            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
-              <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select tipo_envi" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml'); check_status(<?php echo $product->ID; ?>);" id="metodo_envio_ml_<?php echo $product->ID;  ?>">
+              <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select tipo_envi" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml'); check_status(<?php echo $product->ID.');';?>" id="metodo_envio_ml_<?php echo $product->ID;?>">
                 <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
                 <option>...</option>
                 <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envio Gratis</option>
@@ -287,8 +288,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       // En caso de que onb tenga valor de uno. Y se este ejecutando el onboarding
       if($onb == 1)
       {
-          echo 'onboarding_1(); console.log("entroa ready");';      
-      } ?>
+          echo 'onboarding_1(); console.log("entroa ready");';     
+      } 
+      ?>
       getCategory(<?php echo $pagina; ?>,'<?php echo $keyword; ?>');
     });
 </script>

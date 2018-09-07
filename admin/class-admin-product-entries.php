@@ -380,7 +380,7 @@ class MKF_ProductEntry extends MKF_DBCore
     }
     /**
      * @Funcion test_product_delete()
-     * Borra el producto de prueba
+     * Borra el producto de prueba para el onboarding
      */
     public function test_product_delete()
     {
