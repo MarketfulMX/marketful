@@ -133,6 +133,17 @@ class MKF_Activator extends MKF_DBCore
       }
       wp_delete_post($producto);
     }
+    if(function_exists(wc_get_products))
+    {
+        $products = wc_get_products( array(
+            'title' => 'Producto de Prueba',
+            ));
+        if(isset($products[0]))
+        {
+            $producto = $products[0]->get_id();
+        }
+        wp_delete_post($producto);
+    }
   }
   
 

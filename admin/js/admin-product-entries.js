@@ -422,10 +422,9 @@ function resize_window()
 //******************************************************************************************************************
 //  Here are only on-boarding functions ->->->
 /**
- * @funcion onboarding_1()
- *
+ * @Funcion disabling_elements()
  */
-function onboarding_1()
+function disabling_elements()
 {
     $(".caja-de-botones").attr("disabled",true); 
     $("#status_select").attr("disabled",true); 
@@ -433,6 +432,19 @@ function onboarding_1()
     $("#boton_dg").attr("disabled",true);
     $("#keyword_input").attr("disabled",true);
     $("#boton_buscar").attr("disabled",true);
+}
+
+function href_dis()
+{
+    $('a').attr('href','#');
+}
+/**
+ * @funcion onboarding_1()
+ *
+ */
+function onboarding_1()
+{
+    disabling_elements();
     $(".subir").attr("disabled","true");
     $("#tr_onb").attr("class","elemento_active"); 
     $('#tr_onb').attr('onClick','onboarding_2()');
@@ -473,6 +485,7 @@ function onboarding_2()
  */
 function onboarding_4()
 {
+    disabling_elements();href_dis();
     $('.onb_flotante').css('display','inline');
     $('.onb_flotante').append('La exposicion de un producto es un atributo que indica que tan visible sera tu publicacion dentro de Mercado Libre, asigna algun tipo de exposicion para el producto de prueba.<br><button class="boton_onb" onclick="onboarding_5()"> Aceptar</button>');
 }
@@ -481,6 +494,7 @@ function onboarding_4()
  */
 function onboarding_5()
 {
+    disabling_elements();
     $('.onb_flotante').css('display','none');
     $('.expo_ml').attr('class','custom_select elemento_active expo_ml');
     var onchanges = $('.expo_ml').attr('onChange');
@@ -502,6 +516,7 @@ function onboarding_6()
  */
 function onboarding_7()
 {
+    $('#registros').scrollLeft(2000);
     $('.onb_flotante').css('display','none'); 
     $('.caja_onb').text('Da clic en tipo de envio que esta resaltado en color azul y selecciona alguna opcion.');
     $('.tipo_envi').attr('class','tipo_envi elemento_active');
@@ -517,13 +532,13 @@ function onboarding_8()
    $('.onb_flotante').text(' ');
    $('.onb_flotante').append('Ahora asignaremos un valor al status, en caso de que se finalize se debera confirmar ya que para activarlo de nuevo se debera hacer una nueva publicacion de Mercado Libre. <br><button class="boton_onb" onclick="onboarding_9()"> Aceptar</button>');
    $('.onb_flotante').css('display','inline'); 
-
 }
 /**
  * @funcion onboarding_9()
  */
 function onboarding_9()
 {
+    $('#registros').scrollLeft(-2000);
     $('.onb_flotante').css('display','none'); 
     $('.caja_onb').text('Da clic en el status del producto que se encuentra marcado en color azul y selecciona algun valor.');
     $('.pub_status').attr('class',' pub_status elemento_active');

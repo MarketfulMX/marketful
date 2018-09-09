@@ -107,63 +107,6 @@
         var url = $(location).attr('href');
         $('#texto_ac').attr('value',url);
     }
-
-    /** 
-     * @funcion Scroll test
-     **********************
-     * Scroll para llenar la progressbar
-     */
-    window.addEventListener("scroll", function()
-    {
-       //document.body.scrollHeight para obtener el tamaño de la pantalla
-       var st = window.pageYOffset || document.documentElement.scrollTop;
-       var cont = (st/120)*10; 
-       if(cont == 100)
-       {
-            $('#progress_ob').attr('value',cont);
-            $('#finaliza_ob').text('Onboarding Finalizado <a href="">Clic aqui</a> para continuar.');
-       }
-       else
-       {
-            $('#progress_ob').attr('value',cont);
-       }
-    });
-
-    /**
-     * @Funcion bien_ac()
-     * Oculta el mensaje en activacion y resalta el boton de clic en mkf
-     */
-     function bien_ac()
-     {
-        $('#mensaje_ac').css('display','none');
-        $('.boton_ac_link').css('background-color','#E8E400');
-        $('.boton_ac_link').css('border-color','#E8E400');
-        $('.boton_ac_link').attr('onclick','segundo_paso_ac()');
-     }
-
-     /**
-      * @Funcion segundo_paso_ac()
-      * Te muestra el segundo paso de activacion
-      */
-      function segundo_paso_ac()
-      {
-            $('#mensaje_ac h3').text('Ya que te has logueado, vamos a conectar tu tienda de WooCommerce, da clic en el boton "Obtener Link"');
-            $("#mensaje_ac").css('display','inline');
-            $('.btn_msj_1').attr('onclick','$("#mensaje_ac").css("display","none");');
-            $(".boton_obtener_ac").attr('onclick','tercer_paso_ac();tomar_url();');
-            $('.boton_obtener_ac').css('background-color','#E8E400');
-            $('.boton_obtener_ac').css('border-color','#E8E400');
-      }
-
-      /**
-       * @function tercer_paso_ac()
-       * Te muestra un tercer mensaje de notificacion de que has activado tu cuenta.
-       */
-       function tercer_paso_ac()
-       {
-            $('#mensaje_ac h3').text('Listo! lograste conectar tu tienda con el Seller Center, ahora crearemos un producto de prueba');
-            $("#mensaje_ac").css('display','inline');
-       }
     
 </script>
 
@@ -281,34 +224,6 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
             text-align: center;
         }
-        progress 
-        {
-            -webkit-appearance: none; 
-            appearance: none;
-            width: 180px;
-            height: 20px;
-         
-        }
-        progress::-webkit-progress-bar 
-        {
-             background-color: #F8F5FF;
-             border-radius: 2px;
-             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-        }
-        progress::-webkit-progress-value 
-        {
-             background-image:
-             -webkit-linear-gradient(-45deg, 
-             transparent 33%, rgba(0, 0, 0, .1) 33%, 
-             rgba(0,0, 0, .1) 66%, transparent 66%),
-             -webkit-linear-gradient(top, 
-             rgba(255, 255, 255, .25), 
-             rgba(0, 0, 0, .25)),
-             -webkit-linear-gradient(left, dimgray, black);
-             
-             border-radius: 2px; 
-             background-size: 35px 20px, 100% 100%, 100% 100%;
-        }
     #tc, #tc_1, #tc_2, #tc_3, #tc_4, #tc_5, #tc_6, #tc_7, #tc_8, #tc_9
     {
         margin: 20px;
@@ -373,7 +288,7 @@
             <div class="row">
                 <div class="col" id="db_1">
                     <img style="max-height:20%; margin-left: 0px; margin-top:0px;"src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png"> <button class="boton_db" onclick="clic(2); $('#mensaje_ac').css('display','inline');"> Activa tu tienda </button>
-                    <p><b>Marketful Seller Center</b>, revolucionara la manera en la que conectas con tus clientes de <i>WooCommerce</i> y <i>MercadoLibre</i>.  Te ofrecemos un entorno dedicado a hacer tu trabajo mas sencillo, eficiente y personalizado. </p><img style="max-width: 100%; margin-right: auto; border-radius: 3px; padding-bottom: 20px; " src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/dfff438a4546eb0fe69fc3e01e9dba2bcccacf03/Documentacion/img/screen.gif?token=Ajnc0cgQDdX9entMvkCFqQTVH7T9bKW0ks5bjqWPwA%3D%3D">
+                    <p><b>Marketful Seller Center</b>, revolucionara la manera en la que conectas con tus clientes de <i>WooCommerce</i> y <i>MercadoLibre</i>.  Te ofrecemos un entorno dedicado a hacer tu trabajo mas sencillo, eficiente y personalizado. </p><img style="max-width: 100%; margin-right: auto; border-radius: 3px; padding-bottom: 20px; " src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/a938c3c1c636e14a98eaa3b1d19df58d0f7af344/admin/img/rm/screen.gif?token=Ajnc0aoiH0YDMYTXi3g8YllbgtBRbRyzks5bnpNTwA%3D%3D">
                 </div>
                 <div class="col" id="db_2">
                     <h3> Version 1.0 </h3>
@@ -387,7 +302,7 @@
             <div class="row">
                 <div class="col" id="db_3">
                     <h3>Somos Marketful &#160;</h3>
-                    <p> Tenemos un Onboarding que concentra las herramientas clave que te ayudara a comprender de manera sencilla el funcionamiento de nuestro <i>Seller Center</i> da una miradita de manera gratuita. <a href="#onboarding" style="text-decoration: none;"><button class="boton_db" style=""onclick="clic(3)">Empezar Onboarding</button></a></p>
+                    <p> Tenemos un Onboarding que concentra las herramientas clave que te ayudara a comprender de manera sencilla el funcionamiento de nuestro <i>Seller Center</i> da una miradita de manera gratuita. <a href="#onboarding" style="text-decoration: none;"><button class="boton_db" style=""onclick="clic(3)">Ir a onbording</button></a></p>
                 </div>
                 <div class="col" id="db_4">
                     <h3>Apoyo paso a paso</h3>
@@ -412,7 +327,6 @@
         </div>
         <!-- Tab 3 "OnBoarding" ------------------------------------------------------------------------------------------------------------------>
         <div id="onboarding">
-            <!--div id="flotante_db"><progress style=" margin:10px; z-index: 50;" id="progress_ob" max="100" value="30"></progress> <p id="finaliza_ob"style="font-size: 16px;color:white;"> Progreso del Onboarding</p></div-->
             <div class="row">
                 <div class="col">
                     <h3>Bienvenido a la nueva experiencia en E-Commerce</h3>
@@ -426,22 +340,21 @@
             <div class="row">
                 <div class="col" id="ob">
                     <p style="font-size: 16px"><b>Vamos a comenzar observando tus productos,</b> como leiste anteriormente <i>Marketful Seller Center</i> esta enfocado en facilitar los procedimientos que conlleva el manejar una tienda en WooCommerce y Mercado Libre. Desde dar de alta una publicacion junto con todos sus diferentes atributos hasta el pausarlas todas de una vez sin tener que hacerlo para cada producto. En esta introduccion te mostraremos lo mas basico para poder empezar a utilizarlo. Primero comenzaremos observado nuestros productos en la vista del <i>Seller Center</i>. En caso de que no tengas productos la lista no mostrara nungun elemento, en caso contrario se veran todos tus productos con su informacion propia:<i> SKU, Titulo en Mercado Libre, Status, Categoria en Mercado Libre, Precio en WooCommerce, Precio en Mercado Libre, Inventario en WooCommerce, Inventario en Mercado Libre, Tipo de envio, Ver publicacion y Ultima Actualizacion.</i> Dar tus productos de alta es muy sencillo, solo da clic en "<a target="_blank" href="http://localhost/wp/wp-admin/post-new.php?post_type=product">Productos</a>" y ahi podras dar un nuevo producto de alta.</p>
-                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/445e06da1556b5154ea0da16e5b35bad60288dd3/admin/img/ob/focus.png?token=Ajnc0RF-vWk8fxaJPjIF8mdKPw1n-4faks5bkAQgwA%3D%3D"> <a href="?page=mkf-product-entries" class="boton_db" target="_blank">Pruebalo </a>
+                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/a938c3c1c636e14a98eaa3b1d19df58d0f7af344/admin/img/ob/basic.png?token=Ajnc0bCUJ_88CGTcJwrmDCHwMNoYoDzDks5bnpi6wA%3D%3D"> <a href="?page=mkf-product-entries" class="boton_db" target="_blank">Pruebalo </a>
                     <p style="font-size: 16px; margin-top:20px;"><b>Ahora veremos las opciones,</b> que tenemos disponibles en la barra de titulo del Seller Center:</p>
                     <li style="font-size: 16px"> <i>Botones <b>atras</b> y <b>adelante</b>:</i> Estan en la parte superior izquierda y te permiten navegar entre todos tus productos. Cada pantalla te muestra 50 productos, para ver los siguientes puedes presionar siguiente o para regresar puedes dar clic hacia atras.</li>
                     <li style="font-size: 16px"> <i><b>Status</b> Masivo:</i> Este boton en conjunto con el checkbox masivo, te permite cambiar el status de uno o muchos productos de una sola vez.</li>
                     <li style="font-size: 16px"> <i><b>Exposicion</b> Masiva:</i> Este boton como el anterior, permite que se cambie masivamente la exposicion de uno o muchos productos de una sola vez.</li>
                     <li style="font-size: 16px"> <i>Agregar <b>descripcion general</b>:</i> Este boton te redirige hacia la pantalla en la cual podras asignar una descripcion comun debajo de su descripcion actual a todos los productos.</li>
                     <li style="font-size: 16px"> <i><b>Buscar</b>:</i> La caja de texto en la parte superior derecha de la pantalla te permite ingresar algun nombre de algun producto, dar clic en el boton de la lupa que se encuentra a un lado y te cargara los productos que coincidan con ese nombre en caso de tener alguno.</li>
-                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/3f36b367769acbb3f59176a52cde80cb7578f4ab/admin/img/ob/ob_header.gif?token=Ajnc0UIbncr0S70w9_qWMg4nUhwyCaS7ks5bkBefwA%3D%3D">    <a href="?page=mkf-product-entries" class="boton_db" target="_blank">Pruebalo </a>
+                    <img id="muestra_ob" src="https://github.com/Skepsis-Consulting/wcplugin/blob/a938c3c1c636e14a98eaa3b1d19df58d0f7af344/admin/img/ob/busquedafocus.png?raw=true">    <a href="?page=mkf-product-entries" class="boton_db" target="_blank">Pruebalo </a>
                     <p style="font-size: 16px; margin-top:20px;"><i><b>Modificando</b> la informacion de los productos :</i> Con <i>Marketful </i> cambiar los datos de tus productos de <i>WooCommerce</i> es muy sencillo. Esta es la distribucion de los datos que tiene cada producto:</p>
-                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/3f36b367769acbb3f59176a52cde80cb7578f4ab/admin/img/ob/tablafocus.png?token=Ajnc0WqNFjLigqKqe5giaH6Bu2yeuq18ks5bkBqJwA%3D%3D"><a href="?page=mkf-product-entries" class="boton_db" target="_blank">Pruebalo </a>
+                    <img id="muestra_ob" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/a938c3c1c636e14a98eaa3b1d19df58d0f7af344/admin/img/ob/tablafocus.png?token=Ajnc0RXFByWgrGDhwSzNqRz0Cf-UHrGTks5bnpkGwA%3D%3D"><a href="?page=mkf-product-entries" class="boton_db" target="_blank">Pruebalo </a>
                     <p style="font-size: 16px; margin-top: 20px;"> Puedes modificar el Status, la Exposicion, la Categoria, el precio en <i>Mercado Libre</i>, en inventario en <i>Mercado Libre </i> y el tipo de envio. Recuerda que todos los cambios que realizes se guardaran dentro de <i>WooCommerce</i> y se actualizaran en <i>Mercado Libre</i> por lo cual no es necesario realizar dichos cambios en esas aplicaciones tambien.</p>
                     <p style="font-size: 16px;"> Al ingresar un nuevo producto es importante recordar que el titulo del mismo debera de ser igual o menor a 60 caracteres, ya que <i>Mercado Libre</i> requiere un titulo de esas dimensiones.</p>
                     <p style="font-size: 16px;"> Por otro lado es importante tomar en cuenta que al momento de publicar algun producto en <i> Mercado Libre </i> se tomaran las fotografias que se ingresen en <i>WooCommerce</i> ademas de la descripcion que se ingreso ahi mismo.</p>
                     <p style="font-size: 16px;">Es preciso recordar que solo los productos con un precio menor o igual a 470 pesos tendran disponible la opcion de <i> envio gratis.</i></p>
-                    <p style="font-size: 16px;"> Ahora estamos listos para crear nuestro producto de prueba <button class="boton_db" style="" >Crear producto de prueba</button>
-                    <button class="boton_db" > Borrar producto de Prueba </button></p>
+                    <p style="font-size: 16px;">
                 </div>
             </div>
             <a href="#onboarding"> Ir arriba </a> 

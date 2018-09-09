@@ -135,7 +135,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   </style>
 
 
-<div style="max-width: 100%; overflow-x: scroll;" >
+<div id="registros" style="max-width: 100%; overflow-x: scroll;" >
   <table id="tabla" class="table stripe tableMK" style="overflow: auto;">
     <thead>
       <tr>
@@ -235,13 +235,17 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         </td>
         <?php $categoria = get_post_meta($product->ID, "last_category_ml", $single = true ) ?>
         <td style="min-width: 130px;" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php 
-            if($onb != 1)
+            if(!$onb)
             {
               echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}&pagina={$pagina}&keyword={$keyword}'>categorizar</a>"));
             }
-            else
+            elseif($onb == 1) 
             {
               echo "<a href='?page=mkf-entries_categorizador&product_id={$product->ID}&pagina={$pagina}&keyword={$keyword}&onb=1'>categorizar</a>";
+            }
+            elseif($onb == 2)
+            {
+              echo "<a href='#'>Categoria del producto</a>";
             }
           ?></td>
         <td style=""><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
