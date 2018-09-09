@@ -92,6 +92,11 @@ class MKF_Activator extends MKF_DBCore
           $new_simple_product->set_sale_price(0);
           $new_simple_product->save();
       }
+
+      /** 
+       * Codigo extra para setear el post_name del producto marketful_descripcion_comun en
+       * unfinished lo cual hara que se setee el onboarding activo por default.
+       */
       $products = wc_get_products( array(
         'title' => 'marketful_descripcion_comun',
       ));
