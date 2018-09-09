@@ -16,15 +16,28 @@
 -->
 <?php
 	error_reporting(E_ERROR | E_WARNING | E_PARSE); // Suprime errores de prueba
+	/**
+	 * @script En caso de que el onboarding ya se haya completado, se recibira como parametro 
+	 * 'fin' el cual al valer 1 buscara el producto marketful_descripcion_comun y le actualizara
+	 * el campo post_name a finished para identificar que el usuario ya ha completado el 
+	 * onboarding.
+	 */
 	$fin = $_GET['fin'];
 	if($fin == 1)
 	{
-		$actualizar = array(
-	      'post_title'   => 'marketful_descripcion_comun',
-	      'post_name' => 'finished',
-	  	);
-		wp_update_post($actualizar);
-		echo 'Actualizado';
+		$products = wc_get_products( array(
+        'title' => 'marketful_descripcion_comun',
+	    ));
+	    if(isset($products[0]))
+	    {
+	        $producto = $products[0]->get_id();
+	        $actualizar = array(
+	      	'ID' => $products[0]->get_id(),
+	      	'post_name' => 'finished',
+	  		);
+	   	}
+		$ready = wp_update_post($actualizar);
+		echo '<script> console.log("Actualizado '.$ready.'"); </script>';
 	}
 ?>
 <!-- // creo que sobra  -->
@@ -207,7 +220,7 @@
 			<div class="lc_tc">
 				Ahora estas listo para comenzar a utilizar Marketful Seller Center, si tienes alguna duda contacta a soporte.
 			</div>
-			<div class="lc_boton"><a style="text-decoration: none;" href="?page=mkf_dashboard"<button class="boton_onb"> Terminar</button></a></div>
+			<div class="lc_boton"><a style="text-decoration: none; color: white;" href="?page=mkf_dashboard"<button class="boton_onb"> Terminar</button></a></div>
 		</div>
 		<div class="right_container">
 			<div></div>

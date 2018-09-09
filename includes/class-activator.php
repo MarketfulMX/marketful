@@ -92,6 +92,18 @@ class MKF_Activator extends MKF_DBCore
           $new_simple_product->set_sale_price(0);
           $new_simple_product->save();
       }
+      $products = wc_get_products( array(
+        'title' => 'marketful_descripcion_comun',
+      ));
+      if(isset($products[0]))
+      {
+          $producto = $products[0]->get_id();
+          $actualizar = array(
+          'ID' => $products[0]->get_id(),
+          'post_name' => 'unfinished',
+        );
+      }
+      $ready = wp_update_post($actualizar);
     }
   }
   /**

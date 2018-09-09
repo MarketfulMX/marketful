@@ -26,11 +26,13 @@
      * en caso de que sea unfinished se redirige automaticamente hacia el onboarding.
      */
     $products = wc_get_products( array(
-        'title' => 'marketful_descripcion_comun',
-        ));
-    if($products->name == 'unfinished')
+                'title' => 'marketful_descripcion_comun',
+                'name' => 'unfinished',
+                ));
+    //echo '<script> console.log("estamos en eso '.$products.'"); </script>';
+    if($products)
     {
-        echo 'im in';
+        //echo '<script>console.log("Entramos a unfinished");</script>';
         header('Location: ?page=mkf-onboarding');
     }
 ?>
