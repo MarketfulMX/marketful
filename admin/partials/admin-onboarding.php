@@ -111,7 +111,10 @@
 	 */
 	 function display(numero)
 	 {
-	 	$('.panel_'+(numero - 1)).css('display','none');
+	 	for(var c = numero; c>0; c--)
+	 	{
+	 		$('.panel_'+(c)).css('display','none');
+	 	}
 	 	window.setTimeout("temp("+numero+")", 500);
 	 }
 	 	/**
@@ -220,12 +223,30 @@
 			<div class="lc_tc">
 				Ahora estas listo para comenzar a utilizar Marketful Seller Center, si tienes alguna duda contacta a soporte.
 			</div>
-			<div class="lc_boton"><a style="text-decoration: none; color: white;" href="?page=mkf_dashboard"<button class="boton_onb"> Terminar</button></a></div>
+			<div class="lc_boton"><a style="text-decoration: none; color: white;" href="#"><button onclick="display(4);" class="boton_onb"> Terminar</button></a></div>
 		</div>
 		<div class="right_container">
 			<div></div>
 			<div class="rc_lc">
 				<p>El onboarding se centra en mostrarte las funciones princiapes per sabermos que siempre podemos querer mas informacion, en tal caso contactanos al correo mauricio@marketful.mx y te responderemos cuaquier duda.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="onb panel_<?php echo '4';?>">
+		<div class="left_container">
+			<div class="lc_titulo">Antes de terminar ¿Deseas eliminar el producto de prueba?</div>
+			<div class="lc_tc">
+				Si aceptas el producto sera eliminado de manera permanente.
+			</div>
+			<div class="lc_boton">
+				<a style="text-decoration: none; color: white;" href=""<button class="boton_onb"> Eliminar</button></a>
+				<a style="text-decoration: none; color: white;" href=""<button class="boton_onb"> Conservar</button></a>
+			</div>
+		</div>
+		<div class="right_container">
+			<div></div>
+			<div class="rc_lc">
 			</div>
 		</div>
 	</div>
