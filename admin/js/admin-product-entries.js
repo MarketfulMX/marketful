@@ -596,7 +596,7 @@ function onboarding_14()
     $('.subir').attr('class','subir boton_dg');
     $('.pub_status').attr('class','custom_select pub_status');
     $('.onb_flotante').text(' ');
-    $('.onb_flotante').append('¡Hecho! has logrado subir la publicacion de prueba a Mercado Libre con todos los atributos que seleccionaste durante el onboarding. <br><a href="?page=mkf-onboarding&fin=1"><button class="boton_onb" > Aceptar</button></a>');
+    $('.onb_flotante').append('¡Hecho! has logrado subir la publicacion de prueba a Mercado Libre con todos los atributos que seleccionaste durante el onboarding. <br><a href="?page=mkf-onboarding&fin=1"><button class="boton_onb" onClick="show_spinner()"> Aceptar</button></a>');
     $('.onb_flotante').css('display','inline');
 }
 /**
@@ -636,3 +636,11 @@ jQuery(function()
     $('.onb_flotante').trigger('onload');
     $('.dt_check').trigger('onload');
 });
+/**
+ * @funcion show_spinner()
+ * Funcion que muestra el spinner mientras el usuario espera alguna accion
+ */
+function show_spinner()
+{
+    $('.loader_onb').css('display','inline');
+}

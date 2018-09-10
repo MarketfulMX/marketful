@@ -78,7 +78,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 
 <div class="container" style="max-width: 95%; overflow: hidden;" >
-
+  <div class="loader_onb">  
+  </div>
 <div class="bootstrap-wrapper">
   <!-- <div style="background-color: red"><?php echo ($_GET['page'] == 'mkf-product-entries')?'es':$_GET['page'];?></div> -->
   <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
@@ -241,7 +242,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             }
             elseif($onb == 1) 
             {
-              echo "<a href='?page=mkf-entries_categorizador&product_id={$product->ID}&pagina={$pagina}&keyword={$keyword}&onb=1'>categorizar</a>";
+              echo "<a href='?page=mkf-entries_categorizador&product_id={$product->ID}&pagina={$pagina}&keyword={$keyword}&onb=1' onclick='show_spinner()'>categorizar</a>";
             }
             elseif($onb == 2)
             {

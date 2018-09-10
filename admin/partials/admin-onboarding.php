@@ -1,10 +1,10 @@
 <!-- 
  * Archivo: admin-onboarding.php
- * Ultima ediciÃ³n : 4 de septiembre de 2018
+ * Ultima edición : 4 de septiembre de 2018
  *
  * @autor: Adolfo Yanes (adolfo@marketful.mx)
  * @autor: Administrador de Proyecto: Mauricio Alcala (mauricio@marketful.mx)
- * @versiÃ³n: 1.01
+ * @versión: 1.01
  * 
  * @package    mkf
  * @subpackage mkf/admin/partials
@@ -114,6 +114,7 @@
 	 	for(var c = numero; c>0; c--)
 	 	{
 	 		$('.panel_'+(c)).css('display','none');
+	 		$('.loader_onb').css('display','inline');
 	 	}
 	 	window.setTimeout("temp("+numero+")", 500);
 	 }
@@ -124,7 +125,16 @@
 		 function temp(numero)
 	 	 {
 	 		$('.panel_'+numero).css('display','grid');	
+	 		$('.loader_onb').css('display','none');
 	 	 }
+	/**
+	 * @funcion show_spinner()
+	 * Funcion que muestra el spinner mientras el usuario espera alguna accion
+	 */
+	function show_spinner()
+	{
+		$('.loader_onb').css('display','inline');
+	}
 </script>
 
 <style type="text/css">
@@ -212,18 +222,45 @@
 		float: right;
 		margin-right: 7%;
 	}
-	.titulo
+	/* Spinner */
+	.loader_onb
+	{
+		display: none;
+		position: absolute;
+		margin-top: 20%;
+		margin-left: 45%; margin-right: auto;
+		border: 16px solid #f3f3f3;
+		border-radius: 50%;
+		border-top: 16px solid #E2E5C4;
+		border-bottom: 16px solid #E2E5C4;
+		width: 60px;
+		height: 60px;
+		-webkit-animation: spin 2s linear infinite;
+		animation: spin 2s linear infinite;
+	}
+	@-webkit-keyframes spin 
+	{
+		0% { -webkit-transform: rotate(0deg); }
+		100% { -webkit-transform: rotate(360deg); }
+	}
+	@keyframes spin 
+	{
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	}
+	/* End spinner */
 </style>
 
 <div class="contenedor_onb">
-	
+	<div class="loader_onb">	
+	</div>
 	<div class="onb panel_<?php if($fin == 1){echo '1';}else{echo '4';} ?>">
 		<div class="left_container">
 			<div class="lc_titulo">Felicidades! has completado el Onboarding</div>
 			<div class="lc_tc">
 				Ahora estas listo para comenzar a utilizar Marketful Seller Center, si tienes alguna duda contacta a soporte.
 			</div>
-			<div class="lc_boton"><a style="text-decoration: none; color: white;" href="#"><button onclick="display(4);" class="boton_onb"> Terminar</button></a></div>
+			<div class="lc_boton"><a style="text-decoration: none; color: white;" href="#"><button onclick="display(4);" class="boton_onb" title="Terminar "> Terminar</button></a></div>
 		</div>
 		<div class="right_container">
 			<div></div>
@@ -235,13 +272,13 @@
 
 	<div class="onb panel_<?php echo '4';?>">
 		<div class="left_container">
-			<div class="lc_titulo">Antes de terminar Â¿Deseas eliminar el producto de prueba?</div>
+			<div class="lc_titulo">Antes de terminar ¿Deseas eliminar el producto de prueba?</div>
 			<div class="lc_tc">
 				Si aceptas el producto sera eliminado de manera permanente.
 			</div>
 			<div class="lc_boton">
-				<a style="text-decoration: none; color: white;" href="?page=mkf_dashboard"<button class="boton_onb" onclick="delete_test_product()"> Eliminar</button></a>
-				<a style="text-decoration: none; color: white;" href="?page=mkf_dashboard"<button class="boton_onb"> Conservar</button></a>
+				<a style="text-decoration: none; color: white;" href="?page=mkf_dashboard"<button class="boton_onb" onclick="delete_test_product(); show_spinner();" title="Eliminar "> Eliminar</button></a>
+				<a style="text-decoration: none; color: white;" href="?page=mkf_dashboard"<button class="boton_onb" title="Conservar" onclick="show_spinner()"> Conservar</button></a>
 			</div>
 		</div>
 		<div class="right_container">
@@ -255,9 +292,9 @@
 		<div class="left_container">
 			<div class="lc_titulo">Felicidades!</div>
 			<div class="lc_tc">
-				Has llegado lejos, marketful seller center esta casi listo para funcionar, solo nos falta mostrarte la simpleza de su funcionamiento. Preparate en los siguientes minutos aprenderas a administrar tus productos de WooCommerce y poder modificar los atributos de la publicacion de ese producto dentro de Mercado Libre, Â¡comenzemos!
+				Has llegado lejos, marketful seller center esta casi listo para funcionar, solo nos falta mostrarte la simpleza de su funcionamiento. Preparate en los siguientes minutos aprenderas a administrar tus productos de WooCommerce y poder modificar los atributos de la publicacion de ese producto dentro de Mercado Libre, ¡comenzemos!
 			</div>
-			<div class="lc_boton"><button class="boton_onb" onclick="display(2);"> Iniciar Onboarding</button></div>
+			<div class="lc_boton"><button class="boton_onb" onclick="display(2);" title="Iniciar Onboarding"> Iniciar Onboarding</button></div>
 		</div>
 		<div class="right_container">
 			<div></div>
@@ -279,7 +316,7 @@
 			<div class="lc_tc">
 				Crearemos un producto de prueba directo en tu base de datos de WooCommerce para empezar este OnBoarding, Usaremos este producto para todo el Onboarding con datod ficticios, no te preocupes, al terminar el Onboarding podras borrarlo.
 			</div>
-			<div class="lc_boton"><button class="boton_onb" onclick="create_test_product();display(3);">Crear producto</button></div>
+			<div class="lc_boton"><button class="boton_onb" onclick="create_test_product();display(3);" title="Crear producto ">Crear producto</button></div>
 		</div>
 		<div class="right_container">
 			<div></div>
@@ -295,7 +332,7 @@
 			<div class="lc_tc">
 				Ya hemos creado un producto de prueba, ahora veremos en donde podemos verlo de manera sencilla y posteriormente podremos editar todos los atributos de su publicacion.
 			</div>
-			<div class="lc_boton"><a style="text-decoration: none; color: white;"href="?page=mkf-product-entries&keyword=Producto+de+Prueba&onb=1"><button class="boton_onb">Ver producto</button></a></div>
+			<div class="lc_boton"><a style="text-decoration: none; color: white;"href="?page=mkf-product-entries&keyword=Producto+de+Prueba&onb=1"><button class="boton_onb" title="Ver producto" onclick="show_spinner()">Ver producto</button></a></div>
 		</div>
 		<div class="right_container">
 			<div></div>
