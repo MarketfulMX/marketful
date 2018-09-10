@@ -272,7 +272,7 @@
 
 	<div class="onb panel_<?php echo '4';?>">
 		<div class="left_container">
-			<div class="lc_titulo">Antes de terminar ¿Deseas eliminar el producto de prueba?</div>
+			<div class="lc_titulo">Antes de terminar, Deseas eliminar el producto de prueba?</div>
 			<div class="lc_tc">
 				Si aceptas el producto sera eliminado de manera permanente.
 			</div>
@@ -292,7 +292,7 @@
 		<div class="left_container">
 			<div class="lc_titulo">Felicidades!</div>
 			<div class="lc_tc">
-				Has llegado lejos, marketful seller center esta casi listo para funcionar, solo nos falta mostrarte la simpleza de su funcionamiento. Preparate en los siguientes minutos aprenderas a administrar tus productos de WooCommerce y poder modificar los atributos de la publicacion de ese producto dentro de Mercado Libre, ¡comenzemos!
+				Has llegado lejos, marketful seller center esta casi listo para funcionar, solo nos falta mostrarte la simpleza de su funcionamiento. Preparate, en los siguientes minutos aprenderas a administrar tus productos de WooCommerce y poder modificar los atributos de la publicacion de ese producto dentro de Mercado Libre, comenzemos!
 			</div>
 			<div class="lc_boton"><button class="boton_onb" onclick="display(2);" title="Iniciar Onboarding"> Iniciar Onboarding</button></div>
 		</div>
@@ -305,7 +305,7 @@
 				<li> 3) Como asignar una categoria valida a tus productos.</li>
 				<li> 4) Como asignar el tipo de exposicion que tendra una publicacion en Mercado Libre.</li>
 				<li> 5) Aprenderas ademas las diferentes validaciones que tiene un producto para poder crear una publicacion en Mercado Libre de dicho producto.</li>
-				<p>Recuerda que cualquier duda adicional sera resuelta por nuestro equipo en el momento que lo solicites. Consulta nuestro sitio de SOPORTE para mas informacion.</p>
+				<p>Recuerda que cualquier duda adicional sera resuelta por nuestro equipo en el momento que lo solicites. Consulta nuestro sitio de SOPORTE despues de terminar el onboarding para mas informacion.</p>
 			</div>
 		</div>
 	</div>
@@ -314,7 +314,7 @@
 		<div class="left_container">
 			<div class="lc_titulo">Vamos a crear un producto de prueba</div>
 			<div class="lc_tc">
-				Crearemos un producto de prueba directo en tu base de datos de WooCommerce para empezar este OnBoarding, Usaremos este producto para todo el Onboarding con datod ficticios, no te preocupes, al terminar el Onboarding podras borrarlo.
+				Crearemos un producto de prueba directo en tu base de datos de WooCommerce para empezar este OnBoarding, Usaremos este producto para todo el Onboarding con datos ficticios, no te preocupes al terminar el Onboarding podras borrarlo.
 			</div>
 			<div class="lc_boton"><button class="boton_onb" onclick="create_test_product();display(3);" title="Crear producto ">Crear producto</button></div>
 		</div>
@@ -343,4 +343,3 @@
 	</div>
 </div>
 <div class="img_footer"><img style="width: 100px; height: 38px;" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/00f28e9a6a24311ff4d3aea11bd89f1c03d87a41/admin/img/Marketful.jpeg?token=Ajnc0Rrrd4YGKSbhuadXRdrqYR-le5-tks5bmAOMwA%3D%3D"></div>
-<!-- //Funcion para borrar producto de prueba// onclick="delete_test_product()" -->
