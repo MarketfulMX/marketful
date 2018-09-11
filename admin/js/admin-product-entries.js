@@ -316,7 +316,7 @@ function check_status(id)
      */ 
     jQuery(function()
     {
-        $('.pub_status').trigger('onload');
+        // $('.pub_status').trigger('onload');
     });
     /**
      * @función 

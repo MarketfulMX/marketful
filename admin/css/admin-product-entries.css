@@ -84,6 +84,7 @@
             font-size: 12px;
             text-decoration: none;
             cursor: pointer;
+            margin-bottom: 5px;
         }
         #boton_dg:hover, .boton_dg:hover
         {
