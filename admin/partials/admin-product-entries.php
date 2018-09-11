@@ -305,7 +305,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     });
 
 
-    <?php if($onb==1){ ?>
+    <?php if($onb==1 || $onb==2){ ?>
 
 
         jQuery(function()
