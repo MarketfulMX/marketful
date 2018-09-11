@@ -192,7 +192,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           <?php $envio_ml = $select_value = get_post_meta($product->ID, "metodo_envio_ml", true)?>
           <?php if($categoria == "" || $exposicion == "" || $envio_ml == ""){$disabled=true;}else{$disabled= false;} ?>
         <td><button <?php echo ($disabled == true)?'disabled':''; ?> style=""id="subir_ml_<?php echo $product->ID;?>" class="boton_dg subir" onclick="subir_cambios(<?php echo $product->ID; ?>);"> Subir cambios</button></td>
-        <td><?php echo $product->sku; ?> ; <?php echo $exposicion; ?></td>
+        <td><?php echo $product->sku; ?></td>
         <td style="min-width: 150px">
             <?php 
                 if(strlen($product->title) > 60)
@@ -303,6 +303,20 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       } 
       ?>
     });
+
+
+    <?php if($onb==1){ ?>
+
+
+        jQuery(function()
+        {
+            $('.onb_flotante').trigger('onload');
+            $('.dt_check').trigger('onload');
+        });
+
+    <?php } ?>
+
+
 </script>
 
 

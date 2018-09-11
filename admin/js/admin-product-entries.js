@@ -646,11 +646,6 @@ function onboarding_nn(valor)
 * @funcion Para cargar de manera automatica onboarding_4() y onboarding_nn despues de la seccion de categorizar.
 * 
 */
-jQuery(function()
-{
-    $('.onb_flotante').trigger('onload');
-    $('.dt_check').trigger('onload');
-});
 /**
  * @funcion show_spinner()
  * Funcion que muestra el spinner mientras el usuario espera alguna accion
