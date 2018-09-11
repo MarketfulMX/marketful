@@ -184,8 +184,15 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           
         <td class="dt_check" <?php if($onb == 1){echo 'onload="onboarding_nn('.$product->ID.');"';} // Modifica el tamaño del nombre del titulo_ml para el onboarding?>>
           <input type="checkbox" class="ids" name="checkboxes" id="checkbox_<?php echo $product->ID; ?>" />  </td>
-        <td><button style=""id="subir_ml_<?php echo $product->ID;?>" class="boton_dg subir" onclick="subir_cambios(<?php echo $product->ID; ?>);"> Subir cambios</button></td>
-        <td><?php echo $product->sku; ?></td>
+          <?php ?>
+          <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
+          <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
+          <?php $categoria = get_post_meta($product->ID, "last_category_ml", $single = true ) ?>
+          <?php $exposicion = $all_mlmeta[0]["data"][0]->exposicion; ?>
+          <?php $envio_ml = $select_value = get_post_meta($product->ID, "metodo_envio_ml", true)?>
+          <?php if($categoria == "" || $exposicion == "" || $envio_ml == ""){$disabled=true;}else{$disabled= false;} ?>
+        <td><button <?php echo ($disabled == true)?'disabled':''; ?> style=""id="subir_ml_<?php echo $product->ID;?>" class="boton_dg subir" onclick="subir_cambios(<?php echo $product->ID; ?>);"> Subir cambios</button></td>
+        <td><?php echo $product->sku; ?> ; <?php echo $exposicion; ?></td>
         <td style="min-width: 150px">
             <?php 
                 if(strlen($product->title) > 60)
@@ -211,11 +218,10 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 -->
           <td>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones" >              
-              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select pub_status" id="mercadolibre_<?php echo $product->ID;  ?>" onload="check_status(<?php echo $product->ID; ?>)" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre');" >
-                <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
-                <?php $all_mlmeta = $productObject->get_ml_metadata($product->ID) ?>
+              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select pub_status" id="mercadolibre_<?php echo $product->ID;  ?>"  onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre');" >
+                
                 <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
-                <option>...</option>
+                <option value="">...</option>
                 <option value="active" <?php echo ($select_value=="active")?'selected':''; ?>>Activa</option>
                 <option value="paused" <?php echo ($select_value=="paused")?'selected':''; ?>>Pausada</option>
                 <option value="closed" <?php echo ($select_value=="closed")?'selected':''; ?>>Finalizada</option> 
@@ -226,7 +232,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
               <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select expo_ml" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml'); check_status(<?php echo $product->ID; ?>); " id="exposicion_ml_<?php echo $product->ID;  ?>">
                 <?php $select_value = $all_mlmeta[0]["data"][0]->exposicion; ?>
-                <option>...</option>
+                <option value="">...</option>
                 <option value="free" <?php echo ($select_value=="free")?'selected':''; ?>>Gratis</option>
                 <option value="clasica" <?php echo ($select_value=="clasica")?'selected':''; ?>>Clasica</option>
                 <option value="premium" <?php echo ($select_value=="premium")?'selected':''; ?> >Premium</option> 
@@ -234,7 +240,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             </div>
             
         </td>
-        <?php $categoria = get_post_meta($product->ID, "last_category_ml", $single = true ) ?>
+        
         <td style="min-width: 130px;" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php 
             if(!$onb)
             {
@@ -258,7 +264,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
               <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select tipo_envi" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml'); check_status(<?php echo $product->ID.');';?>" id="metodo_envio_ml_<?php echo $product->ID;?>">
                 <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
-                <option>...</option>
+                <option value="">...</option>
                 <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envio Gratis</option>
                 <option value="me_c" <?php echo ($select_value=="me_c")?'selected':''; ?>>Mercado Envio Pago</option>
                 <option value="custom" <?php echo ($select_value=="custom")?'selected':''; ?> >Personalizado</option> 

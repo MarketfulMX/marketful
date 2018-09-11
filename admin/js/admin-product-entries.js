@@ -356,65 +356,80 @@ function resize_window()
  * el id del producto que actualizara sus datos. Toma los valores de la exposicion, el status
  * el precio, el valor del inventario y el tipo de envio.
  */
- function subir_cambios(product_id)
-{
-    console.log(product_id+' Se esta subiendo a Mkf los cambios ------------------------------------------------------------------');
-    $('#cambios_guardados').text("Guardando cambios...");
+ function subir_cambios(product_id){
+    // console.log(product_id+' Se esta subiendo a Mkf los cambios ------------------------------------------------------------------');
+    // $('#cambios_guardados').text("Guardando cambios...");
 
-    var values = [$('#mercadolibre_' + product_id).val(), $('#exposicion_ml_'+ product_id).val(), $('#precio_ml_'+ product_id).val(), $('#inventario_ml_'+ product_id).val(), $('#metodo_envio_ml_'+ product_id).val()];
-    var keys = ['mercadolibre', 'exposicion_ml', 'precio_ml', 'inventario_ml', 'metodo_envio_ml'];
-    var c = 0;
-    var c2 = 0;
+    // var values = [$('#mercadolibre_' + product_id).val(), $('#exposicion_ml_'+ product_id).val(), $('#precio_ml_'+ product_id).val(), $('#inventario_ml_'+ product_id).val(), $('#metodo_envio_ml_'+ product_id).val()];
+    // var keys = ['mercadolibre', 'exposicion_ml', 'precio_ml', 'inventario_ml', 'metodo_envio_ml'];
+    // var c = 0;
+    // var c2 = 0;
 
-    // Status -- mercadolibre
-    if(values[0] == 'closed')
-    {
-        //console.log('Se va a finalizar la publicacion -> Lanzar alerta para validar ooooooooooooooooooooooooooooooooooooooooooooooo');
-        if(!confirm('Si finalizas una publicación en MercadoLibre tendras que crear una nueva para volver a activarla, ¿Finalizar publicacion?'))
-        {
-            $('#' + key + "_" + product_id).val('...');
-            c2 = 1;
+    // // Status -- mercadolibre
+    // if(values[0] == 'closed')
+    // {
+    //     //console.log('Se va a finalizar la publicacion -> Lanzar alerta para validar ooooooooooooooooooooooooooooooooooooooooooooooo');
+    //     if(!confirm('Si finalizas una publicación en MercadoLibre tendras que crear una nueva para volver a activarla, ¿Finalizar publicacion?'))
+    //     {
+    //         $('#' + key + "_" + product_id).val('...');
+    //         c2 = 1;
+    //     }
+    // }
+    // for(c = c2; c<4; c++)
+    // {
+        // validar que este listo para subir 
+        // var tipo_de_envio = $('#metodo_envio_ml_' + product_id + ' select');
+        // var exposicion = $('#exposicion_ml_' + product_id).val();
+        // var categoria =$('#categoria_' + product_id + ' a').text();
+        var tarea_id = "task_" + Math.random()
+        tareas[tarea_id] = false
+        $('#cambios_guardados').text("Subiendo cambios...");
+        // console.log(tipo_de_envio)
+        // console.log(exposicion)
+        // console.log(categoria)
+        // if(tipo_de_envio.length > 0 && exposicion.length > 0 && categoria != "categorizar"){
+        if(2 == 2){
+            console.log("vamos con el ajax")
+            jQuery.ajax(
+            {
+                type: 'post',
+                url: ajaxurl,
+                dataType: 'json',
+                data: 
+                { 
+                    product_id: product_id, 
+                    tarea_id: tarea_id,
+                    action: 'act_mkf'
+                },
+                success: function(response) 
+                { 
+                    console.log(response)
+                    // delete tareas[response.data["tarea_id"]];
+                    // if(tareas.size == null)
+                    // {
+                    //     if(c == 4)
+                    //     {
+                        //     $('#cambios_guardados').text(" Cambios guardados. ");
+                        // }
+                        // else
+                        // {
+                            $('#cambios_guardados').text("Cambios subidos");
+                    //     }
+                    // }     
+                },
+                error: function(response) 
+                { 
+                    console.log("fracaso");
+                },
+            });
+        }else{
+            console.log("no entro en ajax")
         }
-    }
-    for(c = c2; c<4; c++)
-    {
-        jQuery.ajax(
-        {
-            type: 'post',
-            url: ajaxurl,
-            dataType: 'json',
-            data: 
-            { 
-                product_id: product_id, 
-                value: values[c], 
-                key: keys[c], 
-                tarea_id: tarea_id,
-                action: 'act_mkf'
-            },
-            success: function(response) 
-            { 
-                delete tareas[response.data["tarea_id"]];
-                if(tareas.size == null)
-                {
-                    if(c == 4)
-                    {
-                        $('#cambios_guardados').text(" Cambios guardados. ");
-                    }
-                    else
-                    {
-                        $('#cambios_guardados').text("Guardando "+(c+1)+" de 5 ");
-                    }
-                }     
-            },
-            error: function(response) 
-            { 
-                console.log("fracaso");
-            },
-        });
-    }
+            
+    // }
     // registrar la tarea 
-    var tarea_id = "task_" + Math.random();
-    tareas[tarea_id] = false;   
+    // var tarea_id = "task_" + Math.random();
+    // tareas[tarea_id] = false;   
 };
 
 
@@ -631,11 +646,11 @@ function onboarding_nn(valor)
 * @funcion Para cargar de manera automatica onboarding_4() y onboarding_nn despues de la seccion de categorizar.
 * 
 */
-jQuery(function()
-{
-    $('.onb_flotante').trigger('onload');
-    $('.dt_check').trigger('onload');
-});
+// jQuery(function()
+// {
+//     $('.onb_flotante').trigger('onload');
+//     $('.dt_check').trigger('onload');
+// });
 /**
  * @funcion show_spinner()
  * Funcion que muestra el spinner mientras el usuario espera alguna accion

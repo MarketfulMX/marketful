@@ -149,11 +149,9 @@ class MKF_ProductEntry extends MKF_DBCore
     public function actualiza_mkf() 
     {
         $producto_id = $_POST['product_id'];
-        $value = $_POST['value'];
-        $key = $_POST['key'];
         $tarea_id = $_POST['tarea_id'];
         $site_url = get_site_url();
-        $url = "https://woocommerce.marketful.mx/notifications?{$key}={$value}&product_id={$producto_id}&site={$site_url}";
+        $url = "https://woocommerce.marketful.mx/notifications?product_id={$producto_id}&site={$site_url}";
         $http = _wp_http_get_object();
         $response = $http->post( $url ); 
         wp_send_json_success(array('product_id' => $producto_id, 'value' => $value, 'key' => $key, 'tarea_id'=>$tarea_id));
