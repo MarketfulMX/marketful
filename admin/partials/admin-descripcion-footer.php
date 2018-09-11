@@ -15,9 +15,11 @@
  /**
  * Descripción General: 
  *
- *
+ * Asigna una descripcion general a todos los productos. No suprime la descripcion que tengan actualmente, 
+ * solo la agrega adicionalmente.
  */
-$imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
+error_reporting(E_ERROR | E_WARNING | E_PARSE); // Suprime errores de prueba
+$imgSrc   = plugins_url( '../img/Marketful.png' , __FILE__ );
 
 // buscar el producto que guarda la descripcion comun
 if(function_exists(wc_get_productssss)){
@@ -60,7 +62,7 @@ if(function_exists(wc_get_productssss)){
 <style>
     #footer_texto_superior
     {
-        max-width: 660px;
+        width: 80%;
         margin-top: 20px;
         display: inline-block;
         padding: 5px;
@@ -71,12 +73,13 @@ if(function_exists(wc_get_productssss)){
     .footer_contenido
     {
         text-align: center;
+        width: 100%;
         font-family: sans-serif;
     }
     .footer_contenido textarea
     {
         font-size: 14px;
-        max-width: 700px;
+        width: 80%;
     }
     .footer_contenido p
     {
@@ -84,8 +87,9 @@ if(function_exists(wc_get_productssss)){
     }
     #footer_titulo_mostrar_texto
     {
+        width: 80%;
+        margin-left: 10%; margin-right: 10%;    
         margin-top: 25px;
-        width: auto;
         border-width: 1px 0px 1px 0px;
         border-color: #D9D9D9;
         border-style: solid;
@@ -93,12 +97,12 @@ if(function_exists(wc_get_productssss)){
     }
     #footer_mostrar
     {
-        width: 662px;
         align-content: center;
         margin: auto;
     }
     #footer_mostrar_texto
     {
+        width: 80%;
         display: inline-block;
         padding: 10px 20px;
         text-align: center;
@@ -107,7 +111,6 @@ if(function_exists(wc_get_productssss)){
         border-style: solid;
         border-radius: 3px;
         border-width: 1px;
-        width: 660px;
         height: auto;
         min-height: 30px;
         background-color: white;
