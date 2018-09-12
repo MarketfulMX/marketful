@@ -143,7 +143,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
         <th style="min-width: 100px">Subir cambios a Mercado Libre</th>
         <th style="min-width: 50px">SKU </th>
-        <th style="min-width: 150px">Titulo en MercadoLibre</th>
+        <th style="min-width: 150px">Titulo en MercadoLibre <br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></th>
         <th style="min-width: 50px">Status</th>
         <th style="min-width: 50px">Exposicion</th>
         <th style="min-width: 130px">Categoria ML</th>
@@ -197,7 +197,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             <?php 
                 if(strlen($product->title) > 60)
                 {
-                    echo '<input type="text" class="input titulo_onb" style="width: 200px;" id="titulo_ml_'.$product->ID.'" placeholder="'.$product->title.'" onkeypress="cambioStatus('.$product->ID.', \'titulo_ml\')">';
+                    echo '<b>'.$product->title.'</b><input type="text" class="input titulo_onb" style="width: 200px;" id="titulo_ml_'.$product->ID.'" maxlength="60" placeholder="Nuevo titulo" onkeypress="cambioStatus('.$product->ID.', \'titulo_ml\')">';
                 }
                 else
                 {
