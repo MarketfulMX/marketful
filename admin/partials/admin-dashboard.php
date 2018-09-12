@@ -25,10 +25,10 @@
      * descripcion_comun en caso de que el valor sea finished, mostramos el dashboard 
      * en caso de que sea unfinished se redirige automaticamente hacia el onboarding.
      */
-    $products = wc_get_products( array(
-                'title' => 'marketful_descripcion_comun',
-                'name' => 'unfinished',
-                ));
+    // $products = wc_get_products( array(
+    //             'title' => 'marketful_descripcion_comun',
+    //             'name' => 'unfinished',
+    //             ));
     $keyword = 'marketful_descripcion_comun';
     $products = MKF_ProductEntry::GetInstance()->get_product_list(1, 0, $keyword);
     //echo '<script> console.log("estamos en eso '.$products.'"); </script>';
