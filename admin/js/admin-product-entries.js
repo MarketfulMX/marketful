@@ -33,7 +33,15 @@ function cambioStatus(product_id, key)
 {
     console.log(product_id+' entro en cambiostatus')
     var value = $('#' + key + "_" + product_id).val()
-    if( key == 'titulo_ml' && value.length > 2)
+    valido = false 
+    if(key == 'titulo_ml' && value.length > 2){
+        valido = true
+    }else if(key != 'titulo_ml'){
+        valido = true
+    }else{
+        valido = false
+    }
+    if( valido == true)
     {
         // Validamos si seleccionan status y que sea finalizar
         if(key == 'mercadolibre' && value == 'closed')

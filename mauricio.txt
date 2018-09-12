@@ -1,9 +1,7 @@
 Mauricio 
 
-1) cambiar el event del input de onchange a focusout
-2) cuando repsonda el ajax y haga el trigger de cambios guardado, revise si fue un cambio de titulo y lo cambie
-3) arreglar acento de Ver Publicacion 
-4) 
+1) Spinner al boton Subir cambios minetras sube los cambios 
+ 
 
  ### API Juan y Charly
  1) Agregar la descripcion comun a los items nuevos en SubirMlListings
