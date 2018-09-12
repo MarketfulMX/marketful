@@ -601,7 +601,7 @@ function onboarding_13()
     $('.caja_onb').text('Da clic en el boton "subir cambios" que esta resaltado en color azul.');
     $('.subir').attr('class','subir boton_dg elemento_active');
     var onclicks = $('.subir').attr('onclick');
-    $('.subir').attr('onclick',onclicks+'onboarding_14();');
+    $('.subir').attr('onclick',onclicks+';onboarding_14();');
 }
 /**
  * @funcion onboarding_14()
