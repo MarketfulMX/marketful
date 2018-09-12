@@ -145,7 +145,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <th style="min-width: 50px">SKU </th>
         <th style="min-width: 150px">Titulo en MercadoLibre <br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></th>
         <th style="min-width: 50px">Status</th>
-        <th style="min-width: 50px">Exposicion</th>
+        <th style="min-width: 50px">Exposici&oacute;n</th>
         <th style="min-width: 130px">Categoria ML</th>
         <th style="min-width: 50px">Precio Woo Commerce</th>
         <th style="min-width: 50px">Precio Mercado Libre</th>
@@ -153,7 +153,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <th style="min-width: 50px">Inventario Mercado Libre</th>
         <th style="min-width: 150px">Tipo de Envio</th>
         <th style="min-width: 110px">Ver Publicacion</th>
-        <th style="min-width: 60px">Ultima Actualizaualización</th>
+        <th style="min-width: 60px">Ultima Actualizaualizaci&oacute;n</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
       </tr>
     </thead>
