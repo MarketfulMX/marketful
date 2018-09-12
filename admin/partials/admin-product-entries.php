@@ -195,11 +195,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <td><?php echo $product->sku; ?></td>
         <td style="min-width: 150px">
             <?php 
-              echo '<b>'.$product->title.'</b><br>';
-                // if(strlen($product->title) > 60)
-                // {
-                    echo '<input type="text" class="input titulo_onb" style="width: 200px;" id="titulo_ml_'.$product->ID.'" maxlength="60" placeholder="Nuevo titulo solo para Mercadolibre" onkeypress="cambioStatus('.$product->ID.', \'titulo_ml\')">';
-                // }
+              echo '<b id="tpml_'.$product->ID.'">'.$product->title.'</b><br>';
+              echo '<input type="text" class="input titulo_onb" style="width: 200px;" id="titulo_ml_'.$product->ID.'" maxlength="60" placeholder="Nuevo titulo solo para Mercadolibre" onblur="cambioStatus('.$product->ID.', \'titulo_ml\')" onkeypress="checar_enter(event,'.$product->ID.', \'titulo_ml\')">';
           
             ?>
           </td>
@@ -269,7 +266,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               </select>
             </div>  
         </td>
-        <td ><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicación</a>" : "no hay ") ?>
+        <td ><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicaci&oacute;n</a>" : "no hay ") ?>
           </td>
         <td><?php echo get_post_meta($product->ID, "error_ml", true);?></td>
        <!--  <td>

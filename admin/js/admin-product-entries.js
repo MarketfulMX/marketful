@@ -33,52 +33,59 @@ function cambioStatus(product_id, key)
 {
     console.log(product_id+' entro en cambiostatus')
     var value = $('#' + key + "_" + product_id).val()
-    // Validamos si seleccionan status y que sea finalizar
-    if(key == 'mercadolibre' && value == 'closed')
+    if( key == 'titulo_ml' && value.length > 2)
     {
-        console.log('Se va a finalizar -> Lanzar alerta para validar');
-        if(!confirm('Si finalizas una publicación en MercadoLibre tendras que crear una nueva para volver a activarla, ¿Finalizar publicacion?'))
+        // Validamos si seleccionan status y que sea finalizar
+        if(key == 'mercadolibre' && value == 'closed')
         {
-            $('#' + key + "_" + product_id).val('...');
-            return false;
-        }
-    }
-    console.log(key)
-    // registrar la tarea 
-    var tarea_id = "task_" + Math.random()
-    tareas[tarea_id] = false
-    $('#cambios_guardados').text("Guardando cambios...");
-    jQuery.ajax(
-    {
-        type: 'post',
-        url: ajaxurl,
-        dataType: 'json',
-        data: 
-        { 
-            product_id: product_id, 
-            value: value, 
-            key: key, 
-            tarea_id: tarea_id,
-            action: 'foobar'
-        },
-        success: function(response) 
-        { 
-            console.log("exito")
-            console.log(response)
-            console.log(tareas)
-            delete tareas[response.data["tarea_id"]]
-            console.log(tareas.size)
-            if(tareas.size == null)
+            console.log('Se va a finalizar -> Lanzar alerta para validar');
+            if(!confirm('Si finalizas una publicación en MercadoLibre tendras que crear una nueva para volver a activarla, ¿Finalizar publicacion?'))
             {
-                $('#cambios_guardados').text("Cambios guardados");
-            }     
-        },
-        error: function(response) 
-        { 
-            console.log("fracaso")
-            console.log(response)   
-        },
-    });
+                $('#' + key + "_" + product_id).val('...');
+                return false;
+            }
+        }
+        console.log(key)
+        // registrar la tarea 
+        var tarea_id = "task_" + Math.random()
+        tareas[tarea_id] = false
+        $('#cambios_guardados').text("Guardando cambios...");
+        jQuery.ajax(
+        {
+            type: 'post',
+            url: ajaxurl,
+            dataType: 'json',
+            data: 
+            { 
+                product_id: product_id, 
+                value: value, 
+                key: key, 
+                tarea_id: tarea_id,
+                action: 'foobar'
+            },
+            success: function(response) 
+            { 
+                if(key == 'titulo_ml')
+                {
+                    $('#tpml_'+product_id).text(value);
+                }
+                console.log("exito")
+                console.log(response)
+                console.log(tareas)
+                delete tareas[response.data["tarea_id"]]
+                console.log(tareas.size)
+                if(tareas.size == null)
+                {
+                    $('#cambios_guardados').text("Cambios guardados");
+                }     
+            },
+            error: function(response) 
+            { 
+                console.log("fracaso")
+                console.log(response)   
+            },
+        });
+    }
 };
 
 /**
@@ -224,7 +231,18 @@ function enterBuscar(e)
         buscarResultados()
     }
 }
-
+/**
+ * @funcion checar_enter()
+ *
+ * Esta funcion envia los datos que se han escrito en el input del titulo si el usuario presiono enter.
+ */
+function checar_enter(e, id, tipo)
+{
+    if(e.which==13)
+    {
+        cambioStatus(id, tipo);
+    }
+}
 
 var tareas = {}
 var status_cambios = ""
@@ -580,7 +598,8 @@ function onboarding_11()
     $('.titulo_onb').focus()
     $('.onb_flotante').css('display','none'); 
     $('.caja_onb').text('Ingresa un nombre menor a 60 caracteres en la caja de texto resaltada, cuando termines da clic fuera de la caja.');
-    $('.titulo_onb').attr('onblur','onboarding_12();');
+    var onblurs = $('.titulo_onb').attr('onblur');
+    $('.titulo_onb').attr('onblur',onblurs + ';onboarding_12();');
 }
 /**
  * @funcion onboarding_12()
