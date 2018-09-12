@@ -342,4 +342,4 @@
 		</div>
 	</div>
 </div>
-<div class="img_footer"><img style="width: 100px; height: 38px;" src="https://raw.githubusercontent.com/Skepsis-Consulting/wcplugin/00f28e9a6a24311ff4d3aea11bd89f1c03d87a41/admin/img/Marketful.jpeg?token=Ajnc0Rrrd4YGKSbhuadXRdrqYR-le5-tks5bmAOMwA%3D%3D"></div>
+<div class="img_footer"><img style="width: 100px; height: 38px;" src="https://www.marketful.mx/assets/Logo_marketful-b973bdcabe50755f3a07dc2b2fae41c501eecb4e06756215b6735f4fd5616c81.png"></div>
