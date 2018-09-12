@@ -195,14 +195,12 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <td><?php echo $product->sku; ?></td>
         <td style="min-width: 150px">
             <?php 
-                if(strlen($product->title) > 60)
-                {
-                    echo '<b>'.$product->title.'</b><input type="text" class="input titulo_onb" style="width: 200px;" id="titulo_ml_'.$product->ID.'" maxlength="60" placeholder="Nuevo titulo" onkeypress="cambioStatus('.$product->ID.', \'titulo_ml\')">';
-                }
-                else
-                {
-                    echo $product->title;
-                } 
+              echo '<b>'.$product->title.'</b><br>';
+                // if(strlen($product->title) > 60)
+                // {
+                    echo '<input type="text" class="input titulo_onb" style="width: 200px;" id="titulo_ml_'.$product->ID.'" maxlength="60" placeholder="Nuevo titulo solo para Mercadolibre" onkeypress="cambioStatus('.$product->ID.', \'titulo_ml\')">';
+                // }
+          
             ?>
           </td>
         <!--
