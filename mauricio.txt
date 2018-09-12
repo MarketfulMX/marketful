@@ -1,7 +1,9 @@
 Mauricio 
 
-1) Input no puede admitir un titulo de mas de 60 maxlength
-2) Si el titulo original tiene mas de 60 caracteres entonces te muestra el titulo en texto y abajo el input
+1) cambiar el event del input de onchange a focusout
+2) cuando repsonda el ajax y haga el trigger de cambios guardado, revise si fue un cambio de titulo y lo cambie
+3) arreglar acento de Ver Publicacion 
+4) 
 
  ### API Juan y Charly
  1) Agregar la descripcion comun a los items nuevos en SubirMlListings
