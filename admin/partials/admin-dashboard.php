@@ -29,8 +29,11 @@
                 'title' => 'marketful_descripcion_comun',
                 'name' => 'unfinished',
                 ));
+    $keyword = 'marketful_descripcion_comun';
+    $products = MKF_ProductEntry::GetInstance()->get_product_list(1, 0, $keyword);
     //echo '<script> console.log("estamos en eso '.$products.'"); </script>';
-    if($products)
+    if (get_post_meta($products[0]->ID, "name", $single = true ) == 'unfinished')
+    // if($products[0])
     {
         //echo '<script>console.log("Entramos a unfinished");</script>';
         header('Location: ?page=mkf-onboarding');
