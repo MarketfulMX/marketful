@@ -496,6 +496,46 @@ function cc_ml(id)
     }
 }
 
+/**
+ * @funcion get_ce(@string: id del producto) "Get Costo de Envio"
+ *
+ * Funcion que envia a la API de MKF la categoria y el precio y recibe de vuelta cuanto cuesta el envio.
+ *
+ */
+function get_ce(id, categ)
+{
+    var precio = $('#precio_ml_'+id).val(); 
+    var t_envio = $('#metodo_envio_ml_'+id+' option:selected').val();
+    var key = 'costo_envio_ml';
+    console.log(id+' '+categ+' '+precio+' '+t_envio);
+    if(categ != 'categorizar' && (t_envio != "" || t_envio != "me_g" ))
+    {
+        jQuery.ajax({
+            type: 'GET',
+            url: 'http://www.marketful.mx/calcular_costos_envio&category_id='+categ+'&price='+precio,
+            success: function(costo)
+            {
+                $('#costo_envio_ml_'+id).val(costo);
+                cambioStatus(id, key);
+                console.log('Se actualizo el valor del costo de envio.');
+            },
+            error: function(result)
+            {
+                console.log('No se pudo obtener el costo de envio.');
+                $('#costo_envio_ml_'+id).val('N/A');
+                $('#label_cenvio_ml').text('No se puede calcular el costo de envio, intente mas tarde.');
+            }
+        });
+    }
+    else
+    {
+        $('#costo_envio_ml_'+id).val('N/A');
+        $('#label_cenvio_ml').text('No se puede calcular el costo de envio, asigna el precio y el tipo de envio.');
+    }
+}
+
+
+
 //******************************************************************************************************************
 //  Here are only on-boarding functions ->->->
 /**
@@ -717,3 +757,6 @@ function show_spinner()
 {
     $('.loader_onb').css('display','inline');
 }
+
+/* HERE END ONBOARDING FUNCTIONS *******************************************************************************************************/
+/***************************************************************************************************************************************/
