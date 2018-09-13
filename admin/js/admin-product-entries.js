@@ -458,7 +458,43 @@ function resize_window()
     // tareas[tarea_id] = false;   
 };
 
-
+/** 
+ * @funcion cc_ml(@string: id del producto)
+ * Calcula la comision que cobra mercado libre (13% en clásica, 17,5% en Premium) en caso de que tenga el 
+ * precio en Ml en caso contrario alerta que falta el precio.
+ */
+function cc_ml(id)
+{
+    var key = 'costo_comision_ml';
+    var expo = $('#exposicion_ml_'+id+' option:selected').text();
+    var precio = $('#precio_ml_'+id).val();
+    console.log(expo+' '+precio);
+    if(expo != '...' && precio > 0)
+    {
+        switch (expo)
+        {
+            case 'Gratis':
+                $('#costo_comision_ml_'+id).val('0.00');
+                cambioStatus(id, key);
+                break;
+            case 'Clasica':
+                $('#costo_comision_ml_'+id).val((precio * .13).toFixed(2));
+                cambioStatus(id, key);
+                break;
+            case 'Premium':
+                $('#costo_comision_ml_'+id).val((precio * .175).toFixed(2));
+                cambioStatus(id, key);
+                break;
+            default:
+                break;
+        }
+    }
+    else
+    {
+        $('#costo_comision_ml_'+id).val('0.00');
+        $('#label_comision_ml').text('No se puede calcular la comision, asigna el precio y el tipo de exposicion.');
+    }
+}
 
 //******************************************************************************************************************
 //  Here are only on-boarding functions ->->->
