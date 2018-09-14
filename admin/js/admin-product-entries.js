@@ -508,16 +508,27 @@ function get_ce(id, categ)
     var t_envio = $('#metodo_envio_ml_'+id+' option:selected').val();
     var key = 'costo_envio_ml';
     console.log(id+' '+categ+' '+precio+' '+t_envio);
-    if(categ != 'categorizar' && (t_envio != "" || t_envio != "me_g" ))
+    if(categ != 'categorizar' && (t_envio != "" || t_envio != "me_g" ) && precio > 0)
     {
         jQuery.ajax({
             type: 'GET',
             url: 'http://www.marketful.mx/calcular_costos_envio&category_id='+categ+'&price='+precio,
             success: function(costo)
             {
-                $('#costo_envio_ml_'+id).val(costo);
-                cambioStatus(id, key);
-                console.log('Se actualizo el valor del costo de envio.');
+                if(costo > 549)
+                {
+                    costo = costo *.5;
+                    $('#costo_envio_ml_'+id).val(costo);
+                    cambioStatus(id, key);
+                    console.log('Se actualizo el valor del costo de envio.');
+                }
+                else
+                {
+                    costo = costo *.7;
+                    $('#costo_envio_ml_'+id).val(costo);
+                    cambioStatus(id, key);
+                    console.log('Se actualizo el valor del costo de envio.');
+                }
             },
             error: function(result)
             {
