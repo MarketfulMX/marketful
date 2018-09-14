@@ -409,7 +409,12 @@ class MKF_ProductEntry extends MKF_DBCore
         $url = "https://woocommerce.marketful.mx/calcular_costos_envio?woo_id={$woo_id}&price={$price}&category_id={$category_id}&site={$site_url}";
         $http = _wp_http_get_object();
         $response = $http->post( $url ); 
-        wp_send_json_success(array('costo' => $response->costo, 'value' => $response->price, 'key' => $response->category_id, 'tarea_id'=>$response->site_url));
+        $test = array(
+                    "costo_comision" => 800,
+                    "woo_id" => "13"
+            );
+        //json_encode($test);
+        wp_send_json_success($response);
         wp_die();
     }
 }

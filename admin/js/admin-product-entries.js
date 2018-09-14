@@ -522,21 +522,26 @@ function get_ce(id, categ)
                 action: 'get_ce'
             },
             success: function(response)
-            {
-                if( parseInt(response['costo']) == '13')
+            {   console.log(JSON.stringify(response));
+                console.log();}
+                /*if(response.data.costo_comision > 549)
                 {
                     console.log('Entro a la validacion, estamos mas cerca de entender esta wea');   
-                    costo = costo *.5;
+                    costo = response.data.costo_comision *.5;
                     $('#costo_envio_ml_'+id).val(costo);
-                    cambioStatus(id, key);
+                    //cambioStatus(id, key);
                     console.log(' Exito Se actualizo el valor del costo de envio. es igual a : ' + costo );
+                }
+                else if(response.data.costo_comision < 550)
+                {
+                    costo = response.data.costo_comision *.7;
+                    $('#costo_envio_ml_'+id).val(costo);
+                    //cambioStatus(id, key);
+                    console.log('Exito Se actualizo el valor del costo de envio.'+costo);
                 }
                 else
                 {
-                    costo = costo *.7;
-                    $('#costo_envio_ml_'+id).val(costo);
-                    cambioStatus(id, key);
-                    console.log('Exito Se actualizo el valor del costo de envio.'+costo);
+                    console.log('Hay respuesta pero no hay costo. ');
                 }
             },
             error: function(response)
@@ -544,7 +549,7 @@ function get_ce(id, categ)
                 console.log('Error No se pudo obtener el costo de envio.');
                 $('#costo_envio_ml_'+id).val('N/A');
                 $('#label_cenvio_ml').text('No se puede calcular el costo de envio, intente mas tarde.');
-            }
+            }*/
         });
     }
     else
