@@ -526,14 +526,14 @@ function get_ce(id, categ)
                 console.log();
                 if(response.data.costo_comision > 549)
                 {  
-                    costo = response.data.costo_comision *.5;
+                    costo = (response.data.costo_comision *.5).toFixed(2);
                     $('#costo_envio_ml_'+id).val(costo);
                     cambioStatus(id, key);
                     console.log(' Exito Se actualizo el valor del costo de envio. es igual a : ' + costo );
                 }
                 else if(response.data.costo_comision < 550)
                 {
-                    costo = response.data.costo_comision *.7;
+                    costo = (response.data.costo_comision *.7).toFixed(2);
                     $('#costo_envio_ml_'+id).val(costo);
                     cambioStatus(id, key);
                     console.log('Exito Se actualizo el valor del costo de envio.'+costo);
