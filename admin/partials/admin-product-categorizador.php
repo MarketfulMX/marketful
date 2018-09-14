@@ -1,11 +1,11 @@
 <?php
 /*
  * Archivo: admin-product-categorizador.php
- * Ultima ediciÛn : 16 de agosto de 2018
+ * Ultima edici√≥n : 16 de agosto de 2018
  *
  * @autor: Adolfo Yanes (adolfo@marketful.mx)
  * @autor: Administrador de Proyecto: Mauricio Alcala (mauricio@marketful.mx)
- * @versiÛn: 1.02
+ * @versi√≥n: 1.02
  * 
  * @package    mkf
  * @subpackage mkf/admin/partials
@@ -13,7 +13,7 @@
  */
 
 /*
- * DescripciÛn General: 
+ * Descripci√≥n General: 
  * Categorizador de productos, usando el arbol de categorias de mercado libre.
  */
 
@@ -40,7 +40,7 @@ if (is_null($onb)){
 /**
  * @scripts PHP
  * 
- * Tomamos los datos que requermimos utilizando la funciÛn 
+ * Tomamos los datos que requermimos utilizando la funci√≥n 
  * get_post_meta(@producto, @categoria, @solo un dato (opcional))
  */
 $productObject = MKF_ProductEntry::GetInstance();
@@ -91,7 +91,7 @@ if (!empty($ml_categories))
                 {
                     Ndiv = '<div class="ui-box syi-category-tree__column cat subcat">';
                     Ndiv += '<div data-index="1" class="syi-category-tree__container ">';
-                    Ndiv += '<select class="syi-category-tree__selector selected" id="level_'+numItems+'"  title="Elige una categorÌa" size="20" onChange="getCategory(this, \'child\', ' + numItems +');" name="ml_categories[child][]">';
+                    Ndiv += '<select class="syi-category-tree__selector selected" id="level_'+numItems+'"  title="Elige una categor√≠a" size="20" onChange="getCategory(this, \'child\', ' + numItems +');" name="ml_categories[child][]">';
                     jQuery.each(data.children_categories,function(i,obj)
                     {
                       Ndiv +='<option class="syi-category-tree__option" value='+obj.id+'>'+obj.name+'</option>';
@@ -144,7 +144,7 @@ if (!empty($ml_categories))
           {
             var Ndiv = '<div class="ui-box syi-category-tree__column cat subcat">';
             Ndiv += '<div data-index="1" class="syi-category-tree__container ">';
-            Ndiv += '<select class="syi-category-tree__selector selected" id="level_'+ myLevel +'"  title="Elige una categorÌa" size="20" onChange="getCategory(this, \'child\', ' + myLevel + ');" name="ml_categories[child][]">';
+            Ndiv += '<select class="syi-category-tree__selector selected" id="level_'+ myLevel +'"  title="Elige una categor√≠a" size="20" onChange="getCategory(this, \'child\', ' + myLevel + ');" name="ml_categories[child][]">';
 
             jQuery.each(data.children_categories,function(i,obj)
             {
@@ -308,7 +308,7 @@ jQuery(document).ready(function($){
             <div class="syi-category-tree__container syi-category-tree__container--3 ">
                 <div class="ui-box syi-category-tree__column" >
                     <div data-index="0" class="syi-category-tree__container " >
-                        <select class="syi-category-tree__selector selected" id="level_0" required="" title="Elige una categorÌa" size="20" onChange="getCategory(this, 'father', 0);" name="ml_categories[father][]">
+                        <select class="syi-category-tree__selector selected" id="level_0" required="" title="Elige una categor√≠a" size="20" onChange="getCategory(this, 'father', 0);" name="ml_categories[father][]">
                             <?php foreach (json_decode($categories->getBody(), true) as $key => $category) : ?>
                                 <option class="syi-category-tree__option" value="<?php echo $category['id']; ?>">
                                     <?php echo $category['name']; ?>
@@ -330,27 +330,27 @@ jQuery(document).ready(function($){
 
 <script>
 /*
- * - @FunciÛn JQuery/Ajax: cambioStatus(@string,@string) ACTUALIZAR
- * Esta funciÛn recibe dos @par·metros que son el id del producto y el tipo de
+ * - @Funci√≥n JQuery/Ajax: cambioStatus(@string,@string) ACTUALIZAR
+ * Esta funci√≥n recibe dos @par√°metros que son el id del producto y el tipo de
  * metadato que modificara.
- * La @funciÛn console log muestra en la consola del navegador la informaciÛn del objeto
+ * La @funci√≥n console log muestra en la consola del navegador la informaci√≥n del objeto
  * product_id.
  *
- * Se crea una variable con el valor del select que se modificÛ, se obtiene dicha
- * informaciÛn obteniendo el id del select con el tipo de metadato que se modificara
- * m·s guion bajo m·s el id del producto.
+ * Se crea una variable con el valor del select que se modific√≥, se obtiene dicha
+ * informaci√≥n obteniendo el id del select con el tipo de metadato que se modificara
+ * m√°s guion bajo m√°s el id del producto.
  *
- * Se envÌa con console.log el valor de key
- * Se crea una funciÛn AJAX que pide el tipo de solicitud que se hace 'POST'
- * y se envÌan los @par·metros adem·s que se manda a llamar a la funciÛn de PHP 
- * my_theme_ajax_submit. Se le envÌan los @par·metros: product_id, value y key .
+ * Se env√≠a con console.log el valor de key
+ * Se crea una funci√≥n AJAX que pide el tipo de solicitud que se hace 'POST'
+ * y se env√≠an los @par√°metros adem√°s que se manda a llamar a la funci√≥n de PHP 
+ * my_theme_ajax_submit. Se le env√≠an los @par√°metros: product_id, value y key .
  *
- * La @funciÛn Ajax que nombramos response nos responde a la solicitud con un archivo Json.
+ * La @funci√≥n Ajax que nombramos response nos responde a la solicitud con un archivo Json.
  *
- * En caso de que la @funciÛn haya resultado exitosa, la reflejamos en consola con
+ * En caso de que la @funci√≥n haya resultado exitosa, la reflejamos en consola con
  * console.log y lo mostramos en el @boton #fire cambiando su texto a "Cambio
  * correcto".
- * En caso de que la @funciÛn Ajax no haya resultado exitosa, reflejamos en
+ * En caso de que la @funci√≥n Ajax no haya resultado exitosa, reflejamos en
  * consola el error y actualizamos el @boton #fire cambiando su texto a "error".
  */
 

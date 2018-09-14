@@ -468,7 +468,7 @@ function cc_ml(id)
     var key = 'costo_comision_ml';
     var expo = $('#exposicion_ml_'+id+' option:selected').text();
     var precio = $('#precio_ml_'+id).val();
-    console.log(expo+' '+precio);
+    //console.log(expo+' '+precio);
     if(expo != '...' && precio > 0)
     {
         switch (expo)
@@ -507,32 +507,41 @@ function get_ce(id, categ)
     var precio = $('#precio_ml_'+id).val(); 
     var t_envio = $('#metodo_envio_ml_'+id+' option:selected').val();
     var key = 'costo_envio_ml';
-    console.log(id+' '+categ+' '+precio+' '+t_envio);
+    console.log( 'Entro a get_ce'+id+' '+categ+' '+precio+' '+t_envio);
     if(categ != 'categorizar' && (t_envio != "" || t_envio != "me_g" ) && precio > 0)
     {
         jQuery.ajax({
-            type: 'GET',
-            url: 'http://www.marketful.mx/calcular_costos_envio&category_id='+categ+'&price='+precio,
-            success: function(costo)
+            type: 'POST',
+            url: ajaxurl,
+            dataType: 'Json',
+            data:
             {
-                if(costo > 549)
+                woo_id: id,
+                category_id: categ,
+                price: precio,
+                action: 'get_ce'
+            },
+            success: function(response)
+            {
+                if( parseInt(response['costo']) == '13')
                 {
+                    console.log('Entro a la validacion, estamos mas cerca de entender esta wea');   
                     costo = costo *.5;
                     $('#costo_envio_ml_'+id).val(costo);
                     cambioStatus(id, key);
-                    console.log('Se actualizo el valor del costo de envio.');
+                    console.log(' Exito Se actualizo el valor del costo de envio. es igual a : ' + costo );
                 }
                 else
                 {
                     costo = costo *.7;
                     $('#costo_envio_ml_'+id).val(costo);
                     cambioStatus(id, key);
-                    console.log('Se actualizo el valor del costo de envio.');
+                    console.log('Exito Se actualizo el valor del costo de envio.'+costo);
                 }
             },
-            error: function(result)
+            error: function(response)
             {
-                console.log('No se pudo obtener el costo de envio.');
+                console.log('Error No se pudo obtener el costo de envio.');
                 $('#costo_envio_ml_'+id).val('N/A');
                 $('#label_cenvio_ml').text('No se puede calcular el costo de envio, intente mas tarde.');
             }

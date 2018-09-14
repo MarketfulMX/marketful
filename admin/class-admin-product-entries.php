@@ -2,14 +2,14 @@
 
 /**
  * Archivo: class-admin-product-entries.php
- * Ultima ediciÃ³n : 13 de agosto de 2018
+ * Ultima edición : 13 de agosto de 2018
  *
  * @autor: Adolfo Yanes <adolfo@marketful.mx> as master contributor
  * @autor: Mauricio Alcala <mauricio@marketful.mx> as proyect admin
  * @author Javier Urbano <javierurbano11@gmail.com> as contributor
  * @author Angel Salazar <salazar.angel.e@gmail.com> as contributor
  *
- * @versiÃ³n: 1.01
+ * @versión: 1.01
  * @link: marketful.mx
  * @package    mkf
  * @subpackage mkf/admin/partials
@@ -17,11 +17,11 @@
  */
 
 /**
- * DescripciÃ³n General:
+ * Descripción General:
  * Este contiene la clase admin-product-entries, tiene las funciones de crear y ejecutar 
  * la query para solicitar todos los registros que se van a mostrar dentro de las 
  * diferentes secciones del plugin. Ademas define el nombre del plugin, la version
- * y dos ejemplos de hooks para como poner en cola la hoja de estilo especÃ­fica de 
+ * y dos ejemplos de hooks para como poner en cola la hoja de estilo específica de 
  * administrador y JavaScript.
  */
 
@@ -83,7 +83,7 @@ class MKF_ProductEntry extends MKF_DBCore
     
     
     /**
-     * @funciÃ³n __construct(@string = (PLUGIN_GSNAME), @string = (PLUGIN_GVERSION))
+     * @función __construct(@string = (PLUGIN_GSNAME), @string = (PLUGIN_GVERSION))
      *
      * Recibe el valor del $plg id y $version, en caso de que no se envien se asignara el 
      * valor del plugin_gsname y plugin_version.
@@ -111,14 +111,14 @@ class MKF_ProductEntry extends MKF_DBCore
 
 
     /*
-     * @FunciÃ³n PHP: my_theme_ajax_submit()
-     * La @funciÃ³n my_theme_ajax_submit() recibe dentro de las variables:
+     * @Función PHP: my_theme_ajax_submit()
+     * La @función my_theme_ajax_submit() recibe dentro de las variables:
      * $producto_id = Identificador del producto 
      * $value = Nuevo valor a actualizar
      * $key = Tipo de metadato que se modificara
      *
-     * Posteriormente despues de recibir los @parÃ¡metros ejecuta la funciÃ³n de wp
-     * update_post_meta(@string,@string,@string) que actualiza la meta data que se enviÃ³.
+     * Posteriormente despues de recibir los @parámetros ejecuta la función de wp
+     * update_post_meta(@string,@string,@string) que actualiza la meta data que se envió.
      * 
      * Se obtiene el $site_url, despues se crea el URL para guardar en ML con la $key
      * y con el valor a cambiar $value del $producto_id en la $site_url que obtuvimos
@@ -127,7 +127,7 @@ class MKF_ProductEntry extends MKF_DBCore
      * Se guarda un objeto inicializado WP_Http, se postea la $URL para ejecutar los cambios
      * y en caso de error se muestra.
      *
-     * Para finalizar la @funciÃ³n wp_die() finaliza la ejecuciÃ³n y muestra el error
+     * Para finalizar la @función wp_die() finaliza la ejecución y muestra el error
      * en caso de que suceda alguno.
      */
     public function my_theme_ajax_submit() 
@@ -181,9 +181,9 @@ class MKF_ProductEntry extends MKF_DBCore
 
     
     /**
-     * @funciÃ³n GetInstance()
+     * @función GetInstance()
      * 
-     * Es una funciÃ³n estatica que accede al objeto $instance y busca que sea nulo, 
+     * Es una función estatica que accede al objeto $instance y busca que sea nulo, 
      * en cuyo caso creal el objeto.
      * Em caso contrario retorna el objeto.
      */
@@ -199,11 +199,11 @@ class MKF_ProductEntry extends MKF_DBCore
 
 
     /**
-     * @funciÃ³n prefix_admin:add_metadata_to_product_entry()
+     * @función prefix_admin:add_metadata_to_product_entry()
      *
      * Primero tomamos el valor de extr_prefix_all en caso de no encontrar ningun valor le asignamos una "p"
      * Posteriormente con la funcion update_post_meta de WP actualizamos los valores del producto $p_product_id.
-     * Finaliza redirigiendonos hacia admin.php en la secciÃ³n mkf-product-entries.
+     * Finaliza redirigiendonos hacia admin.php en la sección mkf-product-entries.
      */
     // funcion para guardar la data q viene del formulario
     public function prefix_admin_add_metadata_to_product_entry()
@@ -224,12 +224,12 @@ class MKF_ProductEntry extends MKF_DBCore
 
     
     /**
-     * @funciÃ³n get_product_list()
+     * @función get_product_list()
      *
-     * Esta funciÃ³n define la query que se requiere hacer y la ejecuta para traer todos los datos que requiere el 
+     * Esta función define la query que se requiere hacer y la ejecuta para traer todos los datos que requiere el 
      * plugin.
      * 
-     * Primero se define un array que posteriormente mostrara toda la informaciÃ³n resultante llamado $out.
+     * Primero se define un array que posteriormente mostrara toda la información resultante llamado $out.
      * Despues utilizando array_push() agregamos al final del array out() el resultado que devuelve
      * ejecutar la query.
      * Despues retorna el valor de $out
@@ -275,11 +275,11 @@ class MKF_ProductEntry extends MKF_DBCore
     }
     
     /** 
-     * @fuciÃ³n publica get_ml_metadata(@string = (NULL))
+     * @fución publica get_ml_metadata(@string = (NULL))
      *
      * Recibe el valor de el $post_id y en caso de no enontrarlo le asigna valor nulo.
      * Crea en una variable @string la query que se requere ejecutar.
-     * Posteriormente con la funciÃ³n array_push() se ejecuta la query y se guarda dentro del array $out
+     * Posteriormente con la función array_push() se ejecuta la query y se guarda dentro del array $out
      * Para finalizar retornando el valor de $out.
      */
     public function get_ml_metadata($post_id = null)
@@ -318,10 +318,10 @@ class MKF_ProductEntry extends MKF_DBCore
     }
 
     /** 
-     * @funciÃ³n get_product_edit_form_title(@tring = (NULL), @string = (NULL))
+     * @función get_product_edit_form_title(@tring = (NULL), @string = (NULL))
      * 
-     * Dentro de esta funciÃ³n se retorna el valor del titulo dependiendo si es nulo o simplemente esta vacio, 
-     * asÃ­ como el valor del SKU.
+     * Dentro de esta función se retorna el valor del titulo dependiendo si es nulo o simplemente esta vacio, 
+     * así como el valor del SKU.
      */
     public static function get_product_edit_form_title($title = null, $sku = null)
     {
@@ -330,7 +330,7 @@ class MKF_ProductEntry extends MKF_DBCore
     }
 
     /**
-     * @funciÃ³n product_edit_form_title_to_presenter(@string = (NULL), @tring = (NULL))
+     * @función product_edit_form_title_to_presenter(@string = (NULL), @tring = (NULL))
      * 
      * Hace echo al valor  $title y $Sku del objeto en cuestion.
      */
@@ -393,5 +393,23 @@ class MKF_ProductEntry extends MKF_DBCore
             }
             wp_delete_post($producto);
         }
+    }
+    /**
+     * @funcion get_ce()
+     * 
+     * Funcion que se manda a llamar via ajax y manda a llamar a la API Marketful para obtener el 
+     * costo de envio.
+     */
+    public function get_ce()
+    {
+        $woo_id = $_POST['woo_id'];
+        $category_id = $_POST['category_id'];
+        $price = $_POST['price'];
+        $site_url = get_site_url();
+        $url = "https://woocommerce.marketful.mx/calcular_costos_envio?woo_id={$woo_id}&price={$price}&category_id={$category_id}&site={$site_url}";
+        $http = _wp_http_get_object();
+        $response = $http->post( $url ); 
+        wp_send_json_success(array('costo' => $response->costo, 'value' => $response->price, 'key' => $response->category_id, 'tarea_id'=>$response->site_url));
+        wp_die();
     }
 }
