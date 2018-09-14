@@ -410,11 +410,10 @@ class MKF_ProductEntry extends MKF_DBCore
         $http = _wp_http_get_object();
         $response = $http->post( $url ); 
         $test = array(
-                    "costo_comision" => 800,
+                    "costo_comision" => ($price * .13),
                     "woo_id" => "13"
             );
-        //json_encode($test);
-        wp_send_json_success($response);
+        wp_send_json_success($test);
         wp_die();
     }
 }
