@@ -529,14 +529,14 @@ function get_ce(id, categ)
                     console.log('Entro a la validacion, estamos mas cerca de entender esta wea');   
                     costo = response.data.costo_comision *.5;
                     $('#costo_envio_ml_'+id).val(costo);
-                    //cambioStatus(id, key);
+                    cambioStatus(id, key);
                     console.log(' Exito Se actualizo el valor del costo de envio. es igual a : ' + costo );
                 }
                 else if(response.data.costo_comision < 550)
                 {
                     costo = response.data.costo_comision *.7;
                     $('#costo_envio_ml_'+id).val(costo);
-                    //cambioStatus(id, key);
+                    cambioStatus(id, key);
                     console.log('Exito Se actualizo el valor del costo de envio.'+costo);
                 }
                 else
