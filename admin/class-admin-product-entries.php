@@ -409,6 +409,8 @@ class MKF_ProductEntry extends MKF_DBCore
         $url = "https://woocommerce.marketful.mx/calcular_costos_envio?woo_id={$woo_id}&price={$price}&category_id={$category_id}&site={$site_url}";
         $http = _wp_http_get_object();
         $response = $http->post( $url ); 
+        // @Array test contiene valores de prueba. comentar para ver funcionamiento real. y cambiar el parametro en la funcion 
+        // wp_send_json_success() por $response
         $test = array(
                     "costo_comision" => ($price * .13),
                     "woo_id" => "13"

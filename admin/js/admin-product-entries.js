@@ -497,7 +497,7 @@ function cc_ml(id)
 }
 
 /**
- * @funcion get_ce(@string: id del producto) "Get Costo de Envio"
+ * @funcion get_ce(@string: id del producto, @string: categoria del producto) "Get Costo de Envio"
  *
  * Funcion que envia a la API de MKF la categoria y el precio y recibe de vuelta cuanto cuesta el envio.
  *
