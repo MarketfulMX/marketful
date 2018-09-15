@@ -402,20 +402,20 @@ class MKF_ProductEntry extends MKF_DBCore
      */
     public function get_ce()
     {
-        $woo_id = $_POST['woo_id'];
-        $category_id = $_POST['category_id'];
-        $price = $_POST['price'];
+        $woo_id = $_GET['woo_id'];
+        $category_id = $_GET['category_id'];
+        $price = $_GET['price'];
         $site_url = get_site_url();
         $url = "https://woocommerce.marketful.mx/calcular_costos_envio?woo_id={$woo_id}&price={$price}&category_id={$category_id}&site={$site_url}";
         $http = _wp_http_get_object();
-        $response = $http->post( $url ); 
-        // @Array test contiene valores de prueba. comentar para ver funcionamiento real. y cambiar el parametro en la funcion 
+        $response = $http->get( $url ); 
+        // @Array $test contiene valores de prueba. comentar para ver funcionamiento real. y cambiar el parametro en la funcion 
         // wp_send_json_success() por $response
         $test = array(
                     "costo_comision" => ($price * .13),
                     "woo_id" => "13"
             );
-        wp_send_json_success($test);
+        wp_send_json_success($response);
         wp_die();
     }
 }

@@ -3,8 +3,6 @@
  * admin-product-entries.js
  * 
  */
-
-
 /*
  * - @Función JQuery/Ajax: cambioStatus(@string,@string)
  * Esta función recibe dos @parámetros que son el id del producto y el tipo de
@@ -14,7 +12,7 @@
  *
  * Se crea una variable con el valor del select que se modificó, se obtiene dicha
  * información obteniendo el id del select con el tipo de metadato que se modificara
- * más guion bajo más el id del producto.
+ * más guion bajo más el id del producto.   
  *
  * Se envía con console.log el valor de key
  * Se crea una función AJAX que pide el tipo de solicitud que se hace 'POST'
@@ -511,7 +509,7 @@ function get_ce(id, categ)
     if(categ != 'categorizar' && (t_envio != "" || t_envio != "me_g" ) && precio > 0)
     {
         jQuery.ajax({
-            type: 'POST',
+            type: 'GET',
             url: ajaxurl,
             dataType: 'Json',
             data:
@@ -523,20 +521,19 @@ function get_ce(id, categ)
             },
             success: function(response)
             {   console.log(JSON.stringify(response));
-                console.log();
                 if(response.data.costo_comision > 549)
                 {  
                     costo = (response.data.costo_comision *.5).toFixed(2);
                     $('#costo_envio_ml_'+id).val(costo);
                     cambioStatus(id, key);
-                    console.log(' Exito Se actualizo el valor del costo de envio. es igual a : ' + costo );
+                    console.log(' Exito Se actualizo el valor del costo de envio es igual a : ' + costo );
                 }
                 else if(response.data.costo_comision < 550)
                 {
                     costo = (response.data.costo_comision *.7).toFixed(2);
                     $('#costo_envio_ml_'+id).val(costo);
                     cambioStatus(id, key);
-                    console.log('Exito Se actualizo el valor del costo de envio.'+costo);
+                    console.log('Exito Se actualizo el valor del costo de envio es igual a : '+costo);
                 }
                 else
                 {
