@@ -520,7 +520,8 @@ function get_ce(id, categ)
                 action: 'get_ce'
             },
             success: function(response)
-            {   console.log(JSON.stringify(response));
+            {   
+                console.log(JSON.stringify(response));
                 if(response.data.costo_comision > 549)
                 {  
                     costo = (response.data.costo_comision *.5).toFixed(2);
