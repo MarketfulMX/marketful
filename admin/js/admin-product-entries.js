@@ -486,6 +486,7 @@ function calcular_comision(id)
             default:
                 break;
         }
+        $('#mensajes_ent2').text('');
     }
     else
     {
@@ -506,7 +507,7 @@ function calcular_costo_envio(id, categ)
     var t_envio = $('#metodo_envio_ml_'+id+' option:selected').val();
     var key = 'costo_envio_ml';
     console.log( 'Entro a get_ce'+id+' '+categ+' '+precio+' '+t_envio);
-    if(categ != 'categorizar' && (t_envio != "" || t_envio != "me_g" ) && precio > 0)
+    if(categ.length > 3 && (t_envio != "" || t_envio != "me_g" ) && precio > 0)
     {
         jQuery.ajax({
             type: 'GET',
@@ -528,6 +529,7 @@ function calcular_costo_envio(id, categ)
                 $('#costo_envio_ml_'+id).text(respuesta["costo_envio"]);
                 cambioStatus(id, key);
                 console.log(' Exito Se actualizo el valor del costo de envio es igual a : '+ respuesta["costo_envio"] );
+                $('#mensajes_ent').text('');
             },
             error: function(response)
             {
