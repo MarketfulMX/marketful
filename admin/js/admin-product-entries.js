@@ -490,7 +490,7 @@ function calcular_comision(id)
     else
     {
         $('#costo_comision_ml_'+id).val('0.00');
-        $('#mensajes_ent').text('No se puede calcular la comision, asigna el precio y el tipo de exposicion.');
+        $('#mensajes_ent2').text('No se puede calcular la comision, asigna el precio y el tipo de exposicion.');
     }
 }
 
