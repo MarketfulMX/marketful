@@ -45,6 +45,24 @@
 		width: 95%; margin-left: 2%;
 		padding: 1%;
 	}
+	#top
+	{
+		border-color: #dee2e6;
+		border-width: .5px;
+		border-radius: 3px;
+		border-style: solid;
+		width: 95%; margin-left: 2%;
+		padding: 1%;
+	}
+	#buttom
+	{
+		border-color: #dee2e6;
+		border-width: .5px;
+		border-radius: 3px;
+		border-style: solid;
+		width: 95%; margin-left: 2%;
+		padding: 1%;
+	}
 </style>
 
 <div class="head_ord">
@@ -53,7 +71,7 @@
 </div>
 
 <div class="contenedor">
-	<table>
+	<table id="top">
 		<tr>
 			<th style="width: 40%;">
 				PASO
@@ -71,7 +89,7 @@
 			</td>
 		</tr>
 	</table>	
-	<table>
+	<table id="buttom">
 		<tr>
 			<th style="width: 40%;">
 				PUBLICACION
