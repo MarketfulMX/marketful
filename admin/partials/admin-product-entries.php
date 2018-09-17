@@ -152,8 +152,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <th style="min-width: 50px">Inventario Woo Commerce</th>
         <th style="min-width: 50px">Inventario Mercado Libre</th>
         <th style="min-width: 150px">Tipo de Envio</th>
-        <th style="min-width: 100px">Costo de Envio en Mercado Libre<br><mark style="color: #873B3A;"id="label_cenvio_ml"></mark></th>
-        <th style="min-width: 100px">Comision de Mercado Libre<br><mark style="color: #873B3A;"id="label_comision_ml"></mark></th>
+        <th style="min-width: 100px">Costo de Envio en Mercado Libre</th>
+        <th style="min-width: 100px">Comision de Mercado Libre</th>
         <th style="min-width: 110px">Ver Publicacion</th>
         <th style="min-width: 60px">Ultima Actualizaualizaci&oacute;n</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
@@ -259,7 +259,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
         <td style="min-width: 150px;">
            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
-              <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select tipo_envi" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml'); check_status(<?php echo $product->ID.');';?>get_ce(<?php echo $product->ID.',\''.$categoria.'\''; ?>); cc_ml(<?php echo $product->ID; ?>);" id="metodo_envio_ml_<?php echo $product->ID;?>">
+              <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select tipo_envi" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml'); check_status(<?php echo $product->ID.');';?>get_ce(<?php echo $product->ID.',\''.$categoria.'\''; ?>); calcular_comision(<?php echo $product->ID; ?>);" id="metodo_envio_ml_<?php echo $product->ID;?>">
                 <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
                 <option value="">...</option>
                 <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envio Gratis</option>
@@ -291,6 +291,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 <!-- On boarding div, dont erase -->
 <div class="onb_flotante" <?php if($onb == 2){ echo 'onload="onboarding_4()"'; } ?>>    
 </div>
+<br><mark id="mensajes_ent" style="color: #873B3A;font-size: 18px;"id="label_comision_ml"></mark>
 
 <script>
     /**

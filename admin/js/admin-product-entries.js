@@ -490,7 +490,7 @@ function calcular_comision(id)
     else
     {
         $('#costo_comision_ml_'+id).val('0.00');
-        $('#label_comision_ml').text('No se puede calcular la comision, asigna el precio y el tipo de exposicion.');
+        $('#mensajes_ent').text('No se puede calcular la comision, asigna el precio y el tipo de exposicion.');
     }
 }
 
@@ -531,14 +531,14 @@ function calcular_costo_envio(id, categ)
             {
                 console.log('Error No se pudo obtener el costo de envio.');
                 $('#costo_envio_ml_'+id).val('N/A');
-                $('#label_cenvio_ml').text('No se puede calcular el costo de envio, intente mas tarde.');
+                $('#mensajes_ent').text('No se puede calcular el costo de envio, intente mas tarde.');
             }
         });
     }
     else
     {
         $('#costo_envio_ml_'+id).val('N/A');
-        $('#label_cenvio_ml').text('No se puede calcular el costo de envio, asigna el precio y el tipo de envio.');
+        $('#mensajes_ent').text('No se puede calcular el costo de envio, asigna el precio y el tipo de envio.');
     }
 }
 
