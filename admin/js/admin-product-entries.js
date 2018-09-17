@@ -458,7 +458,7 @@ function resize_window()
 
 /** 
  * @funcion calcular_comision(@string: id del producto)
- * Calcula la comision que cobra mercado libre (13% en clásica, 17,5% en Premium) en caso de que tenga el 
+ * Calcula la comision que cobra mercado libre (13% en clásica, 17,5% en Premium)  en caso de que tenga el 
  * precio en Ml en caso contrario alerta que falta el precio.
  */
 function calcular_comision(id)
