@@ -268,11 +268,11 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               </select>
             </div>  
         </td>
-        <td>
-          <label class="input" disabled="true" type="text" value="" id="costo_envio_ml_<?php echo $product->ID; ?>" onblur=""><?php $var = get_post_meta($product->ID, "costo_envio_ml", true);  if(!$var){echo 'N/A';}else{echo $var;} ?></label>
+        <td id="costo_envio_ml_<?php echo $product->ID; ?>">
+          <?php $var = get_post_meta($product->ID, "costo_envio_ml", true);  if(!$var){echo 'N/A';}else{echo $var;} ?>
         </td>
-        <td>
-          <label class="input" disabled="true" type="text" value="" id="costo_comision_ml_<?php echo $product->ID; ?>" onblur="cc_ml(<?php echo $product->ID; ?>)"><?php $var = get_post_meta($product->ID, "costo_comision_ml", true); if(!$var){echo '0.00';}else{echo $var;} ?></label>
+        <td id="costo_comision_ml_<?php echo $product->ID; ?>">
+          <?php $var = get_post_meta($product->ID, "costo_comision_ml", true); if(!$var){echo '0.00';}else{echo $var;} ?>
         </td>
         <td ><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicaci&oacute;n</a>" : "no hay ") ?>
           </td>
