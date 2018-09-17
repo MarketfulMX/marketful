@@ -227,7 +227,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         </td>
         <td>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
-              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select expo_ml" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml'); check_status(<?php echo $product->ID; ?>);cc_ml(<?php echo $product->ID; ?>);" id="exposicion_ml_<?php echo $product->ID;  ?>">
+              <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select expo_ml" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml'); check_status(<?php echo $product->ID; ?>);calcular_comision(<?php echo $product->ID; ?>);" id="exposicion_ml_<?php echo $product->ID;  ?>">
                 <?php $select_value = $all_mlmeta[0]["data"][0]->exposicion; ?>
                 <option value="">...</option>
                 <option value="free" <?php echo ($select_value=="free")?'selected':''; ?>>Gratis</option>
@@ -253,7 +253,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             }
           ?></td>
         <td style=""><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
-        <td><input onblur="cambioStatus('<?php echo $product->ID ?>', 'precio_ml'); get_ce(<?php echo $product->ID.',\''.$categoria.'\''; ?>); cc_ml(<?php echo $product->ID; ?>);" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
+        <td><input onblur="cambioStatus('<?php echo $product->ID ?>', 'precio_ml'); calcular_costo_envio(<?php echo $product->ID.',\''.$categoria.'\''; ?>); calcular_comision(<?php echo $product->ID; ?>);" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
         <td><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
             <td ><input  onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
             <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
@@ -269,10 +269,10 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             </div>  
         </td>
         <td>
-          <input class="input" disabled="true" type="text" value="<?php $var = get_post_meta($product->ID, "costo_envio_ml", true);  if(!$var){echo 'N/A';}else{echo $var;} ?>" id="costo_envio_ml_<?php echo $product->ID; ?>" onblur="">
+          <label class="input" disabled="true" type="text" value="" id="costo_envio_ml_<?php echo $product->ID; ?>" onblur=""><?php $var = get_post_meta($product->ID, "costo_envio_ml", true);  if(!$var){echo 'N/A';}else{echo $var;} ?></label>
         </td>
         <td>
-          <input class="input" disabled="true" type="text" value="<?php $var = get_post_meta($product->ID, "costo_comision_ml", true); if(!$var){echo '0.00';}else{echo $var;} ?>" id="costo_comision_ml_<?php echo $product->ID; ?>" onblur="cc_ml(<?php echo $product->ID; ?>)">
+          <label class="input" disabled="true" type="text" value="" id="costo_comision_ml_<?php echo $product->ID; ?>" onblur="cc_ml(<?php echo $product->ID; ?>)"><?php $var = get_post_meta($product->ID, "costo_comision_ml", true); if(!$var){echo '0.00';}else{echo $var;} ?></label>
         </td>
         <td ><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicaci&oacute;n</a>" : "no hay ") ?>
           </td>

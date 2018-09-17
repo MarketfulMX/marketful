@@ -132,7 +132,7 @@
     }
   .caja_orden
   {
-    border-color: red;
+    border-color: ;
     border-width: .5px;
     border-radius: 3px;
     background-color: white;

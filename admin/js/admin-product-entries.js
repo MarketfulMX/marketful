@@ -457,11 +457,11 @@ function resize_window()
 };
 
 /** 
- * @funcion cc_ml(@string: id del producto)
+ * @funcion calcular_comision(@string: id del producto)
  * Calcula la comision que cobra mercado libre (13% en clásica, 17,5% en Premium) en caso de que tenga el 
  * precio en Ml en caso contrario alerta que falta el precio.
  */
-function cc_ml(id)
+function calcular_comision(id)
 {
     var key = 'costo_comision_ml';
     var expo = $('#exposicion_ml_'+id+' option:selected').text();
@@ -472,15 +472,15 @@ function cc_ml(id)
         switch (expo)
         {
             case 'Gratis':
-                $('#costo_comision_ml_'+id).val('0.00');
+                $('#costo_comision_ml_'+id).text('0.00');
                 cambioStatus(id, key);
                 break;
             case 'Clasica':
-                $('#costo_comision_ml_'+id).val((precio * .13).toFixed(2));
+                $('#costo_comision_ml_'+id).text((precio * .13).toFixed(2));
                 cambioStatus(id, key);
                 break;
             case 'Premium':
-                $('#costo_comision_ml_'+id).val((precio * .175).toFixed(2));
+                $('#costo_comision_ml_'+id).text((precio * .175).toFixed(2));
                 cambioStatus(id, key);
                 break;
             default:
@@ -495,12 +495,12 @@ function cc_ml(id)
 }
 
 /**
- * @funcion get_ce(@string: id del producto, @string: categoria del producto) "Get Costo de Envio"
+ * @funcion calcular_costo_envio(@string: id del producto, @string: categoria del producto) "Get Costo de Envio"
  *
  * Funcion que envia a la API de MKF la categoria y el precio y recibe de vuelta cuanto cuesta el envio.
  *
  */
-function get_ce(id, categ)
+function calcular_costo_envio(id, categ)
 {
     var precio = $('#precio_ml_'+id).val(); 
     var t_envio = $('#metodo_envio_ml_'+id+' option:selected').val();
@@ -523,24 +523,9 @@ function get_ce(id, categ)
             {   
                 console.log("vamos con la respueta success")
                 console.log(JSON.stringify(response));
-                if(response.data.costo_comision > 549)
-                {  
-                    costo = (response.data.costo_comision *.5).toFixed(2);
-                    $('#costo_envio_ml_'+id).val(costo);
-                    cambioStatus(id, key);
-                    console.log(' Exito Se actualizo el valor del costo de envio es igual a : ' + costo );
-                }
-                else if(response.data.costo_comision < 550)
-                {
-                    costo = (response.data.costo_comision *.7).toFixed(2);
-                    $('#costo_envio_ml_'+id).val(costo);
-                    cambioStatus(id, key);
-                    console.log('Exito Se actualizo el valor del costo de envio es igual a : '+costo);
-                }
-                else
-                {
-                    console.log('Hay respuesta pero no hay costo. ');
-                }
+                $('#costo_envio_ml_'+id).text(costo);
+                cambioStatus(id, key);
+                console.log(' Exito Se actualizo el valor del costo de envio es igual a : ' + costo );
             },
             error: function(response)
             {
