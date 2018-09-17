@@ -521,6 +521,7 @@ function get_ce(id, categ)
             },
             success: function(response)
             {   
+                console.log("vamos con la respueta success")
                 console.log(JSON.stringify(response));
                 if(response.data.costo_comision > 549)
                 {  

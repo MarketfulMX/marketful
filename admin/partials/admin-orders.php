@@ -81,10 +81,25 @@
     border-style: solid; 
     border-radius: 0px;
     padding: 5px;
+    padding-left: 20px;
     background-color: white;    
     margin-right: 2%;
     vertical-align: middle;
   }
+    .opciones_ord_down
+    {
+      border-color: #dee2e6;
+      border-width: .5px;
+      border-top-width: 0px; 
+      border-style: solid; 
+      border-radius: 0px;
+      padding: 5px;
+      background-color: white;    
+      margin-right: 2%;
+      vertical-align: middle;
+      background-color: #EAFAE9;  
+      padding-left: 10px;
+    }
   .input_ord
   {
     width: 150px; height: 25px;
@@ -93,6 +108,7 @@
   }
   .boton_ord
   {
+    padding: 1px 10px;
     background-color:#E2E5C4; 
     height: 25px; 
     width: auto; 
@@ -114,6 +130,16 @@
       border-color: #3F4036;
       background-color: #BCBFA3;
     }
+  .caja_orden
+  {
+    border-color: red;
+    border-width: .5px;
+    border-radius: 3px;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 30% 40%;
+    grid-template-rows: 50% 50%;
+  }
 </style>
 <div class="head_ord">
   <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
@@ -129,10 +155,26 @@
     <input type="text" class="input_ord" placeholder="comprador o venta" name="" />
     <button class="boton_ord">Buscar</button>
   </div>
+  <div class="opciones_ord_down">
+    <button class="boton_ord">Filtros</button>
+  </div>
   </div>
   <div class="contenedor">
     <div class="abiertas">
-      Abiertas
+      <div class="caja_orden">
+        <div class="fr1">
+            Zona1
+        </div>
+        <div class="fr2">
+          ZONA 2
+        </div>
+        <div class="fr3">
+            ZONA 3
+        </div>
+        <div class="fr4">
+            ZONA 4
+        </div> 
+      </div>
     </div>
     <div class="cerradas">
       Cerradas
