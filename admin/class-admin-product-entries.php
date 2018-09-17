@@ -412,6 +412,8 @@ class MKF_ProductEntry extends MKF_DBCore
         // @Array $test contiene valores de prueba. comentar para ver funcionamiento real. y cambiar el parametro en la funcion 
         // wp_send_json_success() por $response
         //$test = array("costo_comision" => ($price * .13),"woo_id" => "13");
+        error_log($response["body"]);
+        $parseada = array(parse_str($response["body"]));
         wp_send_json_success($response);
         wp_die();
     }
