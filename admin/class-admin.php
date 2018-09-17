@@ -210,6 +210,14 @@ class MKF_Admin
       "{$this->plg_small_name}-onboarding",
       array( $this, 'OnBoarding' )
     );
+    add_submenu_page(
+      NULL,
+      __( "{$this->plg_small_name}-atributos", 'textdomain' ),
+      __( 'Atributos', 'textdomain' ),
+      $this->available_menu_to_editor_or_admin(),
+      "{$this->plg_small_name}-atributos",
+      array( $this, 'atributos' )
+    );
 
   }
 
@@ -303,10 +311,20 @@ class MKF_Admin
   }
 
   /**
-   * @funcion 
+   * @funcion admin_mensajeria()
+   * Manda a llamar el archivo admin-mensajeria.php
    */
   public function admin_mensajeria()
   {
     include_once "partials/admin-mensajeria.php";
+  }
+
+  /**
+   * @funcion atributos()
+   * Manda a llamar el archivo admin-product-atributos.php
+   */
+  public function atributos()
+  {
+    include_once "partials/admin-product-atributos.php";
   }
 }
