@@ -277,7 +277,7 @@
 </style>
 
 <div class="head"> <h3> Dashboard </h3> </div>
-<ul class="nav nav-tabs tab-superior" id= tab-superior style="max-width: 98%;">
+    <ul class="nav nav-tabs tab-superior" id= tab-superior style="max-width: 98%;">
         <li class="nav-item"><a href="#" id="1" class="nav-link active" onclick="clic(1)" >Inicio</a></li>
         <li class="nav-item"><a href="#" id="2" class="nav-link" onclick="clic(2)" >Activacion</a></li>
         <li class="nav-item"><a href="#" id="3" class="nav-link" onclick="clic(3)" >OnBoarding </a></li>
@@ -358,6 +358,7 @@
                     <p style="font-size: 16px;"> Por otro lado es importante tomar en cuenta que al momento de publicar algun producto en <i> Mercado Libre </i> se tomaran las fotografias que se ingresen en <i>WooCommerce</i> ademas de la descripcion que se ingreso ahi mismo.</p>
                     <p style="font-size: 16px;">Es preciso recordar que solo los productos con un precio menor o igual a 470 pesos tendran disponible la opcion de <i> envio gratis.</i></p>
                     <p style="font-size: 16px;">
+                    <a href="?page=mkf-onboarding"> Hacer onboarding </a>   
                 </div>
             </div>
             <a href="#onboarding"> Ir arriba </a> 

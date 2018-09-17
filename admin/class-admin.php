@@ -2,14 +2,14 @@
 
 /**
  * Archivo: class-admin.php
- * Ultima edici贸n : 7 de agosto de 2018
+ * Ultima edici髇 : 7 de agosto de 2018
  *
  * @autor: Adolfo Yanes <adolfo@marketful.mx> as master contributor
  * @autor: Mauricio Alcala <mauricio@marketful.mx> as proyect admin
  * * @author: Javier Urbano <javierurbano11@gmail.com> as contributor
  * * @author: Angel Salazar <salazar.angel.e@gmail.com> as contributor
  *
- * @versi贸n: 
+ * @versi髇: 
  * @link: marketful.mx
  * @package    mkf
  * @subpackage mkf/admin/partials
@@ -17,8 +17,8 @@
  */
 
 /**
- * Descripci贸n General: 
- * Archivo PHP que tiene la funci贸n de hacer la primera llamada a los diferentes elementos 
+ * Descripci髇 General: 
+ * Archivo PHP que tiene la funci髇 de hacer la primera llamada a los diferentes elementos 
  * que se encuentran dentro de si.
  */
 
@@ -30,9 +30,9 @@
  * private $version (version)
  * private $dashboard_menu_name ( Nombre a mostrar en el dashboard)
  * 
- * @M茅todos
+ * @M閠odos
  * 
- * @funci贸n plg_menu(), encargada de indicar que es lo que se realiza 
+ * @funci髇 plg_menu(), encargada de indicar que es lo que se realiza 
  *
  *
  *
@@ -51,7 +51,7 @@ class MKF_Admin
   private $version;
   private $dashboard_menu_name;
   /**
-   * La @funci贸n @publica __construct(@string,@string) Inicializala clase y le asigna sus propiedades
+   * La @funci髇 @publica __construct(@string,@string) Inicializala clase y le asigna sus propiedades
    */
   public function __construct( $plg_small_name = PLUGIN_GSNAME, $version = PLUGIN_GVERSION ) 
   {
@@ -63,7 +63,7 @@ class MKF_Admin
 
   }
   /**
-   * La @funci贸n @publica enqueve_styles() sobre escribe el estilo tomado de wp en caso de que no se 
+   * La @funci髇 @publica enqueve_styles() sobre escribe el estilo tomado de wp en caso de que no se 
    * haya modificado. 
    */
   //Register the stylesheets for the admin area. Since 1.0.0
@@ -79,8 +79,8 @@ class MKF_Admin
     
   }
   /**
-   * La @funci贸n @publica enqueve_styles() sobre escribe los 
-   * @Scripts de JavaScript en caso de que no hayan sido modificados, logra que los datos est茅n disponibles 
+   * La @funci髇 @publica enqueve_styles() sobre escribe los 
+   * @Scripts de JavaScript en caso de que no hayan sido modificados, logra que los datos est閚 disponibles 
    * para su secuencia de comandos que normalmente solo puede obtener del lado del servidor de WordPress.
    */
   //Register the JavaScript for the admin area. Since 1.0.0 
@@ -96,8 +96,8 @@ class MKF_Admin
       wp_enqueue_script($this->plg_small_name, plugin_dir_url( __FILE__ ) . 'js/plg-admin.js', array('jquery'), $this->version, false);
       wp_enqueue_script('footer_js', plugin_dir_url( __FILE__ ) . 'js/myjquery.js', false, '1.0.1', false);
       /**
-       * El @Script que a continuaci贸n se utiliza la @funci贸n wp_create_nonce(@string) que genera un hash con 
-       * esa informacion para despues ser utilizada para validar la informaci贸n que se envia.
+       * El @Script que a continuaci髇 se utiliza la @funci髇 wp_create_nonce(@string) que genera un hash con 
+       * esa informacion para despues ser utilizada para validar la informaci髇 que se envia.
        */   
     }else{
       error_log("no consiguio la pagina");
@@ -106,9 +106,9 @@ class MKF_Admin
   }
     
   /**
-   * @Funci贸n PHP
-   * La @funci贸n plg_menu() muestra la secci贸n del plugin que corresponda, agregando una pagina al menu
-   * y posteriormente manda a llamar al metodo que muestra dichas secci贸nes.
+   * @Funci髇 PHP
+   * La @funci髇 plg_menu() muestra la secci髇 del plugin que corresponda, agregando una pagina al menu
+   * y posteriormente manda a llamar al metodo que muestra dichas secci髇es.
    * Nos muestra *Dashboard, *Publicaciones, *Ordenes, *Preguntas, *Mensajeria postventa y publicacion.
    * 
    */
@@ -138,7 +138,7 @@ class MKF_Admin
       __( 'Ordenes', 'textdomain' ),
       $this->available_menu_to_editor_or_admin(),
       "{$this->plg_small_name}-product-orders",
-      array( $this, 'dashboard' )
+      array( $this, 'admin_orders' )
     );
 
     add_submenu_page(
@@ -153,16 +153,16 @@ class MKF_Admin
     add_submenu_page(
       $this->dashboard_menu_name,
       __( "{$this->plg_small_name}-product-messages", 'textdomain' ),
-      __( 'Mensajer铆a Postventa', 'textdomain' ),
+      __( 'Mensajeria Postventa', 'textdomain' ),
       $this->available_menu_to_editor_or_admin(),
       "{$this->plg_small_name}-product-messages",
-      array( $this, 'dashboard' )
+      array( $this, 'admin_mensajeria' )
     );
 
     add_submenu_page(
       NULL,
       __( "{$this->plg_small_name}-product-edit", 'textdomain' ),
-      __( 'Publicaci贸n', 'textdomain' ),
+      __( 'Publicaci髇', 'textdomain' ),
       $this->available_menu_to_editor_or_admin(),
       "{$this->plg_small_name}-product-edit",
       array( $this, 'entries_edit' )
@@ -180,7 +180,7 @@ class MKF_Admin
     add_submenu_page(
       NULL,
       __( "{$this->plg_small_name}-descripcion_footer", 'textdomain' ),
-      __( 'Descripcion Com煤n', 'textdomain' ),
+      __( 'Descripcion Com鷑', 'textdomain' ),
       $this->available_menu_to_editor_or_admin(),
       "{$this->plg_small_name}-descripcion-footer",
       array( $this, 'descripcion_footer' )
@@ -214,7 +214,7 @@ class MKF_Admin
   }
 
   /**
-   * @Funci贸n PHP
+   * @Funci髇 PHP
    * aviable_menu_to_editor_or_admin() 
    * Primero se verifica si es una sesion registrada con is_user_logged_in() 
    * Se define al variable $is_editor y se le asigna el valor falso
@@ -248,29 +248,29 @@ class MKF_Admin
   }
 
 /**
- * @Funci贸n dashboard()
- * M茅todo que manda a llamar el archivo admin-dashboard.php
+ * @Funci髇 dashboard()
+ * M閠odo que manda a llamar el archivo admin-dashboard.php
  */
   public function dashboard() {
     include_once "partials/admin-dashboard.php";
   }
 /**
- * @Funci贸n entries_view()
- * M茅todo que manda a llamar el archivo admin-product-entries
+ * @Funci髇 entries_view()
+ * M閠odo que manda a llamar el archivo admin-product-entries
  */
   public function entries_view() {
     include_once "partials/admin-product-entries.php";
   }
 /**
- * @Funci贸n entries_edit()
- * M茅todo que manda a llamar el archivo admin-product-edit-form.php
+ * @Funci髇 entries_edit()
+ * M閠odo que manda a llamar el archivo admin-product-edit-form.php
  */
   public function entries_edit() {
     include_once "partials/admin-product-edit-form.php";
   }
   /**
- * @Funci贸n entries_categorizador()
- * M茅todo que manda a llamar el archivo admin-product-ecategorizador.php
+ * @Funci髇 entries_categorizador()
+ * M閠odo que manda a llamar el archivo admin-product-ecategorizador.php
  */
   public function entries_categorizador() {
     include_once "partials/admin-product-categorizador.php";
@@ -293,4 +293,20 @@ class MKF_Admin
     include_once "partials/admin-onboarding.php";
   }
 
+  /**
+   * @funcion admin_orders()
+   * M閠odo que manda a llamar el archivo admin-orders.php
+   */
+  public function admin_orders()
+  {
+    include_once "partials/admin-orders.php";
+  }
+
+  /**
+   * @funcion 
+   */
+  public function admin_mensajeria()
+  {
+    include_once "partials/admin-mensajeria.php";
+  }
 }
