@@ -525,7 +525,7 @@ function calcular_costo_envio(id, categ)
                 console.log(JSON.stringify(response));
                 $('#costo_envio_ml_'+id).text(response.data.body.costo_envio);
                 cambioStatus(id, key);
-                console.log(' Exito Se actualizo el valor del costo de envio es igual a : ' );
+                console.log(' Exito Se actualizo el valor del costo de envio es igual a : '+response.data.body.costo_envio );
             },
             error: function(response)
             {
