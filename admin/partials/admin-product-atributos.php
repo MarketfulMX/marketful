@@ -71,4 +71,22 @@
 			</td>
 		</tr>
 	</table>	
+	<table>
+		<tr>
+			<th style="width: 40%;">
+				PUBLICACION
+			</th>
+			<th style="width: 60%;">
+				RESULTADO
+			</th>
+		</tr>
+		<tr>
+			<td>
+				1
+			</td>
+			<td>
+				2
+			</td>
+		</tr>
+	</table>
 </div>
