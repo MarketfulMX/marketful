@@ -63,38 +63,86 @@
 		width: 95%; margin-left: 2%;
 		padding: 1%;
 	}
+	.tabla_atr
+	{
+		margin: 20px;
+		text-align: center;
+		width: 100%;
+	}
+	tr:nth-child(even) 
+	{
+		background-color:#f2f2f2;
+	}
+	tr:nth-child(odd) 
+	{
+		background-color:#fbfbfb;
+	}
+	.boton_atr
+	{
+		background-color:#E2E5C4; 
+        border-style: solid; 
+        border-color: #7E7F6D; 
+        border-radius: 3px;
+        cursor: pointer;
+	}
+		.boton_atr:hover
+		{
+			border-color: #7E7F6D;
+            background-color: #BCBFA3;
+		}
+		.boton_atr:active
+		{
+			border-color: #3F4036;
+            background-color: #BCBFA3;
+		}
 </style>
 
 <div class="head_ord">
   <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
-  <h3> Atributos </h3>
+  <h3> Agrega y modifica los atributos de tus publicaciones </h3>
 </div>
 
 <div class="contenedor">
-	<table id="top">
+	<table class="tabla_atr" id="top">
 		<tr>
-			<th style="width: 40%;">
+			<th>
 				PASO
 			</th>
-			<th style="width: 60%;">
+			<th>
 				HERRAMIENTA
 			</th>
 		</tr>
 		<tr>
 			<td>
-				1
+				Generar un nuevo formato
 			</td>
 			<td>
-				2
+				<button class="boton_atr"> Nuevo Formato</button>
 			</td>
 		</tr>
-	</table>	
-	<table id="buttom">
 		<tr>
-			<th style="width: 40%;">
+			<td>
+				Descargar el formato para modificarlo
+			</td>
+			<td>
+				<a href="#">Descargar Formato</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Cargar el formato con las modificaciones
+			</td>
+			<td>
+				<input class="boton_atr" type="file" name="Cargar">
+			</td>	
+		</tr>
+	</table>	
+	<table clas="tabla_atr" id="buttom">
+		<tr>
+			<th>
 				PUBLICACION
 			</th>
-			<th style="width: 60%;">
+			<th>
 				RESULTADO
 			</th>
 		</tr>

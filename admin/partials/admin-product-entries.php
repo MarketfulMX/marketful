@@ -78,13 +78,13 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 
 <div class="container" style="max-width: 95%; overflow: hidden;" >
-  <div class="loader_onb">  
-  </div>
+    <div class="loader_onb">  
+    </div>
 <div class="bootstrap-wrapper">
   <!-- <div style="background-color: red"><?php echo ($_GET['page'] == 'mkf-product-entries')?'es':$_GET['page'];?></div> -->
   <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
   <div class="row"> 
-    <div id=""  class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+    <div id=""  class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
       <div style="background-color: #E2E5C4; width: 45px; text-align: center; float: left;" class="caja-de-botones">
         <?php 
         if($pagina > 1){
@@ -118,13 +118,13 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" id="dg">
         <a href="?page=mkf-descripcion-footer"><button id="boton_dg"> Agregar descripcion general</button></a>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" id="dg">
-        <a href="?page=mkf-atributos"><button id="boton_dg"> Cambiar Atributos</button></a>
+    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" id="dg">
+        <a href="?page=mkf-atributos"><button id="boton_dg"> Cargar Atributos</button></a>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
         <h8 id="cambios_guardados"></h8>
     </div>
-    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12" >
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >
       <button id="boton_buscar" onClick="buscarResultados()" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
       <label style="float: right;"> 
         <input type="text" placeholder="Titulo" id="keyword_input" onkeypress="enterBuscar(event)">
