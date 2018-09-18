@@ -36,38 +36,46 @@
 </script>
 
 <style type="text/css">
+	.head_atr
+	{
+		margin: 20px;
+	}
 	.contenedor
 	{
-		border-color: #dee2e6;
-		border-width: .5px;
-		border-radius: 3px;
-		border-style: solid;
-		width: 95%; margin-left: 2%;
-		padding: 1%;
 	}
 	#top
 	{
 		border-color: #dee2e6;
 		border-width: .5px;
-		border-radius: 3px;
 		border-style: solid;
 		width: 95%; margin-left: 2%;
-		padding: 1%;
+		padding: 2%;
 	}
 	#buttom
 	{
 		border-color: #dee2e6;
 		border-width: .5px;
-		border-radius: 3px;
 		border-style: solid;
 		width: 95%; margin-left: 2%;
 		padding: 1%;
 	}
 	.tabla_atr
 	{
-		margin: 20px;
 		text-align: center;
 		width: 100%;
+	}
+	#mensaje_atr
+	{
+		font-size: 12px;
+		text-align: center;
+		border-color: #dee2e6;
+		border-width: 1px;
+		border-style: solid;
+		border-radius: 3px;
+		margin: 1% 0%;
+		width: 95%; margin-left: 2%;
+		padding: .5% 0%;
+		vertical-align: middle;
 	}
 	tr:nth-child(even) 
 	{
@@ -97,7 +105,7 @@
 		}
 </style>
 
-<div class="head_ord">
+<div class="head_atr">
   <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
   <h3> Agrega y modifica los atributos de tus publicaciones </h3>
 </div>
@@ -105,54 +113,42 @@
 <div class="contenedor">
 	<table class="tabla_atr" id="top">
 		<tr>
-			<th>
-				PASO
-			</th>
-			<th>
-				HERRAMIENTA
-			</th>
+			<th style="width: 50%;">PASO</th>
+			<th style="width: 50%;">HERRAMIENTA</th>
 		</tr>
 		<tr>
-			<td>
-				Generar un nuevo formato
-			</td>
-			<td>
-				<button class="boton_atr"> Nuevo Formato</button>
-			</td>
+			<td>Generar un nuevo formato</td>
+			<td><button class="boton_atr"> Nuevo Formato</button></td>
 		</tr>
 		<tr>
-			<td>
-				Descargar el formato para modificarlo
-			</td>
-			<td>
-				<a href="#">Descargar Formato</a>
-			</td>
+			<td>Descargar el formato para modificarlo</td>
+			<td><a href="#">Descargar Formato</a></td>
 		</tr>
 		<tr>
-			<td>
-				Cargar el formato con las modificaciones
-			</td>
-			<td>
-				<input class="boton_atr" type="file" name="Cargar">
-			</td>	
-		</tr>
-	</table>	
-	<table clas="tabla_atr" id="buttom">
-		<tr>
-			<th>
-				PUBLICACION
-			</th>
-			<th>
-				RESULTADO
-			</th>
-		</tr>
-		<tr>
-			<td>
-				1
-			</td>
-			<td>
-				2
-			</td>
+			<td>Cargar el formato con las modificaciones</td>
+			<td><input class="boton_atr" type="file" name="Cargar"></td>	
 		</tr>
 	</table>
+	<div id="mensaje_atr" >
+		Cargado el dia 17 de septiembre de 2018
+	</div>	
+	<div style="overflow-y: scroll; max-height: 30vh;" >
+		<table class="tabla_atr" id="buttom" style="overflow: auto;">
+			<tr>
+				<th style="width: 70%;">PUBLICACION</th>
+				<th style="width: 30%;">RESULTADO</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+			</tr>
+			<?php for($x =0; $x<100; $x++)
+			{
+				echo '	<tr>
+							<td>'.$x.'</td>
+							<td>'.$x.'</td>
+						</tr>';
+			} ?>
+		</table>
+	</div>
 </div>
