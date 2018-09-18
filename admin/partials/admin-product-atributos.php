@@ -38,7 +38,7 @@
 <style type="text/css">
 	.head_atr
 	{
-		margin: 20px;
+		margin: 20px 30px;
 	}
 	.contenedor
 	{
@@ -49,7 +49,7 @@
 		border-width: .5px;
 		border-style: solid;
 		width: 95%; margin-left: 2%;
-		padding: 2%;
+		padding: 0px 60px;
 	}
 	#buttom
 	{
@@ -142,7 +142,8 @@
 				<td>1</td>
 				<td>2</td>
 			</tr>
-			<?php for($x =0; $x<100; $x++)
+			<?php 
+			for($x =0; $x<100; $x++)
 			{
 				echo '	<tr>
 							<td>'.$x.'</td>
