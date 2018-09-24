@@ -140,6 +140,12 @@
     grid-template-columns: 30% 40%;
     grid-template-rows: 50% 50%;
   }
+    .fr1
+    {
+      display: grid;
+      grid-template-columns: 20% 80%;
+      grid-template-rows: 50% 50%;
+    }
 </style>
 <div class="head_ord">
   <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
@@ -163,7 +169,17 @@
     <div class="abiertas">
       <div class="caja_orden">
         <div class="fr1">
-            Zona1
+          <div class="fr1_1">
+            <input type="checkbox" name="">
+          </div>
+          <div class="fr1_2">
+            En camino
+          </div>
+          <div class="fr1_3">
+          </div>
+          <div class="fr1_4">
+            Llega tal dia
+          </div>
         </div>
         <div class="fr2">
           ZONA 2
