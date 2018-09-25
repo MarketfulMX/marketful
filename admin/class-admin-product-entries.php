@@ -454,9 +454,11 @@ class MKF_ProductEntry extends MKF_DBCore
         $out = array();
 
         $sql = 
-            "SELECT a.order_item_id id, a.order_item_name name, a.order_id order_id, b.meta_value customer_id 
+            "SELECT a.order_item_id id, a.order_item_name name, a.order_id order_id, b.meta_value customer_id, DATE_FORMAT(c.meta_value, '%W %D %M %Y') fecha, d.meta_value precio
              FROM {$prefix}woocommerce_order_items a
                 INNER JOIN {$prefix}woocommerce_order_itemmeta b ON b.order_item_id = a.order_item_id AND b.meta_key = '_customer_id'
+                INNER JOIN {$prefix}woocommerce_order_itemmeta c ON c.order_item_id = a.order_item_id AND c.meta_key = '_fecha_llegada'
+                INNER JOIN {$prefix}woocommerce_order_itemmeta d ON d.order_item_id = a.order_item_id AND d.meta_key = '_line_total'
             ";
                    
         array_push($out, array("data"=> $this->execute_custom_query($sql)));

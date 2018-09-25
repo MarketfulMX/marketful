@@ -253,7 +253,7 @@
             <div class="fr1_3">
             </div>
             <div class="fr1_4">
-              Fecha de llegada  
+              '.$order->fecha.'
             </div>
           </div>
           <div class="fr2">
@@ -268,7 +268,7 @@
                 <a href="#">'.$order->name.'</a>
               </div>
               <div class="fr3_2_2">
-                $ Precio x Unidad
+                $ '.$order->precio.' x Unidad
               </div>
               <div class="fr3_2_3">
                 SKU: _sku   
