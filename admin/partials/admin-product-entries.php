@@ -116,7 +116,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       </select>
     </div>
     <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" id="dg">
-        <a href="?page=mkf-descripcion-footer"><button id="boton_dg"> Agregar Descripcion General</button></a>
+        <a href="?page=mkf-descripcion-footer"><button id="boton_dg"> Modificar Descripcion</button></a>
     </div>
     <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" id="dg">
         <a href="#"><button id="boton_dg"> Modificar Atributos</button></a>
