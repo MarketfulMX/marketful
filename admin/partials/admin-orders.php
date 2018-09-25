@@ -65,7 +65,7 @@
     border-top-width: 0px;
     border-style: solid;
     border-radius: 0px 0px 3px 3px;
-    padding: 40px;
+    padding: 10px 5px;
     background-color: white;    
     margin-right: 2%;
   }
@@ -132,12 +132,13 @@
     }
   .caja_orden
   {
-    border-color: ;
+    border-color: #dee2e6;
+    border-style: solid;
     border-width: .5px;
-    border-radius: 3px;
     background-color: white;
+    padding: 10px;
     display: grid;
-    grid-template-columns: 30% 40%;
+    grid-template-columns: 40% 60%;
     grid-template-rows: 50% 50%;
   }
     .fr1
@@ -145,6 +146,28 @@
       display: grid;
       grid-template-columns: 20% 80%;
       grid-template-rows: 50% 50%;
+    }
+    .fr2
+    {
+
+    }
+    .fr3
+    {
+      display: grid;
+      grid-template-columns: 30% 70%;
+      grid-template-rows: 100%;
+    }
+      .fr3_2
+      {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 1fr 1fr 1fr;
+      }
+    .fr4
+    {
+      display: grid;
+      grid-template-columns: 50% 35% 15%;
+      grid-template-rows: 100%;
     }
 </style>
 <div class="head_ord">
@@ -182,13 +205,34 @@
           </div>
         </div>
         <div class="fr2">
-          ZONA 2
+          Zona 2
         </div>
         <div class="fr3">
-            ZONA 3
+            <div class="fr3_1">
+            Zona FR2 1
+          </div>
+          <div class="fr3_2">
+            <div class="fr3_2_1">
+              Zona 3.2.1
+            </div>
+            <div class="fr3_2_2">
+              Zona 3.2.2
+            </div>
+            <div class="fr3_2_3">
+              Zona 3.2.3
+            </div>
+          </div>
         </div>
         <div class="fr4">
-            ZONA 4
+          <div class="fr4_1">
+            Zona 4.1
+          </div>
+          <div class="fr4_2">
+            Zona 4.2
+          </div>
+          <div class="fr4_3">
+            Zona 4.3
+          </div>
         </div> 
       </div>
     </div>

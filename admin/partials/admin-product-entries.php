@@ -154,8 +154,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <th style="min-width: 150px">Tipo de Envio</th>
         <th style="min-width: 100px">Costo de Envio en Mercado Libre</th>
         <th style="min-width: 100px">Comision de Mercado Libre</th>
-        <th style="min-width: 110px">Ver Publicacion</th>
-        <th style="min-width: 60px">Ultima Actualizaualizaci&oacute;n</th>
+        <th style="min-width: 110px">Ver Publicaci&oacute;n</th>
+        <th style="min-width: 60px">Ultima Actualizaci&oacute;n</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
       </tr>
     </thead>
