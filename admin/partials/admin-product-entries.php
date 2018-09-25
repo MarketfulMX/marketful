@@ -115,11 +115,14 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           <option value="premium" >Premium</option> 
       </select>
     </div>
-    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12" id="dg">
-        <a href="?page=mkf-descripcion-footer"><button id="boton_dg"> Agregar descripcion general</button></a>
+    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" id="dg">
+        <a href="?page=mkf-descripcion-footer"><button id="boton_dg"> Modificar Descripcion</button></a>
     </div>
     <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" id="dg">
-        <a href="?page=mkf-atributos"><button id="boton_dg"> Cargar Atributos</button></a>
+        <a href="#"><button id="boton_dg"> Modificar Atributos</button></a>
+    </div>
+    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" id="dg">
+        <a href="#"><button id="boton_dg"> Modificar Inventario</button></a>
     </div>
     <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
         <h8 id="cambios_guardados"></h8>
@@ -157,8 +160,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <th style="min-width: 150px">Tipo de Envio</th>
         <th style="min-width: 100px">Costo de Envio en Mercado Libre</th>
         <th style="min-width: 100px">Comision de Mercado Libre</th>
-        <th style="min-width: 110px">Ver Publicacion</th>
-        <th style="min-width: 60px">Ultima Actualizaualizaci&oacute;n</th>
+        <th style="min-width: 110px">Ver Publicaci&oacute;n</th>
+        <th style="min-width: 60px">Ultima Actualizaci&oacute;n</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
       </tr>
     </thead>

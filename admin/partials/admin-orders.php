@@ -65,9 +65,10 @@
     border-top-width: 0px;
     border-style: solid;
     border-radius: 0px 0px 3px 3px;
-    padding: 40px;
+    padding: 10px 5px;
     background-color: white;    
     margin-right: 2%;
+    color: #656666;
   }
   .cerradas
   {
@@ -132,14 +133,68 @@
     }
   .caja_orden
   {
-    border-color: ;
+    border-color: #dee2e6;
+    border-style: solid;
     border-width: .5px;
-    border-radius: 3px;
     background-color: white;
+    padding: 10px;
     display: grid;
-    grid-template-columns: 30% 40%;
+    grid-template-columns: 40% 60%;
     grid-template-rows: 50% 50%;
   }
+    .fr1
+    {
+      display: grid;
+      grid-template-columns: 10% 90%;
+      grid-template-rows: 50% 50%;
+    }
+      .fr1_1
+      {
+        text-align: center;
+      }
+      .fr1_2
+      {
+        color: #27B820;
+      }
+      .fr1_4
+      {
+        font-size: 85%;
+      }
+    .fr2
+    {
+      text-align: right;
+      padding: 5px 40px;
+    }
+    .fr3
+    {
+      padding-top: 20px;
+      display: grid;
+      grid-template-columns: 40% 60%;
+      grid-template-rows: 100%;
+    }
+      .fr3_1
+      {
+        text-align: center;
+      }
+      .fr3_2
+      {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 1fr 1fr 1fr;
+      }
+    .fr4
+    {
+      padding-top: 20px;
+      display: grid;
+      grid-template-columns: 50% 35% 15%;
+      grid-template-rows: 100%;
+    }
+      .fr4_1
+      {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 40% 30% 30%;
+      }
 </style>
 <div class="head_ord">
   <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
@@ -163,16 +218,55 @@
     <div class="abiertas">
       <div class="caja_orden">
         <div class="fr1">
-            Zona1
+          <div class="fr1_1">
+            <input type="checkbox" name="">
+          </div>
+          <div class="fr1_2">
+            En camino
+          </div>
+          <div class="fr1_3">
+          </div>
+          <div class="fr1_4">
+            Llega tal dia
+          </div>
         </div>
         <div class="fr2">
-          ZONA 2
+          <button type="button" class="btn btn-primary">Seguir Envio</button>
         </div>
         <div class="fr3">
-            ZONA 3
+          <div class="fr3_1">
+            <img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="120" height="100">
+          </div>
+          <div class="fr3_2">
+            <div class="fr3_2_1">
+              <a href="#">Nombre del producto</a>
+            </div>
+            <div class="fr3_2_2">
+              Zona 3.2.2
+            </div>
+            <div class="fr3_2_3">
+              Zona 3.2.3
+            </div>
+          </div>
         </div>
         <div class="fr4">
-            ZONA 4
+          <div class="fr4_1">
+            <div class="fr4_1_1">
+              Zona 4.1.1
+            </div>
+            <div class="fr4_1_2">
+              Zona 4.1.2
+            </div>
+            <div class="fr4_1_3">
+              Zona 4.1.3
+            </div>
+          </div>
+          <div class="fr4_2">
+            Zona 4.2
+          </div>
+          <div class="fr4_3">
+            Zona 4.3
+          </div>
         </div> 
       </div>
     </div>
