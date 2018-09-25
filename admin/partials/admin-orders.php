@@ -21,6 +21,9 @@
  */
 
  $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
+
+ // Tomar las ordenes
+ $orders = MKF_ProductEntry::GetInstance()->get_order_list();
 ?>
     
 <!-- // creo que sobra  -->
@@ -65,7 +68,7 @@
     border-top-width: 0px;
     border-style: solid;
     border-radius: 0px 0px 3px 3px;
-    padding: 10px 5px;
+    padding: 0px 0px;
     background-color: white;    
     margin-right: 2%;
     color: #656666;
@@ -81,11 +84,11 @@
     border-top-width: 0px; 
     border-style: solid; 
     border-radius: 0px;
-    padding: 5px;
+    padding: 10px 5px;
     padding-left: 20px;
     background-color: white;    
     margin-right: 2%;
-    vertical-align: middle;
+    vertical-align: middle;   
   }
     .opciones_ord_down
     {
@@ -133,6 +136,7 @@
     }
   .caja_orden
   {
+    margin-top: 20px;
     border-color: #dee2e6;
     border-style: solid;
     border-width: .5px;
@@ -234,62 +238,70 @@
   </div>
   <div class="contenedor">
     <div class="abiertas">
-      <div class="caja_orden">
-        <div class="fr1">
-          <div class="fr1_1">
-            <input type="checkbox" name="">
+      <?php
+        foreach ($orders[0]['data'] as $key => $order) 
+        {
+         echo '
+         <div class="caja_orden">
+          <div class="fr1">
+            <div class="fr1_1">
+              <input type="checkbox" name="">
+            </div>
+            <div class="fr1_2">
+              En camino
+            </div>
+            <div class="fr1_3">
+            </div>
+            <div class="fr1_4">
+              Fecha de llegada  
+            </div>
           </div>
-          <div class="fr1_2">
-            En camino
+          <div class="fr2">
+            <button type="button" class="btn btn-primary">Seguir Envio</button>
           </div>
-          <div class="fr1_3">
+          <div class="fr3">
+            <div class="fr3_1">
+              <img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="120" height="100">
+            </div>
+            <div class="fr3_2">
+              <div class="fr3_2_1">
+                <a href="#">'.$order->name.'</a>
+              </div>
+              <div class="fr3_2_2">
+                $ Precio x Unidad
+              </div>
+              <div class="fr3_2_3">
+                SKU: _sku   
+              </div>
+            </div>
           </div>
-          <div class="fr1_4">
-            Fecha de llegada  
-          </div>
+          <div class="fr4">
+            <div class="fr4_1">
+              <div class="fr4_1_1">
+                Apellidos Comprador
+              </div>
+              <div class="fr4_1_2">
+                '.$order->customer_id.'
+              </div>
+              <div class="fr4_1_3">
+                TELEFONO COMPRADOR
+              </div>
+              <div class="fr4_1_4">
+                <a href="#&'.$order->id.'" >Enviar Mensaje</a>
+              </div>
+            </div>
+            <div class="fr4_2">
+              <a href="#"> Ver Detalles </a>
+            </div>
+            <div class="fr4_3">
+              <i class="fas fa-ellipsis-v opciones" onclick=""></i>
+            </div>
+          </div> 
         </div>
-        <div class="fr2">
-          
-        </div>
-        <div class="fr3">
-          <div class="fr3_1">
-            <img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="120" height="100">
-          </div>
-          <div class="fr3_2">
-            <div class="fr3_2_1">
-              <a href="#">Nombre del producto</a>
-            </div>
-            <div class="fr3_2_2">
-              $ Precio x Unidad
-            </div>
-            <div class="fr3_2_3">
-              SKU: _sku   
-            </div>
-          </div>
-        </div>
-        <div class="fr4">
-          <div class="fr4_1">
-            <div class="fr4_1_1">
-              Apellidos Comprador
-            </div>
-            <div class="fr4_1_2">
-              USUARIOCOMPRADOR
-            </div>
-            <div class="fr4_1_3">
-              TELEFONO COMPRADOR
-            </div>
-            <div class="fr4_1_4">
-              <a href="#">Enviar Mensaje</a>
-            </div>
-          </div>
-          <div class="fr4_2">
-            <a href="#"> Ver Detalles </a>
-          </div>
-          <div class="fr4_3">
-            <i class="fas fa-ellipsis-v opciones" onclick="alert('Opciones del producto')"></i>
-          </div>
-        </div> 
-      </div>
+         ';
+        }
+     ?>
+      
     </div>
     <div class="cerradas">
       <div class="caja_orden">
@@ -307,7 +319,7 @@
           </div>
         </div>
         <div class="fr2">
-          <button type="button" class="btn btn-primary">Seguir Envio</button>
+          
         </div>
         <div class="fr3">
           <div class="fr3_1">

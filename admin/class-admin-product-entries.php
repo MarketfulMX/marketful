@@ -54,6 +54,9 @@ if (!defined('ML_META_LAST_CATEGORY'))
 if (!defined('ML_META_PRECIO_ML'))
     define('ML_META_PRECIO_ML', 'precio_ml');
 
+//Orders
+
+
 /**
  * @Clase MKF_ProductEntry que @hereda los metodos y atributos de MKF_DBCore
  *
@@ -107,6 +110,8 @@ class MKF_ProductEntry extends MKF_DBCore
         $this->meta_cat    = ML_META_CATEGORIES;
         $this->meta_lcat   = ML_META_LAST_CATEGORY;
         $this->meta_precio_ml   = ML_META_PRECIO_ML;
+
+        // Orders 
     }
 
 
@@ -278,7 +283,7 @@ class MKF_ProductEntry extends MKF_DBCore
         array_push($out, array("data"=> $this->execute_custom_query($sql)));
         return $out;
     }
-    
+
     /** 
      * @fución publica get_ml_metadata(@string = (NULL))
      *
@@ -422,4 +427,39 @@ class MKF_ProductEntry extends MKF_DBCore
         wp_send_json_success($parseada);
         wp_die();
     }
+
+
+
+
+    // ORDERS
+    /***
+      * @Funcion get_order_list()
+      *
+      * Esta funcion hace la query para retornar la lista de ordenes buscando las de Mercado Libre.
+      *
+      */
+
+      public function get_order_list()
+      {
+        /***********************************
+         * @script Obtenemos el nombre prefijo de la base de datos utilizando la clase de WP wpdb
+         * la cual nos entrega el valor del prefijo de la base de datos con $wpdb->get_blog_prefix()
+         * prefijo que utilizaremos para las querys posteriores haciendo que funcione sin inportar el 
+         * prefijo que se haya definido en la instalacion de wordpress.
+         */ 
+        global $wpdb;
+        $prefix = $wpdb->get_blog_prefix();
+        //***********************************
+
+        $out = array();
+
+        $sql = 
+            "SELECT a.order_item_id id, a.order_item_name name, a.order_id order_id, b.meta_value customer_id 
+             FROM {$prefix}woocommerce_order_items a
+                INNER JOIN {$prefix}woocommerce_order_itemmeta b ON b.order_item_id = a.order_item_id AND b.meta_key = '_customer_id'
+            ";
+                   
+        array_push($out, array("data"=> $this->execute_custom_query($sql)));
+        return $out;
+      }
 }
