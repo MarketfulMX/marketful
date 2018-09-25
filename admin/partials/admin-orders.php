@@ -156,6 +156,10 @@
       {
         color: #27B820;
       }
+      .fr1_2-2
+      {
+        color: black;
+      }
       .fr1_4
       {
         font-size: 85%;
@@ -171,6 +175,7 @@
       display: grid;
       grid-template-columns: 40% 60%;
       grid-template-rows: 100%;
+      font-size: 85%;
     }
       .fr3_1
       {
@@ -182,18 +187,31 @@
         grid-template-columns: 100%;
         grid-template-rows: 1fr 1fr 1fr;
       }
+        .fr3_2_1
+        {
+          color: blue;
+        }
     .fr4
     {
       padding-top: 20px;
       display: grid;
-      grid-template-columns: 50% 35% 15%;
+      grid-template-columns: 70% 15% 15%;
       grid-template-rows: 100%;
+      font-size: 85%;
     }
       .fr4_1
       {
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 40% 30% 30%;
+        grid-template-rows: 30% 30% 20% 20%;
+      }
+      .fr4_2
+      {
+        text-align: center;
+      }
+      .opciones
+      {
+        cursor: pointer;
       }
 </style>
 <div class="head_ord">
@@ -227,7 +245,65 @@
           <div class="fr1_3">
           </div>
           <div class="fr1_4">
-            Llega tal dia
+            Fecha de llegada  
+          </div>
+        </div>
+        <div class="fr2">
+          
+        </div>
+        <div class="fr3">
+          <div class="fr3_1">
+            <img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="120" height="100">
+          </div>
+          <div class="fr3_2">
+            <div class="fr3_2_1">
+              <a href="#">Nombre del producto</a>
+            </div>
+            <div class="fr3_2_2">
+              $ Precio x Unidad
+            </div>
+            <div class="fr3_2_3">
+              SKU: _sku   
+            </div>
+          </div>
+        </div>
+        <div class="fr4">
+          <div class="fr4_1">
+            <div class="fr4_1_1">
+              Apellidos Comprador
+            </div>
+            <div class="fr4_1_2">
+              USUARIOCOMPRADOR
+            </div>
+            <div class="fr4_1_3">
+              TELEFONO COMPRADOR
+            </div>
+            <div class="fr4_1_4">
+              <a href="#">Enviar Mensaje</a>
+            </div>
+          </div>
+          <div class="fr4_2">
+            <a href="#"> Ver Detalles </a>
+          </div>
+          <div class="fr4_3">
+            <i class="fas fa-ellipsis-v opciones" onclick="alert('Opciones del producto')"></i>
+          </div>
+        </div> 
+      </div>
+    </div>
+    <div class="cerradas">
+      <div class="caja_orden">
+        <div class="fr1">
+          <div class="fr1_1">
+            <input type="checkbox" name="">
+          </div>
+          <div class="fr1_2-2">
+            Entregado
+          </div>
+          <div class="fr1_3">
+          </div>
+          <div class="fr1_4">
+            Fecha de llegada  
           </div>
         </div>
         <div class="fr2">
@@ -242,36 +318,36 @@
               <a href="#">Nombre del producto</a>
             </div>
             <div class="fr3_2_2">
-              Zona 3.2.2
+              $ Precio x Unidad
             </div>
             <div class="fr3_2_3">
-              Zona 3.2.3
+              SKU: _sku   
             </div>
           </div>
         </div>
         <div class="fr4">
           <div class="fr4_1">
             <div class="fr4_1_1">
-              Zona 4.1.1
+              Apellidos Comprador
             </div>
             <div class="fr4_1_2">
-              Zona 4.1.2
+              USUARIOCOMPRADOR
             </div>
             <div class="fr4_1_3">
-              Zona 4.1.3
+              TELEFONO COMPRADOR
+            </div>
+            <div class="fr4_1_4">
+              <a href="#">Enviar Mensaje</a>
             </div>
           </div>
           <div class="fr4_2">
-            Zona 4.2
+            <a href="#"> Ver Detalles </a>
           </div>
           <div class="fr4_3">
-            Zona 4.3
+            <i class="fas fa-ellipsis-v opciones" onclick="alert('Opciones del producto')"></i>
           </div>
         </div> 
       </div>
-    </div>
-    <div class="cerradas">
-      Cerradas
     </div>
   </div>
 </div>

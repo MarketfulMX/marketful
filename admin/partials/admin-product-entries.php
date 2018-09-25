@@ -119,10 +119,10 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <a href="?page=mkf-descripcion-footer"><button id="boton_dg"> Modificar Descripcion</button></a>
     </div>
     <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" id="dg">
-        <a href="#"><button id="boton_dg"> Modificar Atributos</button></a>
+        <a href="https://www.marketful.mx/ml_listings/atributos"><button id="boton_dg"> Modificar Atributos</button></a>
     </div>
     <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" id="dg">
-        <a href="#"><button id="boton_dg"> Modificar Inventario</button></a>
+        <a href="https://www.marketful.mx/woo_listings/inventario_y_precio"><button id="boton_dg"> Modificar Inventario</button></a>
     </div>
     <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
         <h8 id="cambios_guardados"></h8>
