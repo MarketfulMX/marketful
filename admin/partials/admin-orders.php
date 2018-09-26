@@ -54,6 +54,28 @@
       $('.cerradas').css('display','none');
     }
   }
+
+  function checkbox_select_all(tipo)
+  {
+    console.log('Entro: '+tipo+' : ');
+    if(tipo = 'o')
+    {
+      o = 'open';
+    }
+    else
+    {
+      o = 'close';
+    }
+    var checkboxes = document.getElementsByName('checkbox_'+o);
+    var source = $('#checkbox_master')
+    //console.log(source)
+    for(var i=0, n=checkboxes.length;i<n;i++) 
+    {
+        checkboxes[i].checked = source.is(":checked");
+        // checkboxes[i].checked = true;
+    }
+  }
+
 </script>
 
 <style type="text/css">
@@ -228,7 +250,7 @@
     <li class="nav-item"><a href="#" id="2" class="nav-link" onclick="clic(2)" >Cerradas</a></li>
   </ul>
   <div class="opciones_ord">
-    <input name="cb" type="checkbox" />
+    <input name="checkbox_open" type="checkbox" onclick="checkbox_select_all('o')">
     <input type="text" class="input_ord" placeholder="comprador o venta" name="" />
     <button class="boton_ord">Buscar</button>
   </div>
@@ -245,7 +267,7 @@
          <div class="caja_orden">
           <div class="fr1">
             <div class="fr1_1">
-              <input type="checkbox" id="checkbox_open_'.$order->id.'"name="">
+              <input type="checkbox" id="checkbox_open_'.$order->id.'"name="checkbox_open">
             </div>
             <div class="fr1_2">
               En camino
