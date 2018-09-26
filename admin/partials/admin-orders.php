@@ -268,23 +268,23 @@
                 <a href="#">'.$order->name.'</a>
               </div>
               <div class="fr3_2_2">
-                $ '.$order->precio.' x Unidad
+                $ '.$order->precio_sub.' x '.$order->qty.' unidad(es) = $'.$order->precio_tot.'
               </div>
               <div class="fr3_2_3">
-                SKU: _sku   
+                SKU: '.$order->sku.'  
               </div>
             </div>
           </div>
           <div class="fr4">
             <div class="fr4_1">
               <div class="fr4_1_1">
-                Apellidos Comprador
+                '.$order->customer_name.'
               </div>
               <div class="fr4_1_2">
                 '.$order->customer_id.'
               </div>
               <div class="fr4_1_3">
-                TELEFONO COMPRADOR
+                '.$order->customer_tel.'
               </div>
               <div class="fr4_1_4">
                 <a href="#&'.$order->id.'" >Enviar Mensaje</a>
