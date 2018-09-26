@@ -38,7 +38,12 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 <script type="text/javascript">
-  function clic(num)
+  /** 
+   * @funcion cambio(@tring: 1 or 2)
+   * 
+   * Recibe el valor de la pagin ane la que desea para mostrarla y ocultar la otra.
+   */
+  function cambio(num)
   {
     console.log(num);
     if(num == 2)
@@ -46,33 +51,40 @@
       $('#2').attr('class','nav-link active'); $('#1').attr('class','nav-link');  
       $('.cerradas').css('display','inline');
       $('.abiertas').css('display','none');
+      $('#checkbox_master').attr('onclick','checkbox_select_all("c")'); 
     }
     else
     {
       $('#1').attr('class','nav-link active'); $('#2').attr('class','nav-link'); 
       $('.abiertas').css('display','inline');
       $('.cerradas').css('display','none');
+      $('#checkbox_master').attr('onclick','checkbox_select_all("o")'); 
     }
   }
 
+  /**
+   * @funcion checkbox_select_all(@string: o or c)
+   * 
+   * Esta funcion selecciona todos los checkboxes de la pagina para seleccionar todos sus 
+   * checkboxes de los productos que tengamos en lista.
+   */
   function checkbox_select_all(tipo)
   {
     console.log('Entro: '+tipo+' : ');
-    if(tipo = 'o')
+    if(tipo == 'o')
     {
-      o = 'open';
+      tipo = 'open';
     }
     else
     {
-      o = 'close';
+      tipo = 'close';
     }
-    var checkboxes = document.getElementsByName('checkbox_'+o);
-    var source = $('#checkbox_master')
-    //console.log(source)
+    console.log(' Entro a : '+tipo);
+    var checkboxes = document.getElementsByName('checkbox_'+tipo);
+    var source = $('#checkbox_master');
     for(var i=0, n=checkboxes.length;i<n;i++) 
     {
         checkboxes[i].checked = source.is(":checked");
-        // checkboxes[i].checked = true;
     }
   }
 
@@ -246,11 +258,11 @@
 </div>
 <div class="maximo">
   <ul class="nav nav-tabs tab-superior" id= tab-superior style="max-width: 98%;">
-    <li class="nav-item"><a href="#" id="1" class="nav-link active" onclick="clic(1)" >Abiertas</a></li>
-    <li class="nav-item"><a href="#" id="2" class="nav-link" onclick="clic(2)" >Cerradas</a></li>
+    <li class="nav-item"><a href="#" id="1" class="nav-link active" onclick="cambio(1)" >Abiertas</a></li>
+    <li class="nav-item"><a href="#" id="2" class="nav-link" onclick="cambio(2)" >Cerradas</a></li>
   </ul>
   <div class="opciones_ord">
-    <input name="checkbox_open" type="checkbox" onclick="checkbox_select_all('o')">
+    <input id="checkbox_master" type="checkbox" onclick="checkbox_select_all('o')">
     <input type="text" class="input_ord" placeholder="comprador o venta" name="" />
     <button class="boton_ord">Buscar</button>
   </div>
@@ -333,7 +345,7 @@
          <div class="caja_orden">
           <div class="fr1">
             <div class="fr1_1">
-              <input type="checkbox" id="checkbox_close_'.$order->id.'"name="">
+              <input type="checkbox" id="checkbox_close_'.$order->id.'"name="checkbox_close">
             </div>
             <div class="fr1_2-2">
               Entregado
