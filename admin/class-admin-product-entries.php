@@ -468,7 +468,7 @@ class MKF_ProductEntry extends MKF_DBCore
             ";
         $sql_set_lan = "SET lc_time_names = 'es_ES'"; // Query para cambiar el idioma a español en el que se muestra la fecha
         
-        array_push($out2, array("data"=> $this->execute_custom_query($sql_set_lan))); // Se ejecuta la query para cambiar la fecha a español
+        array_push($out2, array("data"=> $this->execute_custom_query($sql_set_lan))); // Se ejecuta la query para cambiar el idioma de la fecha a español
         array_push($out, array("data"=> $this->execute_custom_query($sql)));
         return $out;
       }

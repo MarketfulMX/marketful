@@ -245,7 +245,7 @@
          <div class="caja_orden">
           <div class="fr1">
             <div class="fr1_1">
-              <input type="checkbox" name="">
+              <input type="checkbox" id="checkbox_open_'.$order->id.'"name="">
             </div>
             <div class="fr1_2">
               En camino
@@ -304,62 +304,69 @@
       
     </div>
     <div class="cerradas">
-      <div class="caja_orden">
-        <div class="fr1">
-          <div class="fr1_1">
-            <input type="checkbox" name="">
+      <?php
+        foreach ($orders[0]['data'] as $key => $order) 
+        {
+         echo '
+         <div class="caja_orden">
+          <div class="fr1">
+            <div class="fr1_1">
+              <input type="checkbox" id="checkbox_close_'.$order->id.'"name="">
+            </div>
+            <div class="fr1_2-2">
+              Entregado
+            </div>
+            <div class="fr1_3">
+            </div>
+            <div class="fr1_4">
+              '.$order->fecha.'
+            </div>
           </div>
-          <div class="fr1_2-2">
-            Entregado
+          <div class="fr2">
+            <button type="button" class="btn btn-primary">Seguir Envio</button>
           </div>
-          <div class="fr1_3">
+          <div class="fr3">
+            <div class="fr3_1">
+              <img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="120" height="100">
+            </div>
+            <div class="fr3_2">
+              <div class="fr3_2_1">
+                <a href="#">'.$order->name.'</a>
+              </div>
+              <div class="fr3_2_2">
+                $ '.$order->precio_sub.' x '.$order->qty.' unidad(es) = $'.$order->precio_tot.'
+              </div>
+              <div class="fr3_2_3">
+                SKU: '.$order->sku.'  
+              </div>
+            </div>
           </div>
-          <div class="fr1_4">
-            Fecha de llegada  
-          </div>
+          <div class="fr4">
+            <div class="fr4_1">
+              <div class="fr4_1_1">
+                '.$order->customer_name.'
+              </div>
+              <div class="fr4_1_2">
+                '.$order->customer_id.'
+              </div>
+              <div class="fr4_1_3">
+                '.$order->customer_tel.'
+              </div>
+              <div class="fr4_1_4">
+                <a href="#&'.$order->id.'" >Enviar Mensaje</a>
+              </div>
+            </div>
+            <div class="fr4_2">
+              <a href="#"> Ver Detalles </a>
+            </div>
+            <div class="fr4_3">
+              <i class="fas fa-ellipsis-v opciones" onclick=""></i>
+            </div>
+          </div> 
         </div>
-        <div class="fr2">
-          
-        </div>
-        <div class="fr3">
-          <div class="fr3_1">
-            <img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="120" height="100">
-          </div>
-          <div class="fr3_2">
-            <div class="fr3_2_1">
-              <a href="#">Nombre del producto</a>
-            </div>
-            <div class="fr3_2_2">
-              $ Precio x Unidad
-            </div>
-            <div class="fr3_2_3">
-              SKU: _sku   
-            </div>
-          </div>
-        </div>
-        <div class="fr4">
-          <div class="fr4_1">
-            <div class="fr4_1_1">
-              Apellidos Comprador
-            </div>
-            <div class="fr4_1_2">
-              USUARIOCOMPRADOR
-            </div>
-            <div class="fr4_1_3">
-              TELEFONO COMPRADOR
-            </div>
-            <div class="fr4_1_4">
-              <a href="#">Enviar Mensaje</a>
-            </div>
-          </div>
-          <div class="fr4_2">
-            <a href="#"> Ver Detalles </a>
-          </div>
-          <div class="fr4_3">
-            <i class="fas fa-ellipsis-v opciones" onclick="alert('Opciones del producto')"></i>
-          </div>
-        </div> 
-      </div>
+         ';
+        }
+     ?>
     </div>
   </div>
 </div>
