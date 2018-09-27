@@ -16,7 +16,8 @@
  * Descripción General: 
  * Vista que muestra las ordenes existentes que se tiene en Mercado Libre
  * y permite ver sus atributos.
- *
+ * En estam vista los usuarios pueden ver de manera clara las ordenes que 
+ * se encuentran activas asi como la informacion relacionada con las mismas.
  *
  */
 
@@ -26,7 +27,7 @@
  $orders = MKF_ProductEntry::GetInstance()->get_order_list();
 ?>
     
-<!-- // creo que sobra  -->
+<!-- Mandamos llamar a las libreruas que utilizaremos -->
 <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 
 <!-- Bootstrap CSS and JS-->
@@ -51,7 +52,7 @@
       $('#2').attr('class','nav-link active'); $('#1').attr('class','nav-link');  
       $('.cerradas').css('display','inline');
       $('.abiertas').css('display','none');
-      $('#checkbox_master').attr('onclick','checkbox_select_all("c")'); 
+      $('#checkbox_master').attr('onclick','checkbox_select_all("class")'); 
     }
     else
     {
@@ -273,6 +274,11 @@
   <div class="contenedor">
     <div class="abiertas">
       <?php
+        /**
+         * @Script: El foreach recorrera todos los posibles registros que haya retornado la query
+         * y despues lo mostrara con el formato de la vista.
+         * Aqui se muestran todas las ordenes abiertas.
+         */
         foreach ($orders[0]['data'] as $key => $order) 
         {
          echo '
@@ -287,7 +293,7 @@
             <div class="fr1_3">
             </div>
             <div class="fr1_4">
-              '.$order->fecha.'
+              Fecha de llegada: '.$order->fecha.'
             </div>
           </div>
           <div class="fr2">
@@ -339,6 +345,11 @@
     </div>
     <div class="cerradas">
       <?php
+        /**
+         * @Script: El foreach recorrera todos los posibles registros que haya retornado la query
+         * y despues lo mostrara con el formato de la vista.
+         * Aqui se muestran todas las ordenes cerradas.
+         */
         foreach ($orders[0]['data'] as $key => $order) 
         {
          echo '
@@ -353,7 +364,7 @@
             <div class="fr1_3">
             </div>
             <div class="fr1_4">
-              '.$order->fecha.'
+              Fecha de llegada: '.$order->fecha.'
             </div>
           </div>
           <div class="fr2">

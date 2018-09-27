@@ -147,7 +147,7 @@ class MKF_Admin
       __( 'Preguntas', 'textdomain' ),
       $this->available_menu_to_editor_or_admin(),
       "{$this->plg_small_name}-product-questions",
-      array( $this, 'dashboard' )
+      array( $this, 'admin_preguntas' )
     );
 
     add_submenu_page(
@@ -269,25 +269,37 @@ class MKF_Admin
     include_once "partials/admin-product-edit-form.php";
   }
   /**
- * @Función entries_categorizador()
- * Método que manda a llamar el archivo admin-product-ecategorizador.php
- */
+   * @Función entries_categorizador()
+   * Método que manda a llamar el archivo admin-product-ecategorizador.php
+   */
   public function entries_categorizador() {
     include_once "partials/admin-product-categorizador.php";
   }
-
+  /**
+   * @Función descripcion_footer()
+   * Método de la clase admin que manda a llamar el archivo admin-descripcion.footer.php
+   */
   public function descripcion_footer() {
     include_once "partials/admin-descripcion-footer.php";
   }
-
+  /**
+   * @Función error_list()
+   * Método que manda a llamar el archivo admin-error-list.php
+   */
   public function error_list() {
     include_once "partials/admin-error-list.php";
   }
-
+  /**
+   * @Función error_list_detail()
+   * Método que manda a llamar el archivo admin-error-list-detail.php
+   */
   public function error_list_detail() {
     include_once "partials/admin-error-list-detail.php";
   }
-
+  /**
+   * @Función onboarding()
+   * Método que manda a llamar el archivo admin-onboarding.php
+   */
   public function onboarding()
   {
     include_once "partials/admin-onboarding.php";
@@ -303,7 +315,17 @@ class MKF_Admin
   }
 
   /**
-   * @funcion 
+   * @funcion admin_preguntas
+   * Método de la clase admin que manda a llamar el archivo admin-preguntas.php
+   */
+  public function admin_preguntas()
+  {
+    include_once "partials/admin-preguntas.php";
+  }
+
+  /**
+   * @funcion admin_mensajeria()
+   * Método de la clase admin que manda a llamar el archivo admin-mensajeria.php
    */
   public function admin_mensajeria()
   {
