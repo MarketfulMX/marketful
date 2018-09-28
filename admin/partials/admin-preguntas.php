@@ -44,7 +44,7 @@
 	{
 		padding: 10px;
 		display: grid;
-	    grid-template-columns: 60% 40%;
+	    grid-template-columns: 70% 30%;
 	    grid-template-rows: 100%;
 	}
 		.mensajero
@@ -65,8 +65,8 @@
 		}
 			.mensaje_r
 			{
-				border-color: #7130F2; border-radius: 30px; border-style: solid; border-width: 1px;
-				background-color: #7130F2;
+				border-color: #878787; border-radius: 30px; border-style: solid; border-width: 1px;
+				background-color: #878787;
 				box-shadow: 0 1px 2px rgba(0,0,0,0.20);
 				color: white; text-shadow: 0px 0px 1px #fff;
 				float: right;
@@ -77,8 +77,8 @@
 			}
 			.mensaje_l
 			{
-				border-color: #E50597; border-radius: 30px; border-style: solid; border-width: 1px;
-				background-color: #E50597;
+				border-color: #6E4E6D; border-radius: 30px; border-style: solid; border-width: 1px;
+				background-color: #6E4E6D;
 				box-shadow: 0 1px 2px rgba(0,0,0,0.20);
 				color: white; text-shadow: 0px 0px 1px #fff;
 				float: left;
