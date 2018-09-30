@@ -36,19 +36,40 @@
 	/** 
 	 * @funcion que de manera automatica hace scroll hacia abajo en el div mensajes
 	 * para mostrar los mensajes mas nuevos
+	 *
+	 * El segundo script setea en nada el valor de #textarea para que no se pueda enviar mensajes
+	 * vacios.
+	 *
+	 * Despues de toma el valor de la pantalla y se divide entre 15 para que el numero resultante sea
+	 * el numero de columnas en el textarea. Esto hace que sea relativamente responsivo y se adapte al 
+	 * tamaño de la pantalla.
 	 */
 	jQuery(function()
     {
-        $(".mensajero").animate({ scrollTop: $('.mensajero')[0].scrollHeight}, 500);
-    });
+    	$(".mensajero").animate({ scrollTop: $('.mensajero')[0].scrollHeight}, 500);
+    	$("#textarea").val('');
 
+    	var ancho = window.innerWidth;
+    	$('#textarea').attr('cols',(ancho / 15));
+    });
+	/**
+	 * @funcion add_msj()
+	 *
+	 * Funcion que se activa cuando el usuario ha presionado el boton de enviar mensaje. Valida que el 
+	 * mensaje no este vacio y con append() lo situa en el ultimo mensaje dentro del div mensajero.
+	 * Despues hace scroll hasta abajo para mostrarlo y setea el valor de #textarea en vacio ''
+	 *
+	 */
 	function add_msj()
 	{
-		var d = new Date();
-		$('.mensajero').append('<div><div class="mensaje_r">'+$("#textarea").val()+'</div><div class="meta_mensaje_r">Lunes 10 de Mayo de 2018 13:06:08 </div></div>')
-		$('#textarea').val('');
-		$(".mensajero").animate({ scrollTop: $('.mensajero')[0].scrollHeight}, 300);
-
+		if(($("#textarea").val()).length > 0)
+		{
+			var d = new Date();
+			$('.mensajero').append('<div><div class="mensaje_r">'+$("#textarea").val()+'</div><div class="meta_mensaje_r">Lunes 10 de Mayo de 2018 13:06:08 </div></div>')
+			$('#textarea').val('');
+			$(".mensajero").animate({ scrollTop: $('.mensajero')[0].scrollHeight}, 300);
+		}
+		
 	}
 </script>
 
@@ -148,6 +169,7 @@
 			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
 			background-color: #EFF2EF;
 			height: auto;
+			width: auto;
 			margin: 5px 20px;
 			padding: 0px;
 			padding-top: 4px;
