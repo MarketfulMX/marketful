@@ -33,10 +33,23 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 <script type="text/javascript">
+	/** 
+	 * @funcion que de manera automatica hace scroll hacia abajo en el div mensajes
+	 * para mostrar los mensajes mas nuevos
+	 */
 	jQuery(function()
     {
         $(".mensajero").animate({ scrollTop: $('.mensajero')[0].scrollHeight}, 500);
     });
+
+	function add_msj()
+	{
+		var d = new Date();
+		$('.mensajero').append('<div><div class="mensaje_r">'+$("#textarea").val()+'</div><div class="meta_mensaje_r">Lunes 10 de Mayo de 2018 13:06:08 </div></div>')
+		$('#textarea').val('');
+		$(".mensajero").animate({ scrollTop: $('.mensajero')[0].scrollHeight}, 300);
+
+	}
 </script>
 
 <style type="text/css">
@@ -45,14 +58,14 @@
 		padding: 10px;
 		display: grid;
 	    grid-template-columns: 70% 30%;
-	    grid-template-rows: 100%;
+	    grid-template-rows: 90% 10%;
 	}
 		.mensajero
 		{
 			height: 100%;
 			margin: 5px 20px;
 			padding: 20px 10px;
-			border-color: #7E7F6D; border-width: 1px; border-style: solid; border-radius: 10px 0px 0px 10px;
+			border-color: #7E7F6D; border-width: 1px; border-style: solid; border-radius: 10px 0px 0px 0px;
 			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
 			background-color: #EFF2EF;
 
@@ -109,13 +122,55 @@
 				}
 		.informacion
 		{
-
+			margin: 5px 10px 5px 5px;
+			border-color: #7E7F6D; border-width: 1px; border-style: solid; border-radius: 0px 10px 10px 0px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+			background-color: #EFF2EF;
+			padding: 5px;
+			height: 100%;	
 		}
-			.titulo
+			.inf_titulo
 			{
-				font-size: 250%;
+				font-size: 200%;
 				color: #444544;
 			}
+			.inf_cuerpo
+			{
+				display: grid;
+				grid-template-columns: 50% 50%;
+				grid-template-rows: 40% 30% 30%;
+				margin: 10px;
+				font-size: 80%;
+			}
+		.nuevo_msj
+		{
+			border-color: #7E7F6D; border-width: 1px; border-style: solid; border-radius: 0px 0px 0px 10px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+			background-color: #EFF2EF;
+			height: auto;
+			margin: 5px 20px;
+			padding: 0px;
+			padding-top: 4px;
+			padding-left: 4px;
+			display: grid;
+			grid-template-rows: 100%;
+			grid-template-columns: 92% 8%;
+		}
+	.boton
+	{
+		border-color: #6E4E6D;border-radius: 25px 25px 25px 25px; border-style: solid;
+		background-color: #6E4E6D;
+		color: white;
+		height: 50px;
+		width: 50px;
+		margin-top: 5px;
+	}
+		.boton:hover
+		{
+			background-color: #402D3F;
+			border-color: #402D3F;
+			cursor: pointer;
+		}
 </style>
 <div class="head_ord">
   <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?></div>
@@ -171,19 +226,30 @@
 		?>
 	</div>
 	<div class="informacion">
-		<div class="titulo">
-			Nombre del cliente
+		<div class="inf_titulo">
+			<?php echo 'Nombre Muy Largo del Cliente'; ?>
 		</div>
-		<div class="cuerpo">
-			<div class="info_1">
+		<div class="inf_cuerpo">
+			<div class="inf_1">
 				Dato 1
 			</div>
-			<div class="info_1">
+			<div class="inf_1">
 				Dato 2
 			</div>
-			<div class="info_1">
+			<div class="inf_1">
 				Dato 3
 			</div>
+			<div class="inf_1">
+				Dato 4
+			</div>
+		</div>
+	</div>
+	<div class="nuevo_msj">
+		<div>
+			<textarea id="textarea"rows="2" cols="94"> </textarea>
+		</div>
+		<div>
+			<button class="boton" onclick="add_msj()"><i class="fas fa-location-arrow"></i></button>
 		</div>
 	</div>
 </div>
