@@ -52,7 +52,7 @@
 			height: 100%;
 			margin: 5px 20px;
 			padding: 20px 10px;
-			border-color: #7E7F6D; border-width: 4px; border-style: solid; border-radius: 10px 0px 0px 10px;
+			border-color: #7E7F6D; border-width: 1px; border-style: solid; border-radius: 10px 0px 0px 10px;
 			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
 			background-color: #EFF2EF;
 
@@ -65,28 +65,48 @@
 		}
 			.mensaje_r
 			{
-				border-color: #878787; border-radius: 30px; border-style: solid; border-width: 1px;
+				border-color: #878787; border-radius: 40px 0px 40px 40px; border-style: solid; border-width: 1px;
 				background-color: #878787;
 				box-shadow: 0 1px 2px rgba(0,0,0,0.20);
 				color: white; text-shadow: 0px 0px 1px #fff;
 				float: right;
-				padding: 5px 15px;
+				padding: 5px 20px 5px 10px;
 				margin-right: 10px;	
 				margin-bottom: 10px;
 				margin-left: 20%;
+				text-align: right;
 			}
+				.meta_mensaje_r
+				{
+					float: right;
+					font-size: 50%; 
+					margin-right: 10px;	
+					margin-bottom: 10px;
+					margin-left: 80%;
+					text-align: right;
+				}
 			.mensaje_l
 			{
-				border-color: #6E4E6D; border-radius: 30px; border-style: solid; border-width: 1px;
+				border-color: #6E4E6D; border-radius: 0px 40px 40px 40px; border-style: solid; border-width: 1px;
 				background-color: #6E4E6D;
 				box-shadow: 0 1px 2px rgba(0,0,0,0.20);
 				color: white; text-shadow: 0px 0px 1px #fff;
 				float: left;
-				padding: 5px 15px;
+				padding: 5px 10px 5px 20px;
 				margin-left: 10px;
 				margin-right: 20%;
 				margin-bottom: 10px;
+				text-align: left;
 			}
+				.meta_mensaje_l
+				{
+					float: left;
+					font-size: 50%; 
+					margin-left: 10px;
+					margin-right: 80%;
+					margin-bottom: 10px;
+					text-align: left;
+				}
 		.informacion
 		{
 
@@ -105,49 +125,45 @@
 	<div class="mensajero">
 
 		<?php 
-		for($c =0; $c <10; $c++)
+		$mensaje = 'Hola este es un mensaje de prueba muy largo para mostrar que el mensajero se ve de manera correcta en esta situacion en la cual los mensajes seran muy largos.';
+		$meta = 'Lunes 20 de Mayo de 2018 13:00:03 ';
+		for($c =0; $c <100; $c++)
 		{
+			if($tipo == 'r')
+			{
+				$tipo = 'l';
+			}
+			else
+			{
+				$tipo = 'r';
+			}
 			echo'
 			<div>
-				<div class="mensaje_r">
-					Mensaje largo Mensaje largo Mensaje largo Mensaje largo Mensaje largo Mensaje largo Mensaje largo Mensaje largo 
+				<div class="mensaje_'.$tipo.'">
+					'.$mensaje.' 
 				</div>
-			</div>
-			<div>
-				<div class="mensaje_r">
-					Mensaje medio Mensaje medio Mensaje medio 
-				</div>
-			</div>
-			<div>
-				<div class="mensaje_r">
-					Mensaje corto
-				</div>
-			</div>
-			<div>
-				<div class="mensaje_r">
-					:)
+				<div class="meta_mensaje_'.$tipo.'">
+					'.$meta.'
 				</div>
 			</div>
 			';
 			echo'
 			<div>
-				<div class="mensaje_l">
+				<div class="mensaje_'.$tipo.'">
+					'.$mensaje.' 
+				</div>
+				<div class="meta_mensaje_'.$tipo.'">
+					'.$meta.'
+				</div>
+			</div>
+			';
+			echo'
+			<div>
+				<div class="mensaje_'.$tipo.'">
 					:)
 				</div>
-			</div>
-			<div>
-				<div class="mensaje_l">
-					Mensaje corto
-				</div>
-			</div>
-			<div>
-				<div class="mensaje_l">
-					Mensaje corto Mensaje corto Mensaje corto Mensaje corto Mensaje corto 
-				</div>
-			</div>
-			<div>
-				<div class="mensaje_l">
-					Mensaje corto Mensaje corto Mensaje corto Mensaje corto Mensaje corto Mensaje corto Mensaje corto 
+				<div class="meta_mensaje_'.$tipo.'">
+					'.$meta.'
 				</div>
 			</div>
 			';
