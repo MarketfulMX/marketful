@@ -54,6 +54,9 @@ if (!defined('ML_META_LAST_CATEGORY'))
 if (!defined('ML_META_PRECIO_ML'))
     define('ML_META_PRECIO_ML', 'precio_ml');
 
+//Orders
+
+
 /**
  * @Clase MKF_ProductEntry que @hereda los metodos y atributos de MKF_DBCore
  *
@@ -107,6 +110,8 @@ class MKF_ProductEntry extends MKF_DBCore
         $this->meta_cat    = ML_META_CATEGORIES;
         $this->meta_lcat   = ML_META_LAST_CATEGORY;
         $this->meta_precio_ml   = ML_META_PRECIO_ML;
+
+        // Orders 
     }
 
 
@@ -278,7 +283,7 @@ class MKF_ProductEntry extends MKF_DBCore
         array_push($out, array("data"=> $this->execute_custom_query($sql)));
         return $out;
     }
-    
+
     /** 
      * @fución publica get_ml_metadata(@string = (NULL))
      *
@@ -422,4 +427,49 @@ class MKF_ProductEntry extends MKF_DBCore
         wp_send_json_success($parseada);
         wp_die();
     }
+
+
+
+
+    // ORDERS
+    /***
+      * @Funcion get_order_list()
+      *
+      * Esta funcion hace la query para retornar la lista de ordenes buscando las de Mercado Libre.
+      *
+      */
+
+      public function get_order_list()
+      {
+        /***********************************
+         * @script Obtenemos el nombre prefijo de la base de datos utilizando la clase de WP wpdb
+         * la cual nos entrega el valor del prefijo de la base de datos con $wpdb->get_blog_prefix()
+         * prefijo que utilizaremos para las querys posteriores haciendo que funcione sin inportar el 
+         * prefijo que se haya definido en la instalacion de wordpress.
+         */ 
+        global $wpdb;
+        $prefix = $wpdb->get_blog_prefix();
+        //***********************************
+
+        $out = array();
+        $out2 = array(); //Array para cambiar el idioma en el que se muestra la fecha. 
+
+        $sql = 
+            "SELECT a.order_item_id id, a.order_item_name name, a.order_id order_id, b.meta_value customer_id, DATE_FORMAT(c.meta_value, '%W %d %M %Y') fecha, d.meta_value precio_tot, e.meta_value customer_name, f.meta_value customer_tel, g.meta_value sku, h.meta_value qty, i.meta_value precio_sub
+             FROM {$prefix}woocommerce_order_items a
+                INNER JOIN {$prefix}woocommerce_order_itemmeta b ON b.order_item_id = a.order_item_id AND b.meta_key = '_customer_id'
+                INNER JOIN {$prefix}woocommerce_order_itemmeta c ON c.order_item_id = a.order_item_id AND c.meta_key = '_fecha_llegada'
+                INNER JOIN {$prefix}woocommerce_order_itemmeta d ON d.order_item_id = a.order_item_id AND d.meta_key = '_line_total'
+                INNER JOIN {$prefix}woocommerce_order_itemmeta e ON e.order_item_id = a.order_item_id AND e.meta_key = '_customer_name'
+                INNER JOIN {$prefix}woocommerce_order_itemmeta f ON f.order_item_id = a.order_item_id AND f.meta_key = '_customer_tel'
+                INNER JOIN {$prefix}woocommerce_order_itemmeta g ON g.order_item_id = a.order_item_id AND g.meta_key = '_sku'
+                INNER JOIN {$prefix}woocommerce_order_itemmeta h ON h.order_item_id = a.order_item_id AND h.meta_key = '_qty'
+                INNER JOIN {$prefix}woocommerce_order_itemmeta i ON i.order_item_id = a.order_item_id AND i.meta_key = '_line_subtotal'
+            ";
+        $sql_set_lan = "SET lc_time_names = 'es_ES'"; // Query para cambiar el idioma a español en el que se muestra la fecha
+        
+        array_push($out2, array("data"=> $this->execute_custom_query($sql_set_lan))); // Se ejecuta la query para cambiar el idioma de la fecha a español
+        array_push($out, array("data"=> $this->execute_custom_query($sql)));
+        return $out;
+      }
 }

@@ -16,14 +16,18 @@
  * Descripción General: 
  * Vista que muestra las ordenes existentes que se tiene en Mercado Libre
  * y permite ver sus atributos.
- *
+ * En estam vista los usuarios pueden ver de manera clara las ordenes que 
+ * se encuentran activas asi como la informacion relacionada con las mismas.
  *
  */
 
  $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
+
+ // Tomar las ordenes
+ $orders = MKF_ProductEntry::GetInstance()->get_order_list();
 ?>
     
-<!-- // creo que sobra  -->
+<!-- Mandamos llamar a las libreruas que utilizaremos -->
 <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 
 <!-- Bootstrap CSS and JS-->
@@ -35,7 +39,12 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 <script type="text/javascript">
-  function clic(num)
+  /** 
+   * @funcion cambio(@tring: 1 or 2)
+   * 
+   * Recibe el valor de la pagin ane la que desea para mostrarla y ocultar la otra.
+   */
+  function cambio(num)
   {
     console.log(num);
     if(num == 2)
@@ -43,14 +52,43 @@
       $('#2').attr('class','nav-link active'); $('#1').attr('class','nav-link');  
       $('.cerradas').css('display','inline');
       $('.abiertas').css('display','none');
+      $('#checkbox_master').attr('onclick','checkbox_select_all("class")'); 
     }
     else
     {
       $('#1').attr('class','nav-link active'); $('#2').attr('class','nav-link'); 
       $('.abiertas').css('display','inline');
       $('.cerradas').css('display','none');
+      $('#checkbox_master').attr('onclick','checkbox_select_all("o")'); 
     }
   }
+
+  /**
+   * @funcion checkbox_select_all(@string: o or c)
+   * 
+   * Esta funcion selecciona todos los checkboxes de la pagina para seleccionar todos sus 
+   * checkboxes de los productos que tengamos en lista.
+   */
+  function checkbox_select_all(tipo)
+  {
+    console.log('Entro: '+tipo+' : ');
+    if(tipo == 'o')
+    {
+      tipo = 'open';
+    }
+    else
+    {
+      tipo = 'close';
+    }
+    console.log(' Entro a : '+tipo);
+    var checkboxes = document.getElementsByName('checkbox_'+tipo);
+    var source = $('#checkbox_master');
+    for(var i=0, n=checkboxes.length;i<n;i++) 
+    {
+        checkboxes[i].checked = source.is(":checked");
+    }
+  }
+
 </script>
 
 <style type="text/css">
@@ -65,7 +103,7 @@
     border-top-width: 0px;
     border-style: solid;
     border-radius: 0px 0px 3px 3px;
-    padding: 10px 5px;
+    padding: 0px 0px;
     background-color: white;    
     margin-right: 2%;
     color: #656666;
@@ -81,11 +119,11 @@
     border-top-width: 0px; 
     border-style: solid; 
     border-radius: 0px;
-    padding: 5px;
+    padding: 10px 5px;
     padding-left: 20px;
     background-color: white;    
     margin-right: 2%;
-    vertical-align: middle;
+    vertical-align: middle;   
   }
     .opciones_ord_down
     {
@@ -133,6 +171,7 @@
     }
   .caja_orden
   {
+    margin-top: 20px;
     border-color: #dee2e6;
     border-style: solid;
     border-width: .5px;
@@ -156,6 +195,10 @@
       {
         color: #27B820;
       }
+      .fr1_2-2
+      {
+        color: black;
+      }
       .fr1_4
       {
         font-size: 85%;
@@ -171,6 +214,7 @@
       display: grid;
       grid-template-columns: 40% 60%;
       grid-template-rows: 100%;
+      font-size: 85%;
     }
       .fr3_1
       {
@@ -182,18 +226,31 @@
         grid-template-columns: 100%;
         grid-template-rows: 1fr 1fr 1fr;
       }
+        .fr3_2_1
+        {
+          color: blue;
+        }
     .fr4
     {
       padding-top: 20px;
       display: grid;
-      grid-template-columns: 50% 35% 15%;
+      grid-template-columns: 70% 15% 15%;
       grid-template-rows: 100%;
+      font-size: 85%;
     }
       .fr4_1
       {
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 40% 30% 30%;
+        grid-template-rows: 30% 30% 20% 20%;
+      }
+      .fr4_2
+      {
+        text-align: center;
+      }
+      .opciones
+      {
+        cursor: pointer;
       }
 </style>
 <div class="head_ord">
@@ -202,11 +259,11 @@
 </div>
 <div class="maximo">
   <ul class="nav nav-tabs tab-superior" id= tab-superior style="max-width: 98%;">
-    <li class="nav-item"><a href="#" id="1" class="nav-link active" onclick="clic(1)" >Abiertas</a></li>
-    <li class="nav-item"><a href="#" id="2" class="nav-link" onclick="clic(2)" >Cerradas</a></li>
+    <li class="nav-item"><a href="#" id="1" class="nav-link active" onclick="cambio(1)" >Abiertas</a></li>
+    <li class="nav-item"><a href="#" id="2" class="nav-link" onclick="cambio(2)" >Cerradas</a></li>
   </ul>
   <div class="opciones_ord">
-    <input name="cb" type="checkbox" />
+    <input id="checkbox_master" type="checkbox" onclick="checkbox_select_all('o')">
     <input type="text" class="input_ord" placeholder="comprador o venta" name="" />
     <button class="boton_ord">Buscar</button>
   </div>
@@ -216,62 +273,145 @@
   </div>
   <div class="contenedor">
     <div class="abiertas">
-      <div class="caja_orden">
-        <div class="fr1">
-          <div class="fr1_1">
-            <input type="checkbox" name="">
+      <?php
+        /**
+         * @Script: El foreach recorrera todos los posibles registros que haya retornado la query
+         * y despues lo mostrara con el formato de la vista.
+         * Aqui se muestran todas las ordenes abiertas.
+         */
+        foreach ($orders[0]['data'] as $key => $order) 
+        {
+         echo '
+         <div class="caja_orden">
+          <div class="fr1">
+            <div class="fr1_1">
+              <input type="checkbox" id="checkbox_open_'.$order->id.'"name="checkbox_open">
+            </div>
+            <div class="fr1_2">
+              En camino
+            </div>
+            <div class="fr1_3">
+            </div>
+            <div class="fr1_4">
+              Fecha de llegada: '.$order->fecha.'
+            </div>
           </div>
-          <div class="fr1_2">
-            En camino
+          <div class="fr2">
+            <button type="button" class="btn btn-primary">Seguir Envio</button>
           </div>
-          <div class="fr1_3">
+          <div class="fr3">
+            <div class="fr3_1">
+              <img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="120" height="100">
+            </div>
+            <div class="fr3_2">
+              <div class="fr3_2_1">
+                <a href="#">'.$order->name.'</a>
+              </div>
+              <div class="fr3_2_2">
+                $ '.$order->precio_sub.' x '.$order->qty.' unidad(es) = $'.$order->precio_tot.'
+              </div>
+              <div class="fr3_2_3">
+                SKU: '.$order->sku.'  
+              </div>
+            </div>
           </div>
-          <div class="fr1_4">
-            Llega tal dia
-          </div>
+          <div class="fr4">
+            <div class="fr4_1">
+              <div class="fr4_1_1">
+                '.$order->customer_name.'
+              </div>
+              <div class="fr4_1_2">
+                '.$order->customer_id.'
+              </div>
+              <div class="fr4_1_3">
+                '.$order->customer_tel.'
+              </div>
+              <div class="fr4_1_4">
+                <a href="#&'.$order->id.'" >Enviar Mensaje</a>
+              </div>
+            </div>
+            <div class="fr4_2">
+              <a href="#"> Ver Detalles </a>
+            </div>
+            <div class="fr4_3">
+              <i class="fas fa-ellipsis-v opciones" onclick=""></i>
+            </div>
+          </div> 
         </div>
-        <div class="fr2">
-          <button type="button" class="btn btn-primary">Seguir Envio</button>
-        </div>
-        <div class="fr3">
-          <div class="fr3_1">
-            <img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="120" height="100">
-          </div>
-          <div class="fr3_2">
-            <div class="fr3_2_1">
-              <a href="#">Nombre del producto</a>
-            </div>
-            <div class="fr3_2_2">
-              Zona 3.2.2
-            </div>
-            <div class="fr3_2_3">
-              Zona 3.2.3
-            </div>
-          </div>
-        </div>
-        <div class="fr4">
-          <div class="fr4_1">
-            <div class="fr4_1_1">
-              Zona 4.1.1
-            </div>
-            <div class="fr4_1_2">
-              Zona 4.1.2
-            </div>
-            <div class="fr4_1_3">
-              Zona 4.1.3
-            </div>
-          </div>
-          <div class="fr4_2">
-            Zona 4.2
-          </div>
-          <div class="fr4_3">
-            Zona 4.3
-          </div>
-        </div> 
-      </div>
+         ';
+        }
+     ?>
+      
     </div>
     <div class="cerradas">
-      Cerradas
+      <?php
+        /**
+         * @Script: El foreach recorrera todos los posibles registros que haya retornado la query
+         * y despues lo mostrara con el formato de la vista.
+         * Aqui se muestran todas las ordenes cerradas.
+         */
+        foreach ($orders[0]['data'] as $key => $order) 
+        {
+         echo '
+         <div class="caja_orden">
+          <div class="fr1">
+            <div class="fr1_1">
+              <input type="checkbox" id="checkbox_close_'.$order->id.'"name="checkbox_close">
+            </div>
+            <div class="fr1_2-2">
+              Entregado
+            </div>
+            <div class="fr1_3">
+            </div>
+            <div class="fr1_4">
+              Fecha de llegada: '.$order->fecha.'
+            </div>
+          </div>
+          <div class="fr2">
+            <button type="button" class="btn btn-primary">Seguir Envio</button>
+          </div>
+          <div class="fr3">
+            <div class="fr3_1">
+              <img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="120" height="100">
+            </div>
+            <div class="fr3_2">
+              <div class="fr3_2_1">
+                <a href="#">'.$order->name.'</a>
+              </div>
+              <div class="fr3_2_2">
+                $ '.$order->precio_sub.' x '.$order->qty.' unidad(es) = $'.$order->precio_tot.'
+              </div>
+              <div class="fr3_2_3">
+                SKU: '.$order->sku.'  
+              </div>
+            </div>
+          </div>
+          <div class="fr4">
+            <div class="fr4_1">
+              <div class="fr4_1_1">
+                '.$order->customer_name.'
+              </div>
+              <div class="fr4_1_2">
+                '.$order->customer_id.'
+              </div>
+              <div class="fr4_1_3">
+                '.$order->customer_tel.'
+              </div>
+              <div class="fr4_1_4">
+                <a href="#&'.$order->id.'" >Enviar Mensaje</a>
+              </div>
+            </div>
+            <div class="fr4_2">
+              <a href="#"> Ver Detalles </a>
+            </div>
+            <div class="fr4_3">
+              <i class="fas fa-ellipsis-v opciones" onclick=""></i>
+            </div>
+          </div> 
+        </div>
+         ';
+        }
+     ?>
     </div>
   </div>
 </div>
