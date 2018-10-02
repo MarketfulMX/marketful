@@ -1,7 +1,15 @@
-Mauricio 
 
-1) Spinner al boton Subir cambios minetras sube los cambios 
- 
+### Mauricio
+Falta en vista ordenes:
+	- Saber el nombre del cliente que compra.
+	- Saber el pseudonimo del cliente que compra.
+	- Saber el numero del cliente.
+	- Saber la fecha en la que llegara el envio.
+	- Saber si el envio esta abierto o cerrado.
+	- Usar datos existentes para obtener lo demas ( Crear una query para saber los datos del producto )
+	- Conseguir la query cuendo el tipo de post sea shop_order
+	- Probar las fotos y buscar como poder obtenerla, hacer pruebas para poder ver donde se guardan.
+	- 
 
  ### API Juan y Charly
  1) Agregar la descripcion comun a los items nuevos en SubirMlListings
