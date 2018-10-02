@@ -281,65 +281,73 @@
          */
         foreach ($orders[0]['data'] as $key => $order) 
         {
-         echo '
-         <div class="caja_orden">
-          <div class="fr1">
-            <div class="fr1_1">
-              <input type="checkbox" id="checkbox_open_'.$order->id.'"name="checkbox_open">
-            </div>
-            <div class="fr1_2">
-              En camino
-            </div>
-            <div class="fr1_3">
-            </div>
-            <div class="fr1_4">
-              Fecha de llegada: '.$order->fecha.'
-            </div>
-          </div>
-          <div class="fr2">
-            <button type="button" class="btn btn-primary">Seguir Envio</button>
-          </div>
-          <div class="fr3">
-            <div class="fr3_1">
-              <img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="120" height="100">
-            </div>
-            <div class="fr3_2">
-              <div class="fr3_2_1">
-                <a href="#">'.$order->name.'</a>
+          if($order->estado == 'wc-pending' || $order->estado == 'wc-processing')
+          {
+            $path = $order->item_content;
+            $inicio = strpos($path, 'src="') + 5;
+            $fin = $inicio - (strpos($path, '.jpg')-2);
+            $direc = substr($path, ($inicio), ($fin));
+            echo '
+             <div class="caja_orden">
+              <div class="fr1">
+                <div class="fr1_1">
+                  <input type="checkbox" id="checkbox_open_'.$order->id.'"name="checkbox_open">
+                </div>
+                <div class="fr1_2">
+                  En camino
+                </div>
+                <div class="fr1_3">
+                </div>
+                <div class="fr1_4">
+                  Fecha de orden: '.$order->fecha.'
+                </div>
               </div>
-              <div class="fr3_2_2">
-                $ '.$order->precio_sub.' x '.$order->qty.' unidad(es) = $'.$order->precio_tot.'
+              <div class="fr2">
+                <button type="button" class="btn btn-primary">Seguir Envio</button>
               </div>
-              <div class="fr3_2_3">
-                SKU: '.$order->sku.'  
+              <div class="fr3">
+                <div class="fr3_1">
+                  <img src="'.$direc.'" width="120" height="100">
+                </div>
+                <div class="fr3_2">
+                  <div class="fr3_2_1">
+                    <a href="#">'.$order->item_name.'</a>
+                  </div>
+                  <div class="fr3_2_2">
+                    $ '.$order->item_price.' x '.$order->item_qty.' unidad(es) = $'.$order->item_price_total.'
+                  </div>
+                  <div class="fr3_2_3">
+                    SKU: '.$order->item_sku.'  
+                  </div>
+                </div>
               </div>
+              <div class="fr4">
+                <div class="fr4_1">
+                  <div class="fr4_1_1">
+                    '.$order->customer_name.' '.$order->customer_lastname.'
+                  </div>
+                  <div class="fr4_1_2">
+                    '.$order->customer_id.'
+                  </div>
+                  <div class="fr4_1_3">
+                    '.$order->customer_tel.'
+                  </div>
+                  <div class="fr4_1_4">
+                    <a href="#&'.$order->id.'" >Enviar Mensaje</a>
+                  </div>
+                </div>
+                <div class="fr4_2">
+                  <a href="#"> Ver Detalles </a>
+                </div>
+                <div class="fr4_3">
+                  <i class="fas fa-ellipsis-v opciones" onclick=""></i>
+                </div>
+              </div> 
             </div>
-          </div>
-          <div class="fr4">
-            <div class="fr4_1">
-              <div class="fr4_1_1">
-                '.$order->customer_name.'
-              </div>
-              <div class="fr4_1_2">
-                '.$order->customer_id.'
-              </div>
-              <div class="fr4_1_3">
-                '.$order->customer_tel.'
-              </div>
-              <div class="fr4_1_4">
-                <a href="#&'.$order->id.'" >Enviar Mensaje</a>
-              </div>
-            </div>
-            <div class="fr4_2">
-              <a href="#"> Ver Detalles </a>
-            </div>
-            <div class="fr4_3">
-              <i class="fas fa-ellipsis-v opciones" onclick=""></i>
-            </div>
-          </div> 
-        </div>
-         ';
-        }
+             ';
+            }
+          }
+           
      ?>
       
     </div>
@@ -350,68 +358,89 @@
          * y despues lo mostrara con el formato de la vista.
          * Aqui se muestran todas las ordenes cerradas.
          */
+
         foreach ($orders[0]['data'] as $key => $order) 
         {
-         echo '
-         <div class="caja_orden">
-          <div class="fr1">
-            <div class="fr1_1">
-              <input type="checkbox" id="checkbox_close_'.$order->id.'"name="checkbox_close">
-            </div>
-            <div class="fr1_2-2">
-              Entregado
-            </div>
-            <div class="fr1_3">
-            </div>
-            <div class="fr1_4">
-              Fecha de llegada: '.$order->fecha.'
-            </div>
-          </div>
-          <div class="fr2">
-            <button type="button" class="btn btn-primary">Seguir Envio</button>
-          </div>
-          <div class="fr3">
-            <div class="fr3_1">
-              <img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="120" height="100">
-            </div>
-            <div class="fr3_2">
-              <div class="fr3_2_1">
-                <a href="#">'.$order->name.'</a>
+          if($order->estado == 'wc-completed')
+          {
+            $path = $order->item_content;
+            $inicio = strpos($path, 'src="') + 5;
+            $fin = $inicio - (strpos($path, '.jpg')-2);
+            $direc = substr($path, ($inicio), ($fin));
+             echo '
+             <div class="caja_orden">
+              <div class="fr1">
+                <div class="fr1_1">
+                  <input type="checkbox" id="checkbox_close_'.$order->id.'"name="checkbox_close">
+                </div>
+                <div class="fr1_2-2">
+                  Entregado
+                </div>
+                <div class="fr1_3">
+                </div>
+                <div class="fr1_4">
+                  Fecha de orden: '.$order->fecha.'
+                </div>
               </div>
-              <div class="fr3_2_2">
-                $ '.$order->precio_sub.' x '.$order->qty.' unidad(es) = $'.$order->precio_tot.'
+              <div class="fr2">
+                <button type="button" class="btn btn-primary">Seguir Envio</button>
               </div>
-              <div class="fr3_2_3">
-                SKU: '.$order->sku.'  
+              <div class="fr3">
+                <div class="fr3_1">
+                  <img src="'.$direc.'" width="120" height="100">
+                </div>
+                <div class="fr3_2">
+                  <div class="fr3_2_1">
+                    <a href="#">'.$order->item_name.'</a>
+                  </div>
+                  <div class="fr3_2_2">
+                    $ '.$order->item_price.' x '.$order->item_qty.' unidad(es) = $'.$order->item_price_total.'
+                  </div>
+                  <div class="fr3_2_3">
+                    SKU: '.$order->item_sku.'  
+                  </div>
+                </div>
               </div>
+              <div class="fr4">
+                <div class="fr4_1">
+                  <div class="fr4_1_1">
+                    '.$order->customer_name.' '.$order->customer_lastname.'
+                  </div>
+                  <div class="fr4_1_2">
+                    '.$order->customer_id.'
+                  </div>
+                  <div class="fr4_1_3">
+                    '.$order->customer_tel.'
+                  </div>
+                  <div class="fr4_1_4">
+                    <a href="#&'.$order->id.'" >Enviar Mensaje</a>
+                  </div>
+                </div>
+                <div class="fr4_2">
+                  <a href="#"> Ver Detalles </a>
+                </div>
+                <div class="fr4_3">
+                  <i class="fas fa-ellipsis-v opciones" onclick=""></i>
+                </div>
+              </div> 
             </div>
-          </div>
-          <div class="fr4">
-            <div class="fr4_1">
-              <div class="fr4_1_1">
-                '.$order->customer_name.'
-              </div>
-              <div class="fr4_1_2">
-                '.$order->customer_id.'
-              </div>
-              <div class="fr4_1_3">
-                '.$order->customer_tel.'
-              </div>
-              <div class="fr4_1_4">
-                <a href="#&'.$order->id.'" >Enviar Mensaje</a>
-              </div>
-            </div>
-            <div class="fr4_2">
-              <a href="#"> Ver Detalles </a>
-            </div>
-            <div class="fr4_3">
-              <i class="fas fa-ellipsis-v opciones" onclick=""></i>
-            </div>
-          </div> 
-        </div>
-         ';
+            ';
+          }
         }
      ?>
     </div>
   </div>
 </div>
+<?php
+echo '<div style="font-size: 60%">';
+echo 'Datos <br>';
+foreach ($orders[0]['data'] as $key => $order) 
+{
+  $path = $order->item_content;
+  $inicio = strpos($path, 'src="') + 5;
+  $fin = $inicio - (strpos($path, '.jpg')+2);
+  $direc = substr($path, ($inicio), ($fin));
+  echo 'Orden numero : '.$order->id.' Nombre : '.$order->customer_name.' Apellido: '.$order->customer_lastname.' Telefono: '.$order->customer_tel.' Fecha : '.$order->fecha.' Estado: '.$order->estado.' Item ID : '.$order->item_id.' Item name : '.$order->item_name.' Item Product ID : '.$order->item_product_id.' Cantidad: '.$order->item_qty.' Precio : '.$order->item_price_total .' Item Sku : '.$order->item_sku.' Precio unitario : '.$order->item_price.' Path de informacion : '.$direc.'<br>';
+}
+echo '</div>';
+?>

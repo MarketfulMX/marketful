@@ -117,7 +117,8 @@ class MKF_ProductEntry extends MKF_DBCore
 
     /*
      * @Función PHP: my_theme_ajax_submit()
-     * La @función my_theme_ajax_submit() recibe dentro de las variables:
+     * 
+     * - Descripcion General: La @función my_theme_ajax_submit() recibe dentro de las variables:
      * $producto_id = Identificador del producto 
      * $value = Nuevo valor a actualizar
      * $key = Tipo de metadato que se modificara
@@ -149,7 +150,7 @@ class MKF_ProductEntry extends MKF_DBCore
     /**
      * @Funcion actualiza_mkf()
      * 
-     * Recibe el metadato y el valor que se va a cambiar para actualizar el valor en woocommerce.marketful
+     * - Descripcion Masiva: Recibe el metadato y el valor que se va a cambiar para actualizar el valor en woocommerce.marketful
      */
     public function actualiza_mkf() 
     {
@@ -164,7 +165,11 @@ class MKF_ProductEntry extends MKF_DBCore
     }
     
     
-    /** Descripcion Masiva **/
+    /** 
+     * @funcion des_comun_ajax_submit()
+     *
+     * - Descripcion General: Agrega la descripcion masiva a los productos.
+     **/
     public function desc_comun_ajax_submit() 
     {
         error_log("entramos en descomunajax");
@@ -188,7 +193,7 @@ class MKF_ProductEntry extends MKF_DBCore
     /**
      * @función GetInstance()
      * 
-     * Es una función estatica que accede al objeto $instance y busca que sea nulo, 
+     * - Descripcion General: Es una función estatica que accede al objeto $instance y busca que sea nulo, 
      * en cuyo caso creal el objeto.
      * Em caso contrario retorna el objeto.
      */
@@ -206,7 +211,7 @@ class MKF_ProductEntry extends MKF_DBCore
     /**
      * @función prefix_admin:add_metadata_to_product_entry()
      *
-     * Primero tomamos el valor de extr_prefix_all en caso de no encontrar ningun valor le asignamos una "p"
+     * - Descripcion General: Primero tomamos el valor de extr_prefix_all en caso de no encontrar ningun valor le asignamos una "p"
      * Posteriormente con la funcion update_post_meta de WP actualizamos los valores del producto $p_product_id.
      * Finaliza redirigiendonos hacia admin.php en la sección mkf-product-entries.
      */
@@ -231,7 +236,7 @@ class MKF_ProductEntry extends MKF_DBCore
     /**
      * @función get_product_list()
      *
-     * Esta función define la query que se requiere hacer y la ejecuta para traer todos los datos que requiere el 
+     * - Descripcion General: Esta función define la query que se requiere hacer y la ejecuta para traer todos los datos que requiere el 
      * plugin.
      * 
      * Primero se define un array que posteriormente mostrara toda la información resultante llamado $out.
@@ -287,7 +292,7 @@ class MKF_ProductEntry extends MKF_DBCore
     /** 
      * @fución publica get_ml_metadata(@string = (NULL))
      *
-     * Recibe el valor de el $post_id y en caso de no enontrarlo le asigna valor nulo.
+     * - Descripcion General: Recibe el valor de el $post_id y en caso de no enontrarlo le asigna valor nulo.
      * Crea en una variable @string la query que se requere ejecutar.
      * Posteriormente con la función array_push() se ejecuta la query y se guarda dentro del array $out
      * Para finalizar retornando el valor de $out.
@@ -330,7 +335,7 @@ class MKF_ProductEntry extends MKF_DBCore
     /** 
      * @función get_product_edit_form_title(@tring = (NULL), @string = (NULL))
      * 
-     * Dentro de esta función se retorna el valor del titulo dependiendo si es nulo o simplemente esta vacio, 
+     * - Descripcion General: Dentro de esta función se retorna el valor del titulo dependiendo si es nulo o simplemente esta vacio, 
      * así como el valor del SKU.
      */
     public static function get_product_edit_form_title($title = null, $sku = null)
@@ -342,7 +347,7 @@ class MKF_ProductEntry extends MKF_DBCore
     /**
      * @función product_edit_form_title_to_presenter(@string = (NULL), @tring = (NULL))
      * 
-     * Hace echo al valor  $title y $Sku del objeto en cuestion.
+     * - Descripcion General: Hace echo al valor  $title y $Sku del objeto en cuestion.
      */
     public static function product_edit_form_title_to_presenter($title = null, $sku = null)
     {
@@ -364,7 +369,7 @@ class MKF_ProductEntry extends MKF_DBCore
 
     /**
      * @funcion test_product()
-     * Crea un producto de prueba para el obboarding
+     * - Descripcion General: Crea un producto de prueba para el obboarding
      */
     public function test_product()
     {
@@ -388,7 +393,7 @@ class MKF_ProductEntry extends MKF_DBCore
     }
     /**
      * @Funcion test_product_delete()
-     * Borra el producto de prueba para el onboarding
+     * - Descripcion General: Borra el producto de prueba para el onboarding
      */
     public function test_product_delete()
     {
@@ -407,7 +412,7 @@ class MKF_ProductEntry extends MKF_DBCore
     /**
      * @funcion get_ce()
      * 
-     * Funcion que se manda a llamar via ajax y manda a llamar a la API Marketful para obtener el 
+     * - Descripcion General: Funcion que se manda a llamar via ajax y manda a llamar a la API Marketful para obtener el 
      * costo de envio.
      */
     public function get_ce()
@@ -435,7 +440,7 @@ class MKF_ProductEntry extends MKF_DBCore
     /***
       * @Funcion get_order_list()
       *
-      * Esta funcion hace la query para retornar la lista de ordenes buscando las de Mercado Libre.
+      * - Descripcion General: Esta funcion hace la query para retornar la lista de ordenes buscando las de Mercado Libre.
       *
       */
 
@@ -466,10 +471,26 @@ class MKF_ProductEntry extends MKF_DBCore
                 INNER JOIN {$prefix}woocommerce_order_itemmeta h ON h.order_item_id = a.order_item_id AND h.meta_key = '_qty'
                 INNER JOIN {$prefix}woocommerce_order_itemmeta i ON i.order_item_id = a.order_item_id AND i.meta_key = '_line_subtotal'
             ";
+
+        $sql2 = "SELECT pt.ID id, DATE_FORMAT(pt.post_date_gmt, '%W %d %M %Y') fecha, pt.post_status estado, t1.meta_value customer_name, t2.meta_value customer_lastname, t3.meta_value customer_tel, t4.order_item_id item_id, t4.order_item_name item_name, t5.meta_value item_product_id, t6.meta_value item_qty, t7.meta_value item_price_total, t8.meta_value item_sku, t9.meta_value item_price, t10.post_content item_content
+                 FROM {$prefix}posts pt
+                    INNER JOIN {$prefix}postmeta t1 ON t1.post_id = pt.ID AND t1.meta_key = '_billing_first_name'
+                    INNER JOIN {$prefix}postmeta t2 ON t2.post_id = pt.ID AND t2.meta_key = '_billing_last_name'
+                    INNER JOIN {$prefix}postmeta t3 ON t3.post_id = pt.ID AND t3.meta_key = '_billing_phone'
+                    INNER JOIN {$prefix}woocommerce_order_items t4 ON t4.order_id = pt.ID 
+                    INNER JOIN {$prefix}woocommerce_order_itemmeta t5 ON t4.order_item_id = t5.order_item_id AND t5.meta_key = '_product_id'
+                    INNER JOIN {$prefix}woocommerce_order_itemmeta t6 ON t4.order_item_id = t6.order_item_id AND t6.meta_key = '_qty'
+                    INNER JOIN {$prefix}woocommerce_order_itemmeta t7 ON t4.order_item_id = t7.order_item_id AND t7.meta_key = '_line_total'
+                    INNER JOIN {$prefix}postmeta t8 ON t5.meta_value = t8.post_id AND t8.meta_key = '_sku'
+                    INNER JOIN {$prefix}postmeta t9 ON t5.meta_value = t9.post_id AND t9.meta_key = '_price'
+                    INNER JOIN {$prefix}posts t10 ON t5.meta_value = t10.ID
+
+                 WHERE pt.post_type = 'shop_order'";
+    
         $sql_set_lan = "SET lc_time_names = 'es_ES'"; // Query para cambiar el idioma a español en el que se muestra la fecha
         
         array_push($out2, array("data"=> $this->execute_custom_query($sql_set_lan))); // Se ejecuta la query para cambiar el idioma de la fecha a español
-        array_push($out, array("data"=> $this->execute_custom_query($sql)));
+        array_push($out, array("data"=> $this->execute_custom_query($sql2)));
         return $out;
       }
 }
