@@ -442,9 +442,12 @@ class MKF_ProductEntry extends MKF_DBCore
       *
       * - Descripcion General: Esta funcion hace la query para retornar la lista de ordenes buscando las de Mercado Libre.
       *
+      * La query que se guarda en $sql parte de la orden que se guarda en la tabla posts, de ahi toma todos los metadatos de la orden, 
+      * y luego busca todos los productos de la orden y sus metadatos.
+      *
       */
 
-      public function get_order_list()
+      public function get_order_list($keyword = '')
       {
         /***********************************
          * @script Obtenemos el nombre prefijo de la base de datos utilizando la clase de WP wpdb
@@ -459,20 +462,7 @@ class MKF_ProductEntry extends MKF_DBCore
         $out = array();
         $out2 = array(); //Array para cambiar el idioma en el que se muestra la fecha. 
 
-        $sql = 
-            "SELECT a.order_item_id id, a.order_item_name name, a.order_id order_id, b.meta_value customer_id, DATE_FORMAT(c.meta_value, '%W %d %M %Y') fecha, d.meta_value precio_tot, e.meta_value customer_name, f.meta_value customer_tel, g.meta_value sku, h.meta_value qty, i.meta_value precio_sub
-             FROM {$prefix}woocommerce_order_items a
-                INNER JOIN {$prefix}woocommerce_order_itemmeta b ON b.order_item_id = a.order_item_id AND b.meta_key = '_customer_id'
-                INNER JOIN {$prefix}woocommerce_order_itemmeta c ON c.order_item_id = a.order_item_id AND c.meta_key = '_fecha_llegada'
-                INNER JOIN {$prefix}woocommerce_order_itemmeta d ON d.order_item_id = a.order_item_id AND d.meta_key = '_line_total'
-                INNER JOIN {$prefix}woocommerce_order_itemmeta e ON e.order_item_id = a.order_item_id AND e.meta_key = '_customer_name'
-                INNER JOIN {$prefix}woocommerce_order_itemmeta f ON f.order_item_id = a.order_item_id AND f.meta_key = '_customer_tel'
-                INNER JOIN {$prefix}woocommerce_order_itemmeta g ON g.order_item_id = a.order_item_id AND g.meta_key = '_sku'
-                INNER JOIN {$prefix}woocommerce_order_itemmeta h ON h.order_item_id = a.order_item_id AND h.meta_key = '_qty'
-                INNER JOIN {$prefix}woocommerce_order_itemmeta i ON i.order_item_id = a.order_item_id AND i.meta_key = '_line_subtotal'
-            ";
-
-        $sql2 = "SELECT pt.ID id, DATE_FORMAT(pt.post_date_gmt, '%W %d %M %Y') fecha, pt.post_status estado, t1.meta_value customer_name, t2.meta_value customer_lastname, t3.meta_value customer_tel, t4.order_item_id item_id, t4.order_item_name item_name, t5.meta_value item_product_id, t6.meta_value item_qty, t7.meta_value item_price_total, t8.meta_value item_sku, t9.meta_value item_price, t10.post_content item_content
+        $sql = "SELECT pt.ID id, DATE_FORMAT(pt.post_date_gmt, '%W %d %M %Y') fecha, pt.post_status estado, t1.meta_value customer_name, t2.meta_value customer_lastname, t3.meta_value customer_tel, t4.order_item_id item_id, t4.order_item_name item_name, t5.meta_value item_product_id, t6.meta_value item_qty, t7.meta_value item_price_total, t8.meta_value item_sku, t9.meta_value item_price, t10.post_content item_content
                  FROM {$prefix}posts pt
                     INNER JOIN {$prefix}postmeta t1 ON t1.post_id = pt.ID AND t1.meta_key = '_billing_first_name'
                     INNER JOIN {$prefix}postmeta t2 ON t2.post_id = pt.ID AND t2.meta_key = '_billing_last_name'
@@ -485,12 +475,12 @@ class MKF_ProductEntry extends MKF_DBCore
                     INNER JOIN {$prefix}postmeta t9 ON t5.meta_value = t9.post_id AND t9.meta_key = '_price'
                     INNER JOIN {$prefix}posts t10 ON t5.meta_value = t10.ID
 
-                 WHERE pt.post_type = 'shop_order'";
+                 WHERE pt.post_type = 'shop_order' AND (t4.order_item_name LIKE '%{$keyword}%' OR t1.meta_value LIKE '%{$keyword}%')";
     
         $sql_set_lan = "SET lc_time_names = 'es_ES'"; // Query para cambiar el idioma a español en el que se muestra la fecha
         
         array_push($out2, array("data"=> $this->execute_custom_query($sql_set_lan))); // Se ejecuta la query para cambiar el idioma de la fecha a español
-        array_push($out, array("data"=> $this->execute_custom_query($sql2)));
+        array_push($out, array("data"=> $this->execute_custom_query($sql)));
         return $out;
       }
 }

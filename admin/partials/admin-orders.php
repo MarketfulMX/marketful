@@ -20,11 +20,11 @@
  * se encuentran activas asi como la informacion relacionada con las mismas.
  *
  */
-
+ $keyword = ''; $keyword = $_REQUEST['keyword'];
  $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
  // Tomar las ordenes
- $orders = MKF_ProductEntry::GetInstance()->get_order_list();
+ $orders = MKF_ProductEntry::GetInstance()->get_order_list($keyword);
 ?>
     
 <!-- Mandamos llamar a las libreruas que utilizaremos -->
@@ -89,6 +89,19 @@
     }
   }
 
+  /***
+   * @funcion buscar_orden()
+   *
+   * - Descripcion General: Postea el parametro que se ha escrito en el input de busqueda. Redirige la pagina hacia si misma pero 
+   * con la keyword que hace que se realice la busqueda de resultados. La keyword busca el nombre del producto, o el nombre del 
+   * comprador.
+   */
+  function buscar_orden()
+  {
+    var keyword = $('#i_search').val();
+    location.href = '?page=mkf-product-orders&keyword='+keyword;
+  }
+
 </script>
 
 <style type="text/css">
@@ -101,7 +114,7 @@
     overflow-y: scroll; 
     max-height: 55vh;
     border-color: #dee2e6;
-    border-width: .5px;
+    border-width: 0px;
     border-top-width: 0px;
     border-style: solid;
     border-radius: 0px 0px 3px 3px;
@@ -266,8 +279,8 @@
   </ul>
   <div class="opciones_ord">
     <input id="checkbox_master" type="checkbox" onclick="checkbox_select_all('o')">
-    <input type="text" class="input_ord" placeholder="comprador o venta" name="" />
-    <button class="boton_ord">Buscar</button>
+    <input type="text" class="input_ord" placeholder="comprador o venta" name=""  id="i_search" />
+    <button class="boton_ord" onclick="buscar_orden()">Buscar</button>
   </div>
   <div class="opciones_ord_down">
     <button class="boton_ord">Filtros</button>
