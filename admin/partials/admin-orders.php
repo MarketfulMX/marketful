@@ -98,6 +98,8 @@
   }
   .contenedor
   {
+    overflow-y: scroll; 
+    max-height: 55vh;
     border-color: #dee2e6;
     border-width: .5px;
     border-top-width: 0px;
@@ -284,24 +286,25 @@
           if($order->estado == 'wc-pending' || $order->estado == 'wc-processing')
           {
             // Script para mostrar la imagen desde woocommerce
-            $path = $order->item_content; echo '<script> console.log('.$path.')</script>';
+            $path = $order->item_content; echo '<script> console.log(" Path '.$path.'")</script>';
             $img = strpos($path, 'src="http');
             if($img > 0)
             {
-              $jpeg = strrpos($path, '.jpeg"'); echo '<script> console.log('.$jpeg.');</script>';
-              $jpg = strrpos($path, '.jpg"'); echo '<script> console.log('.$jpg.');</script>';
-              $inicio = $img +5; echo '<script> console.log('.$inicio.');</script>';
+              $jpeg = strrpos($path, '.jpeg" alt="" width="'); echo '<script> console.log(" Jpeg '.$jpeg.'");</script>';
+              $jpg = strrpos($path, '.jpg" alt="" width="'); echo '<script> console.log(" Jpg '.$jpg.'");</script>';
+              $inicio = $img + 5; echo '<script> console.log(" Inicio '.$inicio.'");</script>';
               if($jpg > 0)
               {
-                $fin = ($jpeg + 10) - $inicio ; echo '<script> console.log('.$fin.');</script>';
-                $direc = substr($path, ($inicio), ($fin)); echo '<script> console.log('.$direc.');</script>';
+                $fin = $jpg - $inicio + 4; echo '<script> console.log(" Fin '.$fin.'");</script>';
+                $direc = substr($path, ($inicio), ($fin)); echo '<script> console.log(" Direc '.$direc.'"");</script>';
+                $jpg = 0;
               }
               elseif($jpeg > 0)
               {
-                $fin = $inicio - $jpeg - 22; echo '<script> console.log('.$fin.');</script>';
-                $direc = substr($path, ($inicio), ($fin)); echo '<script> console.log('.$direc.');</script>';
+                $fin =  $jpeg - $inicio + 5; echo '<script> console.log(" Fin '.$fin.'");</script>';
+                $direc = substr($path, ($inicio), ($fin)); echo '<script> console.log(" Direc '.$direc.'");</script>';
+                $jpeg = 0;
               }
-              
             }
             else
             {
@@ -386,24 +389,25 @@
           if($order->estado == 'wc-completed')
           {
             // Script para mostrar la imagen desde woocommerce
-            $path = $order->item_content; 
+            $path = $order->item_content; echo '<script> console.log(" Path '.$path.'")</script>';
             $img = strpos($path, 'src="http');
             if($img > 0)
             {
-              $jpeg = strpos($path, '.jpeg'); echo '<script> console.log('.$jpeg.');</script>';
-              $jpg = strpos($path, '.jpg'); echo '<script> console.log('.$jpg.');</script>';
-              $inicio = $img + 9; echo '<script> console.log('.$inicio.');</script>';
+              $jpeg = strrpos($path, '.jpeg" alt="" width="'); echo '<script> console.log(" Jpeg '.$jpeg.'");</script>';
+              $jpg = strrpos($path, '.jpg" alt="" width="'); echo '<script> console.log(" Jpg '.$jpg.'");</script>';
+              $inicio = $img + 5; echo '<script> console.log(" Inicio '.$inicio.'");</script>';
               if($jpg > 0)
               {
-                $fin = $inicio - $jpg - 2; echo '<script> console.log('.$fin.');</script>';
-                $direc = substr($path, ($inicio), ($fin)); echo '<script> console.log('.$direc.');</script>';
+                $fin = $jpg - $inicio + 4; echo '<script> console.log(" Fin '.$fin.'");</script>';
+                $direc = substr($path, ($inicio), ($fin)); echo '<script> console.log(" Direc '.$direc.'"");</script>';
+                $jpg = 0;
               }
               elseif($jpeg > 0)
               {
-                $fin = $inicio - $jpeg - 21; echo '<script> console.log('.$fin.');</script>';
-                $direc = substr($path, ($inicio), ($fin)); echo '<script> console.log('.$direc.');</script>';
+                $fin =  $jpeg - $inicio + 5; echo '<script> console.log(" Fin '.$fin.'");</script>';
+                $direc = substr($path, ($inicio), ($fin)); echo '<script> console.log(" Direc '.$direc.'");</script>';
+                $jpeg = 0;
               }
-              
             }
             else
             {
@@ -475,29 +479,3 @@
     </div>
   </div>
 </div>
-<?php
-echo '<div style="font-size: 60%">';
-echo 'Datos <br>';
-foreach ($orders[0]['data'] as $key => $order) 
-{
-  $path = $order->item_content;
-  if(strpos($path, 'src="http') != 0)
-  {
-    echo strpos($path, 'src="http');  
-    $inicio = strpos($path, 'src="') + 5;
-    $fin = $inicio - (strpos($path, '.jpg')-2);
-    $direc = substr($path, ($inicio), ($fin));
-  }
-  else
-  {
-    $inicio = '';
-    $fin = '';
-    $direc = 'https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg';
-  }
-    
-  echo 'Orden numero : '.$order->id.' Nombre : '.$order->customer_name.' Apellido: '.$order->customer_lastname.' Telefono: '.$order->customer_tel.' Fecha : '.$order->fecha.' Estado: '.$order->estado.' Item ID : '.$order->item_id.' Item name : '.$order->item_name.' Item Product ID : '.$order->item_product_id.' Cantidad: '.$order->item_qty.' Precio : '.$order->item_price_total .' Item Sku : '.$order->item_sku.' Precio unitario : '.$order->item_price.' Path de informacion : '.$direc.'<br>';
-  
-
-}
-echo '</div>';
-?>
