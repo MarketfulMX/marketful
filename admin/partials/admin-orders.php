@@ -313,7 +313,25 @@
         {
           if($order->estado == 'wc-pending' || $order->estado == 'wc-processing' || $order->estado == 'wc-on-hold')
           {
-            // Script para mostrar la imagen desde woocommerce
+            /**
+             * @Script para mostrar la imagen desde woocommerce
+             *
+             * - 1: Se toma el valor de la descripcion que llega de la base de datos.
+             * - 2: Usando strpos() buscamos dentro del array $path el texto 'src="http' que nos indica que 
+             *      existe una imagen y guardamos la posicion y lo guardamos en $img. 
+             * - 3: Validamos si el valor de $img es mayor a cero, lo cual nos indica que existe una imagen
+             *      en la descripcion.
+             * - 4: En caso que si, buscamos dentro de $path el texto '.jpeg" alt="" width="' para saber si
+             *      la imagen es jpeg.
+             * - 5: En caso que si, buscamos dentro de $path el texto '.jpeg" alt="" width="' para saber si
+             *      la imagen es jpg.
+             * - 6: Sacamos el valor de $inicio, sumandole 5 caracteres a la posicion que nos regresa en $img.
+             * - 7: En caso de que el valor de $jpg sea mayor a cero, significa que hay una imagen jpg, en caso
+             *      contrario valida si $jpeg es mayor a cero lo que indica que existe una imagen jpeg.
+             * - 8: En ambios casos, determina el valor de $fin, segun la posicion tomando en cuenta el inicio 
+             *      y el fin.
+             * - 9: Despues de lo anterior se setea el valor de jpg y jpeg en 0.
+             */
             $path = $order->item_content;
             $img = strpos($path, 'src="http');
             if($img > 0)
