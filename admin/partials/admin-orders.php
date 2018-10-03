@@ -102,6 +102,14 @@
     location.href = '?page=mkf-product-orders&keyword='+keyword;
   }
 
+  function checar_enter(e)
+  {
+      if(e.which==13)
+      {
+          buscar_orden();
+      }
+  }
+
 </script>
 
 <style type="text/css">
@@ -173,6 +181,7 @@
     text-decoration: none;
     cursor: pointer;
     font-family: sans-serif;
+    margin-top: -100px;
   }
     .boton_ord:hover
     {
@@ -279,7 +288,7 @@
   </ul>
   <div class="opciones_ord">
     <input id="checkbox_master" type="checkbox" onclick="checkbox_select_all('o')">
-    <input type="text" class="input_ord" placeholder="comprador o venta" name=""  id="i_search" />
+    <input type="text" class="input_ord" placeholder="comprador o venta" name="" onkeypress="checar_enter(event)" value="<?php echo $keyword; ?>"  id="i_search" />
     <button class="boton_ord" onclick="buscar_orden()">Buscar</button>
   </div>
   <div class="opciones_ord_down">
@@ -299,23 +308,23 @@
           if($order->estado == 'wc-pending' || $order->estado == 'wc-processing')
           {
             // Script para mostrar la imagen desde woocommerce
-            $path = $order->item_content; echo '<script> console.log(" Path '.$path.'")</script>';
+            $path = $order->item_content;
             $img = strpos($path, 'src="http');
             if($img > 0)
             {
-              $jpeg = strrpos($path, '.jpeg" alt="" width="'); echo '<script> console.log(" Jpeg '.$jpeg.'");</script>';
-              $jpg = strrpos($path, '.jpg" alt="" width="'); echo '<script> console.log(" Jpg '.$jpg.'");</script>';
-              $inicio = $img + 5; echo '<script> console.log(" Inicio '.$inicio.'");</script>';
+              $jpeg = strrpos($path, '.jpeg" alt="" width="'); 
+              $jpg = strrpos($path, '.jpg" alt="" width="'); 
+              $inicio = $img + 5; 
               if($jpg > 0)
               {
-                $fin = $jpg - $inicio + 4; echo '<script> console.log(" Fin '.$fin.'");</script>';
-                $direc = substr($path, ($inicio), ($fin)); echo '<script> console.log(" Direc '.$direc.'"");</script>';
+                $fin = $jpg - $inicio + 4; 
+                $direc = substr($path, ($inicio), ($fin)); 
                 $jpg = 0;
               }
               elseif($jpeg > 0)
               {
-                $fin =  $jpeg - $inicio + 5; echo '<script> console.log(" Fin '.$fin.'");</script>';
-                $direc = substr($path, ($inicio), ($fin)); echo '<script> console.log(" Direc '.$direc.'");</script>';
+                $fin =  $jpeg - $inicio + 5;  
+                $direc = substr($path, ($inicio), ($fin)); 
                 $jpeg = 0;
               }
             }
@@ -402,23 +411,23 @@
           if($order->estado == 'wc-completed')
           {
             // Script para mostrar la imagen desde woocommerce
-            $path = $order->item_content; echo '<script> console.log(" Path '.$path.'")</script>';
+            $path = $order->item_content; 
             $img = strpos($path, 'src="http');
             if($img > 0)
             {
-              $jpeg = strrpos($path, '.jpeg" alt="" width="'); echo '<script> console.log(" Jpeg '.$jpeg.'");</script>';
-              $jpg = strrpos($path, '.jpg" alt="" width="'); echo '<script> console.log(" Jpg '.$jpg.'");</script>';
-              $inicio = $img + 5; echo '<script> console.log(" Inicio '.$inicio.'");</script>';
+              $jpeg = strrpos($path, '.jpeg" alt="" width="'); 
+              $jpg = strrpos($path, '.jpg" alt="" width="'); 
+              $inicio = $img + 5; 
               if($jpg > 0)
               {
-                $fin = $jpg - $inicio + 4; echo '<script> console.log(" Fin '.$fin.'");</script>';
-                $direc = substr($path, ($inicio), ($fin)); echo '<script> console.log(" Direc '.$direc.'"");</script>';
+                $fin = $jpg - $inicio + 4; 
+                $direc = substr($path, ($inicio), ($fin)); 
                 $jpg = 0;
               }
               elseif($jpeg > 0)
               {
-                $fin =  $jpeg - $inicio + 5; echo '<script> console.log(" Fin '.$fin.'");</script>';
-                $direc = substr($path, ($inicio), ($fin)); echo '<script> console.log(" Direc '.$direc.'");</script>';
+                $fin =  $jpeg - $inicio + 5; 
+                $direc = substr($path, ($inicio), ($fin)); 
                 $jpeg = 0;
               }
             }
