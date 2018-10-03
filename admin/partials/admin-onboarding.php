@@ -16,12 +16,12 @@
 -->
 <?php
 	error_reporting(E_ERROR | E_WARNING | E_PARSE); // Suprime errores de prueba
-	/**
-	 * @script En caso de que el onboarding ya se haya completado, se recibira como parametro 
-	 * 'fin' el cual al valer 1 buscara el producto marketful_descripcion_comun y le actualizara
-	 * el campo post_name a finished para identificar que el usuario ya ha completado el 
-	 * onboarding.
-	 */
+		/**
+		 * @script En caso de que el onboarding ya se haya completado, se recibira como parametro 
+		 * 'fin' el cual al valer 1 buscara el producto marketful_descripcion_comun y le actualizara
+		 * el campo post_name a finished para identificar que el usuario ya ha completado el 
+		 * onboarding.
+		 */
 	$fin = $_GET['fin'];
 	if($fin == 1)
 	{

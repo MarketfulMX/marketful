@@ -311,7 +311,7 @@
          */
         foreach ($orders[0]['data'] as $key => $order) 
         {
-          if($order->estado == 'wc-pending' || $order->estado == 'wc-processing')
+          if($order->estado == 'wc-pending' || $order->estado == 'wc-processing' || $order->estado == 'wc-on-hold')
           {
             // Script para mostrar la imagen desde woocommerce
             $path = $order->item_content;
@@ -414,7 +414,7 @@
 
         foreach ($orders[0]['data'] as $key => $order) 
         {
-          if($order->estado == 'wc-completed')
+          if($order->estado == 'wc-completed' || $order->estado == 'wc-cancelled' || $order->estado == 'wc-refunded' || $order->estado == 'wc-failed')
           {
             // Script para mostrar la imagen desde woocommerce
             $path = $order->item_content; 
