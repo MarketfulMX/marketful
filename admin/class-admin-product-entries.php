@@ -447,7 +447,7 @@ class MKF_ProductEntry extends MKF_DBCore
       *
       */
 
-      public function get_order_list($keyword = '')
+      public function get_order_list($keyword = '', $tope = 50, $offset = 0)
       {
         /***********************************
          * @script Obtenemos el nombre prefijo de la base de datos utilizando la clase de WP wpdb
@@ -475,7 +475,8 @@ class MKF_ProductEntry extends MKF_DBCore
                     INNER JOIN {$prefix}postmeta t9 ON t5.meta_value = t9.post_id AND t9.meta_key = '_price'
                     INNER JOIN {$prefix}posts t10 ON t5.meta_value = t10.ID
 
-                 WHERE pt.post_type = 'shop_order' AND (t4.order_item_name LIKE '%{$keyword}%' OR t1.meta_value LIKE '%{$keyword}%')";
+                 WHERE pt.post_type = 'shop_order' AND (t4.order_item_name LIKE '%{$keyword}%' OR t1.meta_value LIKE '%{$keyword}%')
+                 LIMIT {$tope} OFFSET {$offset}";
     
         $sql_set_lan = "SET lc_time_names = 'es_ES'"; // Query para cambiar el idioma a español en el que se muestra la fecha
         

@@ -102,6 +102,12 @@
     location.href = '?page=mkf-product-orders&keyword='+keyword;
   }
 
+  /**
+   * @funcion checar_enter(@enter)
+   *
+   * - Descripcion General: Funcion que ejecuta la busqueda cuando el usuario 
+   * ingresa la keyword a buscar y da enter.
+   */
   function checar_enter(e)
   {
       if(e.which==13)
@@ -120,7 +126,7 @@
   .contenedor
   {
     overflow-y: scroll; 
-    max-height: 55vh;
+    max-height: 50vh;
     border-color: #dee2e6;
     border-width: 0px;
     border-top-width: 0px;
