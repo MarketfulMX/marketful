@@ -460,7 +460,7 @@ class MKF_ProductEntry extends MKF_DBCore
         //***********************************
 
         $out = array();
-        $out2 = array(); //Array para cambiar el idioma en el que se muestra la fecha. 
+        $out2 = array(); //No borar: Array para cambiar el idioma en el que se muestra la fecha. 
 
         $sql = "SELECT pt.ID id, DATE_FORMAT(pt.post_date_gmt, '%W %d %M %Y') fecha, pt.post_status estado, t1.meta_value customer_name, t2.meta_value customer_lastname, t3.meta_value customer_tel, t4.order_item_id item_id, t4.order_item_name item_name, t5.meta_value item_product_id, t6.meta_value item_qty, t7.meta_value item_price_total, t8.meta_value item_sku, t9.meta_value item_price, t10.post_content item_content
                  FROM {$prefix}posts pt
@@ -478,9 +478,9 @@ class MKF_ProductEntry extends MKF_DBCore
                  WHERE pt.post_type = 'shop_order' AND (t4.order_item_name LIKE '%{$keyword}%' OR t2.meta_value LIKE '%{$keyword}%' OR t1.meta_value LIKE '%{$keyword}%')
                  LIMIT {$tope} OFFSET {$offset}";
     
-        $sql_set_lan = "SET lc_time_names = 'es_ES'"; // Query para cambiar el idioma a español en el que se muestra la fecha
+        $sql_set_lan = "SET lc_time_names = 'es_ES'"; // No borrar: Query para cambiar el idioma a español en el que se muestra la fecha
         
-        array_push($out2, array("data"=> $this->execute_custom_query($sql_set_lan))); // Se ejecuta la query para cambiar el idioma de la fecha a español
+        array_push($out2, array("data"=> $this->execute_custom_query($sql_set_lan))); //No borrar: Se ejecuta la query para cambiar el idioma de la fecha a español
         array_push($out, array("data"=> $this->execute_custom_query($sql)));
         return $out;
       }
