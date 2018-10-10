@@ -100,20 +100,20 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <a class="link-flecha" style="color:#7E7F6D;" id="sig" href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>"><i class="fas fa-chevron-right"></i></a>
       </div>
       <!--Cambiar Status: -->
-      <select style=""class="select-arriba" id="status_select" onChange="statusMasivo('mercadolibre', 'status', 'status_select')" >
+     <!--  <select style=""class="select-arriba" id="status_select" onChange="statusMasivo('mercadolibre', 'status', 'status_select')" >
           <option>Status</option>
           <option value="active" >Activa</option>
           <option value="paused" >Pausada</option>
           <option value="closed" >Finalizada</option> 
-      </select>
+      </select> -->
      <!--   | 
       Exposición: -->
-      <select style=""class="select-arriba" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de Exposición', 'exposicion_ml_select')" >
+    <!--   <select style=""class="select-arriba" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de Exposición', 'exposicion_ml_select')" >
           <option>Exposicion</option>
           <option  value="free" >Gratis</option>
           <option value="clasica" >Clasica</option>
           <option value="premium" >Premium</option> 
-      </select>
+      </select> -->
     </div>
     <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" id="dg">
         <a href="?page=mkf-descripcion-footer"><button id="boton_dg"> Modificar Descripcion</button></a>
