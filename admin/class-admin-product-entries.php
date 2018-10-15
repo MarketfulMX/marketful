@@ -464,8 +464,8 @@ class MKF_ProductEntry extends MKF_DBCore
 
         $sql = "SELECT pt.ID id, DATE_FORMAT(pt.post_date_gmt, '%W %d %M %Y') fecha, pt.post_status estado, t11.meta_value customer_id, t1.meta_value customer_name, t2.meta_value customer_lastname, t3.meta_value customer_tel, t4.order_item_id item_id, t4.order_item_name item_name, t5.meta_value item_product_id, t6.meta_value item_qty, t7.meta_value item_price_total, t8.meta_value item_sku, t9.meta_value item_price, t10.post_content item_content
                  FROM {$prefix}posts pt
-                    INNER JOIN {$prefix}postmeta t1 ON t1.post_id = pt.ID AND t1.meta_key = '_billing_first_name'
-                    INNER JOIN {$prefix}postmeta t2 ON t2.post_id = pt.ID AND t2.meta_key = '_billing_last_name'
+                    INNER JOIN {$prefix}postmeta t1 ON t1.post_id = pt.ID AND t1.meta_key = '_shipping_first_name'
+                    INNER JOIN {$prefix}postmeta t2 ON t2.post_id = pt.ID AND t2.meta_key = '_shipping_last_name'
                     INNER JOIN {$prefix}postmeta t3 ON t3.post_id = pt.ID AND t3.meta_key = '_billing_phone'
                     INNER JOIN {$prefix}postmeta t11 ON t11.post_id = pt.ID AND t11.meta_key = '_customer_user' AND t11.meta_value = '771'
                     INNER JOIN {$prefix}woocommerce_order_items t4 ON t4.order_id = pt.ID 

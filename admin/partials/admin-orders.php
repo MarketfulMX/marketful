@@ -116,17 +116,30 @@
       }
   }
 
+  /**
+   * @funcion imprimir_etiqueta()
+   *
+   */
+  function imprimir_etiqueta()
+  {
+    alert(" Imprimir etiqueta. ");
+  }
+
 </script>
 
 <style type="text/css">
   .head_ord
   {
-    margin: 20px;
+    margin-bottom: 10px; margin-left: 10px;
   }
+    h4
+    {
+      margin-top: -10px;
+    }
   .contenedor
   {
     overflow-y: scroll; 
-    max-height: 50vh;
+    height: 60vh;
     border-color: #dee2e6;
     border-width: 0px;
     border-top-width: 0px;
@@ -134,7 +147,7 @@
     border-radius: 0px 0px 3px 3px;
     padding: 0px 0px;
     background-color: white;    
-    margin-right: 2%;
+    margin-right: 2%; margin-bottom: 10px;
     color: #656666;
   }
   .cerradas
@@ -211,6 +224,10 @@
     grid-template-columns: 40% 60%;
     grid-template-rows: 50% 50%;
   }
+    #etiquetas
+    {
+      color: #FFA534;
+    }
     .fr1
     {
       display: grid;
@@ -254,7 +271,7 @@
       {
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-rows: 25% 25% 25% 25%;
       }
         .fr3_2_1
         {
@@ -283,24 +300,25 @@
         cursor: pointer;
       }
 </style>
+<div class="container">
 <div class="head_ord">
   <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
-  <h3> Ordenes</h3>
+  <h4> Seller Center - Ordenes</h4>
 </div>
 <div class="maximo">
   <ul class="nav nav-tabs tab-superior" id= tab-superior style="max-width: 98%;">
     <li class="nav-item"><a href="#" id="1" class="nav-link active" onclick="cambio(1)" >Abiertas</a></li>
     <li class="nav-item"><a href="#" id="2" class="nav-link" onclick="cambio(2)" >Cerradas</a></li>
   </ul>
-  <div class="opciones_ord">
+  <div class="opciones_ord" style="display: none;">
     <input id="checkbox_master" type="checkbox" onclick="checkbox_select_all('o')">
     <input type="text" class="input_ord" placeholder="comprador o venta" name="" onkeypress="checar_enter(event)" value="<?php echo $keyword; ?>"  id="i_search" />
     <button class="boton_ord" onclick="buscar_orden()">Buscar</button>
   </div>
-  <div class="opciones_ord_down">
+  <div class="opciones_ord_down" style="display: none;">
     <button class="boton_ord">Filtros</button>
   </div>
-  </div>
+</div>
   <div class="contenedor">
     <div class="abiertas">
       <?php
@@ -358,14 +376,38 @@
               $fin = '';
               $direc = 'https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg';
             }
+
+            /**
+             * @script
+             * - Usando un switch definimos el titulo que tendra el producto de la orden, asi como el texto que mostrara el 
+             *   boton de dicha orden y la accion que ejecutara cuando se le haga clic dependiendo el caso.
+             */
+            switch ($order->estado) {
+              case 'wc-pending':
+                $texto_boton = 'Imprimir etiqueta';
+                $texto_titulo = 'Etiqueta no impresa';
+                $etiquetas = 'etiquetas';
+                $funcion_ejec = 'imprimir_etiqueta();';
+                break;
+              case 'wc-processing':
+                $texto_boton = 'Seguir envio';
+                $texto_titulo = 'En camino';
+                $etiquetas = '';
+                $funcion_ejec = '';
+                break;
+              
+              default:
+                break;
+            }
+            $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ;
             echo '
              <div class="caja_orden">
               <div class="fr1">
                 <div class="fr1_1">
-                  <input type="checkbox" id="checkbox_open_'.$order->id.'"name="checkbox_open">
+                  <input type="checkbox" style="display: none;" id="checkbox_open_'.$order->id.'"name="checkbox_open">
                 </div>
-                <div class="fr1_2">
-                  En camino
+                <div class="fr1_2" id="'.$etiquetas.'">
+                  '.$texto_titulo.'
                 </div>
                 <div class="fr1_3">
                 </div>
@@ -374,7 +416,7 @@
                 </div>
               </div>
               <div class="fr2">
-                <button type="button" class="btn btn-primary">Seguir Envio</button>
+                <button type="button" class="btn btn-primary" onclick="'.$funcion_ejec.'">'.$texto_boton.'</button>
               </div>
               <div class="fr3">
                 <div class="fr3_1">
@@ -382,7 +424,7 @@
                 </div>
                 <div class="fr3_2">
                   <div class="fr3_2_1">
-                    <a href="#">'.$order->item_name.'</a>
+                    <a href="'.$link_publicacion.'">'.$order->item_name.'</a>
                   </div>
                   <div class="fr3_2_2">
                     $ '.$order->item_price.' x '.$order->item_qty.' unidad(es) = $'.$order->item_price_total.'
@@ -398,7 +440,7 @@
                     '.$order->customer_name.' '.$order->customer_lastname.'
                   </div>
                   <div class="fr4_1_2">
-                    '.$order->customer_id.'
+                    '/*.$order->customer_id*/.'
                   </div>
                   <div class="fr4_1_3">
                     '.$order->customer_tel.'
@@ -410,7 +452,7 @@
                 <div class="fr4_2">
                   <a href="#"> Ver Detalles </a>
                 </div>
-                <div class="fr4_3">
+                <div class="fr4_3" style="display:none;">
                   <i class="fas fa-ellipsis-v opciones" onclick=""></i>
                 </div>
               </div> 
@@ -465,7 +507,7 @@
              <div class="caja_orden">
               <div class="fr1">
                 <div class="fr1_1">
-                  <input type="checkbox" id="checkbox_close_'.$order->id.'"name="checkbox_close">
+                  <input type="checkbox" style="display: none;" id="checkbox_close_'.$order->id.'"name="checkbox_close">
                 </div>
                 <div class="fr1_2-2">
                   Entregado
@@ -501,7 +543,7 @@
                     '.$order->customer_name.' '.$order->customer_lastname.'
                   </div>
                   <div class="fr4_1_2">
-                    '.$order->customer_id.'
+                    '/*.$order->customer_id*/.'
                   </div>
                   <div class="fr4_1_3">
                     '.$order->customer_tel.'
@@ -513,7 +555,7 @@
                 <div class="fr4_2">
                   <a href="#"> Ver Detalles </a>
                 </div>
-                <div class="fr4_3">
+                <div class="fr4_3" style="display:none;">
                   <i class="fas fa-ellipsis-v opciones" onclick=""></i>
                 </div>
               </div> 
