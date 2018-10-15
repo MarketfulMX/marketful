@@ -38,6 +38,9 @@
 <!-- Fonstawesome -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+
 <script type="text/javascript">
   /** 
    * @funcion cambio(@tring: 1 or 2)
@@ -120,9 +123,19 @@
    * @funcion imprimir_etiqueta()
    *
    */
-  function imprimir_etiqueta()
+  function imprimir_etiqueta(producto, fecha, nombre, apellidos)
   {
     alert(" Imprimir etiqueta. ");
+    var etiqueta = new jsPDF();
+    etiqueta.text('----------------------------------------------------', 100, 10, 'center');
+    etiqueta.text('|     MARKETFUL SHIPPING SERVICE PREV LABEL        |', 100, 20, 'center');
+    etiqueta.text('----------------------------------------------------', 100, 30, 'center');
+    etiqueta.text('|  Etiqueta de salida del producto: '+producto+'   |', 100, 40, 'center');
+    etiqueta.text('-                                                  -', 100, 50, 'center');
+    etiqueta.text('|  CUSTOMER: '+ apellidos + ' ' + nombre + ' ', 100, 60, 'center'); 
+    etiqueta.text('----------------------------------------------------', 100, 70, 'center');
+    etiqueta.text('|  DATE: '+ fecha +' ', 100, 80, 'center');
+    etiqueta.save('Etiqueta.pdf');
   }
 
 </script>
@@ -391,7 +404,7 @@
                 $texto_boton = 'Imprimir etiqueta';
                 $texto_titulo = 'Etiqueta no impresa';
                 $etiquetas = 'etiquetas';
-                $funcion_ejec = 'imprimir_etiqueta();';
+                $funcion_ejec = 'imprimir_etiqueta(\''.$order->item_name.'\',\''.$order->fecha.'\',\''.$order->customer_name.'\',\''.$order->customer_lastname.'\');';
                 break;
               case 'wc-processing':
                 $texto_boton = 'Seguir envio';
