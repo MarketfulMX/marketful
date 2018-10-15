@@ -467,7 +467,7 @@ class MKF_ProductEntry extends MKF_DBCore
                     INNER JOIN {$prefix}postmeta t1 ON t1.post_id = pt.ID AND t1.meta_key = '_billing_first_name'
                     INNER JOIN {$prefix}postmeta t2 ON t2.post_id = pt.ID AND t2.meta_key = '_billing_last_name'
                     INNER JOIN {$prefix}postmeta t3 ON t3.post_id = pt.ID AND t3.meta_key = '_billing_phone'
-                    INNER JOIN {$prefix}postmeta t11 ON t11.post_id = pt.ID AND t11.meta_key = '_customer_user' AND t11.meta_value = '771'
+                    INNER JOIN {$prefix}postmeta t11 ON t11.post_id = pt.ID AND t11.meta_key = 'customer_id' AND t11.meta_value = '771'
                     INNER JOIN {$prefix}woocommerce_order_items t4 ON t4.order_id = pt.ID 
                     INNER JOIN {$prefix}woocommerce_order_itemmeta t5 ON t4.order_item_id = t5.order_item_id AND t5.meta_key = '_product_id'
                     INNER JOIN {$prefix}woocommerce_order_itemmeta t6 ON t4.order_item_id = t6.order_item_id AND t6.meta_key = '_qty'
