@@ -136,6 +136,10 @@
     {
       margin-top: -10px;
     }
+  .container
+  {
+    width: 100%;
+  }
   .contenedor
   {
     overflow-y: scroll; 
@@ -147,7 +151,7 @@
     border-radius: 0px 0px 3px 3px;
     padding: 0px 0px;
     background-color: white;    
-    margin-right: 2%; margin-bottom: 10px;
+    margin-right: 2%; margin-bottom: 0px;
     color: #656666;
   }
   .cerradas
@@ -303,7 +307,7 @@
 <div class="container">
 <div class="head_ord">
   <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
-  <h4> Seller Center - Ordenes</h4>
+  <h4> Seller Center - &Oacute;rdenes</h4>
 </div>
 <div class="maximo">
   <ul class="nav nav-tabs tab-superior" id= tab-superior style="max-width: 98%;">
@@ -399,7 +403,9 @@
               default:
                 break;
             }
-            $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ;
+            $link_publicacion = get_post_meta($order->id, "link_publicacion", true ) ;
+            // Alternativa
+            // $order->link_pub;
             echo '
              <div class="caja_orden">
               <div class="fr1">

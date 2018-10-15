@@ -477,6 +477,7 @@ class MKF_ProductEntry extends MKF_DBCore
                     INNER JOIN {$prefix}posts t10 ON t5.meta_value = t10.ID
 
                  WHERE pt.post_type = 'shop_order' AND (t4.order_item_name LIKE '%{$keyword}%' OR t2.meta_value LIKE '%{$keyword}%' OR t1.meta_value LIKE '%{$keyword}%')
+                 ORDER BY fecha, estado DESC
                  LIMIT {$tope} OFFSET {$offset}";
     
         $sql_set_lan = "SET lc_time_names = 'es_ES'"; // Query para cambiar el idioma a español en el que se muestra la fecha
