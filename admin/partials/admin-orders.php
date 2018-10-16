@@ -427,7 +427,7 @@
     <div class="sup_1">
       Filtros
     </div>
-    <div class="sup_2">
+    <form class="sup_2">
         <div class="s2_1">
           Cobros
         </div>
@@ -440,8 +440,8 @@
         <div class="s2_4">
           <input type="radio" name="gender" value="male"> Cobrados<br>  
         </div>
-    </div>
-    <div class="sup_3">
+    </form>
+    <form class="sup_3">
         <div class="s3_1">
           Servicios de envio
         </div>
@@ -451,12 +451,12 @@
         <div class="s3_1">
           <input type="radio" name="gender" value="male"> Mercado Envios<br>
         </div>
-    </div>
+    </form>
     <div class="sup_4">
       <div class="s4_1">
         Estados
       </div>
-      <div class="s4_2">
+      <form class="s4_2">
           <div class="s42_1">
             <input type="radio" name="gender" value="male"> Todas<br>
           </div>
@@ -484,13 +484,13 @@
           <div class="s42_9">
             <input type="radio" name="gender" value="male"> No Enntregados<br>
           </div>
-      </div>
+      </form>
     </div>
     <div class="sup_5">
       <div class="s5_1">
         Reclamos
       </div>
-      <div class="s5_2">
+      <form class="s5_2">
           <div class="s52_1">
             <input type="radio" name="gender" value="male"> Todos<br>
           </div>
@@ -506,7 +506,7 @@
           <div class="s52_5">
             <input type="radio" name="gender" value="male"> Resueltos con Mediacion de Mercado Libre<br>
           </div>
-      </div>
+      </form>
     </div>
   </div>
   <div class="inf_f">
