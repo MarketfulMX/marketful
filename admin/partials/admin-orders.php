@@ -188,7 +188,7 @@
     border-radius: 0px 0px 3px 3px;
     padding: 0px 0px;
     background-color: white;    
-    margin-right: 2%; margin-bottom: 0px;
+    margin-right: 2%; margin-bottom: 0px; margin-top: 20px;
     color: #656666;
   }
   .cerradas
@@ -254,7 +254,7 @@
     }
   .caja_orden
   {
-    margin-top: 20px;
+    margin-bottom: 20px;
     border-color: #dee2e6;
     border-style: solid;
     border-width: .5px;
