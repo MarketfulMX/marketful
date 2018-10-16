@@ -136,6 +136,8 @@
     etiqueta.text('----------------------------------------------------', 100, 70, 'center');
     etiqueta.text('   DATE: '+ fecha +' ', 100, 80, 'center');
     etiqueta.text('----------------------------------------------------', 100, 90, 'center');
+    etiqueta.setFontSize(40);
+    etiqueta.text('             03 ', 100, 110, 'center');
     etiqueta.save('Etiqueta.pdf');
   }
 
@@ -470,7 +472,7 @@
                   </div>
                 </div>
                 <div class="fr4_2">
-                  <a href="#"> Ver Detalles </a>
+                  <a href="?page=mkf-product-orders-details&'.$order->id.'"> Ver Detalles </a>
                 </div>
                 <div class="fr4_3" style="display:none;">
                   <i class="fas fa-ellipsis-v opciones" onclick=""></i>

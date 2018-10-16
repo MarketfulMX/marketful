@@ -486,4 +486,52 @@ class MKF_ProductEntry extends MKF_DBCore
         array_push($out, array("data"=> $this->execute_custom_query($sql)));
         return $out;
       }
+
+    /***
+      * @Funcion get_order_details()
+      *
+      * - Descripcion General: Esta funcion hace la query para retornar los detalles de una orden especifica.
+      *
+      * La query que se guarda en $sql parte de la orden que se guarda en la tabla posts, de ahi toma todos los metadatos de la orden, 
+      * y luego busca todos los productos de la orden y sus metadatos.
+      *
+      */
+
+      public function get_order_details($keyword = '')
+      {
+        /***********************************
+         * @script Obtenemos el nombre prefijo de la base de datos utilizando la clase de WP wpdb
+         * la cual nos entrega el valor del prefijo de la base de datos con $wpdb->get_blog_prefix()
+         * prefijo que utilizaremos para las querys posteriores haciendo que funcione sin inportar el 
+         * prefijo que se haya definido en la instalacion de wordpress.
+         */ 
+        global $wpdb;
+        $prefix = $wpdb->get_blog_prefix();
+        //***********************************
+
+        $out = array();
+        $out2 = array(); //Array para cambiar el idioma en el que se muestra la fecha. 
+
+        $sql = "SELECT pt.ID id, DATE_FORMAT(pt.post_date_gmt, '%W %d %M %Y') fecha, pt.post_status estado, t11.meta_value customer_id, t1.meta_value customer_name, t2.meta_value customer_lastname, t3.meta_value customer_tel, t4.order_item_id item_id, t4.order_item_name item_name, t5.meta_value item_product_id, t6.meta_value item_qty, t7.meta_value item_price_total, t8.meta_value item_sku, t9.meta_value item_price, t10.post_content item_content
+                 FROM {$prefix}posts pt
+                    INNER JOIN {$prefix}postmeta t1 ON t1.post_id = pt.ID AND t1.meta_key = '_shipping_first_name'
+                    INNER JOIN {$prefix}postmeta t2 ON t2.post_id = pt.ID AND t2.meta_key = '_shipping_last_name'
+                    INNER JOIN {$prefix}postmeta t3 ON t3.post_id = pt.ID AND t3.meta_key = '_billing_phone'
+                    INNER JOIN {$prefix}postmeta t11 ON t11.post_id = pt.ID AND t11.meta_key = '_customer_user' AND t11.meta_value = '771'
+                    INNER JOIN {$prefix}woocommerce_order_items t4 ON t4.order_id = pt.ID 
+                    INNER JOIN {$prefix}woocommerce_order_itemmeta t5 ON t4.order_item_id = t5.order_item_id AND t5.meta_key = '_product_id'
+                    INNER JOIN {$prefix}woocommerce_order_itemmeta t6 ON t4.order_item_id = t6.order_item_id AND t6.meta_key = '_qty'
+                    INNER JOIN {$prefix}woocommerce_order_itemmeta t7 ON t4.order_item_id = t7.order_item_id AND t7.meta_key = '_line_total'
+                    INNER JOIN {$prefix}postmeta t8 ON t5.meta_value = t8.post_id AND t8.meta_key = '_sku'
+                    INNER JOIN {$prefix}postmeta t9 ON t5.meta_value = t9.post_id AND t9.meta_key = '_price'
+                    INNER JOIN {$prefix}posts t10 ON t5.meta_value = t10.ID
+
+                 WHERE pt.ID = '{$keyword}')";
+
+        $sql_set_lan = "SET lc_time_names = 'es_ES'"; // Query para cambiar el idioma a español en el que se muestra la fecha
+        
+        array_push($out2, array("data"=> $this->execute_custom_query($sql_set_lan))); // Se ejecuta la query para cambiar el idioma de la fecha a español
+        array_push($out, array("data"=> $this->execute_custom_query($sql)));
+        return $out;
+      }
 }

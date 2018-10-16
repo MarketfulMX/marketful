@@ -329,7 +329,7 @@ class MKF_Admin
    */
   public function admin_orders_details()
   {
-    include_once "partials/admin-orders_details.php";
+    include_once "partials/admin-orders-details.php";
   }
 
   /**
