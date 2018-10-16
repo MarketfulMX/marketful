@@ -28,6 +28,7 @@ $details = MKF_ProductEntry::GetInstance()->get_order_details($producto);
 <div class="container">
 	<div class="cabecera_od">
 		ORDEN: <?php echo $producto; ?>
+		NOMBRE: <?php echo $details->fecha ; ?>
 	</div>
 	<div class="cuerpo">
 	</div>
