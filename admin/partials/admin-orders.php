@@ -122,6 +122,9 @@
   /**
    * @funcion imprimir_etiqueta()
    *
+   * - Al ejecutarse recibe datos de un producto de una orden y los muestra dentro de un PDF
+   *   que se descarga automaticamente.
+   *
    */
   function imprimir_etiqueta(producto, fecha, nombre, apellidos)
   {
@@ -141,6 +144,24 @@
     etiqueta.save('Etiqueta.pdf');
   }
 
+  /**
+   * @funcion mostrar_filtro()
+   *
+   * - Funcion que muestra el filtro.
+   */
+  function mostrar_filtro()
+  {
+    $('.filtros_ao').css('display','grid');
+  }
+
+  /**
+   * @funcion ocultar()
+   *
+   */
+  function ocultar()
+  {
+    $('.filtros_ao').css('display','none');
+  }
 </script>
 
 <style type="text/css">
@@ -319,7 +340,178 @@
       {
         cursor: pointer;
       }
+
+
+  .filtros_ao
+  {
+    border-color: #DEDDDE; border-style: solid; border-width: 1px; border-radius: 5px;
+    background-color: white;
+    position: absolute;
+    margin: 100px 20%; padding: 0px;
+    width: 60%; height: 300px;
+    display: none;
+    grid-template-rows: 80% 20%;
+    grid-template-columns: 100%;
+    -webkit-box-shadow: 1px 2px 0px 600px rgba(0,0,0,0.65);
+    -moz-box-shadow: 1px 2px 0px 600px rgba(0,0,0,0.65);
+    box-shadow: 1px 2px 0px 600px rgba(0,0,0,0.65);
+  }
+    .sup_f
+    {
+      margin-top: 10px;
+      overflow-y: scroll;
+      padding: 10px; padding-left: 20px;
+      font-size: 70%;
+    }
+      .sup_1
+      {
+        padding-top: 10px;
+        font-size: 200%;
+      }
+      .sup_2
+      {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-template-rows: 100%;
+      }
+      .sup_3
+      {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 25% 25% 50%;
+        grid-template-rows: 100%;
+      }
+      .sup_4
+      {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 25% 75%;
+      }
+        .s4_2
+        {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-rows: 1fr 1fr 1fr;
+        }
+      .sup_5
+      {
+        padding-top: 20px;
+        display: grid;
+        grid-template-columns: 25% 75%;
+        grid-template-rows: 100%;
+      }
+        .s5_2
+        {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-rows: 1fr 1fr 1fr;
+        }
+    .inf_f
+    {
+      padding: 15px;
+      background-color: #DEDDDE;
+      border-radius: 0px 0px 5px 5px;
+      font-size: 80%;
+    }
 </style>
+
+
+<!-- Filtros de busqueda. -->
+<div class="filtros_ao">
+  <div class="sup_f">
+    <div class="sup_1">
+      Filtros
+    </div>
+    <div class="sup_2">
+      <div class="s2_1">
+        Cobros
+      </div>
+      <div class="s2_2">
+        <input type="checkbox" name="gender" value="male"> Todos<br>
+      </div>
+      <div class="s2_3">
+        <input type="checkbox" name="gender" value="male"> A Cobrar<br>
+      </div>
+      <div class="s2_4">
+        <input type="checkbox" name="gender" value="male"> Cobrados<br>  
+      </div>
+    </div>
+    <div class="sup_3">
+      <div class="s3_1">
+        Servicios de envio
+      </div>
+      <div class="s3_1">
+        <input type="checkbox" name="gender" value="male"> Todas<br>
+      </div>
+      <div class="s3_1">
+        <input type="checkbox" name="gender" value="male"> Mercado Envios<br>
+      </div>
+    </div>
+    <div class="sup_4">
+      <div class="s4_1">
+        Estados
+      </div>
+      <div class="s4_2">
+        <div class="s42_1">
+          <input type="checkbox" name="gender" value="male"> Todas<br>
+        </div>
+        <div class="s42_2">
+          <input type="checkbox" name="gender" value="male"> Lo Retira<br>
+        </div>
+        <div class="s42_3">
+          <input type="checkbox" name="gender" value="male"> Etiquetas para imprimir<br>
+        </div>
+        <div class="s42_4">
+          <input type="checkbox" name="gender" value="male"> Etiquetas para imprimir de FEDEX<br>
+        </div>
+        <div class="s42_5">
+          <input type="checkbox" name="gender" value="male"> Etiquetas para imprimir de DHL<br>
+        </div>
+        <div class="s42_6">
+          <input type="checkbox" name="gender" value="male"> Pendientes<br>
+        </div>
+        <div class="s42_7">
+          <input type="checkbox" name="gender" value="male"> En Camino<br>
+        </div>
+        <div class="s42_8">
+          <input type="checkbox" name="gender" value="male"> Entregados<br>
+        </div>
+        <div class="s42_9">
+          <input type="checkbox" name="gender" value="male"> No Enntregados<br>
+        </div>
+      </div>
+    </div>
+    <div class="sup_5">
+      <div class="s5_1">
+        Reclamos
+      </div>
+      <div class="s5_2">
+        <div class="s52_1">
+          <input type="checkbox" name="gender" value="male"> Todos<br>
+        </div>
+        <div class="s52_2">
+          <input type="checkbox" name="gender" value="male"> Por Resolver con el Comprador<br>  
+        </div>
+        <div class="s52_3">
+          <input type="checkbox" name="gender" value="male"> Resueltos con el Comprador<br>
+        </div>
+        <div class="s52_4">
+          <input type="checkbox" name="gender" value="male"> En Mediacion con Mercado Libre<br>
+        </div>
+        <div class="s52_5">
+          <input type="checkbox" name="gender" value="male"> Resueltos con Mediacion de Mercado Libre<br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="inf_f">
+    <button type="button" class="btn btn-primary btn-sm" onclick="ocultar()">Aplicar Filtros</button>
+    <a href="#" onclick="ocultar()">Cancelar</a>
+  </div>  
+</div>
+
+<!-- Contenedor general -->
 <div class="container">
 <div class="head_ord">
   <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
@@ -335,8 +527,8 @@
     <input type="text" class="input_ord" placeholder="comprador o venta" name="" onkeypress="checar_enter(event)" value="<?php echo $keyword; ?>"  id="i_search" />
     <button class="boton_ord" onclick="buscar_orden()">Buscar</button>
   </div>
-  <div class="opciones_ord_down" style="display: none;">
-    <button class="boton_ord">Filtros</button>
+  <div class="opciones_ord_down" >
+    <button class="boton_ord" onclick="mostrar_filtro()">Filtros</button>
   </div>
 </div>
   <div class="contenedor">
@@ -589,3 +781,5 @@
     </div>
   </div>
 </div>
+
+
