@@ -669,7 +669,7 @@
                     </div>
                   </div>
                   <div class="fr4_2">
-                    <a href="?page=mkf-product-orders-details&'.$order->id.'"> Ver Detalles </a>
+                    <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
                   </div>
                   <div class="fr4_3" style="display:none;">
                     <i class="fas fa-ellipsis-v opciones" onclick=""></i>
