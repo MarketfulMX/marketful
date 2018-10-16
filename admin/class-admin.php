@@ -142,6 +142,15 @@ class MKF_Admin
     );
 
     add_submenu_page(
+      NULL,
+      __( "{$this->plg_small_name}-product-orders-details", 'textdomain' ),
+      __( 'Detalles de la orden', 'textdomain' ),
+      $this->available_menu_to_editor_or_admin(),
+      "{$this->plg_small_name}-product-orders-details",
+      array( $this, 'admin_orders_details' )
+    );
+
+    add_submenu_page(
       $this->dashboard_menu_name,
       __( "{$this->plg_small_name}-product-questions", 'textdomain' ),
       __( 'Preguntas', 'textdomain' ),
@@ -312,6 +321,15 @@ class MKF_Admin
   public function admin_orders()
   {
     include_once "partials/admin-orders.php";
+  }
+
+  /**
+   * @funcion admin_orders()
+   * Método que manda a llamar el archivo admin-orders-details.php
+   */
+  public function admin_orders_details()
+  {
+    include_once "partials/admin-orders_details.php";
   }
 
   /**

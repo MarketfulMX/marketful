@@ -128,13 +128,14 @@
     alert(" Imprimir etiqueta. ");
     var etiqueta = new jsPDF();
     etiqueta.text('----------------------------------------------------', 100, 10, 'center');
-    etiqueta.text('|     MARKETFUL SHIPPING SERVICE PREV LABEL        |', 100, 20, 'center');
+    etiqueta.text('     MARKETFUL SHIPPING SERVICE PREV LABEL        ', 100, 20, 'center');
     etiqueta.text('----------------------------------------------------', 100, 30, 'center');
-    etiqueta.text('|  Etiqueta de salida del producto: '+producto+'   |', 100, 40, 'center');
+    etiqueta.text('  Etiqueta de salida del producto: '+producto+'   ', 100, 40, 'center');
     etiqueta.text('-                                                  -', 100, 50, 'center');
-    etiqueta.text('|  CUSTOMER: '+ apellidos + ' ' + nombre + ' ', 100, 60, 'center'); 
+    etiqueta.text('   CUSTOMER: '+ apellidos + ' ' + nombre + ' ', 100, 60, 'center'); 
     etiqueta.text('----------------------------------------------------', 100, 70, 'center');
-    etiqueta.text('|  DATE: '+ fecha +' ', 100, 80, 'center');
+    etiqueta.text('   DATE: '+ fecha +' ', 100, 80, 'center');
+    etiqueta.text('----------------------------------------------------', 100, 90, 'center');
     etiqueta.save('Etiqueta.pdf');
   }
 
