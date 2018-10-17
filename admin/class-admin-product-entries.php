@@ -526,7 +526,7 @@ class MKF_ProductEntry extends MKF_DBCore
                     INNER JOIN {$prefix}postmeta t9 ON t5.meta_value = t9.post_id AND t9.meta_key = '_price'
                     INNER JOIN {$prefix}posts t10 ON t5.meta_value = t10.ID
 
-                 WHERE pt.ID = '{$id}' AND t5.meta_value = '{$pid}')";
+                 WHERE pt.ID = '{$id}' AND t5.meta_value = '{$pid}'";
 
         $sql_set_lan = "SET lc_time_names = 'es_ES'"; // Query para cambiar el idioma a español en el que se muestra la fecha
         
