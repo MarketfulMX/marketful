@@ -454,6 +454,14 @@ class MKF_ProductEntry extends MKF_DBCore
          * la cual nos entrega el valor del prefijo de la base de datos con $wpdb->get_blog_prefix()
          * prefijo que utilizaremos para las querys posteriores haciendo que funcione sin inportar el 
          * prefijo que se haya definido en la instalacion de wordpress.
+         *
+         * - Validaciones where: 
+         *   1.- pt.post_type = 'shop_order' : Esta condicion es para poder saber si el post de WP es una orden de WC.
+         *   2.- t4.order_item_name LIKE '%{keyword}%' : Esta condicion es para buscar productos con el nombre parecido a lo que se reciba como $keyword.
+         *   3.- t2.meta_value LIKE '%{keyword}%' : Esta condicion es para buscar apellidos de customers parecidos a los que recibimos por $keyword.
+         *   4.- t1.meta_value LIKE '%{$keyword}%' : Esta condicion es para buscar nombres de customers parecidos a los que recibimos por $keyword.
+         *   5.- pt.post_status LIKE '%{$k3}% : Esta condicion es para buscar en la tabla post en el campo post_status, ordenes que tengan el mismo status que lo que 
+         *       que recibimos por $k3.
          */ 
         global $wpdb;
         $prefix = $wpdb->get_blog_prefix();
@@ -476,7 +484,7 @@ class MKF_ProductEntry extends MKF_DBCore
                     INNER JOIN {$prefix}postmeta t9 ON t5.meta_value = t9.post_id AND t9.meta_key = '_price'
                     INNER JOIN {$prefix}posts t10 ON t5.meta_value = t10.ID
 
-                 WHERE pt.post_type = 'shop_order' AND (t4.order_item_name LIKE '%{$keyword}%' OR t2.meta_value LIKE '%{$keyword}%' OR t1.meta_value LIKE '%{$keyword}%')
+                 WHERE pt.post_type = 'shop_order' AND (t4.order_item_name LIKE '%{$keyword}%' OR t2.meta_value LIKE '%{$keyword}%' OR t1.meta_value LIKE '%{$keyword}%') AND pt.post_status LIKE '%{$k3}%'
                  ORDER BY fecha, estado DESC
                  LIMIT {$tope} OFFSET {$offset}";
     

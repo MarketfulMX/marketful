@@ -145,7 +145,7 @@
   /**
    * @funcion mostrar_filtro()
    *
-   * - Funcion que muestra el filtro.
+   * - Funcion que muestra u oculta el filtro dependiendo de si se esta mostrando o no.
    */
   function mostrar_filtro()
   {
@@ -154,15 +154,6 @@
     $('.filtros_ao').css('display','none');
     else
     $('.filtros_ao').css('display','grid');
-  }
-
-  /**
-   * @funcion ocultar()
-   *
-   */
-  function ocultar()
-  {
-    $('.filtros_ao').css('display','none');
   }
 
   /**
@@ -186,20 +177,20 @@
   {
     var values = new Array(4);
 
-    values[0] = ['all', 'por cobrar', 'cobrado'];
-    values[1] = ['all', 'mercado-envios'];
-    values[2] = ['all', 'retira', 'a imprimir', 'fedex', 'dhl', 'pendientes', 'en camino', 'entragados', 'no entregados'];
-    values[3] = ['all', 'Por resover con el comprador', 'resueltos con el comprador', 'mediacion de mercadolibre', 'resueltoscon mediacion de mercadolibre'];
+    values[0] = ['', 'por cobrar', 'cobrado'];
+    values[1] = ['', 'mercado-envios'];
+    values[2] = ['', 'wc-on-hold', 'wc-processing', 'wc-processing', 'wc-processing', 'wc-pending', 'wc-completed', 'wc-completed', 'wc-cancelled'];
+    values[3] = ['', 'Por resover con el comprador', 'resueltos con el comprador', 'mediacion de mercadolibre', 'resueltoscon mediacion de mercadolibre'];
     
     var op1 = values[0][$('input[name=cobros]:checked', '.sup_2').val()];
     var op2 = values[1][$('input[name=envio]:checked', '.sup_3').val()];
     var op3 = values[2][$('input[name=estados]:checked', '.s4_2').val()];
     var op4 = values[3][$('input[name=reclamos]:checked', '.s5_2').val()];
     
-    if(op1 == 'undefined') op1 = '';
-    if(op2 == 'undefined') op2 = '';
-    if(op3 == 'undefined') op3 = '';
-    if(op4 == 'undefined') op4 = '';
+    if(typeof op1 == 'undefined'){op1 = '';} 
+    if(typeof op2 == 'undefined'){op2 = '';} 
+    if(typeof op3 == 'undefined'){op3 = '';} 
+    if(typeof op4 == 'undefined'){op4 = '';} 
 
     location.href = '?page=mkf-product-orders&keyword=&op1='+op1+'&op2='+op2+'&op3='+op3+'&op4='+op4;
   }
@@ -569,8 +560,8 @@
       <li class="nav-item"><a href="#" id="1" class="nav-link active" onclick="cambio(1)" >Abiertas</a></li>
       <li class="nav-item"><a href="#" id="2" class="nav-link" onclick="cambio(2)" >Cerradas</a></li>
     </ul>
-    <div class="opciones_ord" style="display: none;">
-      <input id="radio_master" type="radio" onclick="checkbox_select_all('o')">
+    <div class="opciones_ord">
+      <input id="check_master" type="checkbox"  style="display: none;" onclick="checkbox_select_all('o')">
       <input type="text" class="input_ord" placeholder="comprador o venta" name="" onkeypress="checar_enter(event)" value="<?php echo $keyword; ?>"  id="i_search" />
       <button class="boton_ord" onclick="buscar_orden()">Buscar</button>
     </div>
