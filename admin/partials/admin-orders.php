@@ -150,9 +150,9 @@
   {
     var estado = $('.filtros_ao').css('display');
     if(estado == 'grid')
-    $('.div_oculto').css('display','none');
+    $('.filtros_ao').css('display','none');
     else
-    $('.div_oculto').css('display','grid');
+    $('.filtros_ao').css('display','grid');
   }
 
   /**
@@ -164,6 +164,23 @@
     $('.filtros_ao').css('display','none');
   }
 
+  /**
+   * @funcion apply_filter()
+   */
+  function apply_filter()
+  {
+    var values = new Array(4);
+    values[0] = ['all', 'por cobrar', 'cobrado'];
+    values[1] = ['all', 'mercado-envios'];
+    values[2] = ['all', 'retira', 'a imprimir', 'fedex', 'dhl', 'pendientes', 'en camino', 'entragados', 'no entregados'];
+    values[3] = ['all', 'Por resover con el comprador', 'resueltos con el comprador', 'mediacion de mercadolibre', 'resueltoscon mediacion de mercadolibre'];
+    console.log(
+      values[0][$('input[name=cobros]:checked', '.sup_2').val()]+
+      values[1][$('input[name=envio]:checked', '.sup_3').val()]+
+      values[2][$('input[name=estados]:checked', '.s4_2').val()]+
+      values[3][$('input[name=reclamos]:checked', '.s5_2').val()]
+      );
+  }
   
 </script>
 
@@ -343,14 +360,7 @@
         cursor: pointer;
       }
 
-  .div_oculto
-  {
-    background: none;
-    border:none;
-    width: 10000;
-    height: 10000;
-    display: none;
-  }
+
   .filtros_ao
   {
     border-color: #DEDDDE; border-style: solid; border-width: 1px; border-radius: 5px;
@@ -432,7 +442,6 @@
 
 
 <!-- Filtros de busqueda. -->
-<div class="div_oculto" onclick="mostrar_filtro()">
 <div class="filtros_ao">
   <div class="sup_f">
     <div class="sup_1">
@@ -443,13 +452,13 @@
           Cobros
         </div>
         <div class="s2_2">
-          <input type="radio" name="gender" value="male"> Todos<br>
+          <input type="radio" name="cobros" value="0"> Todos<br>
         </div>
         <div class="s2_3">
-          <input type="radio" name="gender" value="male"> A Cobrar<br>
+          <input type="radio" name="cobros" value="1"> A Cobrar<br>
         </div>
         <div class="s2_4">
-          <input type="radio" name="gender" value="male"> Cobrados<br>  
+          <input type="radio" name="cobros" value="2"> Cobrados<br>  
         </div>
     </form>
     <form class="sup_3">
@@ -457,10 +466,10 @@
           Servicios de envio
         </div>
         <div class="s3_1">
-          <input type="radio" name="gender" value="male"> Todas<br>
+          <input type="radio" name="envio" value="0"> Todas<br>
         </div>
         <div class="s3_1">
-          <input type="radio" name="gender" value="male"> Mercado Envios<br>
+          <input type="radio" name="envio" value="1"> Mercado Envios<br>
         </div>
     </form>
     <div class="sup_4">
@@ -469,31 +478,31 @@
       </div>
       <form class="s4_2">
           <div class="s42_1">
-            <input type="radio" name="gender" value="male"> Todas<br>
+            <input type="radio" name="estados" value="0"> Todas<br>
           </div>
           <div class="s42_2">
-            <input type="radio" name="gender" value="male"> Lo Retira<br>
+            <input type="radio" name="estados" value="1"> Lo Retira<br>
           </div>
           <div class="s42_3">
-            <input type="radio" name="gender" value="male"> Etiquetas para imprimir<br>
+            <input type="radio" name="estados" value="2"> Etiquetas para imprimir<br>
           </div>
           <div class="s42_4">
-            <input type="radio" name="gender" value="male"> Etiquetas para imprimir de FEDEX<br>
+            <input type="radio" name="estados" value="3"> Etiquetas para imprimir de FEDEX<br>
           </div>
           <div class="s42_5">
-            <input type="radio" name="gender" value="male"> Etiquetas para imprimir de DHL<br>
+            <input type="radio" name="estados" value="4"> Etiquetas para imprimir de DHL<br>
           </div>
           <div class="s42_6">
-            <input type="radio" name="gender" value="male"> Pendientes<br>
+            <input type="radio" name="estados" value="5"> Pendientes<br>
           </div>
           <div class="s42_7">
-            <input type="radio" name="gender" value="male"> En Camino<br>
+            <input type="radio" name="estados" value="6"> En Camino<br>
           </div>
           <div class="s42_8">
-            <input type="radio" name="gender" value="male"> Entregados<br>
+            <input type="radio" name="estados" value="7"> Entregados<br>
           </div>
           <div class="s42_9">
-            <input type="radio" name="gender" value="male"> No Enntregados<br>
+            <input type="radio" name="estados" value="8"> No Enntregados<br>
           </div>
       </form>
     </div>
@@ -503,28 +512,27 @@
       </div>
       <form class="s5_2">
           <div class="s52_1">
-            <input type="radio" name="gender" value="male"> Todos<br>
+            <input type="radio" name="reclamos" value="0"> Todos<br>
           </div>
           <div class="s52_2">
-            <input type="radio" name="gender" value="male"> Por Resolver con el Comprador<br>  
+            <input type="radio" name="reclamos" value="1"> Por Resolver con el Comprador<br>  
           </div>
           <div class="s52_3">
-            <input type="radio" name="gender" value="male"> Resueltos con el Comprador<br>
+            <input type="radio" name="reclamos" value="2"> Resueltos con el Comprador<br>
           </div>
           <div class="s52_4">
-            <input type="radio" name="gender" value="male"> En Mediacion con Mercado Libre<br>
+            <input type="radio" name="reclamos" value="3"> En Mediacion con Mercado Libre<br>
           </div>
           <div class="s52_5">
-            <input type="radio" name="gender" value="male"> Resueltos con Mediacion de Mercado Libre<br>
+            <input type="radio" name="reclamos" value="4"> Resueltos con Mediacion de Mercado Libre<br>
           </div>
       </form>
     </div>
   </div>
   <div class="inf_f">
-    <button type="button" class="btn btn-primary btn-sm" onclick="mostrar_filtro()">Aplicar Filtros</button>
+    <button type="button" class="btn btn-primary btn-sm" onclick="apply_filter()">Aplicar Filtros</button>
     <a href="#" onclick="mostrar_filtro()">Cancelar</a>
   </div>  
-</div>
 </div>
 
 
