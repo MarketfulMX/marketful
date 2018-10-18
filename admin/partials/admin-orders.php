@@ -35,9 +35,6 @@
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<!-- Fonstawesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
 <!-- jsPDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 
@@ -151,7 +148,11 @@
    */
   function mostrar_filtro()
   {
-    $('.filtros_ao').css('display','grid');
+    var estado = $('.filtros_ao').css('display');
+    if(estado == 'grid')
+    $('.div_oculto').css('display','none');
+    else
+    $('.div_oculto').css('display','grid');
   }
 
   /**
@@ -162,6 +163,8 @@
   {
     $('.filtros_ao').css('display','none');
   }
+
+  
 </script>
 
 <style type="text/css">
@@ -340,7 +343,14 @@
         cursor: pointer;
       }
 
-
+  .div_oculto
+  {
+    background: none;
+    border:none;
+    width: 10000;
+    height: 10000;
+    display: none;
+  }
   .filtros_ao
   {
     border-color: #DEDDDE; border-style: solid; border-width: 1px; border-radius: 5px;
@@ -422,6 +432,7 @@
 
 
 <!-- Filtros de busqueda. -->
+<div class="div_oculto" onclick="mostrar_filtro()">
 <div class="filtros_ao">
   <div class="sup_f">
     <div class="sup_1">
@@ -510,9 +521,10 @@
     </div>
   </div>
   <div class="inf_f">
-    <button type="button" class="btn btn-primary btn-sm" onclick="ocultar()">Aplicar Filtros</button>
-    <a href="#" onclick="ocultar()">Cancelar</a>
+    <button type="button" class="btn btn-primary btn-sm" onclick="mostrar_filtro()">Aplicar Filtros</button>
+    <a href="#" onclick="mostrar_filtro()">Cancelar</a>
   </div>  
+</div>
 </div>
 
 
