@@ -447,7 +447,7 @@ class MKF_ProductEntry extends MKF_DBCore
       *
       */
 
-      public function get_order_list($keyword = '', $tope = 50, $offset = 0)
+      public function get_order_list($keyword = '',$k1 = '', $k2 = '', $k3 = '', $k4 = '', $tope = 50, $offset = 0)
       {
         /***********************************
          * @script Obtenemos el nombre prefijo de la base de datos utilizando la clase de WP wpdb

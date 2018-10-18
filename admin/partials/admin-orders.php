@@ -21,10 +21,14 @@
  *
  */
  $keyword = ''; $keyword = $_REQUEST['keyword'];
+ $op1 = ''; $op1 = $_REQUEST['op1']; 
+ $op2 = ''; $op2 = $_REQUEST['op2']; 
+ $op3 = ''; $op3 = $_REQUEST['op3']; 
+ $op4 = ''; $op4 = $_REQUEST['op4']; 
  $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
  // Tomar las ordenes
- $orders = MKF_ProductEntry::GetInstance()->get_order_list($keyword);
+ $orders = MKF_ProductEntry::GetInstance()->get_order_list($keyword, $op1, $op2, $op3, $op4);
 ?>
     
 <!-- Mandamos llamar a las libreruas que utilizaremos -->
@@ -32,9 +36,6 @@
 
 <!-- Bootstrap CSS and JS-->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
 <!-- jsPDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 
@@ -166,20 +167,41 @@
 
   /**
    * @funcion apply_filter()
+   *
+   * - Descripcion General: Esta funcion toma los valores de los radio buttons dentro de cada
+   *   form para obtener los criterios de busqueda.
+   *
+   * 1.- Definimos la matriz values, despues le asignamos los valores que representan los radiobuttons
+   *     que seleccione el usuario, dependiendo de la categoria. Estos valores son los que enviaremos 
+   *     hacia la funcion get_order_list() mediante variables en la URL.
+   * 2.- Guardamos en 4 variables los valores de los radiobuttons buscandolos segun el nombre que tengan 
+   *     y el form en el que se encuentren.
+   * 3.- Posteriormente usando validaciones revisamos si es que alguno de ellos tiene valor de undefined, 
+   *     en cuyo caso le asignamos un valor vacio.
+   * 4.- Redirigimos la pagina hacia la misma vista admin-orders, enviando las 4 variables con sus diferentes
+   *     para que el script de php ejecute el metodo geto_order_list() y haga la busqueda segun los filtros
+   *     que el usuario selecciono.
    */
   function apply_filter()
   {
     var values = new Array(4);
+
     values[0] = ['all', 'por cobrar', 'cobrado'];
     values[1] = ['all', 'mercado-envios'];
     values[2] = ['all', 'retira', 'a imprimir', 'fedex', 'dhl', 'pendientes', 'en camino', 'entragados', 'no entregados'];
     values[3] = ['all', 'Por resover con el comprador', 'resueltos con el comprador', 'mediacion de mercadolibre', 'resueltoscon mediacion de mercadolibre'];
-    console.log(
-      values[0][$('input[name=cobros]:checked', '.sup_2').val()]+
-      values[1][$('input[name=envio]:checked', '.sup_3').val()]+
-      values[2][$('input[name=estados]:checked', '.s4_2').val()]+
-      values[3][$('input[name=reclamos]:checked', '.s5_2').val()]
-      );
+    
+    var op1 = values[0][$('input[name=cobros]:checked', '.sup_2').val()];
+    var op2 = values[1][$('input[name=envio]:checked', '.sup_3').val()];
+    var op3 = values[2][$('input[name=estados]:checked', '.s4_2').val()];
+    var op4 = values[3][$('input[name=reclamos]:checked', '.s5_2').val()];
+    
+    if(op1 == 'undefined') op1 = '';
+    if(op2 == 'undefined') op2 = '';
+    if(op3 == 'undefined') op3 = '';
+    if(op4 == 'undefined') op4 = '';
+
+    location.href = '?page=mkf-product-orders&keyword=&op1='+op1+'&op2='+op2+'&op3='+op3+'&op4='+op4;
   }
   
 </script>
