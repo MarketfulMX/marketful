@@ -579,7 +579,9 @@
            */
           foreach ($orders[0]['data'] as $key => $order) 
           {
-            $order_val = get_post($order->id);
+            $order_val = wc_get_order($order->id);
+            $items = $order_val->get_items();
+            $primer_producto = reset($items);
             /**
              * @Script para mostrar la imagen desde woocommerce
              *
@@ -612,7 +614,7 @@
                 <div class="fr1_3">
                 </div>
                 <div class="fr1_4">
-                  Fecha de orden: '.$order_val->post_date.'
+                  Fecha de orden: '. $order_val->get_date_created() . '
                 </div>
               </div>
               <div class="fr2">
@@ -624,7 +626,19 @@
                 </div>
                 <div class="fr3_2">
                   <div class="fr3_2_1">
-                    <a href="'.$link_publicacion.'">'.$order->item_name.'</a>
+                    <a href="'.$link_publicacion.'">';
+
+                   /* foreach($items as $key => $product ){
+
+                      echo $product["name"];
+
+                    }*/
+
+                    
+                    echo $primer_producto['name'];
+
+                  echo 
+                    '</a>
                   </div>
                   <div class="fr3_2_2">
                     $ '.$order->item_price.' x '.$order->item_qty.' unidad(es) = $'.$order->item_price_total.'
