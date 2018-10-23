@@ -460,27 +460,18 @@ class MKF_ProductEntry extends MKF_DBCore
         //***********************************
 
         $out = array();
-        $out2 = array(); //No borar: Array para cambiar el idioma en el que se muestra la fecha. 
+        //$out2 = array(); //No borar: Array para cambiar el idioma en el que se muestra la fecha. 
 
-        $sql = "SELECT pt.ID id, DATE_FORMAT(pt.post_date_gmt, '%W %d %M %Y') fecha, pt.post_status estado, t1.meta_value customer_name, t2.meta_value customer_lastname, t3.meta_value customer_tel, t4.order_item_id item_id, t4.order_item_name item_name, t5.meta_value item_product_id, t6.meta_value item_qty, t7.meta_value item_price_total, t8.meta_value item_sku, t9.meta_value item_price, t10.post_content item_content
-                 FROM {$prefix}posts pt
-                    INNER JOIN {$prefix}postmeta t1 ON t1.post_id = pt.ID AND t1.meta_key = '_billing_first_name'
-                    INNER JOIN {$prefix}postmeta t2 ON t2.post_id = pt.ID AND t2.meta_key = '_billing_last_name'
-                    INNER JOIN {$prefix}postmeta t3 ON t3.post_id = pt.ID AND t3.meta_key = '_billing_phone'
-                    INNER JOIN {$prefix}woocommerce_order_items t4 ON t4.order_id = pt.ID 
-                    INNER JOIN {$prefix}woocommerce_order_itemmeta t5 ON t4.order_item_id = t5.order_item_id AND t5.meta_key = '_product_id'
-                    INNER JOIN {$prefix}woocommerce_order_itemmeta t6 ON t4.order_item_id = t6.order_item_id AND t6.meta_key = '_qty'
-                    INNER JOIN {$prefix}woocommerce_order_itemmeta t7 ON t4.order_item_id = t7.order_item_id AND t7.meta_key = '_line_total'
-                    INNER JOIN {$prefix}postmeta t8 ON t5.meta_value = t8.post_id AND t8.meta_key = '_sku'
-                    INNER JOIN {$prefix}postmeta t9 ON t5.meta_value = t9.post_id AND t9.meta_key = '_price'
-                    INNER JOIN {$prefix}posts t10 ON t5.meta_value = t10.ID
-
-                 WHERE pt.post_type = 'shop_order' AND (t4.order_item_name LIKE '%{$keyword}%' OR t2.meta_value LIKE '%{$keyword}%' OR t1.meta_value LIKE '%{$keyword}%')
-                 LIMIT {$tope} OFFSET {$offset}";
+        $sql = "
+        SELECT pt.ID id
+        FROM {$prefix}posts pt
+        INNER JOIN {$prefix}postmeta pm ON pt.ID = pm.post_id AND pm.meta_key = '_customer_user' AND pm.meta_value = '771'
+        WHERE pt.post_type = 'shop_order' AND (pt.post_status = 'wc-pending' OR pt.post_status = 'wc-processing' OR pt.post_status = 'wc-on-hold')
+        ";
     
-        $sql_set_lan = "SET lc_time_names = 'es_ES'"; // No borrar: Query para cambiar el idioma a español en el que se muestra la fecha
+        //$sql_set_lan = "SET lc_time_names = 'es_ES'"; // No borrar: Query para cambiar el idioma a español en el que se muestra la fecha
         
-        array_push($out2, array("data"=> $this->execute_custom_query($sql_set_lan))); //No borrar: Se ejecuta la query para cambiar el idioma de la fecha a español
+        //array_push($out2, array("data"=> $this->execute_custom_query($sql_set_lan))); //No borrar: Se ejecuta la query para cambiar el idioma de la fecha a español
         array_push($out, array("data"=> $this->execute_custom_query($sql)));
         return $out;
       }
