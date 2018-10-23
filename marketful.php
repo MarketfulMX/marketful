@@ -100,3 +100,5 @@ add_action('wp_ajax_test_delete', ['MKF_ProductEntry', 'test_product_delete']);
 
 // Pedimos el precio de envio
 add_action('wp_ajax_get_ce', ['MKF_ProductEntry', 'get_ce']);
+
+

@@ -2,14 +2,14 @@
 
 /**
  * Archivo: class-admin-product-entries.php
- * Ultima edición : 13 de agosto de 2018
+ * Ultima ediciÃ³n : 13 de agosto de 2018
  *
  * @autor: Adolfo Yanes <adolfo@marketful.mx> as master contributor
  * @autor: Mauricio Alcala <mauricio@marketful.mx> as proyect admin
  * @author Javier Urbano <javierurbano11@gmail.com> as contributor
  * @author Angel Salazar <salazar.angel.e@gmail.com> as contributor
  *
- * @versión: 1.01
+ * @versiÃ³n: 1.01
  * @link: marketful.mx
  * @package    mkf
  * @subpackage mkf/admin/partials
@@ -17,11 +17,11 @@
  */
 
 /**
- * Descripción General:
+ * DescripciÃ³n General:
  * Este contiene la clase admin-product-entries, tiene las funciones de crear y ejecutar 
  * la query para solicitar todos los registros que se van a mostrar dentro de las 
  * diferentes secciones del plugin. Ademas define el nombre del plugin, la version
- * y dos ejemplos de hooks para como poner en cola la hoja de estilo específica de 
+ * y dos ejemplos de hooks para como poner en cola la hoja de estilo especÃ­fica de 
  * administrador y JavaScript.
  */
 
@@ -86,7 +86,7 @@ class MKF_ProductEntry extends MKF_DBCore
     
     
     /**
-     * @función __construct(@string = (PLUGIN_GSNAME), @string = (PLUGIN_GVERSION))
+     * @funciÃ³n __construct(@string = (PLUGIN_GSNAME), @string = (PLUGIN_GVERSION))
      *
      * Recibe el valor del $plg id y $version, en caso de que no se envien se asignara el 
      * valor del plugin_gsname y plugin_version.
@@ -116,15 +116,15 @@ class MKF_ProductEntry extends MKF_DBCore
 
 
     /*
-     * @Función PHP: my_theme_ajax_submit()
+     * @FunciÃ³n PHP: my_theme_ajax_submit()
      * 
-     * - Descripcion General: La @función my_theme_ajax_submit() recibe dentro de las variables:
+     * - Descripcion General: La @funciÃ³n my_theme_ajax_submit() recibe dentro de las variables:
      * $producto_id = Identificador del producto 
      * $value = Nuevo valor a actualizar
      * $key = Tipo de metadato que se modificara
      *
-     * Posteriormente despues de recibir los @parámetros ejecuta la función de wp
-     * update_post_meta(@string,@string,@string) que actualiza la meta data que se envió.
+     * Posteriormente despues de recibir los @parÃ¡metros ejecuta la funciÃ³n de wp
+     * update_post_meta(@string,@string,@string) que actualiza la meta data que se enviÃ³.
      * 
      * Se obtiene el $site_url, despues se crea el URL para guardar en ML con la $key
      * y con el valor a cambiar $value del $producto_id en la $site_url que obtuvimos
@@ -133,7 +133,7 @@ class MKF_ProductEntry extends MKF_DBCore
      * Se guarda un objeto inicializado WP_Http, se postea la $URL para ejecutar los cambios
      * y en caso de error se muestra.
      *
-     * Para finalizar la @función wp_die() finaliza la ejecución y muestra el error
+     * Para finalizar la @funciÃ³n wp_die() finaliza la ejecuciÃ³n y muestra el error
      * en caso de que suceda alguno.
      */
     public function my_theme_ajax_submit() 
@@ -191,9 +191,9 @@ class MKF_ProductEntry extends MKF_DBCore
 
     
     /**
-     * @función GetInstance()
+     * @funciÃ³n GetInstance()
      * 
-     * - Descripcion General: Es una función estatica que accede al objeto $instance y busca que sea nulo, 
+     * - Descripcion General: Es una funciÃ³n estatica que accede al objeto $instance y busca que sea nulo, 
      * en cuyo caso creal el objeto.
      * Em caso contrario retorna el objeto.
      */
@@ -209,11 +209,11 @@ class MKF_ProductEntry extends MKF_DBCore
 
 
     /**
-     * @función prefix_admin:add_metadata_to_product_entry()
+     * @funciÃ³n prefix_admin:add_metadata_to_product_entry()
      *
      * - Descripcion General: Primero tomamos el valor de extr_prefix_all en caso de no encontrar ningun valor le asignamos una "p"
      * Posteriormente con la funcion update_post_meta de WP actualizamos los valores del producto $p_product_id.
-     * Finaliza redirigiendonos hacia admin.php en la sección mkf-product-entries.
+     * Finaliza redirigiendonos hacia admin.php en la secciÃ³n mkf-product-entries.
      */
     // funcion para guardar la data q viene del formulario
     public function prefix_admin_add_metadata_to_product_entry()
@@ -234,12 +234,12 @@ class MKF_ProductEntry extends MKF_DBCore
 
     
     /**
-     * @función get_product_list()
+     * @funciÃ³n get_product_list()
      *
-     * - Descripcion General: Esta función define la query que se requiere hacer y la ejecuta para traer todos los datos que requiere el 
+     * - Descripcion General: Esta funciÃ³n define la query que se requiere hacer y la ejecuta para traer todos los datos que requiere el 
      * plugin.
      * 
-     * Primero se define un array que posteriormente mostrara toda la información resultante llamado $out.
+     * Primero se define un array que posteriormente mostrara toda la informaciÃ³n resultante llamado $out.
      * Despues utilizando array_push() agregamos al final del array out() el resultado que devuelve
      * ejecutar la query.
      * Despues retorna el valor de $out
@@ -290,11 +290,11 @@ class MKF_ProductEntry extends MKF_DBCore
     }
 
     /** 
-     * @fución publica get_ml_metadata(@string = (NULL))
+     * @fuciÃ³n publica get_ml_metadata(@string = (NULL))
      *
      * - Descripcion General: Recibe el valor de el $post_id y en caso de no enontrarlo le asigna valor nulo.
      * Crea en una variable @string la query que se requere ejecutar.
-     * Posteriormente con la función array_push() se ejecuta la query y se guarda dentro del array $out
+     * Posteriormente con la funciÃ³n array_push() se ejecuta la query y se guarda dentro del array $out
      * Para finalizar retornando el valor de $out.
      */
     public function get_ml_metadata($post_id = null)
@@ -333,10 +333,10 @@ class MKF_ProductEntry extends MKF_DBCore
     }
 
     /** 
-     * @función get_product_edit_form_title(@tring = (NULL), @string = (NULL))
+     * @funciÃ³n get_product_edit_form_title(@tring = (NULL), @string = (NULL))
      * 
-     * - Descripcion General: Dentro de esta función se retorna el valor del titulo dependiendo si es nulo o simplemente esta vacio, 
-     * así como el valor del SKU.
+     * - Descripcion General: Dentro de esta funciÃ³n se retorna el valor del titulo dependiendo si es nulo o simplemente esta vacio, 
+     * asÃ­ como el valor del SKU.
      */
     public static function get_product_edit_form_title($title = null, $sku = null)
     {
@@ -345,7 +345,7 @@ class MKF_ProductEntry extends MKF_DBCore
     }
 
     /**
-     * @función product_edit_form_title_to_presenter(@string = (NULL), @tring = (NULL))
+     * @funciÃ³n product_edit_form_title_to_presenter(@string = (NULL), @tring = (NULL))
      * 
      * - Descripcion General: Hace echo al valor  $title y $Sku del objeto en cuestion.
      */
@@ -470,12 +470,6 @@ class MKF_ProductEntry extends MKF_DBCore
         $out = array();
         $out2 = array(); //Array para cambiar el idioma en el que se muestra la fecha. 
 
-       /*if($k2 == 'me')
-        {
-            
-        }
-        else
-        {
             $sql = "SELECT pt.ID id, DATE_FORMAT(pt.post_date_gmt, '%W %d %M %Y') fecha, pt.post_status estado, t11.meta_value customer_id, t1.meta_value customer_name, t2.meta_value customer_lastname, t3.meta_value customer_tel, t4.order_item_id item_id, t4.order_item_name item_name, t5.meta_value item_product_id, t6.meta_value item_qty, t7.meta_value item_price_total, t8.meta_value item_sku, t9.meta_value item_price, t10.post_content item_content
                  FROM {$prefix}posts pt
                     INNER JOIN {$prefix}postmeta t1 ON t1.post_id = pt.ID AND t1.meta_key = '_shipping_first_name'
@@ -493,54 +487,11 @@ class MKF_ProductEntry extends MKF_DBCore
 
                  WHERE pt.post_type = 'shop_order' AND (t4.order_item_name LIKE '%{$keyword}%' OR t2.meta_value LIKE '%{$keyword}%' OR t1.meta_value LIKE '%{$keyword}%') AND pt.post_status LIKE '%{$k3}%'
                  ORDER BY fecha, estado DESC
-                 LIMIT {$tope} OFFSET {$offset}";
-        }*/
+                 LIMIT {$tope} OFFSET {$offset}";   
+
+        $sql_set_lan = "SET lc_time_names = 'es_ES'"; // Query para cambiar el idioma a espaÃ±ol en el que se muestra la fecha
         
-        $sql = "
-            SELECT 
-                tp.ID id, 
-                DATE_FORMAT(tp.post_date_gmt, '%W %d %M %Y') fecha, 
-                tp.post_status estado, 
-                tp.post_content item_content,
-                ts_1.meta_value customer_firstname, 
-                ts_2.meta_value customer_lastname, 
-                ts_3.meta_value customer_tel, 
-                ts_4.meta_value item_sku, 
-                ts_5.meta_value item_price,
-                ts_6.meta_value customer_id,
-                ti_1.meta_value item_price, 
-                ti_2.meta_value item_qty, 
-                ti_3.meta_value shipping_id,
-                ti_4.meta_value item_price_total,
-                to_1.order_item_name item_name,
-                to_1.order_item_id item_id,
-                to_2.order_item_name shipping_name
-
-            FROM {$prefix}post tp
-                INNER JOIN {$prefix}postmeta ts_1 ON ts_1.post_id = tp.ID AND ts_1.meta_key = '_shipping_first_name'
-                INNER JOIN {$prefix}postmeta ts_2 ON ts_2.post_id = tp.ID AND ts_2.meta_key = '_shipping_last_name'
-                INNER JOIN {$prefix}postmeta ts_3 ON ts_3.post_id = tp.ID AND ts_3.meta_key = '_billing_phone'
-                INNER JOIN {$prefix}postmeta ts_4 ON ts_4.post_id = tp.ID AND ts_4.meta_key = '_sku'
-                INNER JOIN {$prefix}postmeta ts_5 ON ts_5.post_id = tp.ID AND ts_5.meta_key = '_price'
-                INNER JOIN {$prefix}postmeta ts_6 ON ts_6.post_id = tp.ID AND ts_6.meta_key = '_customer_user' AND ts_6.meta_value = '771'
-
-                INNER JOIN {$prefix}woocommerce_order_items to_1 ON to_1.order_id = tp.ID AND to_1.order_item_type = 'line_item'
-                INNER JOIN {$prefix}woocommerce_order_items to_2 ON to_2.order_id = tp.ID AND to_2.order_item_type = 'shipping'
-
-                INNER JOIN {$prefix}woocommerce_order_itemmeta ti_1 ON to_1.order_item_id = ti_1.order_item_id AND ti_1.meta_key = 'product_id'
-                INNER JOIN {$prefix}woocommerce_order_itemmeta ti_2 ON to_1.order_item_id = ti_2.order_item_id AND ti_2.meta_key = '_qty'
-                INNER JOIN {$prefix}woocommerce_order_itemmeta ti_3 ON to_2.order_item_id = ti_3.order_item_id AND ti_3.meta_key = 'method_id'
-                INNER JOIN {$prefix}woocommerce_order_itemmeta ti_4 ON to_1.order_item_id = ti_4.order_item_id AND ti_4.meta_key = '_line_total'
-
-            
-            ORDER BY fecha, estado DESC
-            LIMIT {$tope} OFFSET {$offset} 
-                ";
-        
-
-        $sql_set_lan = "SET lc_time_names = 'es_ES'"; // Query para cambiar el idioma a español en el que se muestra la fecha
-        
-        array_push($out2, array("data"=> $this->execute_custom_query($sql_set_lan))); // Se ejecuta la query para cambiar el idioma de la fecha a español
+        array_push($out2, array("data"=> $this->execute_custom_query($sql_set_lan))); // Se ejecuta la query para cambiar el idioma de la fecha a espaÃ±ol
         array_push($out, array("data"=> $this->execute_custom_query($sql)));
         return $out;
       }
@@ -586,9 +537,9 @@ class MKF_ProductEntry extends MKF_DBCore
 
                  WHERE pt.ID = '{$id}' AND t5.meta_value = '{$pid}'";
 
-        $sql_set_lan = "SET lc_time_names = 'es_ES'"; // Query para cambiar el idioma a español en el que se muestra la fecha
+        $sql_set_lan = "SET lc_time_names = 'es_ES'"; // Query para cambiar el idioma a espaÃ±ol en el que se muestra la fecha
         
-        array_push($out2, array("data"=> $this->execute_custom_query($sql_set_lan))); // Se ejecuta la query para cambiar el idioma de la fecha a español
+        array_push($out2, array("data"=> $this->execute_custom_query($sql_set_lan))); // Se ejecuta la query para cambiar el idioma de la fecha a espaÃ±ol
         array_push($out, array("data"=> $this->execute_custom_query($sql)));
         return $out;
       }
