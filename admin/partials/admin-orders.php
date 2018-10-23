@@ -178,7 +178,7 @@
     var values = new Array(4);
 
     values[0] = ['', 'por cobrar', 'cobrado'];
-    values[1] = ['', 'mercado-envios'];
+    values[1] = ['', 'me'];
     values[2] = ['', 'wc-on-hold', 'wc-processing', 'wc-processing', 'wc-processing', 'wc-pending', 'wc-completed', 'wc-completed', 'wc-cancelled'];
     values[3] = ['', 'Por resover con el comprador', 'resueltos con el comprador', 'mediacion de mercadolibre', 'resueltoscon mediacion de mercadolibre'];
     
@@ -460,7 +460,7 @@
     <div class="sup_1">
       Filtros
     </div>
-    <form class="sup_2">
+    <!--form class="sup_2">
         <div class="s2_1">
           Cobros
         </div>
@@ -473,7 +473,7 @@
         <div class="s2_4">
           <input type="radio" name="cobros" value="2"> Cobrados<br>  
         </div>
-    </form>
+    </form-->
     <form class="sup_3">
         <div class="s3_1">
           Servicios de envio
@@ -705,10 +705,11 @@
                     <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
                   </div>
                   <div class="fr4_3" style="display:none;">
-                    <i class="fas fa-ellipsis-v opciones" onclick=""></i>
+                    <i class="fas fa-ellipsis-v opciones" onclick=""></i> 
                   </div>
                 </div> 
               </div>
+              '.$order->id.' : '.$order->valor_prueba.' : 
                ';
               }
             }

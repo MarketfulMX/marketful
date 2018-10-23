@@ -470,7 +470,13 @@ class MKF_ProductEntry extends MKF_DBCore
         $out = array();
         $out2 = array(); //Array para cambiar el idioma en el que se muestra la fecha. 
 
-        $sql = "SELECT pt.ID id, DATE_FORMAT(pt.post_date_gmt, '%W %d %M %Y') fecha, pt.post_status estado, t11.meta_value customer_id, t1.meta_value customer_name, t2.meta_value customer_lastname, t3.meta_value customer_tel, t4.order_item_id item_id, t4.order_item_name item_name, t5.meta_value item_product_id, t6.meta_value item_qty, t7.meta_value item_price_total, t8.meta_value item_sku, t9.meta_value item_price, t10.post_content item_content
+       /*if($k2 == 'me')
+        {
+            
+        }
+        else
+        {
+            $sql = "SELECT pt.ID id, DATE_FORMAT(pt.post_date_gmt, '%W %d %M %Y') fecha, pt.post_status estado, t11.meta_value customer_id, t1.meta_value customer_name, t2.meta_value customer_lastname, t3.meta_value customer_tel, t4.order_item_id item_id, t4.order_item_name item_name, t5.meta_value item_product_id, t6.meta_value item_qty, t7.meta_value item_price_total, t8.meta_value item_sku, t9.meta_value item_price, t10.post_content item_content
                  FROM {$prefix}posts pt
                     INNER JOIN {$prefix}postmeta t1 ON t1.post_id = pt.ID AND t1.meta_key = '_shipping_first_name'
                     INNER JOIN {$prefix}postmeta t2 ON t2.post_id = pt.ID AND t2.meta_key = '_shipping_last_name'
@@ -484,10 +490,54 @@ class MKF_ProductEntry extends MKF_DBCore
                     INNER JOIN {$prefix}postmeta t9 ON t5.meta_value = t9.post_id AND t9.meta_key = '_price'
                     INNER JOIN {$prefix}posts t10 ON t5.meta_value = t10.ID
 
+
                  WHERE pt.post_type = 'shop_order' AND (t4.order_item_name LIKE '%{$keyword}%' OR t2.meta_value LIKE '%{$keyword}%' OR t1.meta_value LIKE '%{$keyword}%') AND pt.post_status LIKE '%{$k3}%'
                  ORDER BY fecha, estado DESC
                  LIMIT {$tope} OFFSET {$offset}";
-    
+        }*/
+        
+        $sql = "
+            SELECT 
+                tp.ID id, 
+                DATE_FORMAT(tp.post_date_gmt, '%W %d %M %Y') fecha, 
+                tp.post_status estado, 
+                tp.post_content item_content,
+                ts_1.meta_value customer_firstname, 
+                ts_2.meta_value customer_lastname, 
+                ts_3.meta_value customer_tel, 
+                ts_4.meta_value item_sku, 
+                ts_5.meta_value item_price,
+                ts_6.meta_value customer_id,
+                ti_1.meta_value item_price, 
+                ti_2.meta_value item_qty, 
+                ti_3.meta_value shipping_id,
+                ti_4.meta_value item_price_total,
+                to_1.order_item_name item_name,
+                to_1.order_item_id item_id,
+                to_2.order_item_name shipping_name
+
+            FROM {$prefix}post tp
+                INNER JOIN {$prefix}postmeta ts_1 ON ts_1.post_id = tp.ID AND ts_1.meta_key = '_shipping_first_name'
+                INNER JOIN {$prefix}postmeta ts_2 ON ts_2.post_id = tp.ID AND ts_2.meta_key = '_shipping_last_name'
+                INNER JOIN {$prefix}postmeta ts_3 ON ts_3.post_id = tp.ID AND ts_3.meta_key = '_billing_phone'
+                INNER JOIN {$prefix}postmeta ts_4 ON ts_4.post_id = tp.ID AND ts_4.meta_key = '_sku'
+                INNER JOIN {$prefix}postmeta ts_5 ON ts_5.post_id = tp.ID AND ts_5.meta_key = '_price'
+                INNER JOIN {$prefix}postmeta ts_6 ON ts_6.post_id = tp.ID AND ts_6.meta_key = '_customer_user' AND ts_6.meta_value = '771'
+
+                INNER JOIN {$prefix}woocommerce_order_items to_1 ON to_1.order_id = tp.ID AND to_1.order_item_type = 'line_item'
+                INNER JOIN {$prefix}woocommerce_order_items to_2 ON to_2.order_id = tp.ID AND to_2.order_item_type = 'shipping'
+
+                INNER JOIN {$prefix}woocommerce_order_itemmeta ti_1 ON to_1.order_item_id = ti_1.order_item_id AND ti_1.meta_key = 'product_id'
+                INNER JOIN {$prefix}woocommerce_order_itemmeta ti_2 ON to_1.order_item_id = ti_2.order_item_id AND ti_2.meta_key = '_qty'
+                INNER JOIN {$prefix}woocommerce_order_itemmeta ti_3 ON to_2.order_item_id = ti_3.order_item_id AND ti_3.meta_key = 'method_id'
+                INNER JOIN {$prefix}woocommerce_order_itemmeta ti_4 ON to_1.order_item_id = ti_4.order_item_id AND ti_4.meta_key = '_line_total'
+
+            
+            ORDER BY fecha, estado DESC
+            LIMIT {$tope} OFFSET {$offset} 
+                ";
+        
+
         $sql_set_lan = "SET lc_time_names = 'es_ES'"; // Query para cambiar el idioma a español en el que se muestra la fecha
         
         array_push($out2, array("data"=> $this->execute_custom_query($sql_set_lan))); // Se ejecuta la query para cambiar el idioma de la fecha a español
