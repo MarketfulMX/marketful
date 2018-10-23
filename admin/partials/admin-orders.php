@@ -579,6 +579,7 @@
            */
           foreach ($orders[0]['data'] as $key => $order) 
           {
+            $order_val = get_post($order->id);
             /**
              * @Script para mostrar la imagen desde woocommerce
              *
@@ -598,58 +599,7 @@
              *      y el fin.
              * - 9: Despues de lo anterior se setea el valor de jpg y jpeg en 0.
              */
-            $path = $order->item_content;
-            $img = strpos($path, 'src="http');
-            if($img > 0)
-            {
-              $jpeg = strrpos($path, '.jpeg" alt="" width="'); 
-              $jpg = strrpos($path, '.jpg" alt="" width="'); 
-              $inicio = $img + 5; 
-              if($jpg > 0)
-              {
-                $fin = $jpg - $inicio + 4; 
-                $direc = substr($path, ($inicio), ($fin)); 
-                $jpg = 0;
-              }
-              elseif($jpeg > 0)
-              {
-                $fin =  $jpeg - $inicio + 5;  
-                $direc = substr($path, ($inicio), ($fin)); 
-                $jpeg = 0;
-              }
-            }
-            else
-            {
-              $inicio = '';
-              $fin = '';
-              $direc = 'https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg';
-            }
-
-            /**
-             * @script
-             * - Usando un switch definimos el titulo que tendra el producto de la orden, asi como el texto que mostrara el 
-             *   boton de dicha orden y la accion que ejecutara cuando se le haga clic dependiendo el caso.
-             */
-            switch ($order->estado) {
-              case 'wc-pending':
-                $texto_boton = 'Imprimir etiqueta';
-                $texto_titulo = 'Etiqueta no impresa';
-                $etiquetas = 'etiquetas';
-                $funcion_ejec = 'imprimir_etiqueta(\''.$order->item_name.'\',\''.$order->fecha.'\',\''.$order->customer_name.'\',\''.$order->customer_lastname.'\');';
-                break;
-              case 'wc-processing':
-                $texto_boton = 'Seguir envio';
-                $texto_titulo = 'En camino';
-                $etiquetas = '';
-                $funcion_ejec = '';
-                break;
-              
-              default:
-                break;
-            }
-            $link_publicacion = get_post_meta($order->id, "link_publicacion", true ) ;
-            // Alternativa
-            // $order->link_pub;
+            
             echo '
              <div class="caja_orden">
               <div class="fr1">
@@ -657,12 +607,12 @@
                   <input type="checkbox" style="display: none;" id="checkbox_open_'.$order->id.'"name="checkbox_open">
                 </div>
                 <div class="fr1_2" id="'.$etiquetas.'">
-                  '.$texto_titulo.' ID : '.$order->id.'
+                  '.$texto_titulo.' status_ml : '.$order->id.'
                 </div>
                 <div class="fr1_3">
                 </div>
                 <div class="fr1_4">
-                  Fecha de orden: '.$order->fecha.'
+                  Fecha de orden: '.$order_val->post_date.'
                 </div>
               </div>
               <div class="fr2">
@@ -724,35 +674,7 @@
 
           foreach ($orders[0]['data'] as $key => $order) 
           {
-            if($order->estado == 'wc-completed' || $order->estado == 'wc-cancelled' || $order->estado == 'wc-refunded' || $order->estado == 'wc-failed')
-            {
-              // Script para mostrar la imagen desde woocommerce
-              $path = $order->item_content; 
-              $img = strpos($path, 'src="http');
-              if($img > 0)
-              {
-                $jpeg = strrpos($path, '.jpeg" alt="" width="'); 
-                $jpg = strrpos($path, '.jpg" alt="" width="'); 
-                $inicio = $img + 5; 
-                if($jpg > 0)
-                {
-                  $fin = $jpg - $inicio + 4; 
-                  $direc = substr($path, ($inicio), ($fin)); 
-                  $jpg = 0;
-                }
-                elseif($jpeg > 0)
-                {
-                  $fin =  $jpeg - $inicio + 5; 
-                  $direc = substr($path, ($inicio), ($fin)); 
-                  $jpeg = 0;
-                }
-              }
-              else
-              {
-                $inicio = '';
-                $fin = '';
-                $direc = 'https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg';
-              }
+            
                echo '
                <div class="caja_orden">
                 <div class="fr1">
@@ -811,7 +733,7 @@
                 </div> 
               </div>
               ';
-            }
+            
           }
        ?>
     </div>
