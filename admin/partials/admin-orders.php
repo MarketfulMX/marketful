@@ -586,6 +586,7 @@
 
             $item_quantity = $order_val->get_item_meta($primer_producto->get_id(), '_qty', true);
             $item_total = $order_val->get_item_meta( $primer_producto->get_id(), '_line_total', true);
+            $item_sku = $order_val->get_item_meta( $primer_producto->get_id(), '_sku', true);
             if(intval($item_quantity) > 0)
               $item_subtotal = (intval($item_total) / intval($item_quantity));
             else
@@ -654,7 +655,7 @@
                     $ '.$item_subtotal.' x '.$item_quantity.' unidad(es) = $'.$item_total.'
                   </div>
                   <div class="fr3_2_3">
-                    SKU: '.$order->item_sku.'  
+                    SKU: '.$item_sku.'  
                   </div>
                 </div>
               </div>
