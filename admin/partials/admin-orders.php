@@ -579,12 +579,13 @@
            */
           foreach ($orders[0]['data'] as $key => $order) 
           {
+
             $order_val = wc_get_order($order->id);
             $items = $order_val->get_items();
             $primer_producto = reset($items);
 
-            $item_quantity = $order_val->get_item_meta( $primer_producto['id'], '_qty', true);
-            $item_total = $order_val->get_item_meta( $primer_producto['id'], '_line_total', true);
+            $item_quantity = $order_val->get_item_meta($primer_producto->get_id(), '_qty', true);
+            $item_total = $order_val->get_item_meta( $primer_producto->get_id(), '_line_total', true);
             if(intval($item_quantity) > 0)
               $item_subtotal = (intval($item_total) / intval($item_quantity));
             else
