@@ -212,8 +212,7 @@
   }
   .contenedor
   {
-    overflow-y: scroll; 
-    height: 60vh;
+    
     border-color: #dee2e6;
     border-width: 0px;
     border-top-width: 0px;
