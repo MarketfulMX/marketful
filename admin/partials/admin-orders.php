@@ -212,8 +212,7 @@
   }
   .contenedor
   {
-    overflow-y: scroll; 
-    height: 60vh;
+    
     border-color: #dee2e6;
     border-width: 0px;
     border-top-width: 0px;
@@ -344,7 +343,8 @@
       {
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 25% 25% 25% 25%;
+        grid-template-rows: 50% 25% 25%;
+        padding: 2px;
       }
         .fr3_2_1
         {
@@ -580,6 +580,18 @@
           foreach ($orders[0]['data'] as $key => $order) 
           {
             $order_val = get_post($order->id);
+            $order_info = wc_get_order($order->id);
+            $items = $order_info->get_items();
+            $primer_producto = reset($items);
+            $item_quantity = $primer_producto['qty'];
+            $item_total = $primer_producto['line_total'];
+            intval($item_quantity) > 0;
+            $item_subtotal = 0;
+            if(intval($item_quantity) > 0){
+              $item_subtotal = (intval($item_total) / intval($item_quantity));
+            }
+            
+
             /**
              * @Script para mostrar la imagen desde woocommerce
              *
@@ -624,13 +636,13 @@
                 </div>
                 <div class="fr3_2">
                   <div class="fr3_2_1">
-                    <a href="'.$link_publicacion.'">'.$order->item_name.'</a>
+                    <a href="'.$link_publicacion.'">'.$primer_producto['name'].'</a>
                   </div>
                   <div class="fr3_2_2">
-                    $ '.$order->item_price.' x '.$order->item_qty.' unidad(es) = $'.$order->item_price_total.'
+                    $'.$item_subtotal.' x '.$primer_producto['qty'].' unidad(es) = $'.$primer_producto['line_total'].'
                   </div>
                   <div class="fr3_2_3">
-                    SKU: '.$order->item_sku.'  
+                    SKU: '.$primer_producto['product_id'].'  
                   </div>
                 </div>
               </div>
