@@ -467,6 +467,7 @@ class MKF_ProductEntry extends MKF_DBCore
         FROM {$prefix}posts pt
         INNER JOIN {$prefix}postmeta pm ON pt.ID = pm.post_id AND pm.meta_key = '_customer_user' AND pm.meta_value = '771'
         WHERE pt.post_type = 'shop_order' AND (pt.post_status = 'wc-pending' OR pt.post_status = 'wc-processing' OR pt.post_status = 'wc-on-hold')
+        ORDER BY pt.post_date DESC
         ";
     
         //$sql_set_lan = "SET lc_time_names = 'es_ES'"; // No borrar: Query para cambiar el idioma a español en el que se muestra la fecha
