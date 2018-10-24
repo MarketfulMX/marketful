@@ -583,6 +583,15 @@
             $order_info = wc_get_order($order->id);
             $items = $order_info->get_items();
             $primer_producto = reset($items);
+            $item_quantity = $primer_producto['qty'];
+            $item_total = $primer_producto['line_total'];
+            intval($item_quantity) > 0;
+            $item_subtotal = 0;
+            if(intval($item_quantity) > 0){
+              $item_subtotal = (intval($item_total) / intval($item_quantity));
+            }
+            
+
             /**
              * @Script para mostrar la imagen desde woocommerce
              *
@@ -630,10 +639,10 @@
                     <a href="'.$link_publicacion.'">'.$primer_producto['name'].'</a>
                   </div>
                   <div class="fr3_2_2">
-                    $ '.$order->item_price.' x '.$order->item_qty.' unidad(es) = $'.$order->item_price_total.'
+                    $'.$item_subtotal.' x '.$primer_producto['qty'].' unidad(es) = $'.$primer_producto['line_total'].'
                   </div>
                   <div class="fr3_2_3">
-                    SKU: '.$order->item_sku.'  
+                    SKU: '.$primer_producto['product_id'].'  
                   </div>
                 </div>
               </div>
