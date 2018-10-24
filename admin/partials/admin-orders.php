@@ -582,6 +582,15 @@
             $order_val = wc_get_order($order->id);
             $items = $order_val->get_items();
             $primer_producto = reset($items);
+
+            $item_quantity = $order_val->get_item_meta( $primer_producto['id'], '_qty', true);
+            $item_total = $order_val->get_item_meta( $primer_producto['id'], '_line_total', true);
+            if(intval($item_quantity) > 0)
+              $item_subtotal = (intval($item_total) / intval($item_quantity));
+            else
+              $item_subtotal = 0;
+            
+
             /**
              * @Script para mostrar la imagen desde woocommerce
              *
@@ -641,7 +650,7 @@
                     '</a>
                   </div>
                   <div class="fr3_2_2">
-                    $ '.$order->item_price.' x '.$order->item_qty.' unidad(es) = $'.$order->item_price_total.'
+                    $ '.$item_subtotal.' x '.$item_quantity.' unidad(es) = $'.$item_total.'
                   </div>
                   <div class="fr3_2_3">
                     SKU: '.$order->item_sku.'  
