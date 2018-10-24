@@ -343,7 +343,8 @@
       {
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 25% 25% 25% 25%;
+        grid-template-rows: 50% 25% 25%;
+        padding: 2px;
       }
         .fr3_2_1
         {
