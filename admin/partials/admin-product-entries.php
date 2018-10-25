@@ -141,10 +141,10 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   }
   </style>
 
-
-<div id="registros" class="table-wrapper-scroll-y" >
-  <table id="tabla" class="responsive-table table" >
-    <thead>
+<div style="position: relative; z-index: 0; margin-top: 50px;">
+<div id="registros" class="table-wrapper-scroll-y" style=''>
+  <table id="tabla" class="responsive-table table" style="display: table">
+    <thead style="position: fixed; background-color: white; z-index: 1; margin-top: -70px;">
         <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
         <th style="min-width: 100px">Subir cambios a Mercado Libre</th>
         <th style="min-width: 50px">SKU </th>
@@ -163,7 +163,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <th style="min-width: 60px">Ultima Actualizaci&oacute;n</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
     </thead>
-    <tbody id="tbody_productos">
+    <tbody id="tbody_productos" style=" overflow-y: scroll; height: 65vh;">
     <!-- Creamos un foreach para recorrer todos los valores -->
     <?php
       foreach ($products[0]["data"] as $key => $product) :
@@ -289,6 +289,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     <?php endforeach; //Fin Iteracion ?>
     </tbody>
   </table>
+</div>
 </div>
 </div>
 
