@@ -142,10 +142,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   </style>
 
 
-<div id="registros" style="max-width: 100%; overflow-x: scroll; max-height: 65vh;" >
-  <table id="tabla" class="table stripe tableMK" style="overflow: auto;">
+<div id="registros" class="table-wrapper-scroll-y" >
+  <table id="tabla" class="responsive-table table" >
     <thead>
-      <tr>
         <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
         <th style="min-width: 100px">Subir cambios a Mercado Libre</th>
         <th style="min-width: 50px">SKU </th>
@@ -163,7 +162,6 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <th style="min-width: 110px">Ver Publicaci&oacute;n</th>
         <th style="min-width: 60px">Ultima Actualizaci&oacute;n</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
-      </tr>
     </thead>
     <tbody id="tbody_productos">
     <!-- Creamos un foreach para recorrer todos los valores -->
