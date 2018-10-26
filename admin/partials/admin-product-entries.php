@@ -142,7 +142,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   </style>
 
 
-<div id="registros" style="max-width: 100%; overflow-x: scroll; max-height: 65vh; position: fixed; background-color: white;" >
+<div id="registros" style="max-width: 100%; overflow: scroll; max-height: 65vh; position: fixed; background-color: white;" >
   <table id="tabla" class="table stripe tableMK" style="overflow: auto;">
     <thead style="position: fixed; z-index: 2;">
       <tr>
