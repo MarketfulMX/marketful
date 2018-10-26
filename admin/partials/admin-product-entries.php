@@ -77,7 +77,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 <!-- ESTILOS ESTAN DENTRO DE admin/css/admin-product-entries.css -->
 
 
-<div class="container" style="max-width: 170vh; overflow: visible; position: fixed;" >
+<div class="container" style=" width:90%; overflow: visible; position: fixed;" >
   <div class="loader_onb">  
   </div>
 <div class="bootstrap-wrapper">
@@ -141,8 +141,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   }
   </style>
 
-
-<div id="registros" style="max-width: 170vh; overflow: scroll; max-height: 65vh; position: fixed; background-color: white;" >
+<div style="width: 80%;">
+<div id="registros" style="overflow: scroll; max-height: 65vh; width: 100%;  position: fixed; background-color: white;" >
   <table id="tabla" class="table stripe tableMK" style=" overflow: scroll;">
     <thead style="position: fixed; z-index: 2;">
       <tr>
@@ -291,6 +291,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
     <?php endforeach; //Fin Iteracion ?>
     </tbody>
   </table>
+</div>
+</div>
 </div>
 </div>
 
