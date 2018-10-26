@@ -77,7 +77,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 <!-- ESTILOS ESTAN DENTRO DE admin/css/admin-product-entries.css -->
 
 
-<div class="container" style="max-width: 95%; overflow: hidden;" >
+<div class="container" style="max-width: 95%; overflow: hidden; position: fixed;" >
   <div class="loader_onb">  
   </div>
 <div class="bootstrap-wrapper">
@@ -142,9 +142,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   </style>
 
 
-<div id="registros" style="max-width: 100%; overflow-x: scroll; max-height: 65vh;" >
+<div id="registros" style="max-width: 100%; overflow-x: scroll; max-height: 65vh; position: fixed; background-color: white;" >
   <table id="tabla" class="table stripe tableMK" style="overflow: auto;">
-    <thead>
+    <thead style="position: fixed; z-index: 2;">
       <tr>
         <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
         <th style="min-width: 100px">Subir cambios a Mercado Libre</th>
@@ -165,7 +165,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <!-- <th style="min-width: 215px;">Acción</th> -->
       </tr>
     </thead>
-    <tbody id="tbody_productos">
+    <tbody id="tbody_productos" style="z-index: 1;">
     <!-- Creamos un foreach para recorrer todos los valores -->
     <?php
       foreach ($products[0]["data"] as $key => $product) :
