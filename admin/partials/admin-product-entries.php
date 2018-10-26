@@ -77,7 +77,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 <!-- ESTILOS ESTAN DENTRO DE admin/css/admin-product-entries.css -->
 
 
-<div class="container" style=" width:200vw; overflow: visible; position: fixed;" >
+<div class="container" style=" width:200vw; position: fixed;" >
   <div class="loader_onb">  
   </div>
 <div class="bootstrap-wrapper">
@@ -143,7 +143,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 <div style="width: 200vw;">
 <div id="registros" style="overflow: scroll; max-height: 65vh; width: 100;  position: fixed; background-color: white;" >
-  <table id="tabla" class="table stripe tableMK" style=" overflow: scroll; ">
+  <table id="tabla" class="table stripe tableMK" style=" overflow-x: scroll; overflow-y: scroll;">
     <thead style="position: fixed; z-index: 2;">
       <tr>
         <th class="dt_check" style="max-width: 40px;"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
