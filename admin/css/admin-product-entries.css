@@ -167,10 +167,21 @@ table.responsive-table {
   height: 100%;
 }
 table.responsive-table thead {
-    
+    display: table-header-group;    
 }
 table.responsive-table tbody {
-  
+    display: table-row-group;
+}
+
+table.responsive-table th {
+  background: #eee;
+}
+table.responsive-table td {
+  line-height: 2em;
+}
+table.responsive-table tr > td,
+table.responsive-table th {
+  text-align: center;
 }
     /* Onboarding Styles *******************************************************************************/
     .elemento_active

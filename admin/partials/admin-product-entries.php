@@ -142,7 +142,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   }
   </style>
 
-<div class="table-area" style="position: relative; z-index: 0; margin-top: 10px;">
+<div class="table-area" style="position: relative; z-index: 0; margin-top: 10px;" >
 <div id="registros" class="table-wrapper-scroll-y" style="" >
   <table id="tabla" class="table responsive-table" style="">
     <thead style="">
@@ -154,9 +154,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <th style="">Status</th>
         <th style="">Exposici&oacute;n</th>
         <th style="">Categoria ML</th>
-        <th style="">Precio Woo Copxerce</th>
+        <th style="">Precio Woo Commerce</th>
         <th style="">Precio Mercado Libre</th>
-        <th style="">Inventario Woo Copxerce</th>
+        <th style="">Inventario Woo Commerce</th>
         <th style="">Inventario Mercado Libre</th>
         <th style="">Tipo de Envio</th>
         <th style="">Costo de Envio en Mercado Libre</th>
