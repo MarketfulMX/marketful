@@ -77,7 +77,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 <!-- ESTILOS ESTAN DENTRO DE admin/css/admin-product-entries.css -->
 
 
-<div class="container" style="" >
+<div class="container" style=" " >
   <div class="loader_onb">  
   </div>
 <div class="bootstrap-wrapper">
