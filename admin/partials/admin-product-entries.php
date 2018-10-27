@@ -142,8 +142,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   </style>
 
 <div class="table-area" style="position: relative; z-index: 0; margin-top: 10px;">
-<div id="registros" style="overflow: scroll; max-height: 65vh; width: 88%;  position: fixed; background-color: white;" >
-  <table id="tabla" class="table stripe tableMK" style="">
+<div id="registros" class="table-wrapper-scroll-y" style="overflow: scroll; max-height: 65vh; width: 88%;  position: fixed; background-color: white;" >
+  <table id="tabla" class="table stripe tableMK responsive-table " style="">
     <thead style="position: fixed; z-index: 2;">
       <tr>
         <th class="dt_check" style="max-width: 40mm;"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
