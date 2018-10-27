@@ -134,13 +134,15 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       </label>
     </div>
   </div>
-
+</div>
+</div>
   <style>
   #cambios_guardados{
     font-size: 10px;
   }
   </style>
-<div class="table-area" style="position: relative; z-index: 0; margin-top: 10px;">
+
+<div class="table-area" style="position: relative; z-index: 0; margin-top: 140px;">
 <div id="registros" class="table-wrapper-scroll-y" style="overflow: scroll; max-height: 65vh; width: 88%;  position: fixed; background-color: white;" >
   <table id="tabla" class="table stripe tableMK responsive-table" style="">
     <thead style="position: fixed; z-index: 2; table-layout: fixed; ">
@@ -164,7 +166,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <!-- <th style="min-width: 215px;">Acción</th> -->
       </tr>
     </thead>
-    <tbody id="tbody_productos" style="z-index: 1;table-layout: fixed;">
+    <tbody id="tbody_productos" style="z-index: 1;table-layout: auto;">
     <!-- Creamos un foreach para recorrer todos los valores -->
     <?php
       foreach ($products[0]["data"] as $key => $product) :
@@ -292,8 +294,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   </table>
 </div>
 </div>
-</div>
-</div>
+
 
 <!-- On boarding div, dont erase -->
 <div class="onb_flotante" <?php if($onb == 2){ echo 'onload="onboarding_4()"'; } ?>>    
