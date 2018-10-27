@@ -112,7 +112,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           <option>Exposicion</option>
           <option  value="free" >Gratis</option>
           <option value="clasica" >Clasica</option>
-          <option value="premium" >Premium</option> 
+          <option value="prremium" >Premium</option> 
       </select> -->
     </div>
     <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" id="dg">
@@ -145,22 +145,22 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   <table id="tabla" class="table stripe tableMK responsive-table" style="">
     <thead style="position: fixed; z-index: 2; table-layout: fixed; ">
       <tr>
-        <th class="dt_check" style="max-width: 40em;"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
-        <th style="width: 10em;">Subir cambios a Mercado Libre</th>
-        <th style="width: 140em">SKU </th>
-        <th style="width: 220em">Titulo en MercadoLibre <br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></th>
-        <th style="width: 50em">Status</th>
-        <th style="width: 50em">Exposici&oacute;n</th>
-        <th style="width: 130em">Categoria ML</th>
-        <th style="width: 50em">Precio Woo Coemerce</th>
-        <th style="width: 50em">Precio Mercado Libre</th>
-        <th style="width: 50em">Inventario Woo Coemerce</th>
-        <th style="width: 50em">Inventario Mercado Libre</th>
-        <th style="width: 150em">Tipo de Envio</th>
-        <th style="width: 100em">Costo de Envio en Mercado Libre</th>
-        <th style="width: 100em">Comision de Mercado Libre</th>
-        <th style="width: 110em">Ver Publicaci&oacute;n</th>
-        <th style="width: 60em">Ultima Actualizaci&oacute;n</th>
+        <th class="dt_check" style="max-width: 40rem;"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
+        <th style="width: 10rem;">Subir cambios a Mercado Libre</th>
+        <th style="width: 140rem">SKU </th>
+        <th style="width: 220rem">Titulo en MercadoLibre <br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></th>
+        <th style="width: 50rem">Status</th>
+        <th style="width: 50rem">Exposici&oacute;n</th>
+        <th style="width: 130rem">Categoria ML</th>
+        <th style="width: 50rem">Precio Woo Coremerce</th>
+        <th style="width: 50rem">Precio Mercado Libre</th>
+        <th style="width: 50rem">Inventario Woo Coremerce</th>
+        <th style="width: 50rem">Inventario Mercado Libre</th>
+        <th style="width: 150rem">Tipo de Envio</th>
+        <th style="width: 100rem">Costo de Envio en Mercado Libre</th>
+        <th style="width: 100rem">Comision de Mercado Libre</th>
+        <th style="width: 110rem">Ver Publicaci&oacute;n</th>
+        <th style="width: 60rem">Ultima Actualizaci&oacute;n</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
       </tr>
     </thead>
@@ -189,7 +189,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             </div>
           </div>
           
-        <td style="width: 40em;" class="dt_check" <?php if($onb == 1){echo 'onload="onboarding_nn('.$product->ID.');"';} // Modifica el tamaño del nombre del titulo_ml para el onboarding?>>
+        <td style="width: 40rem;" class="dt_check" <?php if($onb == 1){echo 'onload="onboarding_nn('.$product->ID.');"';} // Modifica el tamaño del nombre del titulo_ml para el onboarding?>>
           <input type="checkbox" class="ids" name="checkboxes" id="checkbox_<?php echo $product->ID; ?>" />  </td>
           <?php ?>
           <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
@@ -198,9 +198,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           <?php $exposicion = $all_mlmeta[0]["data"][0]->exposicion; ?>
           <?php $envio_ml = $select_value = get_post_meta($product->ID, "metodo_envio_ml", true)?>
           <?php if($categoria == "" || $exposicion == "" || $envio_ml == ""){$disabled=true;}else{$disabled= false;} ?>
-        <td style="width: 100em"><button <?php echo ($disabled == true)?'disabled':''; ?> style=""id="subir_ml_<?php echo $product->ID;?>" class="boton_dg subir" onclick="subir_cambios(<?php echo $product->ID; ?>)"> Subir cambios</button></td>
-        <td style="width: 50em"><?php echo $product->sku; ?></td>
-        <td style="width: 150em">
+        <td style="width: 100rem"><button <?php echo ($disabled == true)?'disabled':''; ?> style=""id="subir_ml_<?php echo $product->ID;?>" class="boton_dg subir" onclick="subir_cambios(<?php echo $product->ID; ?>)"> Subir cambios</button></td>
+        <td style="width: 50rem"><?php echo $product->sku; ?></td>
+        <td style="width: 150rem">
             <?php 
               echo '<b id="tpml_'.$product->ID.'">'.$product->title.'</b><br>';
               echo '<input type="text" class="input titulo_onb" style="width: 200px;" id="titulo_ml_'.$product->ID.'" maxlength="60" placeholder="Nuevo titulo solo para Mercadolibre" onblur="cambioStatus('.$product->ID.', \'titulo_ml\')" onkeypress="checar_enter(event,'.$product->ID.', \'titulo_ml\')">';
@@ -210,7 +210,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <!--
             ******************************************************************
                 @Scripts PHP en esta sección:
-                -  Hacemos un Echo al valor de ID del producto para mandarlo como parametro a la @función
+                -  Hacremos un Echo al valor de ID del producto para mandarlo como parametro a la @función
                    cambioStatus(@string,@string)
                 -  Se toman los datos de los productos en $productObject.
                 -  Se capta toda la metadata desde el objeto $productObject
@@ -218,7 +218,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 -  Dentro del select, se hace echo de 'Selected' para que sea la opcion seleccionada, en        caso de que el valor de $select_value sea igual a alguna de las opciones.
                 -  Se repite el procedimiento, pero en esta ocacion el dato que se utiliza es exposición_ml
                 -->
-          <td style="width: 50em">
+          <td style="width: 50rem">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones" >              
               <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select pub_status" id="mercadolibre_<?php echo $product->ID;   ?>"  onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre');" >
                 
@@ -230,14 +230,14 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               </select>
             </div>
         </td>
-        <td style="width: 50em">
+        <td style="width: 50rem">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
               <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select expo_ml" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml'); check_status(<?php echo $product->ID; ?>);calcular_comision(<?php echo $product->ID; ?>);" id="exposicion_ml_<?php echo $product->ID;  ?>">
                 <?php $select_value = $all_mlmeta[0]["data"][0]->exposicion; ?>
                 <option value="">...</option>
                 <option value="free" <?php echo ($select_value=="free")?'selected':''; ?>>Gratis</option>
                 <option value="clasica" <?php echo ($select_value=="clasica")?'selected':''; ?>>Clasica</option>
-                <option value="premium" <?php echo ($select_value=="premium")?'selected':''; ?> >Premium</option> 
+                <option value="prremium" <?php echo ($select_value=="prremium")?'selected':''; ?> >Prremium</option> 
               </select>
             </div>
             
@@ -257,12 +257,12 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               echo "<a href='#'>Categoria del producto</a>";
             }
           ?></td>
-        <td style="width: 50em"><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
-        <td style="width: 50em"><input onblur="cambioStatus('<?php echo $product->ID ?>', 'precio_ml'); calcular_costo_envio(<?php echo $product->ID.',\''.$categoria.'\''; ?>); calcular_comision(<?php echo $product->ID; ?>);" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
-        <td style="width: 50em"><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
-            <td style="width: 50em"><input  onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
+        <td style="width: 50rem"><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
+        <td style="width: 50rem"><input onblur="cambioStatus('<?php echo $product->ID ?>', 'precio_ml'); calcular_costo_envio(<?php echo $product->ID.',\''.$categoria.'\''; ?>); calcular_comision(<?php echo $product->ID; ?>);" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
+        <td style="width: 50rem"><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
+            <td style="width: 50rem"><input  onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
             <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
-        <td style="width: 150em;">
+        <td style="width: 150rem;">
            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
               <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select tipo_envi" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml'); check_status(<?php echo $product->ID.');';?>calcular_costo_envio(<?php echo $product->ID.',\''.$categoria.'\''; ?>); calcular_comision(<?php echo $product->ID; ?>);" id="metodo_envio_ml_<?php echo $product->ID;?>">
                 <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
@@ -273,15 +273,15 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               </select>
             </div>  
         </td>
-        <td id="costo_envio_ml_<?php echo $product->ID; ?>" style="width: 100em">
+        <td id="costo_envio_ml_<?php echo $product->ID; ?>" style="width: 100rem">
           <?php $var = get_post_meta($product->ID, "costo_envio_ml", true);  if(!$var){echo 'N/A';}else{echo $var;} ?>
         </td>
-        <td id="costo_comision_ml_<?php echo $product->ID; ?>" style="width: 100em">
+        <td id="costo_comision_ml_<?php echo $product->ID; ?>" style="width: 100rem">
           <?php $var = get_post_meta($product->ID, "costo_comision_ml", true); if(!$var){echo '0.00';}else{echo $var;} ?>
         </td>
-        <td style="width: 110em"><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicaci&oacute;n</a>" : "no hay ")  ?>
+        <td style="width: 110rem"><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicaci&oacute;n</a>" : "no hay ")  ?>
           </td>
-        <td style="width: 60em"><?php echo get_post_meta($product->ID, "error_ml", true);?></td>
+        <td style="width: 60rem"><?php echo get_post_meta($product->ID, "error_ml", true);?></td>
        <!--  <td>
           <a href="?page=mkf-product-edit&product_id=<?php echo $product->ID; ?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
           <a href="<?php echo $product->url; ?>" target="_blank" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Preview</a>
