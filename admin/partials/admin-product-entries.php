@@ -142,7 +142,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   }
   </style>
 
-<div class="table-area" style="position: relative; z-index: 0; margin-top: 50px;">
+<div class="table-area" style="position: relative; z-index: 0; margin-top: 10px;">
 <div id="registros" class="table-wrapper-scroll-y" style="" >
   <table id="tabla" class="table responsive-table" style="">
     <thead style="">
