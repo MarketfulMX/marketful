@@ -604,7 +604,7 @@ function calcular_costo_envio(id, categ)
           verBar.style.left = (laTabla.offsetLeft + anchoTabla) + "px";
           verPasos = altoTabla/ (+totalFilas - misFilas);
           verBar.setAttribute("onscroll", "llenaTablaV(this.scrollTop");
-          lennaTablaV(inicioColumnas);
+          llenaTablaV(inicioColumnas); 
       }
       function llenaTablaH(despl)
       {
@@ -627,7 +627,7 @@ function calcular_costo_envio(id, categ)
           inicioFilas = +muestra;
           for (f = 1; f < misFilas; f++)
           {
-              laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[0].innnerHTML = elContenido[inicioFilas+f][0];
+              laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[0].innerHTML = elContenido[inicioFilas+f][0]; 
               for( c = 1; c < misColumnas; c++)
               {
                   laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[c].innerHTML= elContenido[inicioFilas+f][inicioColumnas+c];
