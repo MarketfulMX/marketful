@@ -543,6 +543,13 @@ function calcular_costo_envio(id, categ)
         $('#mensajes_ent').text('No se puede calcular el costo de envio, asigna el precio y el tipo de envio.');
     }
 }
+// **********************************************************************************
+// Scripts para TABLA RESPONSIVA
+// PRUEBA --
+
+
+//********************************************
+
 
 
 

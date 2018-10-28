@@ -133,7 +133,16 @@
             border-color: #3F4036;
             background-color: #BCBFA3;          
         }
+/* Estilos de tabla fija con el header fijo
+*/
+table {
+    text-align: center;
+    margin: auto; 
+    vertical-align: middle;
+    }
     
+
+/* Fin estilos de tabla fija con el header fijo */
 
 
 

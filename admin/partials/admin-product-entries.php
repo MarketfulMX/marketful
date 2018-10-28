@@ -80,61 +80,61 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 <div class="container" style=" " >
   <div class="loader_onb">  
   </div>
-<div class="bootstrap-wrapper">
-  <!-- <div style="background-color: red"><?php echo ($_GET['page'] == 'mkf-product-entries')?'es':$_GET['page'];?></div> -->
-  <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
-  <div class="row"> 
-    <div id=""  class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <div style="background-color: #E2E5C4; width: 45px; text-align: center; float: left;" class="caja-de-botones">
-        <?php 
-        if($pagina > 1){
+  <div class="bootstrap-wrapper">
+    <!-- <div style="background-color: red"><?php echo ($_GET['page'] == 'mkf-product-entries')?'es':$_GET['page'];?></div> -->
+    <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
+    <div class="row"> 
+      <div id=""  class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div style="background-color: #E2E5C4; width: 45px; text-align: center; float: left;" class="caja-de-botones">
+          <?php 
+          if($pagina > 1){
+            ?>
+            <a class="link-flecha" style="color:#7E7F6D;" id="ant" href="?page=mkf-product-entries&pagina=<?php echo ($pagina - 1) ?>" ><i class="fas fa-chevron-left"></i></a> 
+          <?php
+          }else{
           ?>
-          <a class="link-flecha" style="color:#7E7F6D;" id="ant" href="?page=mkf-product-entries&pagina=<?php echo ($pagina - 1) ?>" ><i class="fas fa-chevron-left"></i></a> 
-        <?php
-        }else{
-        ?>
-          <i id="ant" style="color:#7E7F6D;" class="fas fa-chevron-left"></i> 
-        <?php
-        }
-        ?>
-        <a class="link-flecha" style="color:#7E7F6D;" id="sig" href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>"><i class="fas fa-chevron-right"></i></a>
+            <i id="ant" style="color:#7E7F6D;" class="fas fa-chevron-left"></i> 
+          <?php
+          }
+          ?>
+          <a class="link-flecha" style="color:#7E7F6D;" id="sig" href="?page=mkf-product-entries&pagina=<?php echo $pagina + 1 ?>"><i class="fas fa-chevron-right"></i></a>
+        </div>
+        <!--Cambiar Status: -->
+       <!--  <select style=""class="select-arriba" id="status_select" onChange="statusMasivo('mercadolibre', 'status', 'status_select')" >
+            <option>Status</option>
+            <option value="active" >Activa</option>
+            <option value="paused" >Pausada</option>
+            <option value="closed" >Finalizada</option> 
+        </select> -->
+       <!--   | 
+        Exposición: -->
+      <!--   <select style=""class="select-arriba" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de Exposición', 'exposicion_ml_select')" >
+            <option>Exposicion</option>
+            <option  value="free" >Gratis</option>
+            <option value="clasica" >Clasica</option>
+            <option value="prremium" >Premium</option> 
+        </select> -->
       </div>
-      <!--Cambiar Status: -->
-     <!--  <select style=""class="select-arriba" id="status_select" onChange="statusMasivo('mercadolibre', 'status', 'status_select')" >
-          <option>Status</option>
-          <option value="active" >Activa</option>
-          <option value="paused" >Pausada</option>
-          <option value="closed" >Finalizada</option> 
-      </select> -->
-     <!--   | 
-      Exposición: -->
-    <!--   <select style=""class="select-arriba" id="exposicion_ml_select" onChange="statusMasivo('exposicion_ml', 'Nivel de Exposición', 'exposicion_ml_select')" >
-          <option>Exposicion</option>
-          <option  value="free" >Gratis</option>
-          <option value="clasica" >Clasica</option>
-          <option value="prremium" >Premium</option> 
-      </select> -->
-    </div>
-    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" id="dg">
-        <a href="?page=mkf-descripcion-footer"><button id="boton_dg"> Modificar Descripcion</button></a>
-    </div>
-    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" id="dg">
-        <a href="https://www.marketful.mx/ml_listings/atributos"><button id="boton_dg"> Modificar Atributos</button></a>
-    </div>
-    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" id="dg">
-        <a href="https://www.marketful.mx/woo_listings/inventario_y_precio"><button id="boton_dg"> Modificar Inventario</button></a>
-    </div>
-    <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
-        <h8 id="cambios_guardados"></h8>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >
-      <button id="boton_buscar" onClick="buscarResultados()" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
-      <label style="float: right;"> 
-        <input type="text" placeholder="Titulo" id="keyword_input" onkeypress="enterBuscar(event)">
-      </label>
+      <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" id="dg">
+          <a href="?page=mkf-descripcion-footer"><button id="boton_dg"> Modificar Descripcion</button></a>
+      </div>
+      <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" id="dg">
+          <a href="https://www.marketful.mx/ml_listings/atributos"><button id="boton_dg"> Modificar Atributos</button></a>
+      </div>
+      <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12" id="dg">
+          <a href="https://www.marketful.mx/woo_listings/inventario_y_precio"><button id="boton_dg"> Modificar Inventario</button></a>
+      </div>
+      <div class="col-lg-1 col-md-1 col-sm-12 col-xs-12">
+          <h8 id="cambios_guardados"></h8>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >
+        <button id="boton_buscar" onClick="buscarResultados()" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
+        <label style="float: right;"> 
+          <input type="text" placeholder="Titulo" id="keyword_input" onkeypress="enterBuscar(event)">
+        </label>
+      </div>
     </div>
   </div>
-</div>
 </div>
   <style>
   #cambios_guardados{
@@ -142,31 +142,27 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   }
   </style>
 
-<div class="table-area" style="" >
-<div id="registros" class="table-wrapper-scroll-y" style="" >
-  <table id="tabla" class="table responsive-table" style="">
-    <thead class="table-header fixed_behavior " style="">
+
+  <table id="tabla" class="table">
       <tr>
-        <th class="dt_check" style=""><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
-        <th style="">Subir cambios a Mercado Libre</th>
-        <th style="">SKU </th>
-        <th style="">Titulo en MercadoLibre <br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></th>
-        <th style="">Status</th>
-        <th style="">Exposici&oacute;n</th>
-        <th style="">Categoria ML</th>
-        <th style="">Precio Woo Commerce</th>
-        <th style="">Precio Mercado Libre</th>
-        <th style="">Inventario Woo Commerce</th>
-        <th style="">Inventario Mercado Libre</th>
-        <th style="">Tipo de Envio</th>
-        <th style="">Costo de Envio en Mercado Libre</th>
-        <th style="">Comision de Mercado Libre</th>
-        <th style="">Ver Publicaci&oacute;n</th>
-        <th style="">Ultima Actualizaci&oacute;n</th>
-        <!-- <th style="min-width: 215px;">Acción</th> -->
+        <td class="dt_check" style=""><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </td>
+        <td style="">Subir cambios a Mercado Libre</td>
+        <td style="">SKU </td>
+        <td style="">Titulo en MercadoLibre <br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></td>
+        <td style="">Status</td>
+        <td style="">Exposici&oacute;n</td>
+        <td style="">Categoria ML</td>
+        <td style="">Precio Woo Commerce</td>
+        <td style="">Precio Mercado Libre</td>
+        <td style="">Inventario Woo Commerce</td>
+        <td style="">Inventario Mercado Libre</td>
+        <td style="">Tipo de Envio</td>
+        <td style="">Costo de Envio en Mercado Libre</td>
+        <td style="">Comision de Mercado Libre</td>
+        <td style="">Ver Publicaci&oacute;n</td>
+        <td style="">Ultima Actualizaci&oacute;n</td>
+        <!-- <td style="min-width: 215px;">Acción</td> -->
       </tr>
-    </thead>
-    <tbody id="tbody_productos" style="">
     <!-- Creamos un foreach para recorrer todos los valores -->
     <?php
       foreach ($products[0]["data"] as $key => $product) :
@@ -290,11 +286,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         </td> -->
       </tr>
     <?php endforeach; //Fin Iteracion ?>
-    </tbody>
   </table>
-</div>
-</div>
-
+<div id="ver"></div>
+<div id="hor"></div>
 
 <!-- On boarding div, dont erase -->
 <div class="onb_flotante" <?php if($onb == 2){ echo 'onload="onboarding_4()"'; } ?>>    
