@@ -301,6 +301,16 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
      * @Función JQuery
      */
     jQuery(document).ready(function($){
+
+      //Tabla test no borrar
+      window.onresize = function()
+      {
+          setTimeout(function()
+          {
+              window.location.reload()
+          }, 100)
+      };
+      
       getCategory(<?php echo $pagina; ?>,'<?php echo $keyword; ?>');
       <?php 
       // En caso de que onb tenga valor de uno. Y se este ejecutando el onboarding

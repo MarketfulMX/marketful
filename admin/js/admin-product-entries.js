@@ -546,6 +546,14 @@ function calcular_costo_envio(id, categ)
 // **********************************************************************************
 // Scripts para TABLA RESPONSIVA
 // PRUEBA --
+console.log("Se ejecuto el estilo de la tabla******");
+onLoad = inicia;
+var laTabla, totalFilas, totalColumnas, horPasos, verPasos, elContenido=[]; 
+var inicioFilas = 0; 
+var inicioColumnas = 0; 
+var misColumnas = 8; // COLUMNAS QUE DEJAMOS VISIBLES
+var misFilas = 6; // FILAS QUE DEJAMOS VISIBLES
+
 
 
 //********************************************
