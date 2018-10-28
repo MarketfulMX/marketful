@@ -546,36 +546,96 @@ function calcular_costo_envio(id, categ)
 // **********************************************************************************
 // Scripts para TABLA RESPONSIVA
 // PRUEBA --
+//Tabla test no borrar*******
+      console.log("Se ejecuto el estilo de la tabla******");
+      onload = inicia;
+      window.onresize = function()
+      {
+          setTimeout(function()
+          {
+              window.location.reload()
+          }, 100)
+      };
 
+      var laTabla, totalFilas, totalColumnas, horPasos, verPasos, elContenido=[]; 
+      var inicioFilas = 0; 
+      var inicioColumnas = 0; 
+      var misColumnas = 8; // COLUMNAS QUE DEJAMOS VISIBLES
+      var misFilas = 6; // FILAS QUE DEJAMOS VISIBLES
 
-function llenaTablaH(despl)
-{
-    muestra = parseInt(+despl/horPasos);
-    inicioColumnas = +muestra;
-    for(f = 1; f<misFilas; f++)
-    {
-        for( c = 1; c<misColumnas; c++)
-        {
-            laTabla.querySelectorAll("tr")[0].querySelectorAll("td")[c].innerHTML = elContenido[0][inicioColumnas+c];
-            laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[c].innnerHTML = elContenido[inicioFilas+f][inicioColumnas+c];
-        }
-    }
-}
+      function inicia()
+      {
+          console.log(" Entro a inicia 01");
+          laTabla = document.querySelector("table");
+          lasFilas = laTabla.querySelectorAll("tr");
+          totalFilas = lasFilas.length;
+          lasColumnas = lasFilas[0].querySelectorAll("td");
+          totalColumnas = lasColumnas.length;
 
-function llenaTablaV(despl)
-{
-    muestra = parseInt(+despl/verPasos);
-    inicioFilas = +muestra;
-    for (f = 1; f < misFilas; f++)
-    {
-        laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[0].innnerHTML = elContenido[inicioFilas+f][0];
-        for( c = 1; c < misColumnas; c++)
-        {
-            laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[c].innerHTML= elContenido[inicioFilas+f][inicioColumnas+c];
-        }
-    }
-}
+          for(r=0; r<totalFilas; r++)
+          {
+            elContenido[r] = []; 
+            for(d=0; d<totalColumnas; d++) 
+            {
+              elContenido[r][d] = lasFilas[r].querySelectorAll("td")[d].innerHTML;
+            }
+          }
+          var nuevaTabla = ""; 
+          for(r=0; r<misFilas; r++)
+          {
+            nuevaTabla += "<tr>";
+            for(d=0; d<misColumnas; d++) 
+            {
+              nuevaTabla += "<td></td>";
+            }
+            nuevaTabla += "</tr>"; 
+          }
+          laTabla.innerHTML = nuevaTabla;
+          horBar = document.querySelector("#hor");
+          anchoTabla = laTabla.offsetWidth;
+          horBar.style.width = anchoTabla+"px";
+          horBar.setAttribute("onscroll", "llenaTablaH(this.scrollLeft)");
+          llenaTablaH(inicioFilas);
+          verBar = document.querySelector("#ver");
+          altoTabla = laTabla.offsetHeight;
+          verBar.style.height = altoTabla+"px";
+          verBar.scrollTop = 0;
+          verBar.style.top = document.querySelector("table").offsetTop+"px";
+          verBar.style.left = (laTabla.offsetLeft + anchoTabla) + "px";
+          verPasos = altoTabla/ (+totalFilas - misFilas);
+          verBar.setAttribute("onscroll", "llenaTablaV(this.scrollTop");
+          lennaTablaV(inicioColumnas);
+      }
+      function llenaTablaH(despl)
+      {
+          console.log("Entro a llenaTablaH 02");
+          muestra = parseInt(+despl/horPasos);
+          inicioColumnas = +muestra;
+          for(f = 1; f<misFilas; f++)
+          {
+              for( c = 1; c<misColumnas; c++)
+              {
+                  laTabla.querySelectorAll("tr")[0].querySelectorAll("td")[c].innerHTML = elContenido[0][inicioColumnas+c];
+                  laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[c].innnerHTML = elContenido[inicioFilas+f][inicioColumnas+c];
+              }
+          }
+      }
+      function llenaTablaV(despl)
+      {
+          console.log("Entro a llenaTablaV 03");
+          muestra = parseInt(+despl/verPasos);
+          inicioFilas = +muestra;
+          for (f = 1; f < misFilas; f++)
+          {
+              laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[0].innnerHTML = elContenido[inicioFilas+f][0];
+              for( c = 1; c < misColumnas; c++)
+              {
+                  laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[c].innerHTML= elContenido[inicioFilas+f][inicioColumnas+c];
+              }
+          }
+      }
 
+      //******
 //********************************************
 
 
