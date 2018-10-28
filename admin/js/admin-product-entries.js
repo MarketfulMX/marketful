@@ -546,15 +546,35 @@ function calcular_costo_envio(id, categ)
 // **********************************************************************************
 // Scripts para TABLA RESPONSIVA
 // PRUEBA --
-console.log("Se ejecuto el estilo de la tabla******");
-onLoad = inicia;
-var laTabla, totalFilas, totalColumnas, horPasos, verPasos, elContenido=[]; 
-var inicioFilas = 0; 
-var inicioColumnas = 0; 
-var misColumnas = 8; // COLUMNAS QUE DEJAMOS VISIBLES
-var misFilas = 6; // FILAS QUE DEJAMOS VISIBLES
 
 
+function llenaTablaH(despl)
+{
+    muestra = parseInt(+despl/horPasos);
+    inicioColumnas = +muestra;
+    for(f = 1; f<misFilas; f++)
+    {
+        for( c = 1; c<misColumnas; c++)
+        {
+            laTabla.querySelectorAll("tr")[0].querySelectorAll("td")[c].innerHTML = elContenido[0][inicioColumnas+c];
+            laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[c].innnerHTML = elContenido[inicioFilas+f][inicioColumnas+c];
+        }
+    }
+}
+
+function llenaTablaV(despl)
+{
+    muestra = parseInt(+despl/verPasos);
+    inicioFilas = +muestra;
+    for (f = 1; f < misFilas; f++)
+    {
+        laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[0].innnerHTML = elContenido[inicioFilas+f][0];
+        for( c = 1; c < misColumnas; c++)
+        {
+            laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[c].innerHTML= elContenido[inicioFilas+f][inicioColumnas+c];
+        }
+    }
+}
 
 //********************************************
 
