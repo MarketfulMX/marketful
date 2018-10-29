@@ -617,9 +617,9 @@ function calcular_costo_envio(id, categ)
           console.log("Entro a llenaTablaH 02");
           muestra = parseInt(+despl/horPasos);
           inicioColumnas = +muestra; 
-          for(f=1; f<misFilas; f++)
+          for(f=0; f<misFilas; f++)
           {
-              for(c=1; c<misColumnas; c++)
+              for(c=0; c<misColumnas; c++)
               {
                   laTabla.querySelectorAll("tr")[0].querySelectorAll("td")[c].innerHTML = elContenido[0][inicioColumnas+c]; 
                   laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[c].innerHTML = elContenido[inicioFilas+f][inicioColumnas+c]; 
@@ -634,7 +634,7 @@ function calcular_costo_envio(id, categ)
           for(f=1; f<misFilas; f++)
           {
               laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[0].innerHTML = elContenido[inicioFilas+f][0]; 
-              for(c=1; c<misColumnas; c++) 
+              for(c=0; c<misColumnas; c++) 
               {
                   laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[c].innerHTML = elContenido[inicioFilas+f][inicioColumnas+c]; 
               }
