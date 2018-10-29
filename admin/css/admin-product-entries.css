@@ -147,6 +147,7 @@
 }
 #tabla td
 {
+    font-family: sans-serif; 
     padding: 0 .5em;
     text-align: center;
     height: 8em;
