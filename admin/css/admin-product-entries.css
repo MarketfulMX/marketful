@@ -136,18 +136,19 @@
     
     /* Estilos de tabla fija con el header fijo
 */
-body {text-align:center;}
-table 
+#tabla table 
 {
     margin: auto; 
     vertical-align: middle;
 }
-td
+#tabla td
 {
     padding: 0 .5em;
     text-align: center;
+    height: 8em;
+    vertical-align: middle;
 }   
-tr:first-of-type td
+#tabla tr:first-of-type td
 {
     padding: 0 .1em;
     text-align: center;

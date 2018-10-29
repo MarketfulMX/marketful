@@ -562,7 +562,7 @@ function calcular_costo_envio(id, categ)
       var inicioFilas = 0; 
       var inicioColumnas = 0; 
       var misColumnas = 8; // COLUMNAS QUE DEJAMOS VISIBLES
-      var misFilas = 5; // FILAS QUE DEJAMOS VISIBLES
+      var misFilas = 4; // FILAS QUE DEJAMOS VISIBLES
 
       function inicia()
       {
