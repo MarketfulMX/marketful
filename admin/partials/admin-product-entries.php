@@ -46,11 +46,11 @@ if (is_null($pagina)){
 } else {
   error_log ("la pagina esta presente");
   error_log($pagina);
-  $offset = ($pagina-1)*50;
+  $offset = ($pagina-1)*10;
 }
 if (is_null($tope)){
   error_log("el tope es nulo");
-  $tope = 50;
+  $tope = 10;
 } else {
   error_log ("el tope esta presente");
 }
