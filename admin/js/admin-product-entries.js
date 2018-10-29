@@ -560,7 +560,7 @@ function calcular_costo_envio(id, categ)
       var laTabla, totalFilas, totalColumnas, horPasos, verPasos, elContenido=[]; 
       var inicioFilas = 0; 
       var inicioColumnas = 0; 
-      var misColumnas = 6; // COLUMNAS QUE DEJAMOS VISIBLES
+      var misColumnas = 8; // COLUMNAS QUE DEJAMOS VISIBLES
       var misFilas = 4; // FILAS QUE DEJAMOS VISIBLES
 
       function inicia()
@@ -615,27 +615,27 @@ function calcular_costo_envio(id, categ)
       {
           console.log("Entro a llenaTablaH 02");
           muestra = parseInt(+despl/horPasos);
-          inicioColumnas = +muestra;
-          for(f = 1; f<misFilas; f++)
+          inicioColumnas = +muestra; 
+          for(f=1; f<misFilas; f++)
           {
-              for( c = 1; c<misColumnas; c++)
+              for(c=1; c<misColumnas; c++)
               {
-                  laTabla.querySelectorAll("tr")[0].querySelectorAll("td")[c].innerHTML = elContenido[0][inicioColumnas+c];
-                  laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[c].innnerHTML = elContenido[inicioFilas+f][inicioColumnas+c];
+                  laTabla.querySelectorAll("tr")[0].querySelectorAll("td")[c].innerHTML = elContenido[0][inicioColumnas+c]; 
+                  laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[c].innerHTML = elContenido[inicioFilas+f][inicioColumnas+c]; 
               }
           }
       }
       function llenaTablaV(despl)
       {
           console.log("Entro a llenaTablaV 03");
-          muestra = parseInt(+despl/verPasos);
+          muestra = parseInt(+despl/verPasos); 
           inicioFilas = +muestra;
-          for (f = 1; f < misFilas; f++)
+          for(f=1; f<misFilas; f++)
           {
               laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[0].innerHTML = elContenido[inicioFilas+f][0]; 
-              for( c = 1; c < misColumnas; c++)
+              for(c=1; c<misColumnas; c++) 
               {
-                  laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[c].innerHTML= elContenido[inicioFilas+f][inicioColumnas+c];
+                  laTabla.querySelectorAll("tr")[f].querySelectorAll("td")[c].innerHTML = elContenido[inicioFilas+f][inicioColumnas+c]; 
               }
           }
       }
