@@ -217,7 +217,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               -  Se repite el procedimiento, pero en esta ocacion el dato que se utiliza es exposición_ml
               -->
         <td>
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones" >              
+          <div class="" id="selecciones" >              
             <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select pub_status" id="mercadolibre_<?php echo $product->ID;   ?>"  onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre');" >
               
               <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
@@ -229,7 +229,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           </div>
       </td>
       <td>
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
+          <div class="" id="selecciones">
             <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select expo_ml" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml'); check_status(<?php echo $product->ID; ?>);calcular_comision(<?php echo $product->ID; ?>);" id="exposicion_ml_<?php echo $product->ID;  ?>">
               <?php $select_value = $all_mlmeta[0]["data"][0]->exposicion; ?>
               <option value="">...</option>
@@ -260,8 +260,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       <td><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
           <td ><input  onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
           <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
-      <td style="min-width: 150px;">
-         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
+      <td style="">
+         <div class="" id="selecciones">
             <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select tipo_envi" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml'); check_status(<?php echo $product->ID.');';?>calcular_costo_envio(<?php echo $product->ID.',\''.$categoria.'\''; ?>); calcular_comision(<?php echo $product->ID; ?>);" id="metodo_envio_ml_<?php echo $product->ID;?>">
               <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
               <option value="">...</option>
