@@ -564,7 +564,7 @@ function calcular_costo_envio(id, categ)
 
       function inicia()
       {
-          //console.log(" Entro a inicia 01");
+          console.log(" Entro a inicia 01");
           laTabla = document.querySelector("table"); 
           lasFilas = laTabla.querySelectorAll("tr"); 
           totalFilas = lasFilas.length; 
@@ -612,7 +612,7 @@ function calcular_costo_envio(id, categ)
       }
       function llenaTablaH(despl)
       {
-          //console.log("Entro a llenaTablaH 02");
+          console.log("Entro a llenaTablaH 02 : "+ despl + ' : ');
           muestra = parseInt(+despl/horPasos);
           inicioColumnas = +muestra; 
           for(f=0; f<misFilas; f++)
@@ -626,7 +626,7 @@ function calcular_costo_envio(id, categ)
       }
       function llenaTablaV(despl)
       {
-          //console.log("Entro a llenaTablaV 03");
+          console.log("Entro a llenaTablaV 03 : " + despl + ' : ');
           muestra = parseInt(+despl/verPasos); 
           inicioFilas = +muestra;
           for(f=1; f<misFilas; f++)
@@ -638,7 +638,16 @@ function calcular_costo_envio(id, categ)
               }
           }
       }
-
+      window.onscroll = function() 
+      {
+        var win = $(window);
+        var pos = 0;
+        var scr = document.getElementById('ver').scrollTop;
+        
+        console.log("Valores ingresados : " + win.scrollLeft() +  ' : ' + win.scrollTop() + ' : ' + scr);
+        //llenaTablaV(win.scrollTop());
+        //scr = scr + 100;
+      }
       //******
 //********************************************
 
