@@ -145,21 +145,21 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 <table id="tabla" class="table stripe tableMK">
   <tr >
     <td class="dt_check" style=""><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </td>
-    <td style="">Subir cambios a Mercado Libre</td>
-    <td style="">SKU </td>
-    <td style="">Titulo en MercadoLibre <br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></td>
-    <td style="">Status</td>
-    <td style="">Exposici&oacute;n</td>
-    <td style="">Categoria ML</td>
-    <td style="">Precio Woo Commerce</td>
-    <td style="">Precio Mercado Libre</td>
-    <td style="">Inventario Woo Commerce</td>
-    <td style="">Inventario Mercado Libre</td>
-    <td style="">Tipo de Envio</td>
-    <td style="">Costo de Envio en Mercado Libre</td>
-    <td style="">Comision de Mercado Libre</td>
-    <td style="">Ver Publicaci&oacute;n</td>
-    <td style="">Ultima Actualizaci&oacute;n</td>
+    <td style=""><b>Subir cambios a Mercado Libre</b></td>
+    <td style=""><b>SKU</b></td>
+    <td style=""><b>Titulo en MercadoLibre</b><br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></td>
+    <td style=""><b>Status</b></td>
+    <td style=""><b>Exposici&oacute;n</b></td>
+    <td style=""><b>Categoria ML</b></td>
+    <td style=""><b>Precio Woo Commerce</b></td>
+    <td style=""><b>Precio Mercado Libre</b></td>
+    <td style=""><b>Inventario Woo Commerce</b></td>
+    <td style=""><b>Inventario Mercado Libre</b></td>
+    <td style=""><b>Tipo de Envio</b></td>
+    <td style=""><b>Costo de Envio en Mercado Libre</b></td>
+    <td style=""><b>Comision de Mercado Libre</b></td>
+    <td style=""><b>Ver Publicaci&oacute;n</b></td>
+    <td style=""><b>Ultima Actualizaci&oacute;n</b></td>
     <!-- <td style="min-width: 215px;">Acción</td> -->
   </tr>
   
@@ -200,7 +200,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
       <td><?php echo $product->sku; ?></td>
       <td style="min-width: 150px">
           <?php 
-            echo '<b id="tpml_'.$product->ID.'">'.$product->title.'</b><br>';
+            echo '<d id="tpml_'.$product->ID.'">'.$product->title.'</d><br>';
             echo '<input type="text" class="input titulo_onb" style="width: 200px;" id="titulo_ml_'.$product->ID.'" maxlength="60" placeholder="Nuevo titulo para Mercadolibre" onblur="cambioStatus('.$product->ID.', \'titulo_ml\')" onkeypress="checar_enter(event,'.$product->ID.', \'titulo_ml\')">';
         
           ?>
@@ -241,7 +241,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           
       </td>
       
-      <td style="min-width: 130px;" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php 
+      <td style="min-width: 130px; font-size: 60%;" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php 
           if(!$onb)
           {
             echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}&pagina={$pagina}&keyword={$keyword}'>categorizar</a>"));

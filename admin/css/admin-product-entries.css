@@ -147,6 +147,7 @@
     text-align: center;
     height: 8em;
     vertical-align: middle;
+    font-size: .8em;
 }   
 #tabla tr:first-of-type td
 {
