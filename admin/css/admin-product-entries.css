@@ -133,25 +133,60 @@
             border-color: #3F4036;
             background-color: #BCBFA3;          
         }
-    #tabla
-    {            
-        font-family: sans-serif; 
-        font-size: 10px;
-        width: 100%;
-    }
-    td .input
-    {
-        width: 50px; height: 25px;
-        border-radius: 3px; 
-        border-color: #7E7F6D;
-    }
-        td .input:hover
-        {
-            height: 25px; 
-            background-color: #fff;
-            border-color: black;
-            border-color: #7E7F6D;
-        }
+    
+    /* Estilos de tabla fija con el header fijo
+*/
+body {text-align:center;}
+table 
+{
+    margin: auto; 
+    vertical-align: middle;
+}
+td
+{
+    padding: 0 .5em;
+    text-align: center;
+}   
+tr:first-of-type td
+{
+    padding: 0 .1em;
+    text-align: center;
+    width: 6.5em; 
+    text-align: center; 
+}
+#hor
+{
+    margin: .1em auto 1em;
+    height: 1em;
+    line-height: 0; 
+    overflow: visible;
+    overflow-x: scroll;
+}
+#hor::before
+{
+    content: "";
+    display: block;
+    height: 1em;
+    width: 210%; 
+}
+#ver
+{
+    position: absolute;
+    width: 1em;
+    line-height: 0;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#ver::before
+{
+    content: "";
+    display: block;
+    line-height: 0;
+    width: 1em;
+    height: 210%;
+}
+/* Fin estilos de tabla fija con el header fijo */
+
 
     /* Onboarding Styles *******************************************************************************/
     .elemento_active
