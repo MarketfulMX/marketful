@@ -142,30 +142,30 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   </style>
 
 
-<div id="registros" style="max-width: 100%; overflow-x: scroll; max-height: 65vh;" >
-  <table id="tabla" class="table stripe tableMK" style="overflow: auto;">
-    <thead>
+<div id="registros" style="" >
+  <table id="tabla" class="table fixed_headers tabla-minw" style="">
+    <thead class="table-header fixed_behavior ">
       <tr>
         <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
-        <th style="min-width: 100px">Subir cambios a Mercado Libre</th>
-        <th style="min-width: 50px">SKU </th>
-        <th style="min-width: 150px">Titulo en MercadoLibre <br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></th>
-        <th style="min-width: 50px">Status</th>
-        <th style="min-width: 50px">Exposici&oacute;n</th>
-        <th style="min-width: 130px">Categoria ML</th>
-        <th style="min-width: 50px">Precio Woo Commerce</th>
-        <th style="min-width: 50px">Precio Mercado Libre</th>
-        <th style="min-width: 50px">Inventario Woo Commerce</th>
-        <th style="min-width: 50px">Inventario Mercado Libre</th>
-        <th style="min-width: 150px">Tipo de Envio</th>
-        <th style="min-width: 100px">Costo de Envio en Mercado Libre</th>
-        <th style="min-width: 100px">Comision de Mercado Libre</th>
-        <th style="min-width: 110px">Ver Publicaci&oacute;n</th>
-        <th style="min-width: 60px">Ultima Actualizaci&oacute;n</th>
+        <th style="">Subir cambios a Mercado Libre</th>
+        <th style="">SKU </th>
+        <th style="">Titulo en MercadoLibre <br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></th>
+        <th style="">Status</th>
+        <th style="">Exposici&oacute;n</th>
+        <th style="">Categoria ML</th>
+        <th style="">Precio Woo Commerce</th>
+        <th style="">Precio Mercado Libre</th>
+        <th style="">Inventario Woo Commerce</th>
+        <th style="">Inventario Mercado Libre</th>
+        <th style="">Tipo de Envio</th>
+        <th style="">Costo de Envio en Mercado Libre</th>
+        <th style="">Comision de Mercado Libre</th>
+        <th style="">Ver Publicaci&oacute;n</th>
+        <th style="">Ultima Actualizaci&oacute;n</th>
         <!-- <th style="min-width: 215px;">Acción</th> -->
       </tr>
     </thead>
-    <tbody id="tbody_productos">
+    <tbody id="tbody_productos" class="fixed_behavior">
     <!-- Creamos un foreach para recorrer todos los valores -->
     <?php
       foreach ($products[0]["data"] as $key => $product) :

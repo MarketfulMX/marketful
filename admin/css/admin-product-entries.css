@@ -134,24 +134,9 @@
             background-color: #BCBFA3;          
         }
     #tabla
-    {            
-        font-family: sans-serif; 
-        font-size: 10px;
-        width: 100%;
-    }
-    td .input
     {
-        width: 50px; height: 25px;
-        border-radius: 3px; 
-        border-color: #7E7F6D;
+        
     }
-        td .input:hover
-        {
-            height: 25px; 
-            background-color: #fff;
-            border-color: black;
-            border-color: #7E7F6D;
-        }
 
     /* Onboarding Styles *******************************************************************************/
     .elemento_active
