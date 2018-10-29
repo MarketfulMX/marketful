@@ -546,9 +546,7 @@ function calcular_costo_envio(id, categ)
 
 // **********************************************************************************
 // Scripts para TABLA RESPONSIVA
-// PRUEBA --
-//Tabla test no borrar*******
-      console.log("Se ejecuto el estilo de la tabla******");
+      //console.log("Se ejecuto el estilo de la tabla******");
       onload = inicia;
       window.onresize = function()
       {
@@ -566,7 +564,7 @@ function calcular_costo_envio(id, categ)
 
       function inicia()
       {
-          console.log(" Entro a inicia 01");
+          //console.log(" Entro a inicia 01");
           laTabla = document.querySelector("table"); 
           lasFilas = laTabla.querySelectorAll("tr"); 
           totalFilas = lasFilas.length; 
@@ -614,7 +612,7 @@ function calcular_costo_envio(id, categ)
       }
       function llenaTablaH(despl)
       {
-          console.log("Entro a llenaTablaH 02");
+          //console.log("Entro a llenaTablaH 02");
           muestra = parseInt(+despl/horPasos);
           inicioColumnas = +muestra; 
           for(f=0; f<misFilas; f++)
@@ -628,7 +626,7 @@ function calcular_costo_envio(id, categ)
       }
       function llenaTablaV(despl)
       {
-          console.log("Entro a llenaTablaV 03");
+          //console.log("Entro a llenaTablaV 03");
           muestra = parseInt(+despl/verPasos); 
           inicioFilas = +muestra;
           for(f=1; f<misFilas; f++)
