@@ -560,51 +560,56 @@ function calcular_costo_envio(id, categ)
       var laTabla, totalFilas, totalColumnas, horPasos, verPasos, elContenido=[]; 
       var inicioFilas = 0; 
       var inicioColumnas = 0; 
-      var misColumnas = 8; // COLUMNAS QUE DEJAMOS VISIBLES
-      var misFilas = 6; // FILAS QUE DEJAMOS VISIBLES
+      var misColumnas = 6; // COLUMNAS QUE DEJAMOS VISIBLES
+      var misFilas = 4; // FILAS QUE DEJAMOS VISIBLES
 
       function inicia()
       {
           console.log(" Entro a inicia 01");
-          laTabla = document.querySelector("table");
-          lasFilas = laTabla.querySelectorAll("tr");
-          totalFilas = lasFilas.length;
-          lasColumnas = lasFilas[0].querySelectorAll("td");
-          totalColumnas = lasColumnas.length;
+          laTabla = document.querySelector("table"); 
+          lasFilas = laTabla.querySelectorAll("tr"); 
+          totalFilas = lasFilas.length; 
+          lasColumnas = lasFilas[0].querySelectorAll("td"); 
+          totalColumnas = lasColumnas.length; 
 
-          for(r=0; r<totalFilas; r++)
+          for(r=0; r<totalFilas; r++) 
           {
-            elContenido[r] = []; 
-            for(d=0; d<totalColumnas; d++) 
+            elContenido[r] = [];
+            for(d=0; d<totalColumnas; d++)
             {
               elContenido[r][d] = lasFilas[r].querySelectorAll("td")[d].innerHTML;
             }
           }
+
           var nuevaTabla = ""; 
           for(r=0; r<misFilas; r++)
           {
-            nuevaTabla += "<tr>";
-            for(d=0; d<misColumnas; d++) 
+            nuevaTabla += "<tr>"; 
+            for(d=0; d<misColumnas; d++)
             {
               nuevaTabla += "<td></td>";
             }
             nuevaTabla += "</tr>"; 
           }
-          laTabla.innerHTML = nuevaTabla;
-          horBar = document.querySelector("#hor");
+
+          laTabla.innerHTML = nuevaTabla; 
+          horBar = document.querySelector("#hor"); 
           anchoTabla = laTabla.offsetWidth;
           horBar.style.width = anchoTabla+"px";
-          horBar.setAttribute("onscroll", "llenaTablaH(this.scrollLeft)");
-          llenaTablaH(inicioFilas);
-          verBar = document.querySelector("#ver");
-          altoTabla = laTabla.offsetHeight;
-          verBar.style.height = altoTabla+"px";
+          horBar.scrollLeft = 0; 
+          horPasos = anchoTabla / (+totalColumnas - misColumnas); 
+          horBar.setAttribute("onscroll", "llenaTablaH(this.scrollLeft)"); 
+          llenaTablaH(inicioFilas); 
+
+          verBar = document.querySelector("#ver"); 
+          altoTabla = laTabla.offsetHeight; 
+          verBar.style.height = altoTabla+"px"; 
           verBar.scrollTop = 0;
-          verBar.style.top = document.querySelector("table").offsetTop+"px";
+          verBar.style.top = document.querySelector("table").offsetTop+"px"; 
           verBar.style.left = (laTabla.offsetLeft + anchoTabla) + "px";
-          verPasos = altoTabla/ (+totalFilas - misFilas);
-          verBar.setAttribute("onscroll", "llenaTablaV(this.scrollTop");
-          llenaTablaV(inicioColumnas); 
+          verPasos = altoTabla / (+totalFilas - misFilas); 
+          verBar.setAttribute("onscroll", "llenaTablaV(this.scrollTop)"); 
+          llenaTablaV(inicioColumnas);
       }
       function llenaTablaH(despl)
       {
