@@ -142,30 +142,27 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   </style>
 
 
-<div id="registros" style="max-width: 100%; overflow-x: scroll; max-height: 65vh;" >
-  <table id="tabla" class="table stripe tableMK" style="overflow: auto;">
-    <thead>
+<table id="tabla" class="table stripe tableMK">
       <tr>
-        <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
-        <th style="min-width: 100px">Subir cambios a Mercado Libre</th>
-        <th style="min-width: 50px">SKU </th>
-        <th style="min-width: 150px">Titulo en MercadoLibre <br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></th>
-        <th style="min-width: 50px">Status</th>
-        <th style="min-width: 50px">Exposici&oacute;n</th>
-        <th style="min-width: 130px">Categoria ML</th>
-        <th style="min-width: 50px">Precio Woo Commerce</th>
-        <th style="min-width: 50px">Precio Mercado Libre</th>
-        <th style="min-width: 50px">Inventario Woo Commerce</th>
-        <th style="min-width: 50px">Inventario Mercado Libre</th>
-        <th style="min-width: 150px">Tipo de Envio</th>
-        <th style="min-width: 100px">Costo de Envio en Mercado Libre</th>
-        <th style="min-width: 100px">Comision de Mercado Libre</th>
-        <th style="min-width: 110px">Ver Publicaci&oacute;n</th>
-        <th style="min-width: 60px">Ultima Actualizaci&oacute;n</th>
-        <!-- <th style="min-width: 215px;">Acción</th> -->
+        <td class="dt_check" style=""><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </td>
+        <td style="">Subir cambios a Mercado Libre</td>
+        <td style="">SKU </td>
+        <td style="">Titulo en MercadoLibre <br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></td>
+        <td style="">Status</td>
+        <td style="">Exposici&oacute;n</td>
+        <td style="">Categoria ML</td>
+        <td style="">Precio Woo Commerce</td>
+        <td style="">Precio Mercado Libre</td>
+        <td style="">Inventario Woo Commerce</td>
+        <td style="">Inventario Mercado Libre</td>
+        <td style="">Tipo de Envio</td>
+        <td style="">Costo de Envio en Mercado Libre</td>
+        <td style="">Comision de Mercado Libre</td>
+        <td style="">Ver Publicaci&oacute;n</td>
+        <td style="">Ultima Actualizaci&oacute;n</td>
+        <!-- <td style="min-width: 215px;">Acción</td> -->
       </tr>
-    </thead>
-    <tbody id="tbody_productos">
+    
     <!-- Creamos un foreach para recorrer todos los valores -->
     <?php
       foreach ($products[0]["data"] as $key => $product) :
@@ -289,10 +286,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         </td> -->
       </tr>
     <?php endforeach; //Fin Iteracion ?>
-    </tbody>
   </table>
-</div>
-</div>
+<div id="ver"></div>
+<div id="hor"></div>
 
 <!-- On boarding div, dont erase -->
 <div class="onb_flotante" <?php if($onb == 2){ echo 'onload="onboarding_4()"'; } ?>>    
