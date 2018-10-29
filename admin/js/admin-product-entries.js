@@ -306,7 +306,7 @@ function check_status(id)
     var categoria_ml = $('#categoria_'+id).text();
     var metodo_envio_ml = $('#metodo_envio_ml_'+id+' option:selected').text();
     var link = 'redirige_cat(\'?page=mkf-entries_categorizador&pagina=1&keyword=&product_id='+id+'\')'; // Variable link para redirigir posteriormente
-    //console.log(id +' '+expo_ml +' '+ categoria_ml +' '+ metodo_envio_ml);
+    console.log(id +' '+expo_ml +' '+ categoria_ml +' '+ metodo_envio_ml+' Entro a checkstatus: ');
     if(expo_ml == '...' || categoria_ml == 'categorizar' || metodo_envio_ml == '...')
     {
         //console.log('disabled = true : '+id);
@@ -561,7 +561,7 @@ function calcular_costo_envio(id, categ)
       var inicioFilas = 0; 
       var inicioColumnas = 0; 
       var misColumnas = 8; // COLUMNAS QUE DEJAMOS VISIBLES
-      var misFilas = 10; // FILAS QUE DEJAMOS VISIBLES
+      var misFilas = 5; // FILAS QUE DEJAMOS VISIBLES
 
       function inicia()
       {

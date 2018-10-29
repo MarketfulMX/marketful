@@ -135,9 +135,9 @@
         }
 /* Estilos de tabla fija con el header fijo
 */
+body {text-align:center;}
 table 
 {
-    text-align: center;
     margin: auto; 
     vertical-align: middle;
 }
@@ -150,13 +150,15 @@ tr:first-of-type td
 {
     padding: 0 .1em;
     text-align: center;
+    width: 6.5em; 
+    text-align: center; 
 }
 #hor
 {
     margin: .1em auto 1em;
     height: 1em;
     line-height: 0; 
-    overflow: hidden;
+    overflow: visible;
     overflow-x: scroll;
 }
 #hor::before
@@ -170,7 +172,7 @@ tr:first-of-type td
 {
     position: absolute;
     width: 1em;
-    line-height: 1px;
+    line-height: 0;
     overflow: hidden;
     overflow-y: scroll;
 }
@@ -178,7 +180,7 @@ tr:first-of-type td
 {
     content: "";
     display: block;
-    line-height: 1px;
+    line-height: 0;
     width: 1em;
     height: 210%;
 }
