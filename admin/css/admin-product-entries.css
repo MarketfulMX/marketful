@@ -133,6 +133,17 @@
             border-color: #3F4036;
             background-color: #BCBFA3;          
         }
+    #registros
+    {
+        box-sizing: border-box;
+        display: block;
+        color: #333;
+        font-family: verdana, arial, helvetica, sans-serif;
+        font-size: 13px;
+        line-height: 18px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
     #tabla
     {
         margin-left: 0px;
@@ -200,7 +211,49 @@
         width: 300%;
         background-color: rgba(255, 255, 255, 0.2);
     }
-
+    #tabla th
+    {
+        text-align: center;
+        padding: 15px, 0px;
+        min-width: 164px;
+        max-width: 164px;
+        width: 164px;
+        font-size: 11px;
+        display: table-cell;
+        vertical-align: bottom;
+        border-bottom: 2px solid #ddd;
+        line-height: 1.428571429;
+        border-top: none;
+        border-left: none;
+        box-sizing: border-box;
+        font-weight: bold;
+        border-collapse: collapse;
+        border-spacing: 0;
+        color: #333;
+        font-family: verdana, arial, helvetica, sans-serif;
+        -webkit-tap-highlight-color: transparent;
+    }
+    #tabla td
+    {
+        text-align: center;
+        padding: 15px 0px;
+        min-width: 164px;
+        max-width: 164px;
+        width: 164px;
+        display: table-cell;
+        line-height: 1.428571429;
+        vertical-align: top;
+        overflow: hidden;
+        border-top: none;
+        border-left: none;
+        margin: 0;
+        font-family: 'Arial';
+        font-size: 13px;
+        box-sizing: border-box;
+        border-collapse: collapse;
+        border-spacing: 0;
+        -webkit-tap-highlight-color: transparent;
+    }
     /* Onboarding Styles *******************************************************************************/
     .elemento_active
     {
