@@ -234,30 +234,28 @@
         font-weight: bold;
         border-collapse: collapse;
         border-spacing: 0;
-    }
-    /*
-    #tabla th
-    {
-        text-align: center;
-        padding: 15px, 0px;
-        min-width: 164px;
-        max-width: 164px;
-        width: 164px;
-        font-size: 11px;
-        display: table-cell;
-        vertical-align: bottom;
-        border-bottom: 2px solid #ddd;
-        line-height: 1.428571429;
-        border-top: none;
-        border-left: none;
-        box-sizing: border-box;
-        font-weight: bold;
-        border-collapse: collapse;
-        border-spacing: 0;
         color: #333;
         font-family: verdana, arial, helvetica, sans-serif;
         -webkit-tap-highlight-color: transparent;
-    }/*
+    }
+    #tabla td
+    {
+        text-align: left;
+        padding: 15px 0px;
+        min-width: 164px;
+        max-width: 164px;
+        width: 164px;
+        display: table-cell;
+        line-height: 1.428572429;
+        vertical-align: middle; /* cambie top por middle */
+        overflow: auto; /* Oculta todo lo que se desborda en las celdas del body : Temporalemte lo dejo con valor de auto*/
+        border-top: none;
+        border-left: none;
+        margin: 0;
+        font-family: 'Arial';
+        font-size: 11px;
+    }
+    /*
     #tabla td
     {
         text-align: center;
@@ -278,7 +276,7 @@
         border-collapse: collapse;
         border-spacing: 0;
         -webkit-tap-highlight-color: transparent;
-    }
+    }/*
     #tabla tr
     {
         box-sizing: border-box;
