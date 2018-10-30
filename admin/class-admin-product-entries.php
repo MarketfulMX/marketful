@@ -302,6 +302,11 @@ class MKF_ProductEntry extends MKF_DBCore
      */
     public function get_ml_metadata($post_id = null)
     {
+        // Prueba: Tratando de obtener el prefijo segun el prefijo global. 30/10/18
+        // meal
+        global $wpdb;
+        $prefix = $wpdb->get_blog_prefix();
+
         $out = array();
 
         $post_id = is_null($post_id) ? 0 : intval($post_id);
@@ -317,18 +322,18 @@ class MKF_ProductEntry extends MKF_DBCore
                    pm9.meta_value price,
                    pm10.meta_value categories, 
                    pm11.meta_value precio_ml
-            FROM {$this->getPostTableName()} p
-            LEFT JOIN {$this->getPostMetaTableName()} pm1 ON pm1.post_id = p.ID and pm1.meta_key = '{$this->meta_title}' 
-            LEFT JOIN {$this->getPostMetaTableName()} pm2 ON pm2.post_id = p.ID and pm2.meta_key = '{$this->meta_status}' 
-            LEFT JOIN {$this->getPostMetaTableName()} pm3 ON pm3.post_id = p.ID and pm3.meta_key = '{$this->meta_stock}' 
-            LEFT JOIN {$this->getPostMetaTableName()} pm4 ON pm4.post_id = p.ID and pm4.meta_key = '{$this->meta_exp}' 
-            LEFT JOIN {$this->getPostMetaTableName()} pm5 ON pm5.post_id = p.ID and pm5.meta_key = '{$this->meta_ship}' 
-            LEFT JOIN {$this->getPostMetaTableName()} pm6 ON pm6.post_id = p.ID and pm6.meta_key = '{$this->meta_store}' 
-            LEFT JOIN {$this->getPostMetaTableName()} pm7 ON pm7.post_id = p.ID and pm7.meta_key = '{$this->meta_wtime}' 
-            LEFT JOIN {$this->getPostMetaTableName()} pm8 ON pm8.post_id = p.ID and pm8.meta_key = '{$this->meta_utime}' 
-            LEFT JOIN {$this->getPostMetaTableName()} pm9 ON pm9.post_id = p.ID and pm9.meta_key = '{$this->meta_price}' 
-            LEFT JOIN {$this->getPostMetaTableName()} pm10 ON pm10.post_id = p.ID and pm10.meta_key = '{$this->meta_cat}'
-            LEFT JOIN {$this->getPostMetaTableName()} pm11 ON pm9.post_id = p.ID and pm11.meta_key = '{$this->meta_precio_ml}' 
+            FROM {$prefix}posts p
+            LEFT JOIN {$prefix}postmeta pm1 ON pm1.post_id = p.ID and pm1.meta_key = '{$this->meta_title}' 
+            LEFT JOIN {$prefix}postmeta pm2 ON pm2.post_id = p.ID and pm2.meta_key = '{$this->meta_status}' 
+            LEFT JOIN {$prefix}postmeta pm3 ON pm3.post_id = p.ID and pm3.meta_key = '{$this->meta_stock}' 
+            LEFT JOIN {$prefix}postmeta pm4 ON pm4.post_id = p.ID and pm4.meta_key = '{$this->meta_exp}' 
+            LEFT JOIN {$prefix}postmeta pm5 ON pm5.post_id = p.ID and pm5.meta_key = '{$this->meta_ship}' 
+            LEFT JOIN {$prefix}postmeta pm6 ON pm6.post_id = p.ID and pm6.meta_key = '{$this->meta_store}' 
+            LEFT JOIN {$prefix}postmeta pm7 ON pm7.post_id = p.ID and pm7.meta_key = '{$this->meta_wtime}' 
+            LEFT JOIN {$prefix}postmeta pm8 ON pm8.post_id = p.ID and pm8.meta_key = '{$this->meta_utime}' 
+            LEFT JOIN {$prefix}postmeta pm9 ON pm9.post_id = p.ID and pm9.meta_key = '{$this->meta_price}' 
+            LEFT JOIN {$prefix}postmeta pm10 ON pm10.post_id = p.ID and pm10.meta_key = '{$this->meta_cat}'
+            LEFT JOIN {$prefix}postmeta pm11 ON pm9.post_id = p.ID and pm11.meta_key = '{$this->meta_precio_ml}' 
             WHERE p.ID = {$post_id}";
 
         array_push($out, array("data"=> $this->execute_custom_query($sql)));
