@@ -146,7 +146,7 @@
     }
     #tabla
     {
-        /*margin-left: 0px;
+        margin-left: 0px;
         table-layout: fixed;
         margin-bottom: 10px;
         word-wrap: break-word;
@@ -154,7 +154,7 @@
         border-collapse: collapse;
         margin: 0 auto;
         max-width: 100%;
-        overflow: auto;
+        overflow: scroll;
         max-height: 20vh;
         max-height: 20vh;
         background-color: transparent;  
@@ -166,7 +166,7 @@
         font-family: verdana, arial, helvetica, sans-serif;
         font-size: 13px;
         line-height: 18px;
-        -webkit-tap-highlight-color: transparent;*/
+        -webkit-tap-highlight-color: transparent;
     }
     #thead_productos
     {
@@ -174,7 +174,7 @@
         overflow: hidden;
         display: block; /* Cambie block por table */
         background-color: #FDC323; /*retirar*/
-        position: static;
+        position: relative;
         box-sizing: border-box;
         vertical-align: middle;
         border-color: inherit;
