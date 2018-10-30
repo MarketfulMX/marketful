@@ -142,10 +142,11 @@
         font-family: verdana, arial, helvetica, sans-serif;
         font-size: 13px;
         line-height: 18px;
+        /*overflow: scroll; /* --por ver--*/
     }
     #tabla
     {
-        margin-left: 0px;
+        /*margin-left: 0px;
         table-layout: fixed;
         margin-bottom: 10px;
         word-wrap: break-word;
@@ -165,31 +166,15 @@
         font-family: verdana, arial, helvetica, sans-serif;
         font-size: 13px;
         line-height: 18px;
-        -webkit-tap-highlight-color: transparent;
+        -webkit-tap-highlight-color: transparent;*/
     }
     #thead_productos
     {
         width: 100%;
         overflow: hidden;
-        display: table; /* Cambie block por table */
+        display: block; /* Cambie block por table */
         background-color: #FDC323;
-        position: relative;
-        box-sizing: border-box;
-        vertical-align: middle;
-        border-color: inherit;
-        border-collapse: collapse;
-        border-spacing: 0;
-        color: #333;
-        
-    }
-    /*
-    #thead_productos
-    {
-        width: 100%;
-        overflow: hidden;
-        display: block;
-        background-color: #FDC323;
-        position: relative;
+        position: static;
         box-sizing: border-box;
         vertical-align: middle;
         border-color: inherit;
@@ -200,14 +185,6 @@
         font-size: 13px;
         line-height: 18px;
         -webkit-tap-highlight-color: transparent;
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 50%;
-        width: 300%;
-        background-color: rgba(255, 255, 255, 0.2);
     }
     #thead_productos::after
     {
@@ -220,17 +197,18 @@
         width: 300%;
         background-color: rgba(255,255,255,0.2);
         box-sizing: border-box;
-    }/* 
+    }
     #tbody_productos
     {
-        overflow: auto;
+        overflow: auto; /* Me deja pensando */
         min-height: 0px;
         width: 100%;
         height: 60vh;
         display: block;
         box-sizing: border-box;
         vertical-align: middle;
-        border-color: inherit;
+        text-align: center;
+        borde-color: inherit;
         border-collapse: collapse;
         border-spacing: 0;
         color: #333;
@@ -239,6 +217,12 @@
         line-height: 18px;
         -webkit-tap-highlight-color: transparent;
     }
+    #tabla th
+    {
+        text-align: center;
+        padding: 15px, 0px;
+    }
+    /*
     #tabla th
     {
         text-align: center;
@@ -260,7 +244,7 @@
         color: #333;
         font-family: verdana, arial, helvetica, sans-serif;
         -webkit-tap-highlight-color: transparent;
-    }
+    }/*
     #tabla td
     {
         text-align: center;
