@@ -154,8 +154,7 @@
         border-collapse: collapse;
         margin: 0 auto;
         max-width: 100%;
-        overflow: scroll;
-        max-height: 20vh;
+        overflow: auto;
         max-height: 20vh;
         background-color: transparent;  
         border-spacing: 0;
@@ -189,13 +188,16 @@
     #thead_productos::after
     {
         content: "";
-        position: relative;
+        position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 50%;
         width: 300%;
         background-color: rgba(255,255,255,0.2);
+    }
+    #thead_productos::before
+    {
         box-sizing: border-box;
     }
     #tbody_productos
