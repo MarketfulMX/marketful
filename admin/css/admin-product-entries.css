@@ -219,8 +219,8 @@
     }
     #tabla th
     {
-        text-align: center;
-        padding: 15px, 0px;
+        text-align: left;
+        padding: 15px, 15px;
         min-width: 164px;
         max-width: 164px;
         width: 164px;
@@ -241,7 +241,7 @@
     #tabla td
     {
         text-align: left;
-        padding: 15px 0px;
+        padding: 15px 15px;
         min-width: 164px;
         max-width: 164px;
         width: 164px;
@@ -254,45 +254,24 @@
         margin: 0;
         font-family: 'Arial';
         font-size: 11px;
-    }
-    /*
-    #tabla td
-    {
-        text-align: center;
-        padding: 15px 0px;
-        min-width: 164px;
-        max-width: 164px;
-        width: 164px;
-        display: table-cell;
-        line-height: 1.428571429;
-        vertical-align: top;
-        overflow: hidden;
-        border-top: none;
-        border-left: none;
-        margin: 0;
-        font-family: 'Arial';
-        font-size: 13px;
         box-sizing: border-box;
         border-collapse: collapse;
         border-spacing: 0;
         -webkit-tap-highlight-color: transparent;
-    }/*
+    }
     #tabla tr
     {
         box-sizing: border-box;
         display: table-row;
         vertical-align: inherit;
-        border-color: inherit;
         border-collapse: collapse;
         border-spacing: 0;
         color: #333;
-        font-family: verdana, arial, helvetica, sans-serif; 
-        font-size: 13px;
+        font-family: verdana, arial, helvetica, sans-serif;
+        font-size: 11px;
         line-height: 18px;
-        -webkit-tap-highlight-color: transparent;
-
+        -webkit-tap-highlight-colot: transparent;
     }
-    */
     /* Onboarding Styles *******************************************************************************/
     .elemento_active
     {
