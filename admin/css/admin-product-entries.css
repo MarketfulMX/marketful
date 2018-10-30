@@ -173,7 +173,7 @@
         width: 100%;
         overflow: hidden;
         display: block; /* Cambie block por table */
-        background-color: #FDC323;
+        background-color: #FDC323; /*retirar*/
         position: static;
         box-sizing: border-box;
         vertical-align: middle;
@@ -221,6 +221,19 @@
     {
         text-align: center;
         padding: 15px, 0px;
+        min-width: 164px;
+        max-width: 164px;
+        width: 164px;
+        font-size: 11px;
+        display: table-cell; 
+        vertical-align: middle;/* cambie bottom por middle */
+        border-bottom: 2px solid #ddd; 
+        line-height: 1.428571429;
+        border-top: none;
+        box-sizing: border-box;
+        font-weight: bold;
+        border-collapse: collapse;
+        border-spacing: 0;
     }
     /*
     #tabla th
