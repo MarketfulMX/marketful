@@ -144,7 +144,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 <div id="registros" style="" >
   <table id="tabla" class="table fixed_headers tabla-minw" style="">
-    <thead class="table-header fixed_behavior ">
+    <thead id="thead_productos" class="table-header fixed_behavior ">
       <tr>
         <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
         <th style="">Subir cambios a Mercado Libre</th>

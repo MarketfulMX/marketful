@@ -135,7 +135,70 @@
         }
     #tabla
     {
-        
+        margin-left: 0px;
+        table-layout: fixed;
+        margin-bottom: 10px;
+        word-wrap: break-word;
+        width: 98%;
+        border-collapse: collapse;
+        margin: 0 auto;
+        max-width: 100%;
+        overflow: auto;
+        max-height: 20vh;
+        background-color: transparent;
+        border-spacing: 0;
+        box-sizing: border-box;
+        display: table;
+        border-color: grey;
+        color: #333;
+        font-family: verdana, arial, helvetica, sans-serif;
+        font-size: 13px;
+        line-height: 18px;
+        -webkit-tap-highlight-color: transparent;
+    }
+    #tbody_productos
+    {
+        overflow: auto;
+        min-height: 0px;
+        width: 100%;
+        height: 60vh;
+        display: block;
+        box-sizing: border-box;
+        vertical-align: middle;
+        border-color: inherit;
+        border-collapse: collapse;
+        border-spacing: 0;
+        color: #333;
+        font-family: verdana, arial, helvetica, sans-serif;
+        font-size: 13px;
+        line-height: 18px;
+        -webkit-tap-highlight-color: transparent;
+    }
+    #thead_productos
+    {
+        width: 100%;
+        overflow: hidden;
+        display: block;
+        background-color: #FDC323;
+        position: relative;
+        box-sizing: border-box;
+        vertical-align: middle;
+        border-color: inherit;
+        border-collapse: collapse;
+        border-spacing: 0;
+        color: #333;
+        font-family: verdana, arial, helvetica, sans-serif;
+        font-size: 13px;
+        line-height: 18px;
+        -webkit-tap-highlight-color: transparent;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 50%;
+        width: 300%;
+        background-color: rgba(255, 255, 255, 0.2);
     }
 
     /* Onboarding Styles *******************************************************************************/
