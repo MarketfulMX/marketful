@@ -247,6 +247,9 @@ class MKF_ProductEntry extends MKF_DBCore
     // funcion para traer los productos
     public function get_product_list($tope, $offset, $keyword)
     {
+        // Prueba: Tratando de obtener el prefijo
+        global $wpdb;
+        $prefix = $wpdb->get_blog_prefix();
 
         $out = array();
 
@@ -266,18 +269,18 @@ class MKF_ProductEntry extends MKF_DBCore
               SELECT p.ID, 
                      pm1.meta_value sku, 
                      (SELECT meta_value 
-                      FROM {$this->getPostMetaTableName()} 
+                      FROM {$prefix}postmeta 
                       WHERE post_id = p.ID AND meta_key = '{$this->meta_title}') titulo_ml,
                      p.post_title title,
                      (SELECT meta_value 
-                      FROM {$this->getPostMetaTableName()} 
+                      FROM {$prefix}postmeta  
                       WHERE post_id = p.ID AND meta_key = '{$this->meta_status}') mercadolibre,
                      (SELECT meta_value 
-                      FROM {$this->getPostMetaTableName()} 
+                      FROM {$prefix}postmeta  
                       WHERE post_id = p.ID AND meta_key = '{$this->meta_exp}') exposicion_ml
                       
-              FROM {$this->getPostTableName()} p
-              INNER JOIN {$this->getPostMetaTableName()} pm1 ON pm1.post_id = p.ID and pm1.meta_key = '_sku'
+              FROM {$prefix}posts p
+              INNER JOIN {$prefix}postmeta  pm1 ON pm1.post_id = p.ID and pm1.meta_key = '_sku'
               WHERE 
               (p.post_type = 'product' AND 
               p.post_title LIKE '%{$keyword}%' AND 
