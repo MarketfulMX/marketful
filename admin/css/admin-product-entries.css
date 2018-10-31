@@ -142,7 +142,7 @@
         font-family: verdana, arial, helvetica, sans-serif;
         font-size: 13px;
         line-height: 18px;
-        overflow: auto; /* --por ver--*/
+        /*overflow: auto; /* --por ver--*/
     }
     #tabla
     {
@@ -154,7 +154,7 @@
         border-collapse: collapse;
         margin: 0 auto;
         max-width: 100%;
-        overflow: auto;
+        overflow: scroll;
         max-height: 20vh;
         background-color: transparent;  
         border-spacing: 0;

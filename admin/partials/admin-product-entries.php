@@ -64,7 +64,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 
 <!-- // creo que sobra  -->
-<script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<script type = "text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
 
 <!-- Bootstrap CSS and JS-->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -142,11 +142,11 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   </style>
 
 
-<div id="registros" class="tab-container" style="" >
-  <table id="tabla" class="table table stripe tableMK fixed_headers tabla-minw" style="">
+<div id="registros" class="tab-container" style="" onload="" >
+  <table id="tabla" class="fixed_headers tabla-minw table" style="">
     <thead id="thead_productos" class="table-header fixed_behavior">
       <tr>
-        <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
+        <th class="dt_check"><input type="checkbox" class="ids" id="checkbox_master" onClick="selectTodos()" /> </th>
         <th style="">Subir cambios a Mercado Libre</th>
         <th style="">SKU </th>
         <th style="">Titulo en MercadoLibre <br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></th>

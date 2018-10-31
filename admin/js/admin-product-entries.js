@@ -544,8 +544,27 @@ function calcular_costo_envio(id, categ)
     }
 }
 
-
-
+/// Aqui funcion para el scroll
+window.onLoad = hacerscroll();
+function hacerscroll()
+{
+    console.log(" Entro en hacerscroll");
+    var $table = document.getElementById('tabla');
+  $table.floatThead({
+      scrollContainer: function($table){
+          return $table.closest('.table-container');
+      }
+  });
+    /*
+  console.log("entro 1");
+  var $table = $('#tabla');
+  $table.floatThead({
+      scrollContainer: function($table){
+        console.log(" Entro");
+          return $table.closest('.tab-container');
+      }
+  });*/
+}    
 //******************************************************************************************************************
 //  Here are only on-boarding functions ->->->
 /**
