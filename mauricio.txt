@@ -1,15 +1,12 @@
 
 ### Mauricio
-Falta en vista ordenes:
-	- Saber el nombre del cliente que compra. LISTO
-	- Saber el pseudonimo del cliente que compra. NO
-	- Saber el numero del cliente. LISTO
-	- Saber la fecha en la que llegara el envio. SOLO FECHA
-	- Saber si el envio esta abierto o cerrado. LISTO
-	- Usar datos existentes para obtener lo demas ( Crear una query para saber los datos del producto ) LISTO
-	- Conseguir la query cuendo el tipo de post sea shop_order LISTO
-	- Probar las fotos y buscar como poder obtenerla, hacer pruebas para poder ver donde se guardan. LISTO
-	- 
+Situacion actual: Resolver el problema de la version de Jquery en wordpress (JQMIGRATE)
+para poder hacer funcionar floatThead y que funcione el header en la tabla
+https://js.libhunt.com/floatthead-alternatives
+http://mkoryak.github.io/floatThead/
+https://subinsb.com/remove-jquery-migrate-in-wp-blog/
+https://github.com/mkoryak/floatThead/blob/master/src/jquery.floatThead.js
+[31 de Octubre de 2018]
 
  ### API Juan y Charly
  1) Agregar la descripcion comun a los items nuevos en SubirMlListings
