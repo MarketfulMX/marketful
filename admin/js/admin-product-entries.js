@@ -550,11 +550,11 @@ function hacerscroll()
 {
     console.log(" Entro en hacerscroll");
     var $table = document.getElementById('tabla');
-  $table.floatThead({
-      scrollContainer: function($table){
-          return $table.closest('.table-container');
-      }
-  });
+    document.getElementById('tabla').floatThead({
+    scrollContainer: function($table){
+        return $table.closest('.table-container');
+        }
+    });
     /*
   console.log("entro 1");
   var $table = $('#tabla');
