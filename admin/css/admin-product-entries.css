@@ -134,124 +134,75 @@
             background-color: #BCBFA3;          
         }
 
-    #registros
+/* Estilos de la tabla. */
+    #registros 
     {
-        box-sizing: border-box;
-        display: block;
-        color: 13px;
-        font-family: verdana, arial, helvetica, sans-serif;
-        font-size: 13px;
-        line-height: 18px;
-        /*overflow: auto; /* --por ver--*/
+        width: 90%;
+        height: 65vh;
+        overflow: auto;
     }
-    #tabla
+
+    table, td, th 
     {
-        margin-left: 0px;
-        table-layout: fixed;
-        margin-bottom: 10px;
-        word-wrap: break-word;
-        width: 98%;
-        border-collapse: collapse;
-        margin: 0 auto;
-        max-width: 100%;
-        overflow: scroll;
-        max-height: 20vh;
-        background-color: transparent;  
-        border-spacing: 0;
-        box-sizing: border-box;
-        display: table;
-        border-color: grey;
-        color: #333;
-        font-family: verdana, arial, helvetica, sans-serif;
-        font-size: 13px;
-        line-height: 18px;
-        -webkit-tap-highlight-color: transparent;
+        border: rgba(193, 193, 193, 0.48) 1px solid;
     }
-    #thead_productos
+
+    #fixedY
     {
-        width: 100%;
-        overflow: hidden;
-        display: block; /* Cambie block por table */
         position: relative;
-        box-sizing: border-box;
-        vertical-align: middle;
-        border-color: inherit;
+        top: 0;
+        z-index: 99;
+    }
+
+    #fixedY table
+    {
         border-collapse: collapse;
-        font-size: 13px;
-        line-height: 18px;
-        -webkit-tap-highlight-color: transparent;
+        width: 900px;
     }
-    #thead_productos::before
+
+    #fixedY table th, #fixedY table td 
     {
-        box-sizing: border-box;
+        width: 25%;
     }
-    #tbody_productos
+
+    #nfiX table th, #nfiX table td 
     {
-        overflow: auto; /* Me deja pensando */
-        min-height: 0px;
+        width: 25%;
+    }
+
+    #fixedY table th 
+    {
+        background-color: red;
+    font: bold 15px Tahoma, Geneva, sans-serif;
+    color: rgb(255, 255, 255);
+    }
+
+    #cuerpo_datos 
+    {
+        width: 900px;
+    }
+
+    #cuerpo_datos > div
+    {
+        float: left;
+    }
+
+    #cuerpo_datos > div#nfiX
+    {
         width: 100%;
-        height: 55vh;
-        display: block;
-        box-sizing: border-box;
-        vertical-align: middle;
-        text-align: center;
-        borde-color: inherit;
-        border-collapse: collapse;
-        border-spacing: 0;
-        font-size: 13px;
-        line-height: 18px;
-        -webkit-tap-highlight-color: transparent;
     }
-    #tabla th
+
+    #cuerpo_datos > div#nfiX table
     {
-        text-align: left;
-        padding: 15px, 15px;
-        min-width: 164px;
-        max-width: 164px;
-        width: 164px;
-        font-size: 13px;
-        display: table-cell; 
-        vertical-align: middle;/* cambie bottom por middle */
-        border-bottom: 2px solid #ddd; 
-        line-height: 1.428571429;
-        border-top: 2px solid #ddd;
-        box-sizing: border-box;
-        font-weight: bold;
         border-collapse: collapse;
-        border-spacing: 0;
-        -webkit-tap-highlight-color: transparent;
+        width: 100%;
     }
-    #tabla td
+
+    #nfiX table th, #nfiX table td 
     {
-        text-align: left;
-        padding: 15px 15px;
-        min-width: 164px;
-        max-width: 164px;
-        width: 164px;
-        display: table-cell;
-        line-height: 1.428572429;
-        vertical-align: middle; /* cambie top por middle */
-        overflow: auto; /* Oculta todo lo que se desborda en las celdas del body : Temporalemte lo dejo con valor de auto*/
-        border-top: none;
-        border-left: none;
-        margin: 0;
-        font-size: 11px;
-        box-sizing: border-box;
-        border-collapse: collapse;
-        border-spacing: 0;
-        -webkit-tap-highlight-color: transparent;
+        width: 25%;
     }
-    #tabla tr
-    {
-        box-sizing: border-box;
-        display: table-row;
-        vertical-align: inherit;
-        border-collapse: collapse;
-        border-spacing: 0;
-        font-size: 11px;
-        line-height: 18px;
-        -webkit-tap-highlight-colot: transparent;
-    }
+
     /* Onboarding Styles *******************************************************************************/
     .elemento_active
     {

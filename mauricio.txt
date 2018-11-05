@@ -1,12 +1,10 @@
 
 ### Mauricio
-Situacion actual: Resolver el problema de la version de Jquery en wordpress (JQMIGRATE)
-para poder hacer funcionar floatThead y que funcione el header en la tabla
-https://js.libhunt.com/floatthead-alternatives
-http://mkoryak.github.io/floatThead/
-https://subinsb.com/remove-jquery-migrate-in-wp-blog/
-https://github.com/mkoryak/floatThead/blob/master/src/jquery.floatThead.js
-[31 de Octubre de 2018]
+Esta version se quedo trancada por el problema de no poder utilizar floatThead dado que 
+WP tiene una herramienta llamada JQMIGRATE que fuerza al plugin a utilizar la libreria 
+JQUERY en la version 1.4.1 ya que en algun lugar del plugin encuentra una version de 
+JQUERY obsoleta o deprecada. 
+Busque las partes de codigo obsoletas y encontre un error extraño https://stackoverflow.com/questions/24639335/javascript-console-log-causes-error-synchronous-xmlhttprequest-on-the-main-thr
 
  ### API Juan y Charly
  1) Agregar la descripcion comun a los items nuevos en SubirMlListings
