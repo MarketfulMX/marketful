@@ -552,7 +552,7 @@ function hacerscroll()
     var $table = document.getElementById('tabla');
     document.getElementById('tabla').floatThead({
     scrollContainer: function($table){
-        return $table.closest('.table-container');
+        return document.getElementById('tabla').closest('.table-container');
         }
     });
     /*
