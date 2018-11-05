@@ -137,7 +137,7 @@ if (!empty($ml_categories))
       jQuery.ajax({
         type: "GET",
         url: ml_url,
-        async: false,
+        async: true,
         success: function(data) {
 
           if (flag_to_add)

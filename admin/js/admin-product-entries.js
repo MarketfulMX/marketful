@@ -276,7 +276,7 @@ var status_cambios = ""
                 {
                     type: "GET", 
                     url: "https://api.mercadolibre.com/categories/"+ $(this).text(),
-                    async: false,
+                    async: true,
                     success: function(data)
                     {
                         var path_categoria = "";

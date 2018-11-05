@@ -341,7 +341,7 @@ function add_categories_object(level, ml_url, cat_name, flag_to_add)
   jQuery.ajax({
     type: "GET",
     url: ml_url,
-    async: false,
+    async: true,
     success: function(data) {
 
       if (flag_to_add)
