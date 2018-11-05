@@ -144,12 +144,12 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
 
 <div id="registros" class="" style="" onload="" >
   <div id="fixedY">
-    <table id="tabla" class="" style="">
+    <table id="tabla" class="table" style="">
       <thead>
         <tr>
-          <th class="dt_check"><input type="checkbox" class="ids" id="checkbox_master" onClick="selectTodos()" /> </th>
-          <th style="">Subir cambios a Mercado Libre</th>
-          <th style="">SKU </th>
+          <th class="dt_check" style=" min-width: 40px; max-width: 40px; width: 40px;"><input type="checkbox" class="ids" id="checkbox_master" onClick="selectTodos()" /> </th>
+          <th style="min-width: 100px; max-width: 100px; width: 100px;">Subir cambios a Mercado Libre</th>
+          <th style="min-width: 100px; max-width: 100px; width: 100px;">SKU </th>
           <th style="">Titulo en MercadoLibre <br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></th>
           <th style="">Status</th>
           <th style="">Exposici&oacute;n</th>
@@ -171,7 +171,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   <div id="cuerpo_datos">
     <div id="nfiX">
       <table>
-        <tbody id="" class="">
+        <tbody id="" class="table">
         <!-- Creamos un foreach para recorrer todos los valores -->
         <?php
           foreach ($products[0]["data"] as $key => $product) :
@@ -196,7 +196,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 </div>
               </div>
               
-            <td class="dt_check" <?php if($onb == 1){echo 'onload="onboarding_nn('.$product->ID.');"';} // Modifica el tamaño del nombre del titulo_ml para el onboarding?>>
+            <td class="dt_check" <?php if($onb == 1){echo 'onload="onboarding_nn('.$product->ID.');"';} // Modifica el tamaño del nombre del titulo_ml para el onboarding?> style="min-width: 40px; max-width: 40px; width: 40px;">
               <input type="checkbox" class="ids" name="checkboxes" id="checkbox_<?php echo $product->ID; ?>" />  </td>
               <?php ?>
               <?php $productObject = MKF_ProductEntry::GetInstance(); ?>
@@ -205,8 +205,8 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               <?php $exposicion = $all_mlmeta[0]["data"][0]->exposicion; ?>
               <?php $envio_ml = $select_value = get_post_meta($product->ID, "metodo_envio_ml", true)?>
               <?php if($categoria == "" || $exposicion == "" || $envio_ml == ""){$disabled=true;}else{$disabled= false;} ?>
-            <td><button <?php echo ($disabled == true)?'disabled':''; ?> style=""id="subir_ml_<?php echo $product->ID;?>" class="boton_dg subir" onclick="subir_cambios(<?php echo $product->ID; ?>)"> Subir cambios</button></td>
-            <td><?php echo $product->sku; ?></td>
+            <td style="min-width: 100px; max-width: 100px; width: 100px;"><button <?php echo ($disabled == true)?'disabled':''; ?> style=""id="subir_ml_<?php echo $product->ID;?>" class="boton_dg subir" onclick="subir_cambios(<?php echo $product->ID; ?>)"> Subir cambios</button></td>
+            <td style="min-width: 100px; max-width: 100px; width: 100px;"><?php echo $product->sku; ?></td>
             <td style="min-width: 150px">
                 <?php 
                   echo '<b id="tpml_'.$product->ID.'">'.$product->title.'</b><br>';

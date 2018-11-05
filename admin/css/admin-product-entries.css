@@ -137,14 +137,25 @@
 /* Estilos de la tabla. */
     #registros 
     {
-        width: 90%;
+        width: 100%;
         height: 65vh;
         overflow: auto;
+        font-size: 60%;
+    }
+
+    #fixedY th
+    {
+        font-size: 120%;
     }
 
     table, td, th 
     {
         border: rgba(193, 193, 193, 0.48) 1px solid;
+    }
+    
+    table, td, th 
+    {
+        background-color: white;
     }
 
     #fixedY
@@ -157,24 +168,21 @@
     #fixedY table
     {
         border-collapse: collapse;
-        width: 900px;
+        width: 100%;
     }
 
     #fixedY table th, #fixedY table td 
     {
-        width: 25%;
+        
     }
 
     #nfiX table th, #nfiX table td 
     {
-        width: 25%;
+        
     }
 
     #fixedY table th 
     {
-        background-color: red;
-    font: bold 15px Tahoma, Geneva, sans-serif;
-    color: rgb(255, 255, 255);
     }
 
     #cuerpo_datos 
