@@ -150,11 +150,11 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           <th class="dt_check" style=" min-width: 40px; max-width: 40px; width: 40px;"><input type="checkbox" class="ids" id="checkbox_master" onClick="selectTodos()" /> </th>
           <th style="min-width: 100px; max-width: 100px; width: 100px;">Subir cambios a Mercado Libre</th>
           <th style="min-width: 100px; max-width: 100px; width: 100px;">SKU </th>
-          <th style="">Titulo en MercadoLibre <br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></th>
-          <th style="">Status</th>
-          <th style="">Exposici&oacute;n</th>
-          <th style="">Categoria ML</th>
-          <th style="">Precio Woo Commerce</th>
+          <th style="min-width: 230px; max-width: 230px; width: 230px;">Titulo en MercadoLibre <br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></th>
+          <th style="min-width: 130px; max-width: 130px; width: 130px;">Status</th>
+          <th style="min-width: 130px; max-width: 130px; width: 130px;">Exposici&oacute;n</th>
+          <th style="min-width: 150px; max-width: 150px; width: 150px;">Categoria ML</th>
+          <th style="min-width: 80px; max-width: 80px; width: 80px;">Precio Woo Commerce</th>
           <th style="">Precio Mercado Libre</th>
           <th style="">Inventario Woo Commerce</th>
           <th style="">Inventario Mercado Libre</th>
@@ -207,7 +207,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               <?php if($categoria == "" || $exposicion == "" || $envio_ml == ""){$disabled=true;}else{$disabled= false;} ?>
             <td style="min-width: 100px; max-width: 100px; width: 100px;"><button <?php echo ($disabled == true)?'disabled':''; ?> style=""id="subir_ml_<?php echo $product->ID;?>" class="boton_dg subir" onclick="subir_cambios(<?php echo $product->ID; ?>)"> Subir cambios</button></td>
             <td style="min-width: 100px; max-width: 100px; width: 100px;"><?php echo $product->sku; ?></td>
-            <td style="min-width: 150px">
+            <td style="min-width: 230px; max-width: 230px; width: 230px;">
                 <?php 
                   echo '<b id="tpml_'.$product->ID.'">'.$product->title.'</b><br>';
                   echo '<input type="text" class="input titulo_onb" style="width: 200px;" id="titulo_ml_'.$product->ID.'" maxlength="60" placeholder="Nuevo titulo solo para Mercadolibre" onblur="cambioStatus('.$product->ID.', \'titulo_ml\')" onkeypress="checar_enter(event,'.$product->ID.', \'titulo_ml\')">';
@@ -225,7 +225,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                     -  Dentro del select, se hace echo de 'Selected' para que sea la opcion seleccionada, en        caso de que el valor de $select_value sea igual a alguna de las opciones.
                     -  Se repite el procedimiento, pero en esta ocacion el dato que se utiliza es exposición_ml
                     -->
-              <td>
+              <td style="min-width: 130px; max-width: 130px; width: 130px;">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones" >              
                   <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select pub_status" id="mercadolibre_<?php echo $product->ID;   ?>"  onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre');" >
                     
@@ -237,7 +237,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                   </select>
                 </div>
             </td>
-            <td>
+            <td style="min-width: 130px; max-width: 130px; width: 130px;">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
                   <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select expo_ml" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml'); check_status(<?php echo $product->ID; ?>);calcular_comision(<?php echo $product->ID; ?>);" id="exposicion_ml_<?php echo $product->ID;  ?>">
                     <?php $select_value = $all_mlmeta[0]["data"][0]->exposicion; ?>
@@ -250,7 +250,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 
             </td>
             
-            <td style="min-width: 130px;" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php 
+            <td style="min-width: 150px; max-width: 150px; width: 150px;" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php 
                 if(!$onb)
                 {
                   echo (strlen($categoria) > 3 ? $categoria : ("<a href='?page=mkf-entries_categorizador&product_id={$product->ID}&pagina={$pagina}&keyword={$keyword}'>categorizar</a>"));
@@ -264,7 +264,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                   echo "<a href='#'>Categoria del producto</a>";
                 }
               ?></td>
-            <td style=""><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
+            <td style="min-width: 80px; max-width: 80px; width: 80px;"><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
             <td><input onblur="cambioStatus('<?php echo $product->ID ?>', 'precio_ml'); calcular_costo_envio(<?php echo $product->ID.',\''.$categoria.'\''; ?>); calcular_comision(<?php echo $product->ID; ?>);" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
             <td><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
                 <td ><input  onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>

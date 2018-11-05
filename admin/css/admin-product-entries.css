@@ -133,6 +133,10 @@
             border-color: #3F4036;
             background-color: #BCBFA3;          
         }
+        .input 
+        {
+            width: 40px;
+        }
 
 /* Estilos de la tabla. */
     #registros 
@@ -152,7 +156,7 @@
     {
         border: rgba(193, 193, 193, 0.48) 1px solid;
     }
-    
+
     table, td, th 
     {
         background-color: white;
