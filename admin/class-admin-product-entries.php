@@ -248,25 +248,9 @@ class MKF_ProductEntry extends MKF_DBCore
     public function get_product_list($tope, $offset, $keyword)
     {
 
-
-
-
-
-        //prueba juan
-        //  $querystr = "
-        //      SELECT $wpdb->posts.* 
-        //      FROM $wpdb->posts, $wpdb->postmeta
-        //      WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id 
-        //      AND $wpdb->postmeta.meta_key = 'tag' 
-        //      AND $wpdb->postmeta.meta_value = 'email' 
-        //      AND $wpdb->posts.post_status = 'publish' 
-        //      AND $wpdb->posts.post_type = 'post'
-        //      AND $wpdb->posts.post_date < NOW()
-        //      ORDER BY $wpdb->posts.post_date DESC
-        // ";
-
         //  $pageposts = $wpdb->get_results($querystr, OBJECT);
-// Prueba: Tratando de obtener el prefijo
+        
+        // Se obtiene el prefijo de las tablas, paso seguido se obtienen los datos utilizando el prefijo.
         global $wpdb;
         $prefix = $wpdb->get_blog_prefix();
         //echo $prefix; corroborar el prefijo usado
