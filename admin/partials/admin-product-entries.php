@@ -155,14 +155,14 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
           <th style="min-width: 130px; max-width: 130px; width: 130px;">Exposici&oacute;n</th>
           <th style="min-width: 150px; max-width: 150px; width: 150px;">Categoria ML</th>
           <th style="min-width: 80px; max-width: 80px; width: 80px;">Precio Woo Commerce</th>
-          <th style="">Precio Mercado Libre</th>
-          <th style="">Inventario Woo Commerce</th>
-          <th style="">Inventario Mercado Libre</th>
-          <th style="">Tipo de Envio</th>
-          <th style="">Costo de Envio en Mercado Libre</th>
-          <th style="">Comision de Mercado Libre</th>
-          <th style="">Ver Publicaci&oacute;n</th>
-          <th style="">Ultima Actualizaci&oacute;n</th>
+          <th style="min-width: 80px; max-width: 80px; width: 80px;">Precio Mercado Libre</th>
+          <th style="min-width: 80px; max-width: 80px; width: 80px;">Inventario Woo Commerce</th>
+          <th style="min-width: 80px; max-width: 80px; width: 80px;">Inventario Mercado Libre</th>
+          <th style="min-width: 200px; max-width: 200px; width: 200px;">Tipo de Envio</th>
+          <th style="min-width: 80px; max-width: 80px; width: 80px;">Costo de Envio en Mercado Libre</th>
+          <th style="min-width: 80px; max-width: 80px; width: 80px;">Comision de Mercado Libre</th>
+          <th style="min-width: 80px; max-width: 80px; width: 80px;">Ver Publicaci&oacute;n</th>
+          <th style="min-width: 130px; max-width: 130px; width: 130px;">Ultima Actualizaci&oacute;n</th>
           <!-- <th style="min-width: 215px;">Acción</th> -->
         </tr>
       </thead>
@@ -265,11 +265,11 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 }
               ?></td>
             <td style="min-width: 80px; max-width: 80px; width: 80px;"><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
-            <td><input onblur="cambioStatus('<?php echo $product->ID ?>', 'precio_ml'); calcular_costo_envio(<?php echo $product->ID.',\''.$categoria.'\''; ?>); calcular_comision(<?php echo $product->ID; ?>);" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
-            <td><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
-                <td ><input  onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
+            <td style="min-width: 80px; max-width: 80px; width: 80px;"><input onblur="cambioStatus('<?php echo $product->ID ?>', 'precio_ml'); calcular_costo_envio(<?php echo $product->ID.',\''.$categoria.'\''; ?>); calcular_comision(<?php echo $product->ID; ?>);" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
+            <td style="min-width: 80px; max-width: 80px; width: 80px;"><?php echo get_post_meta($product->ID, "_stock", true) ?></td>
+            <td style="min-width: 80px; max-width: 80px; width: 80px;"><input  onchange="cambioStatus('<?php echo $product->ID ?>', 'inventario_ml')" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "inventario_ml", $single = true) ?>" id="inventario_ml_<?php echo $product->ID; ?>"></td>
                 <?php $link_publicacion = get_post_meta($product->ID, "link_publicacion", $single = true ) ?>
-            <td style="min-width: 150px;">
+            <td style="min-width: 200px; max-width: 200px; width: 200px;">
                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
                   <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select tipo_envi" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml'); check_status(<?php echo $product->ID.');';?>calcular_costo_envio(<?php echo $product->ID.',\''.$categoria.'\''; ?>); calcular_comision(<?php echo $product->ID; ?>);" id="metodo_envio_ml_<?php echo $product->ID;?>">
                     <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
@@ -280,15 +280,15 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                   </select>
                 </div>  
             </td>
-            <td id="costo_envio_ml_<?php echo $product->ID; ?>">
+            <td id="costo_envio_ml_<?php echo $product->ID; ?>" style="min-width: 80px; max-width: 80px; width: 80px;">
               <?php $var = get_post_meta($product->ID, "costo_envio_ml", true);  if(!$var){echo 'N/A';}else{echo $var;} ?>
             </td>
-            <td id="costo_comision_ml_<?php echo $product->ID; ?>">
+            <td id="costo_comision_ml_<?php echo $product->ID; ?>" style="min-width: 80px; max-width: 80px; width: 80px;">
               <?php $var = get_post_meta($product->ID, "costo_comision_ml", true); if(!$var){echo '0.00';}else{echo $var;} ?>
             </td>
-            <td ><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicaci&oacute;n</a>" : "no hay ") ?>
+            <td style="min-width: 80px; max-width: 80px; width: 80px;"><?php echo (strlen($link_publicacion) > 3 ? "<a href='{$link_publicacion}' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-search' aria-hidden='true'></i> Ver Publicaci&oacute;n</a>" : "no hay ") ?>
               </td>
-            <td><?php echo get_post_meta($product->ID, "error_ml", true);?></td>
+            <td style="min-width: 130px; max-width: 130px; width: 130px;"><?php echo get_post_meta($product->ID, "error_ml", true);?></td>
            <!--  <td>
               <a href="?page=mkf-product-edit&product_id=<?php echo $product->ID; ?>" class="btn btn-success"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
               <a href="<?php echo $product->url; ?>" target="_blank" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Preview</a>

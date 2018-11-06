@@ -142,9 +142,14 @@
     #registros 
     {
         width: 100%;
-        height: 65vh;
+        height: 70vh;
         overflow: auto;
-        font-size: 60%;
+        font-size: 60%; 
+    }
+
+    #fixedY, #cuerpo_datos
+    {
+        text-align: center;
     }
 
     #fixedY th
