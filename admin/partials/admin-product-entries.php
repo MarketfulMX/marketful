@@ -142,29 +142,33 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
   </style>
 
 
-<div id="registros" style="max-width: 100%; overflow-x: scroll; max-height: 65vh;" >
-  <table id="tabla" class="table stripe tableMK" style="overflow: auto;">
-    <thead>
-      <tr>
-        <th class="dt_check"><input type="checkbox" class="ids"   id="checkbox_master" onClick="selectTodos()" /> </th>
-        <th style="min-width: 100px">Subir cambios a Mercado Libre</th>
-        <th style="min-width: 50px">SKU </th>
-        <th style="min-width: 150px">Titulo en MercadoLibre <br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></th>
-        <th style="min-width: 50px">Status</th>
-        <th style="min-width: 50px">Exposici&oacute;n</th>
-        <th style="min-width: 130px">Categoria ML</th>
-        <th style="min-width: 50px">Precio Woo Commerce</th>
-        <th style="min-width: 50px">Precio Mercado Libre</th>
-        <th style="min-width: 50px">Inventario Woo Commerce</th>
-        <th style="min-width: 50px">Inventario Mercado Libre</th>
-        <th style="min-width: 150px">Tipo de Envio</th>
-        <th style="min-width: 100px">Costo de Envio en Mercado Libre</th>
-        <th style="min-width: 100px">Comision de Mercado Libre</th>
-        <th style="min-width: 110px">Ver Publicaci&oacute;n</th>
-        <th style="min-width: 60px">Ultima Actualizaci&oacute;n</th>
-        <!-- <th style="min-width: 215px;">Acción</th> -->
-      </tr>
-    </thead>
+<div id="registros" class="" style="" onload="" >
+  <div id="fixedY">
+    <table id="tabla" class="table" style="">
+      <thead>
+        <tr>
+          <th class="dt_check" style=" min-width: 40px; max-width: 40px; width: 40px;"><input type="checkbox" class="ids" id="checkbox_master" onClick="selectTodos()" /> </th>
+          <th style="min-width: 100px; max-width: 100px; width: 100px;">Subir cambios a Mercado Libre</th>
+          <th style="min-width: 100px; max-width: 100px; width: 100px;">SKU </th>
+          <th style="min-width: 230px; max-width: 230px; width: 230px;">Titulo en MercadoLibre <br><mark style="color:#873B3A;">El titulo no debe tener mas de 60 caracteres.</mark></th>
+          <th style="min-width: 130px; max-width: 130px; width: 130px;">Status</th>
+          <th style="min-width: 130px; max-width: 130px; width: 130px;">Exposici&oacute;n</th>
+          <th style="min-width: 150px; max-width: 150px; width: 150px;">Categoria ML</th>
+          <th style="min-width: 80px; max-width: 80px; width: 80px;">Precio Woo Commerce</th>
+          <th style="min-width: 80px; max-width: 80px; width: 80px;">Precio Mercado Libre</th>
+          <th style="min-width: 80px; max-width: 80px; width: 80px;">Inventario Woo Commerce</th>
+          <th style="min-width: 80px; max-width: 80px; width: 80px;">Inventario Mercado Libre</th>
+          <th style="min-width: 200px; max-width: 200px; width: 200px;">Tipo de Envio</th>
+          <th style="min-width: 80px; max-width: 80px; width: 80px;">Costo de Envio en Mercado Libre</th>
+          <th style="min-width: 80px; max-width: 80px; width: 80px;">Comision de Mercado Libre</th>
+          <th style="min-width: 80px; max-width: 80px; width: 80px;">Ver Publicaci&oacute;n</th>
+          <th style="min-width: 130px; max-width: 130px; width: 130px;">Ultima Actualizaci&oacute;n</th>
+          <!-- <th style="min-width: 215px;">Acción</th> -->
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <table>
     <tbody id="tbody_productos">
     <!-- Creamos un foreach para recorrer todos los valores -->
     <?php
