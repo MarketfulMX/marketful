@@ -155,11 +155,7 @@
     #fixedY th
     {
         font-size: 120%;
-    }
-
-    table, td, th 
-    {
-        border: rgba(193, 193, 193, 0.48) 1px solid;
+        border-top: 2px solid inherit;
     }
 
     table, td, th 
