@@ -269,7 +269,7 @@ class MKF_ProductEntry extends MKF_DBCore
 // Prueba: Tratando de obtener el prefijo
         global $wpdb;
         $prefix = $wpdb->get_blog_prefix();
-        echo $prefix;
+        //echo $prefix; corroborar el prefijo usado
         $out = array();
         $sql = "SELECT tmp.ID,
                    tmp.sku,
