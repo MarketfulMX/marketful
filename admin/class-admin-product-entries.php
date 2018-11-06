@@ -247,9 +247,29 @@ class MKF_ProductEntry extends MKF_DBCore
     // funcion para traer los productos
     public function get_product_list($tope, $offset, $keyword)
     {
+
+
+
+
+
+        //prueba juan
+        //  $querystr = "
+        //      SELECT $wpdb->posts.* 
+        //      FROM $wpdb->posts, $wpdb->postmeta
+        //      WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id 
+        //      AND $wpdb->postmeta.meta_key = 'tag' 
+        //      AND $wpdb->postmeta.meta_value = 'email' 
+        //      AND $wpdb->posts.post_status = 'publish' 
+        //      AND $wpdb->posts.post_type = 'post'
+        //      AND $wpdb->posts.post_date < NOW()
+        //      ORDER BY $wpdb->posts.post_date DESC
+        // ";
+
+        //  $pageposts = $wpdb->get_results($querystr, OBJECT);
 // Prueba: Tratando de obtener el prefijo
         global $wpdb;
         $prefix = $wpdb->get_blog_prefix();
+        echo $prefix;
         $out = array();
         $sql = "SELECT tmp.ID,
                    tmp.sku,
@@ -282,12 +302,13 @@ class MKF_ProductEntry extends MKF_DBCore
               WHERE 
               (p.post_type = 'product' AND 
               p.post_title LIKE '%{$keyword}%' AND 
-              'trash' != (SELECT post_status FROM wp_posts t2 WHERE p.ID = t2.ID) OR 
+              'trash' != (SELECT post_status FROM ${prefix}posts t2 WHERE p.ID = t2.ID) OR 
               (pm1.meta_key = '_sku' AND pm1.meta_value LIKE '%{$keyword}%')))  
               tmp limit {$tope} offset {$offset}";
         array_push($out, array("data"=> $this->execute_custom_query($sql)));
         return $out;
     }
+    
 
     /** 
      * @fución publica get_ml_metadata(@string = (NULL))
