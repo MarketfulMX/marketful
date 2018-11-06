@@ -545,8 +545,24 @@ function calcular_costo_envio(id, categ)
 }
 
 // Table functions
-
-
+/**
+ * @Funcion fnc()
+ *
+ * - Descripcion general: En conjunto el script window.onload y la funcion fnc
+ *   crean la animacion de scroll en la tabla de product entries. Se carga cuando 
+ *   carga la pagina y toma el scroll de registros y se lo aplica a #fixedY
+ *   que en este caso son los titulos para crear dicha animacion.
+ */
+window.onload = fnc;
+function fnc() 
+{
+    //console.log("entro al scroolll");
+    document.getElementById('registros').onscroll = function() 
+    {
+        document.getElementById('fixedY').style.top = document.getElementById('registros').scrollTop + 'px';
+        //document.getElementById('fixedX').style.left = document.getElementById('table-scroll').scrollLeft + 'px';
+    };
+}
 
 //******************************************************************************************************************
 //  Here are only on-boarding functions ->->->
