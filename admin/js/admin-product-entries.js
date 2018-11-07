@@ -314,7 +314,7 @@ function check_status(id)
         $('#mercadolibre_'+id).attr('data-toggle','modal');
         $('#mercadolibre_'+id).attr('data-target','#modal_ad_'+id);
         $('#mercadolibre_'+id).attr('onChange','');
-        cambioStatus(id, 'mercadolibre');
+        //cambioStatus(id, 'mercadolibre');
         $('#mercadolibre_'+id).attr('onClick','deshabilitar_select('+id+');');
         $('.boton_redirige_cat_'+id).attr('onClick',link);
         $('.boton_redirige_cat_'+id).attr('onChange','');
@@ -340,7 +340,7 @@ function check_status(id)
      */ 
     jQuery(function()
     {
-        // $('.pub_status').trigger('onload');
+        $('.pub_status').trigger('onload');
     });
     /**
      * @función 

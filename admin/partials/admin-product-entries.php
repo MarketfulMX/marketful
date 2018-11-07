@@ -227,7 +227,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                     -->
               <td style="min-width: 130px; max-width: 130px; width: 130px;">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones" >              
-                  <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select pub_status" id="mercadolibre_<?php echo $product->ID;   ?>"  onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre');" >
+                  <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select pub_status" id="mercadolibre_<?php echo $product->ID;   ?>"  onChange="cambioStatus(<?php echo $product->ID;  ?>, 'mercadolibre');" onload="check_status(<?php echo $product->ID; ?>);" >
                     
                     <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
                     <option value="">...</option>
