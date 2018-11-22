@@ -39,6 +39,11 @@
 <!-- jsPDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 
+<!-- estilos de mercado libre  -->
+<link rel="stylesheet" type="text/css" href="https://http2.mlstatic.com/ui/chico/2.0.11/ui/chico.min.css">
+<script type="text/javascript" src="https://http2.mlstatic.com/ui/chico/2.0.11/ui/chico.min.js"></script>
+<!-- fin ML -->
+
 <script type="text/javascript">
   /** 
    * @funcion cambio(@tring: 1 or 2)
@@ -670,7 +675,7 @@
                 <button type="button" class="btn btn-primary" onclick="'.$funcion_ejec.'">'.$texto_boton.'</button>
                 </div>
                 <div class="alinear-izquierda">
-                <button type="button" class="btn btn-primary">Primary</button>
+                <input type="button" class="ch-btn" value="Imprimir Etiqueta"/>
                 </div>
               </div>
               <div class="fr3">
