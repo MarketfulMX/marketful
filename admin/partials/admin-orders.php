@@ -286,7 +286,6 @@
     }
   .caja_orden
   {
-    margin-bottom: 20px;
     border-color: #dee2e6;
     border-style: solid;
     border-width: .5px;
@@ -303,7 +302,7 @@
     .fr1
     {
       display: grid;
-      grid-template-columns: 10% 90%;
+      grid-template-columns: 10% 100%;
       grid-template-rows: 50% 50%;
     }
       .fr1_1
@@ -324,16 +323,39 @@
       }
     .fr2
     {
+      display: grid;
       text-align: right;
       padding: 5px 40px;
+      grid-template-columns: 100%;
+      grid-template-rows: 50% 25% 25%;
+    }
+    .fr2_1{
+      /*display: grid;*/
+    }
+    .fr2_2{
+      display: grid;
     }
     .fr3
     {
-      padding-top: 20px;
+      overflow: hidden;
+      position: relative;
+
       display: grid;
       grid-template-columns: 40% 60%;
       grid-template-rows: 100%;
       font-size: 85%;
+    }
+    .acomodo
+    {
+     vertical-align: middle;
+     display: auto;
+     justify-content: center;
+     align-items: center;
+    
+    }
+    .pruebaespacio{
+      /*min-width: 500px;*/
+      min-height: 200px;
     }
       .fr3_1
       {
@@ -350,6 +372,22 @@
         {
           color: blue;
         }
+
+
+        .contenedor-div{
+          position:relative;
+        }
+        .mi-imagen-abajo-derecha{
+          position:relative;
+          bottom:5px;
+          left: 10px;
+        }
+        
+        .alinear-izquierda{
+          text-align: left;
+        }
+
+
     .fr4
     {
       padding-top: 20px;
@@ -613,7 +651,7 @@
              */
             
             echo '
-             <div class="caja_orden">
+             <div class="caja_orden pruebaespacio">
               <div class="fr1">
                 <div class="fr1_1">
                   <input type="checkbox" style="display: none;" id="checkbox_open_'.$order->id.'"name="checkbox_open">
@@ -628,12 +666,18 @@
                 </div>
               </div>
               <div class="fr2">
+              <div>
                 <button type="button" class="btn btn-primary" onclick="'.$funcion_ejec.'">'.$texto_boton.'</button>
+                </div>
+                <div class="alinear-izquierda">
+                <button type="button" class="btn btn-primary">Primary</button>
+                </div>
               </div>
               <div class="fr3">
                 <div class="fr3_1">
-                  <img src="'.$direc.'" width="120" height="100">
+                  <img src="'.$direc.'" width="70" height="70">
                 </div>
+
                 <div class="fr3_2">
                   <div class="fr3_2_1">
                     <a href="'.$link_publicacion.'">'.$primer_producto['name'].'</a>
