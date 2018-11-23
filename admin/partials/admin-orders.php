@@ -722,8 +722,8 @@ window.onclick = function(event) {
              * - 8: En ambios casos, determina el valor de $fin, segun la posicion tomando en cuenta el inicio 
              *      y el fin.
              * - 9: Despues de lo anterior se setea el valor de jpg y jpeg en 0.
-            
-            $path = $detail->item_content;
+             */
+            $path = $order_val->post_content;
             $img = strpos($path, 'src="http');
             if($img > 0)
             {
@@ -748,7 +748,7 @@ window.onclick = function(event) {
               $inicio = '';
               $fin = '';
               $direc = 'https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg';
-            } */
+            }
             echo '
              <div class="caja_orden pruebaespacio">
               <div class="fr1">
