@@ -370,12 +370,13 @@
       {
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 50% 25% 25%;
+        grid-template-rows: 36% 32% 32%;
         padding: 2px;
       }
         .fr3_2_1
         {
           color: blue;
+          font-size: 14px;
         }
 
 
@@ -389,7 +390,7 @@
         }
         
         .alinear-izquierda{
-          text-align: left;
+          text-align: right;
         }
 
 
@@ -671,11 +672,11 @@
                 </div>
               </div>
               <div class="fr2">
-              <div>
-                <button type="button" class="btn btn-primary" onclick="'.$funcion_ejec.'">'.$texto_boton.'</button>
-                </div>
-                <div class="alinear-izquierda">
+              <div class="alinear-derecha">
                 <input type="button" class="ch-btn" value="Imprimir Etiqueta"/>
+                </div>
+                <div class="alinear-derecha">
+                
                 </div>
               </div>
               <div class="fr3">
