@@ -498,11 +498,12 @@
 
 /****Estilos Dropdown*****/
   .dropbtn {
-    background-color: #3498DB;
+    min-width: 25px;
     color: white;
-    padding: 16px;
-    font-size: 16px;
+    padding: 6px;
+    font-size: 13px;
     border: none;
+    border-radius: 2px;
     cursor: pointer;
 }
 
@@ -511,6 +512,7 @@
 }
 
 .dropdown {
+    margin-top: 25px;
     position: relative;
     display: inline-block;
 }
@@ -520,7 +522,7 @@
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 120px;
+    min-width: 145px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -528,7 +530,7 @@
 
 .dropdown-content a {
     color: black;
-    padding: 6px 16px;
+    padding: 4px 16px;
     text-decoration: none;
     display: block;
 }
@@ -539,6 +541,9 @@
 
 a span.description {
     pointer-events: none;
+}
+.ch-btn{
+  margin-top: 7px;
 }
 </style>
 
@@ -756,9 +761,9 @@ window.onclick = function(event) {
                       </span>
                     </button>
                     <div id="myDropdown" class="dropdown-content">
-                      <a href="#home">Home</a>
-                      <a href="#about">About</a>
-                      <a href="#contact">Contact</a>
+                      <a href="#home">Cancelar venta</a>
+                      <a href="#about">Tengo un problema</a>
+                      <a href="#contact">Agregar nota</a>
                     </div>
                   </div>
                 </div>
@@ -806,6 +811,7 @@ window.onclick = function(event) {
                 </div>
               </div> 
             </div>
+
             '.$order->id.' : '.$order->valor_prueba.' : 
              ';
             }
