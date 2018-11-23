@@ -370,7 +370,7 @@
       {
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 36% 32% 32%;
+        grid-template-rows: 50% 25% 25%;
         padding: 2px;
       }
         .fr3_2_1
@@ -495,8 +495,76 @@
       border-radius: 0px 0px 5px 5px;
       font-size: 80%;
     }
+
+/****Estilos Dropdown*****/
+  .dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    right: 0;
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 120px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 6px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+a span.description {
+    pointer-events: none;
+}
 </style>
 
+<!-- JS del dropdown -->
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
 
 <!-- Filtros de busqueda. -->
 <div class="filtros_ao">
@@ -676,6 +744,22 @@
                 <input type="button" class="ch-btn" value="Imprimir Etiqueta"/>
                 </div>
                 <div class="alinear-derecha">
+                  <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
+                  <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">
+                      <span class="myml-ui-dropdown-actions__icon">
+                        <svg width="8" height="14" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg"><title>A9B9EA24-301D-48AB-ADBC-23CE01B1CCE1</title><g fill="#333" fill-rule="evenodd"><path d="M4 7.838c2.21 0 4-1.754 4-3.919C8 1.755 6.21 0 4 0S0 1.755 0 3.92c0 2.164 1.79 3.918 4 3.918z"></path><ellipse cx="4" cy="17.458" rx="4" ry="3.919"></ellipse><ellipse cx="4" cy="30.998" rx="4" ry="3.919"></ellipse></g>
+                        </svg>
+                      </span>
+                    </button>
+                    <div id="myDropdown" class="dropdown-content">
+                      <a href="#home">Home</a>
+                      <a href="#about">About</a>
+                      <a href="#contact">Contact</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="alinear-derecha">
                 
                 </div>
               </div>
@@ -712,7 +796,7 @@
                   </div>
                 </div>
                 <div class="fr4_2">
-                  <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
+                  
                 </div>
                 <div class="fr4_3" style="display:none;">
                   <i class="fas fa-ellipsis-v opciones" onclick=""></i> 
