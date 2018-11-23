@@ -723,7 +723,11 @@ window.onclick = function(event) {
              *      y el fin.
              * - 9: Despues de lo anterior se setea el valor de jpg y jpeg en 0.
              */
-            $path = $order_val->post_content;
+            
+            $product_post_id = $primer_producto['product_id'];
+            echo ' Producto ID: '.$product_post_id;
+            $product_info = get_post($product_post_id);
+            $path = $product_info->post_content;
             $img = strpos($path, 'src="http');
             if($img > 0)
             {
@@ -748,7 +752,7 @@ window.onclick = function(event) {
               $inicio = '';
               $fin = '';
               $direc = 'https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg';
-            }
+            } 
             echo '
              <div class="caja_orden pruebaespacio">
               <div class="fr1">
