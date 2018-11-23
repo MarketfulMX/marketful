@@ -723,11 +723,16 @@ window.onclick = function(event) {
              *      y el fin.
              * - 9: Despues de lo anterior se setea el valor de jpg y jpeg en 0.
              */
-            
+
             $product_post_id = $primer_producto['product_id'];
             echo ' Producto ID: '.$product_post_id;
-            $product_info = get_post($product_post_id);
-            $path = $product_info->post_content;
+
+            $post_d = array( 'post_parent' => $product_post_id);
+            //echo ' Parent post '. print_r($post_d);
+
+            $product_info = get_post($post_d);
+            $path = $product_info->guid;
+            echo ' Guid del post'. $path;
             $img = strpos($path, 'src="http');
             if($img > 0)
             {
