@@ -491,7 +491,6 @@
     .inf_f
     {
       padding: 15px;
-      background-color: #DEDDDE;
       border-radius: 0px 0px 5px 5px;
       font-size: 80%;
     }
@@ -499,16 +498,16 @@
 /****Estilos Dropdown*****/
   .dropbtn {
     min-width: 25px;
-    color: white;
     padding: 6px;
     font-size: 13px;
     border: none;
     border-radius: 2px;
     cursor: pointer;
+    background-color: white;
 }
 
 .dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
+    background-color: #DEDDDE;
 }
 
 .dropdown {
@@ -788,7 +787,6 @@ window.onclick = function(event) {
                     <div id="myDropdown" class="dropdown-content">
                       <a href="#home">Cancelar venta</a>
                       <a href="#about">Tengo un problema</a>
-                      <a href="#contact">Agregar nota</a>
                     </div>
                   </div>
                 </div>
