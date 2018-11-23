@@ -801,7 +801,15 @@ window.onclick = function(event) {
                     <a href="'.$link_publicacion.'">'.$primer_producto['name'].'</a>
                   </div>
                   <div class="fr3_2_2">
-                    $'.$item_subtotal.' x '.$primer_producto['qty'].' unidad(es)' .$comentario.'
+                  ';
+
+                  if ($item_quantity>1) {
+                    echo $item_subtotal.' x '.$item_quantity.' unidad(es)';
+                  }else{
+                    echo $item_subtotal.' x '.$item_quantity.' unidad';
+                  }
+                  echo'
+                    
                   </div>
                   <div class="fr3_2_3">
                     SKU: '.$primer_producto['product_id'].'  
@@ -811,10 +819,11 @@ window.onclick = function(event) {
               <div class="fr4">
                 <div class="fr4_1">
                   <div class="fr4_1_1">
-                    '.$order->customer_name.' '.$order->customer_lastname.'
+
+                    '.$order->customer_name.' '.$order->customer_lastname.' 
                   </div>
                   <div class="fr4_1_2">
-                    '/*.$order->customer_id*/.'
+                    '.$comentario.'
                   </div>
                   <div class="fr4_1_3">
                     '.$order->customer_tel.'
