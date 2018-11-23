@@ -694,6 +694,22 @@ window.onclick = function(event) {
            * y despues lo mostrara con el formato de la vista.
            * Aqui se muestran todas las ordenes abiertas.
            */
+
+          function custom_get_order_notes( $order_id ) {
+              remove_filter( 'comments_clauses', array( 'WC_Comments', 'exclude_order_comments' ) );
+              $comments = get_comments( array(
+                  'post_id' => $order_id,
+                  'orderby' => 'comment_ID',
+                  'order'   => 'DESC',
+                  'approve' => 'approve',
+                  'type'    => 'order_note',
+              ) );
+              $notes = wp_list_pluck( $comments, 'comment_content' );
+              add_filter( 'comments_clauses', array( 'WC_Comments', 'exclude_order_comments' ) );
+              return $notes;
+          }
+
+
           foreach ($orders[0]['data'] as $key => $order) 
           {
             $order_val = get_post($order->id);
@@ -702,6 +718,15 @@ window.onclick = function(event) {
             $primer_producto = reset($items);
             $item_quantity = $primer_producto['qty'];
             $item_total = $primer_producto['line_total'];
+            // $order_data = $order->get_data();
+            $post_id = $order->id;
+            $comentarios = custom_get_order_notes($post_id);
+            $comentario = "";
+            foreach ($comentarios as $indice => $el_comentario){
+              if(substr($el_comentario, 0, 10)=="seudonimo:"){
+                $comentario = trim($el_comentario,"seudonimo: ");
+              }
+            }
             intval($item_quantity) > 0;
             $item_subtotal = 0;
             if(intval($item_quantity) > 0){
@@ -781,7 +806,15 @@ window.onclick = function(event) {
                     <a href="'.$link_publicacion.'">'.$primer_producto['name'].'</a>
                   </div>
                   <div class="fr3_2_2">
-                    $'.$item_subtotal.' x '.$primer_producto['qty'].' unidad(es) = $'.$primer_producto['line_total'].'
+                  ';
+
+                  if ($item_quantity>1) {
+                    echo $item_subtotal.' x '.$item_quantity.' unidad(es)';
+                  }else{
+                    echo $item_subtotal.' x '.$item_quantity.' unidad';
+                  }
+                  echo'
+                    
                   </div>
                   <div class="fr3_2_3">
                     SKU: '.$primer_producto['product_id'].'  
@@ -791,10 +824,11 @@ window.onclick = function(event) {
               <div class="fr4">
                 <div class="fr4_1">
                   <div class="fr4_1_1">
-                    '.$order->customer_name.' '.$order->customer_lastname.'
+
+                    '.$order->customer_name.' '.$order->customer_lastname.' 
                   </div>
                   <div class="fr4_1_2">
-                    '/*.$order->customer_id*/.'
+                    '.$comentario.'
                   </div>
                   <div class="fr4_1_3">
                     '.$order->customer_tel.'
