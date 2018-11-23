@@ -746,9 +746,12 @@ window.onclick = function(event) {
                 <div class="alinear-derecha">
                   <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
                   <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">
-                      <span class="myml-ui-dropdown-actions__icon">
-                        <svg width="8" height="14" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg"><title>A9B9EA24-301D-48AB-ADBC-23CE01B1CCE1</title><g fill="#333" fill-rule="evenodd"><path d="M4 7.838c2.21 0 4-1.754 4-3.919C8 1.755 6.21 0 4 0S0 1.755 0 3.92c0 2.164 1.79 3.918 4 3.918z"></path><ellipse cx="4" cy="17.458" rx="4" ry="3.919"></ellipse><ellipse cx="4" cy="30.998" rx="4" ry="3.919"></ellipse></g>
+                    <button onclick="myFunction()" class="dropbtn" >
+                      <span class="myml-ui-dropdown-actions__icon" style="pointer-events: none;">
+                        <svg width="8" height="14" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg">
+                        <title>A9B9EA24-301D-48AB-ADBC-23CE01B1CCE1</title><g fill="#333" fill-rule="evenodd">
+                        <path d="M4 7.838c2.21 0 4-1.754 4-3.919C8 1.755 6.21 0 4 0S0 1.755 0 3.92c0 2.164 1.79 3.918 4 3.918z" ></path>
+                        <ellipse cx="4" cy="17.458" rx="4" ry="3.919"></ellipse><ellipse cx="4" cy="30.998" rx="4" ry="3.919" ></ellipse></g>
                         </svg>
                       </span>
                     </button>
