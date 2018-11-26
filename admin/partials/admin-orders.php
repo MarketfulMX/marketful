@@ -203,6 +203,7 @@
 </script>
 
 <style type="text/css">
+body{padding: 0;}
   .head_ord
   {
     margin-bottom: 10px; margin-left: 10px;
