@@ -721,11 +721,11 @@ window.onclick = function(event) {
             } else {
               foreach ( $images as $attachment_id => $attachment ) {
                 //echo ' Imagen 1 : '.wp_get_attachment_image( $attachment_id, 'thumbnail' );
-                $path = wp_get_attachment_image( $attachment_id, 'thumb');
+                //$path = wp_get_attachment_image( $attachment_id, 'thumb');
                 break;
               }
             }
-            if(!$path) $path = '<img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="150" height="110">';
+            if(!$path) $path = '<img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="100" height="70">';
 
             echo '
              <div class="caja_orden pruebaespacio">
