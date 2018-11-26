@@ -203,6 +203,7 @@
 </script>
 
 <style type="text/css">
+body{padding: 0;}
   .head_ord
   {
     margin-bottom: 10px; margin-left: 10px;
@@ -296,6 +297,7 @@
     border-width: .5px;
     background-color: white;
     padding: 10px;
+    margin-bottom: 20px;
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: 50% 50%;
@@ -756,7 +758,8 @@ window.onclick = function(event) {
               }
             }
             if(!$path) $path = '<img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="150" height="100">'; // En caso de que no tenga ninguna imagen, se mostrara una imagen de prueba
-
+            $nombre = get_post_meta($order->id, "_billing_first_name", $single = true ).' '.get_post_meta($order->id, "_billing_last_name", $single = true );
+            $tel = get_post_meta($order->id, "_billing_phone", $single = true);
             echo '
              <div class="caja_orden pruebaespacio">
               <div class="fr1">
@@ -827,13 +830,13 @@ window.onclick = function(event) {
                 <div class="fr4_1">
                   <div class="fr4_1_1">
 
-                    '.$order->customer_name.' '.$order->customer_lastname.' 
+                    '.$nombre.' 
                   </div>
                   <div class="fr4_1_2">
                     '.$comentario.'
                   </div>
                   <div class="fr4_1_3">
-                    '.$order->customer_tel.'
+                    '.$tel.'
                   </div>
                   <div class="fr4_1_4">
                     <a href="#&'.$order->id.'" >Enviar Mensaje</a>
@@ -848,8 +851,7 @@ window.onclick = function(event) {
               </div> 
             </div>
 
-            '.$order->id.' : '.$order->valor_prueba.' : 
-             ';
+            ';
             }
           
              
