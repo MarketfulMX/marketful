@@ -703,29 +703,30 @@ window.onclick = function(event) {
               $item_subtotal = (intval($item_total) / intval($item_quantity));
             }
             
-
-            $product_post_id = $primer_producto['product_id'];
-            global $imagen_orden;
-            $imagen_orden[ 0 ] = array(
-                'width'  => 70,
-                'height' => 70,
-                'crop'   => $crop,
-            );
-            $images =& get_children( array (
+            /* Obteniendo y mostrando la imagen desde WP */
+            $product_post_id = $primer_producto['product_id']; //Obtener el ID del producto de la orden
+            $images = get_children( array (
               'post_parent' => $product_post_id,
               'post_type' => 'attachment',
               'post_mime_type' => 'image'
-            ));
-            if ( empty($images) ) {
+            )); //Toma los post hijos del post cuando sean imagen y tengan en el campo post_parent igual al id del producto
+            //$special_size = array( 'width' => 70, 'height' => 70);
+            if ( !($images) ) 
+            {
               // no attachments here
-            } else {
-              foreach ( $images as $attachment_id => $attachment ) {
+            } 
+            else 
+            {
+              // En caso de que si haya hijos del post del producto, se hace un for each para tomar sus valores
+              foreach ( $images as $attachment_id => $attachment ) 
+              {
                 //echo ' Imagen 1 : '.wp_get_attachment_image( $attachment_id, 'thumbnail' );
-                //$path = wp_get_attachment_image( $attachment_id, 'thumb');
-                break;
+                $path = wp_get_attachment_image( $attachment_id, 'thumb'); // Utilizando esta funcion se toma la imagen y se guarda en $path.  Tiene el tamaño default de WP 'thumb'. Version 2.5 para arriba 
+                //$path = wp_get_attachment_image( $attachment_id, $special_size);
+                break; // Se hace un break para que solo realize esta accion en a primera imagen.
               }
             }
-            if(!$path) $path = '<img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="100" height="70">';
+            if(!$path) $path = '<img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="150" height="100">'; // En caso de que no tenga ninguna imagen, se mostrara una imagen de prueba
 
             echo '
              <div class="caja_orden pruebaespacio">
