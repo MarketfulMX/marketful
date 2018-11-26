@@ -296,6 +296,7 @@
     border-width: .5px;
     background-color: white;
     padding: 10px;
+    margin-bottom: 20px;
     display: grid;
     grid-template-columns: 40% 60%;
     grid-template-rows: 50% 50%;
