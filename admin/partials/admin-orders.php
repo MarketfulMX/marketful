@@ -553,10 +553,9 @@ a span.description {
 <script>
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
-
-function myFunction(id) {
 // Funcion se manda a llamar enviandole el parametro del menu a desplegar, cuando se acciona muestra el div con id myDropdown + id (valor que se recibe como parametro)
-    document.getElementById("myDropdown_" + id).classList.toggle("show");
+function myFunction(id) {
+    document.getElementById("myDropdown" + id).classList.toggle("show");
 }
 
 // Close the dropdown if the user clicks outside of it
@@ -787,7 +786,7 @@ window.onclick = function(event) {
                 <div class="alinear-derecha">
                   <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
                   <div class="dropdown">
-                    <button onclick="myFunction('.$order->id.')" class="dropbtn" id="boton_desplegable_'.$order->id.'" >
+                    <button onclick="myFunction('.$order->id.')" class="dropbtn" >
                       <span class="myml-ui-dropdown-actions__icon" style="pointer-events: none;">
                         <svg width="8" height="14" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg">
                         <title>A9B9EA24-301D-48AB-ADBC-23CE01B1CCE1</title><g fill="#333" fill-rule="evenodd">
@@ -796,9 +795,7 @@ window.onclick = function(event) {
                         </svg>
                       </span>
                     </button>
-
-                    <div id="myDropdown_'.$order->id.'" class="dropdown-content">
-
+                    <div id="myDropdown'.$order->id.'" class="dropdown-content">
                       <a href="#home">Cancelar venta</a>
                       <a href="#about">Tengo un problema</a>
                     </div>
@@ -943,7 +940,7 @@ window.onclick = function(event) {
                 <div class="alinear-derecha">
                   <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
                   <div class="dropdown">
-                    <button onclick="myFunction('.$order->id.')" class="dropbtn" id="boton_desplegable_'.$order->id.'">
+                    <button onclick="myFunction('.$order->id.')" class="dropbtn" >
                       <span class="myml-ui-dropdown-actions__icon" style="pointer-events: none;">
                         <svg width="8" height="14" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg">
                         <title>A9B9EA24-301D-48AB-ADBC-23CE01B1CCE1</title><g fill="#333" fill-rule="evenodd">
