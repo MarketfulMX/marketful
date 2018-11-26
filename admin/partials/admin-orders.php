@@ -553,11 +553,8 @@ a span.description {
 <script>
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
-function drop_abiertos() {
-    document.getElementById("drop_abiertos").classList.toggle("show");
-}
-function drop_cerrados() {
-    document.getElementById("drop_cerrados").classList.toggle("show");
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
 }
 
 // Close the dropdown if the user clicks outside of it
@@ -930,7 +927,7 @@ window.onclick = function(event) {
                 <div class="fr1_3">
                 </div>
                 <div class="fr1_4">
-                  Fecha de llegada: '.'
+                  Llego el dia: '.'
                 </div>
               </div>
               <div class="fr2">
