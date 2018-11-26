@@ -305,7 +305,7 @@ body{padding: 0;}
   }
     #etiquetas
     {
-      color: #FFA534;
+      color: black;
     }
     .fr1
     {
@@ -553,8 +553,11 @@ a span.description {
 <script>
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
+function drop_abiertos() {
+    document.getElementById("drop_abiertos").classList.toggle("show");
+}
+function drop_cerrados() {
+    document.getElementById("drop_cerrados").classList.toggle("show");
 }
 
 // Close the dropdown if the user clicks outside of it
@@ -921,18 +924,18 @@ window.onclick = function(event) {
                 <div class="fr1_1">
                   <input type="checkbox" style="display: none;" id="checkbox_open_'.$order->id.'"name="checkbox_open">
                 </div>
-                <div class="fr1_2" id="'.$etiquetas.'">
-                  '.$texto_titulo.' status_ml : '.$order->id.'
+                <div class="fr1_2" id="etiquetas">
+                  Entregadas
                 </div>
                 <div class="fr1_3">
                 </div>
                 <div class="fr1_4">
-                  Fecha de orden: '.$order_val->post_date.'
+                  Fecha de llegada: '.'
                 </div>
               </div>
               <div class="fr2">
               <div class="alinear-derecha">
-                <input type="button" class="ch-btn" value="Imprimir Etiqueta"/>
+                
                 </div>
                 <div class="alinear-derecha">
                   <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
@@ -948,7 +951,10 @@ window.onclick = function(event) {
                     </button>
                     <div id="myDropdown" class="dropdown-content">
                       <a href="#home">Cancelar venta</a>
+                      <a href="#"> Agregar Stock </a>
+                      <a href="#"> PReguntas </a>
                       <a href="#about">Tengo un problema</a>
+                      <a href="#">Agregar Nota</a>
                     </div>
                   </div>
                 </div>
