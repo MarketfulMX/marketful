@@ -745,7 +745,7 @@ window.onclick = function(event) {
               // no attachments here
             } else {
               foreach ( $images as $attachment_id => $attachment ) {
-                //echo ' Imagen 1 : '.wp_get_attachment_image( $attachment_id, 'thumbnail' );
+                echo ' Imagen 1 : '.wp_get_attachment_image( $attachment_id, 'thumbnail' );
                 $path = wp_get_attachment_image( $attachment_id, 'thumb');
                 break;
               }
@@ -759,8 +759,8 @@ window.onclick = function(event) {
             //$product_info = get_post($args);
             //echo ' ID: '. $product_info->ID.' Post_title'.$product_info->post_title;
             //$path = wp_get_attachment_thumb_url($product_post_id); 
-            if(!$path) $path = 'https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg';
-            echo ' Path: '.$path;
+            if(!$path) $path = '<img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="150" height="110">';
+            //echo ' Path: '.$path;
             //echo ' Guid del post'. $path.' ID: '.$product_info->ID.' Post Parent: '.$product_info->post_parent;
             /*$img = strpos($path, 'src="http');
             if($img > 0)
