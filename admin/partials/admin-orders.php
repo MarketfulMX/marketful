@@ -943,7 +943,7 @@ window.onclick = function(event) {
                 <div class="alinear-derecha">
                   <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
                   <div class="dropdown">
-                    <button onclick="myFunction('.$order->id.')" class="dropbtn" id="boton_desplegable_'.$order->id.'">
+                    <button onclick="myFunction('.$order->id.')" class="dropbtn" >
                       <span class="myml-ui-dropdown-actions__icon" style="pointer-events: none;">
                         <svg width="8" height="14" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg">
                         <title>A9B9EA24-301D-48AB-ADBC-23CE01B1CCE1</title><g fill="#333" fill-rule="evenodd">
