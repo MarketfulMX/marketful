@@ -727,13 +727,20 @@ window.onclick = function(event) {
             $product_post_id = $primer_producto['product_id'];
             echo ' Producto ID: '.$product_post_id;
 
-            $post_d = array( 'post_parent' => $product_post_id);
-            //echo ' Parent post '. print_r($post_d);
+            $args = array(  
+              'post_parent' => $product_post_id,
+            );
+            echo ' Parent post '. print_r($args);
+            
 
-            $product_info = get_post($post_d);
-            $path = $product_info->guid;
-            echo ' Guid del post'. $path;
-            $img = strpos($path, 'src="http');
+            //$product_info = get_post($args);
+            echo ' ID: '. $product_info->ID.' Post_title'.$product_info->post_title;
+            //$path = wp_get_attachment_thumb_url($product_post_id); 
+            if(!$path) $path = 'https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg';
+            echo ' Path: '.$path;
+            $direc = $path;
+            //echo ' Guid del post'. $path.' ID: '.$product_info->ID.' Post Parent: '.$product_info->post_parent;
+            /*$img = strpos($path, 'src="http');
             if($img > 0)
             {
               $jpeg = strrpos($path, '.jpeg" alt="" width="'); 
@@ -757,7 +764,7 @@ window.onclick = function(event) {
               $inicio = '';
               $fin = '';
               $direc = 'https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg';
-            } 
+            } */
             echo '
              <div class="caja_orden pruebaespacio">
               <div class="fr1">
