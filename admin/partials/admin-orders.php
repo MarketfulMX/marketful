@@ -849,8 +849,7 @@ window.onclick = function(event) {
               </div> 
             </div>
 
-            '.$order->id.' : '.$order->valor_prueba.' : 
-             ';
+            ';
             }
           
              
