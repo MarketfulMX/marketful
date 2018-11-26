@@ -725,20 +725,42 @@ window.onclick = function(event) {
              */
 
             $product_post_id = $primer_producto['product_id'];
-            echo ' Producto ID: '.$product_post_id;
+            //echo ' Producto ID: '.$product_post_id;
 
-            $args = array(  
-              'post_parent' => $product_post_id,
+            global $imagen_orden;
+ 
+            $imagen_orden[ 0 ] = array(
+                'width'  => 70,
+                'height' => 70,
+                'crop'   => $crop,
             );
-            echo ' Parent post '. print_r($args);
+
+            $images =& get_children( array (
+              'post_parent' => $product_post_id,
+              'post_type' => 'attachment',
+              'post_mime_type' => 'image'
+            ));
+
+            if ( empty($images) ) {
+              // no attachments here
+            } else {
+              foreach ( $images as $attachment_id => $attachment ) {
+                //echo ' Imagen 1 : '.wp_get_attachment_image( $attachment_id, 'thumbnail' );
+                $path = wp_get_attachment_image( $attachment_id, 'thumb');
+                break;
+              }
+            }
+            // $args = array(  
+            //   'post_parent' => $product_post_id,
+            // );
+            // echo ' Parent post '. print_r($args);
             
 
             //$product_info = get_post($args);
-            echo ' ID: '. $product_info->ID.' Post_title'.$product_info->post_title;
+            //echo ' ID: '. $product_info->ID.' Post_title'.$product_info->post_title;
             //$path = wp_get_attachment_thumb_url($product_post_id); 
             if(!$path) $path = 'https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg';
             echo ' Path: '.$path;
-            $direc = $path;
             //echo ' Guid del post'. $path.' ID: '.$product_info->ID.' Post Parent: '.$product_info->post_parent;
             /*$img = strpos($path, 'src="http');
             if($img > 0)
@@ -809,7 +831,7 @@ window.onclick = function(event) {
               </div>
               <div class="fr3">
                 <div class="fr3_1">
-                  <img src="'.$direc.'" width="70" height="70">
+                  '.$path.'
                 </div>
 
                 <div class="fr3_2">
