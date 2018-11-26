@@ -483,4 +483,35 @@ class MKF_ProductEntry extends MKF_DBCore
         array_push($out, array("data"=> $this->execute_custom_query($sql)));
         return $out;
       }
+
+
+       public function get_closed_order_list($keyword = '', $tope = 50, $offset = 0)
+      {
+        /***********************************
+         * @script Obtenemos el nombre prefijo de la base de datos utilizando la clase de WP wpdb
+         * la cual nos entrega el valor del prefijo de la base de datos con $wpdb->get_blog_prefix()
+         * prefijo que utilizaremos para las querys posteriores haciendo que funcione sin inportar el 
+         * prefijo que se haya definido en la instalacion de wordpress.
+         */ 
+        global $wpdb;
+        $prefix = $wpdb->get_blog_prefix();
+        //***********************************
+
+        $out = array();
+        //$out2 = array(); //No borar: Array para cambiar el idioma en el que se muestra la fecha. 
+
+        $sql = "
+        SELECT pt.ID id
+        FROM {$prefix}posts pt
+        INNER JOIN {$prefix}postmeta pm ON pt.ID = pm.post_id AND pm.meta_key = '_customer_user' AND pm.meta_value = '771'
+        WHERE pt.post_type = 'shop_order' AND (pt.post_status = 'wc-completed' OR pt.post_status = 'wc-cancelled' OR pt.post_status = 'wc-refunded' OR pt.post_status = 'wc-failed')
+        ORDER BY pt.post_date DESC
+        ";
+    
+        //$sql_set_lan = "SET lc_time_names = 'es_ES'"; // No borrar: Query para cambiar el idioma a español en el que se muestra la fecha
+        
+        //array_push($out2, array("data"=> $this->execute_custom_query($sql_set_lan))); //No borrar: Se ejecuta la query para cambiar el idioma de la fecha a español
+        array_push($out, array("data"=> $this->execute_custom_query($sql)));
+        return $out;
+      }
 }
