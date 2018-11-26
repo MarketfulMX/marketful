@@ -29,6 +29,7 @@
 
  // Tomar las ordenes
  $orders = MKF_ProductEntry::GetInstance()->get_order_list($keyword, $op1, $op2, $op3, $op4);
+ $corders = MKF_ProductEntry::GetInstance()->get_closed_order_list($keyword, $op1, $op2, $op3, $op4);
 ?>
     
 <!-- Mandamos llamar a las libreruas que utilizaremos -->
@@ -304,7 +305,7 @@ body{padding: 0;}
   }
     #etiquetas
     {
-      color: #FFA534;
+      color: black;
     }
     .fr1
     {
@@ -552,8 +553,9 @@ a span.description {
 <script>
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
+// Funcion se manda a llamar enviandole el parametro del menu a desplegar, cuando se acciona muestra el div con id myDropdown + id (valor que se recibe como parametro)
+function myFunction(id) {
+    document.getElementById("myDropdown" + id).classList.toggle("show");
 }
 
 // Close the dropdown if the user clicks outside of it
@@ -570,6 +572,8 @@ window.onclick = function(event) {
     }
   }
 }
+
+
 </script>
 
 <!-- Filtros de busqueda. -->
@@ -782,7 +786,7 @@ window.onclick = function(event) {
                 <div class="alinear-derecha">
                   <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
                   <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn" >
+                    <button onclick="myFunction('.$order->id.')" class="dropbtn" >
                       <span class="myml-ui-dropdown-actions__icon" style="pointer-events: none;">
                         <svg width="8" height="14" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg">
                         <title>A9B9EA24-301D-48AB-ADBC-23CE01B1CCE1</title><g fill="#333" fill-rule="evenodd">
@@ -791,7 +795,7 @@ window.onclick = function(event) {
                         </svg>
                       </span>
                     </button>
-                    <div id="myDropdown" class="dropdown-content">
+                    <div id="myDropdown'.$order->id.'" class="dropdown-content">
                       <a href="#home">Cancelar venta</a>
                       <a href="#about">Tengo un problema</a>
                     </div>
@@ -862,72 +866,156 @@ window.onclick = function(event) {
           /**
            * @Script: El foreach recorrera todos los posibles registros que haya retornado la query
            * y despues lo mostrara con el formato de la vista.
-           * Aqui se muestran todas las ordenes cerradas.
+           * Aqui se muestran todas las ordenes abiertas.
            */
 
-          foreach ($orders[0]['data'] as $key => $order) 
+          foreach ($corders[0]['data'] as $key => $order) 
           {
+            $order_val = get_post($order->id);
+            $order_info = wc_get_order($order->id);
+            $items = $order_info->get_items();
+            $primer_producto = reset($items);
+            $item_quantity = $primer_producto['qty'];
+            $item_total = $primer_producto['line_total'];
+            // $order_data = $order->get_data();
+            $post_id = $order->id;
+            $comentarios = custom_get_order_notes($post_id);
+            $comentario = "";
+            foreach ($comentarios as $indice => $el_comentario){
+              if(substr($el_comentario, 0, 10)=="seudonimo:"){
+                $comentario = trim($el_comentario,"seudonimo: ");
+              }
+            }
+            intval($item_quantity) > 0;
+            $item_subtotal = 0;
+            if(intval($item_quantity) > 0){
+              $item_subtotal = (intval($item_total) / intval($item_quantity));
+            }
             
-               echo '
-               <div class="caja_orden">
-                <div class="fr1">
-                  <div class="fr1_1">
-                    <input type="checkbox" style="display: none;" id="checkbox_close_'.$order->id.'"name="checkbox_close">
-                  </div>
-                  <div class="fr1_2-2">
-                    Entregado
-                  </div>
-                  <div class="fr1_3">
-                  </div>
-                  <div class="fr1_4">
-                    Fecha de orden: '.$order->fecha.'
-                  </div>
+            /* Obteniendo y mostrando la imagen desde WP */
+            $product_post_id = $primer_producto['product_id']; //Obtener el ID del producto de la orden
+            $images = get_children( array (
+              'post_parent' => $product_post_id,
+              'post_type' => 'attachment',
+              'post_mime_type' => 'image'
+            )); //Toma los post hijos del post cuando sean imagen y tengan en el campo post_parent igual al id del producto
+            //$special_size = array( 'width' => 70, 'height' => 70);
+            if ( !($images) ) 
+            {
+              // no attachments here
+            } 
+            else 
+            {
+              // En caso de que si haya hijos del post del producto, se hace un for each para tomar sus valores
+              foreach ( $images as $attachment_id => $attachment ) 
+              {
+                //echo ' Imagen 1 : '.wp_get_attachment_image( $attachment_id, 'thumbnail' );
+                $path = wp_get_attachment_image( $attachment_id, 'thumb'); // Utilizando esta funcion se toma la imagen y se guarda en $path.  Tiene el tamaño default de WP 'thumb'. Version 2.5 para arriba 
+                //$path = wp_get_attachment_image( $attachment_id, $special_size);
+                break; // Se hace un break para que solo realize esta accion en a primera imagen.
+              }
+            }
+            if(!$path) $path = '<img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="150" height="100">'; // En caso de que no tenga ninguna imagen, se mostrara una imagen de prueba
+            $nombre = get_post_meta($order->id, "_billing_first_name", $single = true ).' '.get_post_meta($order->id, "_billing_last_name", $single = true );
+            $tel = get_post_meta($order->id, "_billing_phone", $single = true);
+            echo '
+             <div class="caja_orden pruebaespacio">
+              <div class="fr1">
+                <div class="fr1_1">
+                  <input type="checkbox" style="display: none;" id="checkbox_open_'.$order->id.'"name="checkbox_open">
                 </div>
-                <div class="fr2">
-                  <button type="button" class="btn btn-primary">Seguir Envio</button>
+                <div class="fr1_2" id="etiquetas">
+                  Entregadas
                 </div>
-                <div class="fr3">
-                  <div class="fr3_1">
-                    <img src="'.$direc.'" width="120" height="100">
-                  </div>
-                  <div class="fr3_2">
-                    <div class="fr3_2_1">
-                      <a href="#">'.$order->item_name.'</a>
-                    </div>
-                    <div class="fr3_2_2">
-                      $ '.$order->item_price.' x '.$order->item_qty.' unidad(es) = $'.$order->item_price_total.'
-                    </div>
-                    <div class="fr3_2_3">
-                      SKU: '.$order->item_sku.'  
-                    </div>
-                  </div>
+                <div class="fr1_3">
                 </div>
-                <div class="fr4">
-                  <div class="fr4_1">
-                    <div class="fr4_1_1">
-                      '.$order->customer_name.' '.$order->customer_lastname.'
-                    </div>
-                    <div class="fr4_1_2">
-                      '/*.$order->customer_id*/.'
-                    </div>
-                    <div class="fr4_1_3">
-                      '.$order->customer_tel.'
-                    </div>
-                    <div class="fr4_1_4">
-                      <a href="#&'.$order->id.'" >Enviar Mensaje</a>
-                    </div>
-                  </div>
-                  <div class="fr4_2">
-                    <a href="#"> Ver Detalles </a>
-                  </div>
-                  <div class="fr4_3" style="display:none;">
-                    <i class="fas fa-ellipsis-v opciones" onclick=""></i>
-                  </div>
-                </div> 
+                <div class="fr1_4">
+                  Llego el dia: '.'
+                </div>
               </div>
-              ';
-            
-          }
+              <div class="fr2">
+              <div class="alinear-derecha">
+                
+                </div>
+                <div class="alinear-derecha">
+                  <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
+                  <div class="dropdown">
+                    <button onclick="myFunction('.$order->id.')" class="dropbtn" >
+                      <span class="myml-ui-dropdown-actions__icon" style="pointer-events: none;">
+                        <svg width="8" height="14" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg">
+                        <title>A9B9EA24-301D-48AB-ADBC-23CE01B1CCE1</title><g fill="#333" fill-rule="evenodd">
+                        <path d="M4 7.838c2.21 0 4-1.754 4-3.919C8 1.755 6.21 0 4 0S0 1.755 0 3.92c0 2.164 1.79 3.918 4 3.918z" ></path>
+                        <ellipse cx="4" cy="17.458" rx="4" ry="3.919"></ellipse><ellipse cx="4" cy="30.998" rx="4" ry="3.919" ></ellipse></g>
+                        </svg>
+                      </span>
+                    </button>
+                    <div id="myDropdown'.$order->id.'" class="dropdown-content">
+                      <a href="#home">Cancelar venta</a>
+                      <a href="#"> Agregar Stock </a>
+                      <a href="#"> Preguntas </a>
+                      <a href="#about">Tengo un problema</a>
+                      <a href="#">Agregar Nota</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="alinear-derecha">
+                
+                </div>
+              </div>
+              <div class="fr3">
+                <div class="fr3_1">
+                  '.$path.'
+                </div>
+
+                <div class="fr3_2">
+                  <div class="fr3_2_1">
+                    <a href="'.$link_publicacion.'">'.$primer_producto['name'].'</a>
+                  </div>
+                  <div class="fr3_2_2">
+                  ';
+
+                  if ($item_quantity>1) {
+                    echo $item_subtotal.' x '.$item_quantity.' unidad(es)';
+                  }else{
+                    echo $item_subtotal.' x '.$item_quantity.' unidad';
+                  }
+                  echo'
+                    
+                  </div>
+                  <div class="fr3_2_3">
+                    SKU: '.$primer_producto['product_id'].'  
+                  </div>
+                </div>
+              </div>
+              <div class="fr4">
+                <div class="fr4_1">
+                  <div class="fr4_1_1">
+
+                    '.$nombre.' 
+                  </div>
+                  <div class="fr4_1_2">
+                    '.$comentario.'
+                  </div>
+                  <div class="fr4_1_3">
+                    '.$tel.'
+                  </div>
+                  <div class="fr4_1_4">
+                    <a href="#&'.$order->id.'" >Enviar Mensaje</a>
+                  </div>
+                </div>
+                <div class="fr4_2">
+                  
+                </div>
+                <div class="fr4_3" style="display:none;">
+                  <i class="fas fa-ellipsis-v opciones" onclick=""></i> 
+                </div>
+              </div> 
+            </div>
+
+            ';
+            }
+          
+             
        ?>
     </div>
   </div>
