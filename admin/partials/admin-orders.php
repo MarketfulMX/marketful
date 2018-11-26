@@ -756,7 +756,8 @@ window.onclick = function(event) {
               }
             }
             if(!$path) $path = '<img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="150" height="100">'; // En caso de que no tenga ninguna imagen, se mostrara una imagen de prueba
-
+            $nombre = get_post_meta($order->id, "_billing_first_name", $single = true ).' '.get_post_meta($order->id, "_billing_last_name", $single = true );
+            $tel = get_post_meta($order->id, "_billing_phone", $single = true);
             echo '
              <div class="caja_orden pruebaespacio">
               <div class="fr1">
@@ -827,13 +828,13 @@ window.onclick = function(event) {
                 <div class="fr4_1">
                   <div class="fr4_1_1">
 
-                    '.$order->customer_name.' '.$order->customer_lastname.' 
+                    '.$nombre.' 
                   </div>
                   <div class="fr4_1_2">
                     '.$comentario.'
                   </div>
                   <div class="fr4_1_3">
-                    '.$order->customer_tel.'
+                    '.$tel.'
                   </div>
                   <div class="fr4_1_4">
                     <a href="#&'.$order->id.'" >Enviar Mensaje</a>
