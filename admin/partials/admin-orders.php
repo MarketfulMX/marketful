@@ -491,26 +491,27 @@
     .inf_f
     {
       padding: 15px;
-      background-color: #DEDDDE;
       border-radius: 0px 0px 5px 5px;
       font-size: 80%;
     }
 
 /****Estilos Dropdown*****/
   .dropbtn {
-    background-color: #3498DB;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
+    min-width: 25px;
+    padding: 6px;
+    font-size: 13px;
     border: none;
+    border-radius: 2px;
     cursor: pointer;
+    background-color: white;
 }
 
 .dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
+    background-color: #DEDDDE;
 }
 
 .dropdown {
+    margin-top: 25px;
     position: relative;
     display: inline-block;
 }
@@ -520,7 +521,7 @@
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 120px;
+    min-width: 145px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -528,7 +529,7 @@
 
 .dropdown-content a {
     color: black;
-    padding: 6px 16px;
+    padding: 4px 16px;
     text-decoration: none;
     display: block;
 }
@@ -539,6 +540,9 @@
 
 a span.description {
     pointer-events: none;
+}
+.ch-btn{
+  margin-top: 7px;
 }
 </style>
 
@@ -689,6 +693,22 @@ window.onclick = function(event) {
            * y despues lo mostrara con el formato de la vista.
            * Aqui se muestran todas las ordenes abiertas.
            */
+
+          function custom_get_order_notes( $order_id ) {
+              remove_filter( 'comments_clauses', array( 'WC_Comments', 'exclude_order_comments' ) );
+              $comments = get_comments( array(
+                  'post_id' => $order_id,
+                  'orderby' => 'comment_ID',
+                  'order'   => 'DESC',
+                  'approve' => 'approve',
+                  'type'    => 'order_note',
+              ) );
+              $notes = wp_list_pluck( $comments, 'comment_content' );
+              add_filter( 'comments_clauses', array( 'WC_Comments', 'exclude_order_comments' ) );
+              return $notes;
+          }
+
+
           foreach ($orders[0]['data'] as $key => $order) 
           {
             $order_val = get_post($order->id);
@@ -697,6 +717,15 @@ window.onclick = function(event) {
             $primer_producto = reset($items);
             $item_quantity = $primer_producto['qty'];
             $item_total = $primer_producto['line_total'];
+            // $order_data = $order->get_data();
+            $post_id = $order->id;
+            $comentarios = custom_get_order_notes($post_id);
+            $comentario = "";
+            foreach ($comentarios as $indice => $el_comentario){
+              if(substr($el_comentario, 0, 10)=="seudonimo:"){
+                $comentario = trim($el_comentario,"seudonimo: ");
+              }
+            }
             intval($item_quantity) > 0;
             $item_subtotal = 0;
             if(intval($item_quantity) > 0){
@@ -760,9 +789,8 @@ window.onclick = function(event) {
                       </span>
                     </button>
                     <div id="myDropdown" class="dropdown-content">
-                      <a href="#home">Home</a>
-                      <a href="#about">About</a>
-                      <a href="#contact">Contact</a>
+                      <a href="#home">Cancelar venta</a>
+                      <a href="#about">Tengo un problema</a>
                     </div>
                   </div>
                 </div>
@@ -780,7 +808,15 @@ window.onclick = function(event) {
                     <a href="'.$link_publicacion.'">'.$primer_producto['name'].'</a>
                   </div>
                   <div class="fr3_2_2">
-                    $'.$item_subtotal.' x '.$primer_producto['qty'].' unidad(es) = $'.$primer_producto['line_total'].'
+                  ';
+
+                  if ($item_quantity>1) {
+                    echo $item_subtotal.' x '.$item_quantity.' unidad(es)';
+                  }else{
+                    echo $item_subtotal.' x '.$item_quantity.' unidad';
+                  }
+                  echo'
+                    
                   </div>
                   <div class="fr3_2_3">
                     SKU: '.$primer_producto['product_id'].'  
@@ -790,10 +826,11 @@ window.onclick = function(event) {
               <div class="fr4">
                 <div class="fr4_1">
                   <div class="fr4_1_1">
-                    '.$order->customer_name.' '.$order->customer_lastname.'
+
+                    '.$order->customer_name.' '.$order->customer_lastname.' 
                   </div>
                   <div class="fr4_1_2">
-                    '/*.$order->customer_id*/.'
+                    '.$comentario.'
                   </div>
                   <div class="fr4_1_3">
                     '.$order->customer_tel.'
@@ -810,6 +847,7 @@ window.onclick = function(event) {
                 </div>
               </div> 
             </div>
+
             '.$order->id.' : '.$order->valor_prueba.' : 
              ';
             }
