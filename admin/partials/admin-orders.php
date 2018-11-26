@@ -553,6 +553,7 @@ a span.description {
 <script>
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
+// Funcion se manda a llamar enviandole el parametro del menu a desplegar, cuando se acciona muestra el div con id myDropdown + id (valor que se recibe como parametro)
 function myFunction(id) {
     document.getElementById("myDropdown" + id).classList.toggle("show");
 }
@@ -951,7 +952,7 @@ window.onclick = function(event) {
                     <div id="myDropdown'.$order->id.'" class="dropdown-content">
                       <a href="#home">Cancelar venta</a>
                       <a href="#"> Agregar Stock </a>
-                      <a href="#"> PReguntas </a>
+                      <a href="#"> Preguntas </a>
                       <a href="#about">Tengo un problema</a>
                       <a href="#">Agregar Nota</a>
                     </div>
