@@ -774,29 +774,32 @@ function show_spinner()
 
 
 /* ORDER FUNCTIONS *********************************************************************************************************************/
+/*
+    Funcion imprimir_guia_pdf() 
+    *   
+*/
 function imprimir_guia_pdf(id)
 {
     console.log('Entraste a imprimir_guia_pdf ===>');
-    /*jQuery.ajax(
+    var tarea = "task_" + Math.random();
+    jQuery.ajax(
     {
         type: 'post',
         url: ajaxurl,
         dataType: 'json',
         data: 
         { 
-            product_id: valor, 
-            value: 'Nombre de prueba superior a 60 caracteres. Nombre de prueba superior a 60 caracteres. Nombre de prueba superior a 60 caracteres. Nombre de prueba superior a 60 caracteres.', 
-            key: 'titulo_ml', 
-            action: 'foobar'
+            order_id: id,
+            tarea_id: tarea_id
+            action: 'guia_pdf'
         },
         success: function(response) 
         { 
-            console.log("Se modifico el tamaño del titulo para el onb")
-            delete tareas[response.data["tarea_id"]]
+            console.log(' Respuesta correcta: ' + response);
         },
         error: function(response) 
         { 
-            console.log("fracaso, no se modifico el titulo para el onb")
+            console.log(' Respuesta no correcta.');
         },
-    });*/
+    });
 }
