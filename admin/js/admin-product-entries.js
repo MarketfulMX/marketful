@@ -796,8 +796,13 @@ function imprimir_guia_pdf(id)
         success: function(response) 
         { 
             console.log(' Respuesta correcta: ' + response);
-                var respuesta = response.data;
-                console.log(Object.values(response));
+            var respuesta = response.data;
+            //console.log(Object.values(response));
+            console.log(respuesta);
+            if(respuesta[1] != null)
+                window.open(respuesta[1], '_blank');
+            else
+                alert(' Guia no disponible.');
         },
         error: function(response) 
         { 

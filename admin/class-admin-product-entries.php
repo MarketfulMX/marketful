@@ -220,6 +220,8 @@ class MKF_ProductEntry extends MKF_DBCore
         $http = _wp_http_get_object();
         $response = $http->get($url);
         $parseada = json_decode($response["body"]);
+        //$test = array(true, ["https://s3-us-west-2.amazonaws.com/fotoslv/ivan/guia_estafeta.pdf"]);
+        //wp_send_json_success($test);
         wp_send_json_success($parseada);
         wp_die();
     }
