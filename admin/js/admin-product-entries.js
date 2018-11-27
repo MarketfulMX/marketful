@@ -799,7 +799,7 @@ function imprimir_guia_pdf(id)
             var respuesta = response.data;
             console.log(Object.values(response));
             console.log(' respuesta: ' + respuesta);
-            if(respuesta[1] != null)
+            if(respuesta != null)
                 window.open(respuesta, '_blank');
             else
                 alert(' Guia no disponible.');
