@@ -114,7 +114,27 @@ class MKF_ProductEntry extends MKF_DBCore
         // Orders 
     }
 
-
+    // Funcion utilizada para generar un token para la funcion de generar guia.
+    private function generate_token()
+    {
+        $orden = '494';
+        $letters = 'abcdefghijklmnopqrstvwxyz'; 
+        $numbers = '0123456789'; 
+        $token = '';
+        for($c = 0; $c < 4; $c++)
+        {
+          $token .= $letters[rand(0, strlen($letters)-1)];
+        }
+        for($c = 0; $c < 9; $c++)
+        {
+          $token .= $numbers[rand(0, strlen($numbers)-1)];
+        }
+        for($c = 0; $c < 4; $c++)
+        {
+          $token .= $letters[rand(0, strlen($letters)-1)];
+        }
+        return $token;
+    }
     /*
      * @Función PHP: my_theme_ajax_submit()
      * 
@@ -164,7 +184,48 @@ class MKF_ProductEntry extends MKF_DBCore
         wp_die();
     }
     
-    
+    /**
+     * @Funcion traer_guia_pdf()
+     *
+     * - Funcion para traer el link de la guia del producto.
+     */
+    public function traer_guia_pdf()
+    {
+        $order_id = $_POST['order_id'];
+        $tarea_id = $_POST['tarea_id'];
+        // $token = generate_token();
+        $letters = 'abcdefghijklmnopqrstvwxyz'; 
+        $numbers = '0123456789'; 
+        $token = '';
+        for($c = 0; $c < 4; $c++)
+        {
+          $token .= $letters[rand(0, strlen($letters)-1)];
+        }
+        for($c = 0; $c < 9; $c++)
+        {
+          $token .= $numbers[rand(0, strlen($numbers)-1)];
+        }
+        for($c = 0; $c < 4; $c++)
+        {
+          $token .= $letters[rand(0, strlen($letters)-1)];
+        }
+
+        $order = wc_get_order(  $order_id );
+        $note = __('token: '.$token);
+        $order->add_order_note( $note );
+        // $order->save();
+
+        $store_url = get_site_url();
+        $url = 'https://woocommerce.marketful.mx/guia_pdf?woo_order_id='.$order_id.'&store_url='.$store_url.'&token='.$token;
+        $http = _wp_http_get_object();
+        $response = $http->get($url);
+        $parseada = json_decode($response["body"]);
+        //$test = array(true, ["https://s3-us-west-2.amazonaws.com/fotoslv/ivan/guia_estafeta.pdf"]);
+        //wp_send_json_success($test);
+        wp_send_json_success($parseada);
+        wp_die();
+    }
+
     /** 
      * @funcion des_comun_ajax_submit()
      *

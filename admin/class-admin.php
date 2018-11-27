@@ -88,7 +88,8 @@ class MKF_Admin
   {
     //aqui va el if+
     // if(is_page(array('mkf-product-entries', 'mkf-entries_categorizador', 'mkf_dashboard', 'mkf-product-orders', 'mkf-product-questions', 'mkf-product-messages'))){
-    if($_GET['page'] == 'mkf-product-entries' || $_GET['page'] == 'mkf-descripcion-footer'){  
+    //El IF valida los casos en los cuales permite utilizar los archivos de JS 
+    if($_GET['page'] == 'mkf-product-entries' || $_GET['page'] == 'mkf-descripcion-footer' || $_GET['page'] == 'mkf-product-orders'){  
       wp_enqueue_script('Popper',"https://unpkg.com/popper.js@1.14.3/dist/umd/popper.min.js", array(), '1.14.3', false );wp_enqueue_script('bootstrap',"https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js",array(),'4.1.0', false );
       wp_enqueue_script('datatables',"https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js" , array(), '1.10.18', false );
       wp_enqueue_script('admin_js_bootstrap_hack', plugin_dir_url( __FILE__ ) . 'js/bootstrap-hack.js', false, '1.0.0', false);
