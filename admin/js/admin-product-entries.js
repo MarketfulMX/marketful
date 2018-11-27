@@ -800,7 +800,7 @@ function imprimir_guia_pdf(id)
             console.log(Object.values(response));
             console.log(' respuesta: ' + respuesta);
             if(respuesta[1] != null)
-                window.open(respuesta[1], '_blank');
+                window.open(respuesta, '_blank');
             else
                 alert(' Guia no disponible.');
         },
