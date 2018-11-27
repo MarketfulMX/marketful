@@ -796,6 +796,8 @@ function imprimir_guia_pdf(id)
         success: function(response) 
         { 
             console.log(' Respuesta correcta: ' + response);
+                var respuesta = response.data;
+                console.log(Object.values(response));
         },
         error: function(response) 
         { 
