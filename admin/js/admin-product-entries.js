@@ -797,8 +797,8 @@ function imprimir_guia_pdf(id)
         { 
             console.log(' Respuesta correcta: ' + response);
             var respuesta = response.data;
-            //console.log(Object.values(response));
-            console.log(respuesta);
+            console.log(Object.values(response));
+            console.log(' respuesta: ' + respuesta);
             if(respuesta[1] != null)
                 window.open(respuesta[1], '_blank');
             else
