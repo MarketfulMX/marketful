@@ -210,10 +210,10 @@ class MKF_ProductEntry extends MKF_DBCore
           $token .= $letters[rand(0, strlen($letters)-1)];
         }
 
-        $order = wc_get_order(  $order_id );
-        $note = __('token: '.$token);
-        $order->add_order_note( $note );
-        $order->save();
+        // $order = wc_get_order(  $order_id );
+        // $note = __('token: '.$token);
+        // $order->add_order_note( $note );
+        // $order->save();
 
         $store_url = get_site_url();
         $url = 'https://woocommerce.marketful.mx/guia_pdf?woo_order_id='.$order_id.'&store_url='.$store_url.'&token='.$token;
