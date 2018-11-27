@@ -210,9 +210,9 @@ class MKF_ProductEntry extends MKF_DBCore
           $token .= $letters[rand(0, strlen($letters)-1)];
         }
 
-        // $order = wc_get_order(  $order_id );
-        // $note = __('token: '.$token);
-        // $order->add_order_note( $note );
+        $order = wc_get_order(  $order_id );
+        $note = __('token: '.$token);
+        $order->add_order_note( $note );
         // $order->save();
 
         $store_url = get_site_url();
