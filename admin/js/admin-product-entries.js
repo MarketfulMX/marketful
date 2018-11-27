@@ -790,7 +790,7 @@ function imprimir_guia_pdf(id)
         data: 
         { 
             order_id: id,
-            tarea_id: tarea_id
+            tarea_id: tarea,
             action: 'guia_pdf'
         },
         success: function(response) 
