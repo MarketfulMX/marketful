@@ -781,7 +781,7 @@ window.onclick = function(event) {
               </div>
               <div class="fr2">
               <div class="alinear-derecha">
-                <input type="button" class="ch-btn" value="Imprimir Etiqueta"/>
+                <input type="button" class="ch-btn" value="Imprimir Etiqueta" onclick="imprimir_guia_pdf('.$order->id.')"/>
                 </div>
                 <div class="alinear-derecha">
                   <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
