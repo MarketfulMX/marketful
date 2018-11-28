@@ -792,6 +792,12 @@ function spinner_ord(val_leyenda)
         $('.spinner_ord').css('display','none'); console.log(' 02 mostrando spinner_ord');
     }
 }
+/* Funcion que modifica el texto de la leyenda */
+function leyenda_spinner_texto()
+{
+    console.log(' entro ==>');
+    document.getElementById('leyenda_spinner').style.display = 'none';
+}
 
 /*
     Funcion imprimir_guia_pdf() 
@@ -837,6 +843,7 @@ function imprimir_guia_pdf(id)
 
     Notifica a WC.MKTF.MX de que la orden se ha entregado.
 */
+
 function notifica_entregado(id)
 {
     spinner_ord('Marcando como entregado');
@@ -859,9 +866,8 @@ function notifica_entregado(id)
             
             spinner_ord(' Entregado');
             document.getElementById('leyenda_spinner').style.display ='inline';
-            setTimeout(function { document.getElementById('leyenda_spinner').style.display = 'none'} , 5000);
+            setTimeout("leyenda_spinner_texto()", 3000);
             console.log('correcto');
-            
         },
         error: function(response) 
         { 
