@@ -765,6 +765,15 @@ window.onclick = function(event) {
             $order_val = get_post($order->id);
             $order_info = wc_get_order($order->id);
             $items = $order_info->get_items();
+
+            /*$shipping_item = $order_info->get_items('shipping');
+            $ship = reset($shipping_item);
+            echo print_r($ship);
+            echo ' <br> :::: '.$ship['method_title'];*/
+
+            $label = get_post_meta($order->id, '_shipping_address_1', true);
+            echo $label;
+
             $primer_producto = reset($items);
             $item_quantity = $primer_producto['qty'];
             $item_total = $primer_producto['line_total'];

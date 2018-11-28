@@ -781,7 +781,6 @@ function spinner_ord(val_leyenda)
     //console.log(' Entro a spinner_ord');
     if($('.spinner_ord').css('display') == 'none')
     {
-        console.log(val_leyenda);
         var leyenda = document.getElementById('leyenda_spinner');
         leyenda.style.display = 'inline'; leyenda.innerHTML = val_leyenda;
         $('.spinner_ord').css('display','inline'); //console.log('oculto spinner_ord');
