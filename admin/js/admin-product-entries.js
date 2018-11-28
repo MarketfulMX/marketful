@@ -804,13 +804,7 @@ function leyenda_spinner_texto()
     *   
 */
 
-$('.btn-spinner').on('click', function() {
-              var $this = $(this);
-            $this.button('loading');
-              setTimeout(function() {
-                 $this.button('reset');
-             }, 8000);
-          });
+
 
 function imprimir_guia_pdf(id)
 {
