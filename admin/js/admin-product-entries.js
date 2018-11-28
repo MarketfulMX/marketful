@@ -830,3 +830,13 @@ function imprimir_guia_pdf(id)
         },
     });
 }
+
+/* 
+    Función notifica_entregado()
+
+    Notifica a WC.MKTF.MX de que la orden se ha entregado.
+*/
+function notifica_entregado(id)
+{
+    
+}
