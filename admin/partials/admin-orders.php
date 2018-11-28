@@ -852,6 +852,7 @@ window.onclick = function(event) {
                 <div class="fr4_3" style="display:none;">
                   <i class="fas fa-ellipsis-v opciones" onclick=""></i> 
                 </div>
+                
               </div> 
             </div>
 
