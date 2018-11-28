@@ -738,12 +738,24 @@ window.onclick = function(event) {
   </div>
     <div class="contenedor">
       <div class="abiertas">
+
+        <script type="text/javascript">
+          $('.btn-spinner').on('click', function() {
+              var $this = $(this);
+            $this.button('loading');
+              setTimeout(function() {
+                 $this.button('reset');
+             }, 8000);
+          });
+        </script>
         <?php
           /**
            * @Script: El foreach recorrera todos los posibles registros que haya retornado la query
            * y despues lo mostrara con el formato de la vista.
            * Aqui se muestran todas las ordenes abiertas.
            */
+           //spinner
+          
 
           function custom_get_order_notes( $order_id ) {
               remove_filter( 'comments_clauses', array( 'WC_Comments', 'exclude_order_comments' ) );
@@ -835,7 +847,7 @@ window.onclick = function(event) {
               <div class="fr2">
               <div class="alinear-derecha">';
               if($label != 'Entrega Personal')
-                echo '<input type="button" class="ch-btn" value="Imprimir Etiqueta" onclick="imprimir_guia_pdf('.$order->id.')"/>';
+                echo '<input type="button" class="ch-btn btn btn-spinner" value="Imprimir Etiqueta" onclick="imprimir_guia_pdf('.$order->id.')"/>';
               else
                 echo '<input type="button" class="ch-btn" value="Entregado" onclick="notifica_entregado('.$order->id.')"/>';
               echo'
@@ -920,6 +932,8 @@ window.onclick = function(event) {
       </div>
       <div class="cerradas">
         <?php
+
+
           /**
            * @Script: El foreach recorrera todos los posibles registros que haya retornado la query
            * y despues lo mostrara con el formato de la vista.
