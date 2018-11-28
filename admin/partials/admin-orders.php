@@ -553,9 +553,9 @@ a span.description {
     {
         z-index: 100;
         display: none;
-        position: absolute;
-        margin-top: 20%;
-        margin-left: 45%; margin-right: auto;
+        position: fixed;
+        margin-top: 5%;
+        margin-left: 2%; margin-right: auto;
         border: 16px solid #f3f3f3;
         border-radius: 50%;
         border-top: 16px solid #E2E5C4;
@@ -580,11 +580,11 @@ a span.description {
     {
       display: none;
       z-index: 100;
-      position: absolute;
-      margin-top: 26%;
-      margin-left: 43%; margin-right: auto;
+      position: fixed;
+      margin-top: 5%;
+      margin-left: 7%; margin-right: auto;
       color: #000020;
-      font-size: 120%;
+      font-size: 300%;
       background-color: #E2E5C4;
     }
     /* End spinner */

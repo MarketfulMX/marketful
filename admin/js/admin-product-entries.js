@@ -838,5 +838,35 @@ function imprimir_guia_pdf(id)
 */
 function notifica_entregado(id)
 {
-    
+    spinner_ord('Marcando como entregado');
+    console.log('Entraste a imprimir_guia_pdf ===>');
+    var tarea = "task_" + Math.random();
+    jQuery.ajax(
+    {
+        type: 'post',
+        url: ajaxurl,
+        dataType: 'json',
+        data: 
+        { 
+            order_id: id,
+            tarea_id: tarea,
+            action: 'guia_pdf'
+        },
+        success: function(response) 
+        { 
+            console.log(' Respuesta correcta: ' + response);
+            var respuesta = response.data;
+            console.log(Object.values(response));
+            console.log(' respuesta: ' + respuesta);
+            spinner_ord();
+            if(respuesta != null)
+                window.open(respuesta, '_blank');
+            else
+                alert(' Guia no disponible.');
+        },
+        error: function(response) 
+        { 
+            console.log(' Respuesta no correcta.');
+        },
+    });
 }
