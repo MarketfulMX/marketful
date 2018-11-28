@@ -787,8 +787,9 @@ function spinner_ord(val_leyenda)
     }
     else
     {
-        document.getElementById('leyenda_spinner').style.display = 'none';
-        $('.spinner_ord').css('display','none'); //console.log('mostrando spinner_ord');
+        var leyenda = document.getElementById('leyenda_spinner');
+        leyenda.style.display = 'none'; leyenda.innerHTML = val_leyenda;
+        $('.spinner_ord').css('display','none'); console.log(' 02 mostrando spinner_ord');
     }
 }
 
@@ -854,15 +855,14 @@ function notifica_entregado(id)
         },
         success: function(response) 
         { 
-            console.log(' Respuesta correcta: ' + response);
-            var respuesta = response.data;
             console.log(Object.values(response));
-            console.log(' respuesta: ' + respuesta);
-            spinner_ord();
-            if(respuesta != null)
-                window.open(respuesta, '_blank');
-            else
-                alert(' Guia no disponible.');
+            
+            spinner_ord(' Entregado');
+            var ley = document.getElementById('leyenda_spinner')
+            ley.style.display ='inline';
+            setTimeout(ley.style.display = 'none', 5000);
+            console.log('correcto');
+            
         },
         error: function(response) 
         { 
