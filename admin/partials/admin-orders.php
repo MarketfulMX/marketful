@@ -771,8 +771,7 @@ window.onclick = function(event) {
             echo print_r($ship);
             echo ' <br> :::: '.$ship['method_title'];*/
 
-            $label = get_post_meta($order->id, '_shipping_address_1', true);
-            echo $label;
+            $label = get_post_meta($order->id, '_shipping_address_1', true); //Obteniendo el tipo de envio, en caso de 'personalizado' no mostrar boton
 
             $primer_producto = reset($items);
             $item_quantity = $primer_producto['qty'];
@@ -834,8 +833,10 @@ window.onclick = function(event) {
                 </div>
               </div>
               <div class="fr2">
-              <div class="alinear-derecha">
-                <input type="button" class="ch-btn" value="Imprimir Etiqueta" onclick="imprimir_guia_pdf('.$order->id.')"/>
+              <div class="alinear-derecha">';
+              if($label != 'Entrega Personal')
+                echo '<input type="button" class="ch-btn" value="Imprimir Etiqueta" onclick="imprimir_guia_pdf('.$order->id.')"/>';
+              echo'
                 </div>
                 <div class="alinear-derecha">
                   <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
