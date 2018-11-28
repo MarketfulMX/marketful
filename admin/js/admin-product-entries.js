@@ -839,7 +839,7 @@ function imprimir_guia_pdf(id)
 function notifica_entregado(id)
 {
     spinner_ord('Marcando como entregado');
-    console.log('Entraste a imprimir_guia_pdf ===>');
+    
     var tarea = "task_" + Math.random();
     jQuery.ajax(
     {
@@ -850,7 +850,7 @@ function notifica_entregado(id)
         { 
             order_id: id,
             tarea_id: tarea,
-            action: 'guia_pdf'
+            action: 'entregando_orden'
         },
         success: function(response) 
         { 
