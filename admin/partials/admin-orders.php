@@ -547,6 +547,48 @@ a span.description {
 .ch-btn{
   margin-top: 7px;
 }
+
+ /* Spinner_ord*/
+    .spinner_ord
+    {
+        z-index: 100;
+        display: none;
+        position: absolute;
+        margin-top: 20%;
+        margin-left: 45%; margin-right: auto;
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #E2E5C4;
+        border-bottom: 16px solid #E2E5C4;
+        width: 60px;
+        height: 60px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+    }
+    @-webkit-keyframes spin 
+    {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+    @keyframes spin 
+    {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    #leyenda_spinner
+    {
+      display: none;
+      z-index: 100;
+      position: absolute;
+      margin-top: 26%;
+      margin-left: 43%; margin-right: auto;
+      color: #000020;
+      font-size: 120%;
+      background-color: #E2E5C4;
+    }
+    /* End spinner */
+
 </style>
 
 <!-- JS del dropdown -->
@@ -673,6 +715,9 @@ window.onclick = function(event) {
 
 <!-- Contenedor general -->
 <div class="container">
+  <div class="spinner_ord">  
+  </div>
+  <p id="leyenda_spinner"> Leyenda</p>
   <div class="head_ord">
     <div class="imagen"><?php echo "<img src='{$imgSrc}' > "; /*Se hace echo de la imagen*/?> </div>
     <h4> Seller Center - &Oacute;rdenes</h4>

@@ -774,12 +774,32 @@ function show_spinner()
 
 
 /* ORDER FUNCTIONS *********************************************************************************************************************/
+/* Funcion Spinner Ord
+*/
+function spinner_ord(val_leyenda)
+{
+    //console.log(' Entro a spinner_ord');
+    if($('.spinner_ord').css('display') == 'none')
+    {
+        console.log(val_leyenda);
+        var leyenda = document.getElementById('leyenda_spinner');
+        leyenda.style.display = 'inline'; leyenda.innerHTML = val_leyenda;
+        $('.spinner_ord').css('display','inline'); //console.log('oculto spinner_ord');
+    }
+    else
+    {
+        document.getElementById('leyenda_spinner').style.display = 'none';
+        $('.spinner_ord').css('display','none'); //console.log('mostrando spinner_ord');
+    }
+}
+
 /*
     Funcion imprimir_guia_pdf() 
     *   
 */
 function imprimir_guia_pdf(id)
 {
+    spinner_ord('Cargando guia');
     console.log('Entraste a imprimir_guia_pdf ===>');
     var tarea = "task_" + Math.random();
     jQuery.ajax(
@@ -799,6 +819,7 @@ function imprimir_guia_pdf(id)
             var respuesta = response.data;
             console.log(Object.values(response));
             console.log(' respuesta: ' + respuesta);
+            spinner_ord();
             if(respuesta != null)
                 window.open(respuesta, '_blank');
             else
