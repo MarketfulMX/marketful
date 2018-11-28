@@ -847,7 +847,7 @@ window.onclick = function(event) {
               <div class="fr2">
               <div class="alinear-derecha">';
               if($label != 'Entrega Personal')
-                echo '<input type="button" data-loading-text="<i class=\'fa fa-spinnerbtn fa-spin\'></i> class="ch-btn btn btn-spinner" value="Imprimir Etiqueta" onclick="imprimir_guia_pdf('.$order->id.')"/>';
+                echo '<input type="button" data-loading-text="<i class=\'fa fa-spinnerbtn fa-spin\'></i> class="boton-spinner" value="Imprimir Etiqueta" onclick="imprimir_guia_pdf('.$order->id.')"/>';
               else
                 echo '<input type="button" class="ch-btn" value="Entregado" onclick="notifica_entregado('.$order->id.')"/>';
               echo'
