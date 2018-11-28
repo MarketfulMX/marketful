@@ -858,9 +858,8 @@ function notifica_entregado(id)
             console.log(Object.values(response));
             
             spinner_ord(' Entregado');
-            var ley = document.getElementById('leyenda_spinner')
-            ley.style.display ='inline';
-            setTimeout(ley.style.display = 'none', 5000);
+            document.getElementById('leyenda_spinner').style.display ='inline';
+            setTimeout(function { document.getElementById('leyenda_spinner').style.display = 'none'} , 5000);
             console.log('correcto');
             
         },
