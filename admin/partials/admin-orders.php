@@ -691,6 +691,19 @@ window.onclick = function(event) {
       <button class="boton_ord" onclick="mostrar_filtro()">Filtros</button>
     </div>
   </div>
+
+  <!-- spinner -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+  $(function(){
+    $('.btnloada').click(function(){
+      $(this).html('<img src="https://cdn-images-1.medium.com/max/800/1*inYwyq37FdvRPLRphTqwBA.gif"/>');
+      return false;
+    });
+  })
+</script>
+
+<!-- fin spinner -->
     <div class="contenedor">
       <div class="abiertas">
         <?php
@@ -699,6 +712,7 @@ window.onclick = function(event) {
            * y despues lo mostrara con el formato de la vista.
            * Aqui se muestran todas las ordenes abiertas.
            */
+
 
           function custom_get_order_notes( $order_id ) {
               remove_filter( 'comments_clauses', array( 'WC_Comments', 'exclude_order_comments' ) );
@@ -781,7 +795,7 @@ window.onclick = function(event) {
               </div>
               <div class="fr2">
               <div class="alinear-derecha">
-                <input type="button" class="ch-btn" value="Imprimir Etiqueta" onclick="imprimir_guia_pdf('.$order->id.')"/>
+                <input type="button" class="ch-btn btnloada" value="Imprimir Etiqueta" onclick="imprimir_guia_pdf('.$order->id.')"/>
                 </div>
                 <div class="alinear-derecha">
                   <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
@@ -852,7 +866,7 @@ window.onclick = function(event) {
                 <div class="fr4_3" style="display:none;">
                   <i class="fas fa-ellipsis-v opciones" onclick=""></i> 
                 </div>
-                
+
               </div> 
             </div>
 
