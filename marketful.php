@@ -105,4 +105,4 @@ add_action('wp_ajax_get_ce', ['MKF_ProductEntry', 'get_ce']);
 add_action('wp_ajax_guia_pdf', ['MKF_ProductEntry', 'traer_guia_pdf']);
 
 // Funcion para solicitar guia //
-add_action('wp_ajax_entregando_orden', ['MKF_ProductEntry', 'etregando_orden']);
+add_action('wp_ajax_entregando_orden', ['MKF_ProductEntry', 'entregando_orden']);
