@@ -306,6 +306,7 @@ body{padding: 0;}
     #etiquetas
     {
       color: black;
+      font-size: 130%;
     }
     .fr1
     {
@@ -798,6 +799,12 @@ $(document).ready(function() {
             if(!$path) $path = '<img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="150" height="100">'; // En caso de que no tenga ninguna imagen, se mostrara una imagen de prueba
             $nombre = get_post_meta($order->id, "_billing_first_name", $single = true ).' '.get_post_meta($order->id, "_billing_last_name", $single = true );
             $tel = get_post_meta($order->id, "_billing_phone", $single = true);
+
+            $shipping_item = $order_info->get_items('shipping');
+            $ship = reset($shipping_item);
+            //echo print_r($ship);
+            //echo '<br> ::::: '.$ship['method_title'].' :::::: '.$ship['method_id'];
+
             echo '
              <div class="caja_orden pruebaespacio">
               <div class="fr1">
@@ -814,9 +821,21 @@ $(document).ready(function() {
                 </div>
               </div>
               <div class="fr2">
-              <div class="alinear-derecha">
-                <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Imprimir Etiqueta
-                </button>
+              <div class="alinear-derecha">';
+              Switch ($ship['method_id'])
+              {
+                case 'me2':
+                  echo '<button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Imprimir Etiqueta</button>';
+                  break;
+                case 'in_store_pickup':
+                  echo '<button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Entregado</button>';
+                  break;
+                case 'custom':
+                  echo 'Envio personalizado';
+                  break;
+              }
+              echo'
+                
                 </div>
                 <div class="alinear-derecha">
                   <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
