@@ -803,7 +803,7 @@ $(document).ready(function() {
               {
                 //echo ' Imagen 1 : '.wp_get_attachment_image( $attachment_id, 'thumbnail' );
                 /*$path = wp_get_attachment_image( $attachment_id, 'thumb');*/ // Utilizando esta funcion se toma la imagen y se guarda en $path.  Tiene el tamaño default de WP 'thumb'. Version 2.5 para arriba 
-                $path = wp_get_attachment_image_src( $attachment_id, 'thumbnail');
+                $path = wp_get_attachment_image( $attachment_id, 'thumbnail');
                 //$path = wp_get_attachment_image( $attachment_id, $special_size);
 
           /*$path = '<img src="<?php echo $imgUrls?>" width="150" height="100">';*/
@@ -963,7 +963,7 @@ $(document).ready(function() {
               {
                 //echo ' Imagen 1 : '.wp_get_attachment_image( $attachment_id, 'thumbnail' );
                 /*$path = wp_get_attachment_image( $attachment_id, 'thumb');*/ // Utilizando esta funcion se toma la imagen y se guarda en $path.  Tiene el tamaño default de WP 'thumb'. Version 2.5 para arriba 
-                $path = wp_get_attachment_image_src( $attachment_id, 'thumbnail');
+                $path = wp_get_attachment_image( $attachment_id, 'thumbnail');
                 //$path = wp_get_attachment_image( $attachment_id, $special_size);
             /*$path = '<img src="<?php echo $imgUrls?>" width="150" height="100">';*/
                 break; // Se hace un break para que solo realize esta accion en a primera imagen.
