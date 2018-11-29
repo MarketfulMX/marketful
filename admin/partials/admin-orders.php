@@ -803,10 +803,10 @@ $(document).ready(function() {
               {
                 //echo ' Imagen 1 : '.wp_get_attachment_image( $attachment_id, 'thumbnail' );
                 /*$path = wp_get_attachment_image( $attachment_id, 'thumb');*/ // Utilizando esta funcion se toma la imagen y se guarda en $path.  Tiene el tamaño default de WP 'thumb'. Version 2.5 para arriba 
+                $path = wp_get_attachment_image_src( int $attachment_id, string|array $size = 'thumbnail', bool $icon = false );
                 //$path = wp_get_attachment_image( $attachment_id, $special_size);
 
-
-                $path = '<img src="<?php echo $imgUrls?>" width="150" height="100">';
+          /*$path = '<img src="<?php echo $imgUrls?>" width="150" height="100">';*/
                 break; // Se hace un break para que solo realize esta accion en a primera imagen.
               }
             }
@@ -962,9 +962,10 @@ $(document).ready(function() {
               foreach ( $images as $attachment_id => $attachment ) 
               {
                 //echo ' Imagen 1 : '.wp_get_attachment_image( $attachment_id, 'thumbnail' );
-                $path = wp_get_attachment_image( $attachment_id, 'thumb'); // Utilizando esta funcion se toma la imagen y se guarda en $path.  Tiene el tamaño default de WP 'thumb'. Version 2.5 para arriba 
+                /*$path = wp_get_attachment_image( $attachment_id, 'thumb');*/ // Utilizando esta funcion se toma la imagen y se guarda en $path.  Tiene el tamaño default de WP 'thumb'. Version 2.5 para arriba 
+                $path = wp_get_attachment_image_src( int $attachment_id, string|array $size = 'thumbnail', bool $icon = false );
                 //$path = wp_get_attachment_image( $attachment_id, $special_size);
-                $path = '<img src="<?php echo $imgUrls?>" width="150" height="100">';
+            /*$path = '<img src="<?php echo $imgUrls?>" width="150" height="100">';*/
                 break; // Se hace un break para que solo realize esta accion en a primera imagen.
               }
             }
