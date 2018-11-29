@@ -691,6 +691,39 @@ window.onclick = function(event) {
       <button class="boton_ord" onclick="mostrar_filtro()">Filtros</button>
     </div>
   </div>
+
+  <!-- spinner -->
+<script type="text/javascript">
+
+$(document).ready(function() {
+  $('.btn').on('click', function() {
+    var $this = $(this);
+    var loadingText = '<i class="fa fa-spinner fa-spin"></i> imprimiendo...';
+    if ($(this).html() !== loadingText) {
+      $this.data('original-text', $(this).html());
+      $this.html(loadingText);
+    }
+    setTimeout(function() {
+      $this.html($this.data('original-text'));
+    }, 2000);
+  });
+})
+
+$(document).ready(function() {
+  $('.btn2').on('click', function() {
+    var $this = $(this);
+    var loadingText = '<i class="fa fa-spinner fa-spin"></i> imprimiendo...';
+    if ($(this).html() !== loadingText) {
+      $this.data('original-text', $(this).html());
+      $this.html(loadingText);
+    }
+    setTimeout(function() {
+      $this.html($this.data('original-text'));
+    }, 2000);
+  });
+})
+  </script>
+<!-- fin spinner -->
     <div class="contenedor">
       <div class="abiertas">
         <?php
@@ -699,6 +732,7 @@ window.onclick = function(event) {
            * y despues lo mostrara con el formato de la vista.
            * Aqui se muestran todas las ordenes abiertas.
            */
+
 
           function custom_get_order_notes( $order_id ) {
               remove_filter( 'comments_clauses', array( 'WC_Comments', 'exclude_order_comments' ) );
@@ -781,7 +815,8 @@ window.onclick = function(event) {
               </div>
               <div class="fr2">
               <div class="alinear-derecha">
-                <input type="button" class="ch-btn" value="Imprimir Etiqueta" onclick="imprimir_guia_pdf('.$order->id.')"/>
+                <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Imprimir Etiqueta
+                </button>
                 </div>
                 <div class="alinear-derecha">
                   <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
@@ -852,6 +887,7 @@ window.onclick = function(event) {
                 <div class="fr4_3" style="display:none;">
                   <i class="fas fa-ellipsis-v opciones" onclick=""></i> 
                 </div>
+
               </div> 
             </div>
 
