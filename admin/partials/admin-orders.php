@@ -693,16 +693,36 @@ window.onclick = function(event) {
   </div>
 
   <!-- spinner -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script type="text/javascript">
-  $(function(){
-    $('.btnloada').click(function(){
-      $(this).html('<img src="https://cdn-images-1.medium.com/max/800/1*inYwyq37FdvRPLRphTqwBA.gif"/>');
-      return false;
-    });
-  })
-</script>
 
+$(document).ready(function() {
+  $('.btn').on('click', function() {
+    var $this = $(this);
+    var loadingText = '<i class="fa fa-spinner fa-spin"></i> imprimiendo...';
+    if ($(this).html() !== loadingText) {
+      $this.data('original-text', $(this).html());
+      $this.html(loadingText);
+    }
+    setTimeout(function() {
+      $this.html($this.data('original-text'));
+    }, 2000);
+  });
+})
+
+$(document).ready(function() {
+  $('.btn2').on('click', function() {
+    var $this = $(this);
+    var loadingText = '<i class="fa fa-spinner fa-spin"></i> imprimiendo...';
+    if ($(this).html() !== loadingText) {
+      $this.data('original-text', $(this).html());
+      $this.html(loadingText);
+    }
+    setTimeout(function() {
+      $this.html($this.data('original-text'));
+    }, 2000);
+  });
+})
+  </script>
 <!-- fin spinner -->
     <div class="contenedor">
       <div class="abiertas">
@@ -795,7 +815,8 @@ window.onclick = function(event) {
               </div>
               <div class="fr2">
               <div class="alinear-derecha">
-                <input type="button" class="ch-btn btnloada" value="Imprimir Etiqueta" onclick="imprimir_guia_pdf('.$order->id.')"/>
+                <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Imprimir Etiqueta
+                </button>
                 </div>
                 <div class="alinear-derecha">
                   <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
