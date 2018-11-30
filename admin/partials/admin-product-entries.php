@@ -257,6 +257,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             {
               echo "<a href='#'>Categoria del producto</a>";
             }
+            
           ?></td>
         <td style=""><?php echo get_post_meta($product->ID, "_regular_price", true) ?></td>
         <td><input onblur="cambioStatus('<?php echo $product->ID ?>', 'precio_ml'); calcular_costo_envio(<?php echo $product->ID.',\''.$categoria.'\''; ?>); calcular_comision(<?php echo $product->ID; ?>);" class="input" type="text" value="<?php echo get_post_meta($product-> ID, "precio_ml", $single = true) ?>" id="precio_ml_<?php echo $product->ID; ?>"></td>
