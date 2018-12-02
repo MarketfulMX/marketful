@@ -270,6 +270,7 @@ var status_cambios = ""
         var categorias = $(".category_field").map(function() 
         {
             var el_id = $(this).attr("id");
+            var cate = $(this).text(); 
             if($(this).text().length > 1 && $(this).text() != "categorizar")
             {
                 jQuery.ajax(
@@ -286,7 +287,7 @@ var status_cambios = ""
                         });
                         $('#' + el_id).text("");
                         path_categoria = path_categoria.substring(3);
-                        $('#' + el_id).append('<a href=?page=mkf-entries_categorizador&pagina='+pagina+'&keyword='+keyword+'&product_id=' + el_id.replace("categoria_", "") + ">" + path_categoria + "</a>");
+                        $('#' + el_id).append('<a href=?page=mkf-entries_categorizador&pagina='+pagina+'&keyword='+keyword+'&product_id=' + el_id.replace("categoria_", "") + ">" + path_categoria + "</a> <br><b id='labelsolo_" + el_id + "'>" + cate + "</b>");
                     }
                 });
             }
