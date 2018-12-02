@@ -225,9 +225,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 
                 <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
                 <option value="">...</option>
-                <option value="active" <?php echo ($select_value=="active")?'selected':''; ?>>Activa</option>
-                <option value="paused" <?php echo ($select_value=="paused")?'selected':''; ?>>Pausada</option>
-                <option value="closed" <?php echo ($select_value=="closed")?'selected':''; ?>>Finalizada</option> 
+                <option value="active" <?php echo ($select_value=="active")?'selected':''; ?>>Activa active</option>
+                <option value="paused" <?php echo ($select_value=="paused")?'selected':''; ?>>Pausada paused</option>
+                <option value="closed" <?php echo ($select_value=="closed")?'selected':''; ?>>Finalizada closed</option> 
               </select>
             </div>
         </td>
@@ -236,9 +236,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select expo_ml" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml'); check_status(<?php echo $product->ID; ?>);calcular_comision(<?php echo $product->ID; ?>);" id="exposicion_ml_<?php echo $product->ID;  ?>">
                 <?php $select_value = $all_mlmeta[0]["data"][0]->exposicion; ?>
                 <option value="">...</option>
-                <option value="free" <?php echo ($select_value=="free")?'selected':''; ?>>Gratis</option>
-                <option value="clasica" <?php echo ($select_value=="clasica")?'selected':''; ?>>Clasica</option>
-                <option value="premium" <?php echo ($select_value=="premium")?'selected':''; ?> >Premium</option> 
+                <option value="free" <?php echo ($select_value=="free")?'selected':''; ?>>Gratis free</option>
+                <option value="clasica" <?php echo ($select_value=="clasica")?'selected':''; ?>>Clasica clasica</option>
+                <option value="premium" <?php echo ($select_value=="premium")?'selected':''; ?> >Premium premium</option> 
               </select>
             </div>
             
@@ -268,9 +268,9 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select tipo_envi" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml'); check_status(<?php echo $product->ID.');';?>calcular_costo_envio(<?php echo $product->ID.',\''.$categoria.'\''; ?>); calcular_comision(<?php echo $product->ID; ?>);" id="metodo_envio_ml_<?php echo $product->ID;?>">
                 <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
                 <option value="">...</option>
-                <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envio Gratis</option>
-                <option value="me_c" <?php echo ($select_value=="me_c")?'selected':''; ?>>Mercado Envio Pago</option>
-                <option value="custom" <?php echo ($select_value=="custom")?'selected':''; ?> >Personalizado</option> 
+                <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envio Gratis me_g</option>
+                <option value="me_c" <?php echo ($select_value=="me_c")?'selected':''; ?>>Mercado Envio Pago me_c</option>
+                <option value="custom" <?php echo ($select_value=="custom")?'selected':''; ?> >Personalizado custom</option> 
               </select>
             </div>  
         </td>
