@@ -225,11 +225,29 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 
                 <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
                 <option value="">...</option>
-                <option value="active" <?php echo ($select_value=="active")?'selected':''; ?>>Activa active</option>
-                <option value="paused" <?php echo ($select_value=="paused")?'selected':''; ?>>Pausada paused</option>
-                <option value="closed" <?php echo ($select_value=="closed")?'selected':''; ?>>Finalizada closed</option> 
+                <option value="active" <?php echo ($select_value=="active")?'selected':''; ?>>Activa</option>
+                <option value="paused" <?php echo ($select_value=="paused")?'selected':''; ?>>Pausada</option>
+                <option value="closed" <?php echo ($select_value=="closed")?'selected':''; ?>>Finalizada</option> 
               </select>
             </div>
+            <?php
+            //echo 'hola';
+            switch($select_value)
+            {
+              case 'active':
+                echo'<b>Active</b>';
+                break;
+              case 'paused':
+                echo'<b>Paused</b>';
+                break;
+              case 'closed':
+                echo'<b>Closed</b>';
+                break;
+              default :
+                echo '<b>No seleccionado</b>';
+                break;
+            }
+            ?>
         </td>
         <td>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
