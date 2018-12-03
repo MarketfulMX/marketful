@@ -304,11 +304,29 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select tipo_envi" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml'); check_status(<?php echo $product->ID.');';?>calcular_costo_envio(<?php echo $product->ID.',\''.$categoria.'\''; ?>); calcular_comision(<?php echo $product->ID; ?>);" id="metodo_envio_ml_<?php echo $product->ID;?>">
                 <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
                 <option value="">...</option>
-                <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envio Gratis me_g</option>
-                <option value="me_c" <?php echo ($select_value=="me_c")?'selected':''; ?>>Mercado Envio Pago me_c</option>
-                <option value="custom" <?php echo ($select_value=="custom")?'selected':''; ?> >Personalizado custom</option> 
+                <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envio Gratis </option>
+                <option value="me_c" <?php echo ($select_value=="me_c")?'selected':''; ?>>Mercado Envio Pago </option>
+                <option value="custom" <?php echo ($select_value=="custom")?'selected':''; ?> >Personalizado </option> 
               </select>
             </div>  
+             <?php
+            //Imprimiendo el label con el valor seleccionado
+            switch($select_value)
+            {
+              case 'me_g':
+                echo'<b id="solo_envio'.$product->ID.'">me_g</b>';
+                break;
+              case 'me_c':
+                echo'<b id="solo_envio'.$product->ID.'">me_c</b>';
+                break;
+              case 'custom':
+                echo'<b id="solo_envio'.$product->ID.'">custom</b>';
+                break;
+              default :
+                echo '<b id="solo_envio'.$product->ID.'">No seleccionado</b>';
+                break;
+            }
+            ?>
         </td>
         <td id="costo_envio_ml_<?php echo $product->ID; ?>">
           <?php $var = get_post_meta($product->ID, "costo_envio_ml", true);  if(!$var){echo 'N/A';}else{echo $var;} ?>

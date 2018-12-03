@@ -109,10 +109,13 @@ function cambioStatus(product_id, key)
     switch(key)
     {
         case 'mercadolibre':
-            if (value != '') {$('#solo_status'+product_id).text(value);}else{$('solo_status'+product_id).text('No seleccionado');}
+            if (value != '') {$('#solo_status'+product_id).text(value);}else{$('#solo_status'+product_id).text('No seleccionado');}
             break;
         case 'exposicion_ml':
-            if (value != '') {$('#solo_exposicion'+product_id).text(value);}else{$('solo_status'+product_id).text('No seleccionado');}
+            if (value != '') {$('#solo_exposicion'+product_id).text(value);}else{$('#solo_exposicion'+product_id).text('No seleccionado');}
+            break;
+        case 'metodo_envio_ml':
+            if (value != ''){$('#solo_envio'+product_id).text(value);}else{$('#solo_envio'+product_id).text('No seleccionado');}
             break;
         default :
             break;
