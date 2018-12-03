@@ -225,23 +225,58 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 
                 <?php $select_value = $all_mlmeta[0]["data"][0]->status; ?>
                 <option value="">...</option>
-                <option value="active" <?php echo ($select_value=="active")?'selected':''; ?>>Activa active</option>
-                <option value="paused" <?php echo ($select_value=="paused")?'selected':''; ?>>Pausada paused</option>
-                <option value="closed" <?php echo ($select_value=="closed")?'selected':''; ?>>Finalizada closed</option> 
+                <option value="active" <?php echo ($select_value=="active")?'selected':''; ?>>Activa</option>
+                <option value="paused" <?php echo ($select_value=="paused")?'selected':''; ?>>Pausada</option>
+                <option value="closed" <?php echo ($select_value=="closed")?'selected':''; ?>>Finalizada</option> 
               </select>
             </div>
+            <?php
+            //Imprimiendo el label con el valor seleccionado
+            switch($select_value)
+            {
+              case 'active':
+                echo'<b id="solo_status'.$product->ID.'">active</b>';
+                break;
+              case 'paused':
+                echo'<b id="solo_status'.$product->ID.'">paused</b>';
+                break;
+              case 'closed':
+                echo'<b id="solo_status'.$product->ID.'">closed</b>';
+                break;
+              default :
+                echo '<b id="solo_status'.$product->ID.'">No seleccionado</b>';
+                break;
+            }
+            ?>
         </td>
         <td>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" id="selecciones">
               <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select expo_ml" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml'); check_status(<?php echo $product->ID; ?>);calcular_comision(<?php echo $product->ID; ?>);" id="exposicion_ml_<?php echo $product->ID;  ?>">
                 <?php $select_value = $all_mlmeta[0]["data"][0]->exposicion; ?>
                 <option value="">...</option>
-                <option value="free" <?php echo ($select_value=="free")?'selected':''; ?>>Gratis free</option>
-                <option value="clasica" <?php echo ($select_value=="clasica")?'selected':''; ?>>Clasica clasica</option>
-                <option value="premium" <?php echo ($select_value=="premium")?'selected':''; ?> >Premium premium</option> 
+                <option value="free" <?php echo ($select_value=="free")?'selected':''; ?>>Gratis </option>
+                <option value="clasica" <?php echo ($select_value=="clasica")?'selected':''; ?>>Clasica </option>
+                <option value="premium" <?php echo ($select_value=="premium")?'selected':''; ?> >Premium </option> 
               </select>
             </div>
-            
+             <?php
+            //Imprimiendo el label con el valor seleccionado
+            switch($select_value)
+            {
+              case 'free':
+                echo'<b id="solo_exposicion'.$product->ID.'">free</b>';
+                break;
+              case 'clasica':
+                echo'<b id="solo_exposicion'.$product->ID.'">clasica</b>';
+                break;
+              case 'premium':
+                echo'<b id="solo_exposicion'.$product->ID.'">premium</b>';
+                break;
+              default :
+                echo '<b id="solo_exposicion'.$product->ID.'">No seleccionado</b>';
+                break;
+            }
+            ?>
         </td>
         
         <td style="min-width: 130px;" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php 
@@ -269,11 +304,29 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               <select style="font-size: 10px;width: 140px; padding: 0; height: 25px;"class="custom-select tipo_envi" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'metodo_envio_ml'); check_status(<?php echo $product->ID.');';?>calcular_costo_envio(<?php echo $product->ID.',\''.$categoria.'\''; ?>); calcular_comision(<?php echo $product->ID; ?>);" id="metodo_envio_ml_<?php echo $product->ID;?>">
                 <?php $select_value = get_post_meta($product->ID, "metodo_envio_ml", true) ?>
                 <option value="">...</option>
-                <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envio Gratis me_g</option>
-                <option value="me_c" <?php echo ($select_value=="me_c")?'selected':''; ?>>Mercado Envio Pago me_c</option>
-                <option value="custom" <?php echo ($select_value=="custom")?'selected':''; ?> >Personalizado custom</option> 
+                <option value="me_g" <?php echo ($select_value=="me_g")?'selected':''; ?>>Mercado Envio Gratis </option>
+                <option value="me_c" <?php echo ($select_value=="me_c")?'selected':''; ?>>Mercado Envio Pago </option>
+                <option value="custom" <?php echo ($select_value=="custom")?'selected':''; ?> >Personalizado </option> 
               </select>
             </div>  
+             <?php
+            //Imprimiendo el label con el valor seleccionado
+            switch($select_value)
+            {
+              case 'me_g':
+                echo'<b id="solo_envio'.$product->ID.'">me_g</b>';
+                break;
+              case 'me_c':
+                echo'<b id="solo_envio'.$product->ID.'">me_c</b>';
+                break;
+              case 'custom':
+                echo'<b id="solo_envio'.$product->ID.'">custom</b>';
+                break;
+              default :
+                echo '<b id="solo_envio'.$product->ID.'">No seleccionado</b>';
+                break;
+            }
+            ?>
         </td>
         <td id="costo_envio_ml_<?php echo $product->ID; ?>">
           <?php $var = get_post_meta($product->ID, "costo_envio_ml", true);  if(!$var){echo 'N/A';}else{echo $var;} ?>
