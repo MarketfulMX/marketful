@@ -270,7 +270,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                 echo'<b id="solo_exposicion'.$product->ID.'">clasica</b>';
                 break;
               case 'premium':
-                echo'<b id="solo_exposicion'.$product->ID.'">cremium</b>';
+                echo'<b id="solo_exposicion'.$product->ID.'">premium</b>';
                 break;
               default :
                 echo '<b id="solo_exposicion'.$product->ID.'">No seleccionado</b>';
