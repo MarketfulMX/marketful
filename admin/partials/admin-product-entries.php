@@ -203,7 +203,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
         <td><?php echo $product->sku; ?></td>
         <td style="min-width: 150px">
             <?php 
-              echo '<b id="tpml_'.$product->ID.'">'.$product->title.'</b><br>';
+              echo '<b id="tpml_'.$product->ID.'">'.$product->title.' :'.strlen($product->title).'</b><br>';
               echo '<input type="text" class="input titulo_onb" style="width: 200px;" id="titulo_ml_'.$product->ID.'" maxlength="60" placeholder="Nuevo titulo solo para Mercadolibre" onblur="cambioStatus('.$product->ID.', \'titulo_ml\')" onkeypress="checar_enter(event,'.$product->ID.', \'titulo_ml\')">';
           
             ?>
