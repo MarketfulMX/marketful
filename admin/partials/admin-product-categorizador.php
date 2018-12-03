@@ -46,7 +46,7 @@ if (is_null($onb)){
 $productObject = MKF_ProductEntry::GetInstance();
 $categories = $productObject->get_ml_categories();
 $titulo = get_post_meta($product_id, "titulo_ml", $single = true );
-if(strlen($titulo < 1)){
+if(strlen($titulo) < 1){
     $post_7 = get_post( $product_id );
     $titulo = $post_7->post_title;
 }
