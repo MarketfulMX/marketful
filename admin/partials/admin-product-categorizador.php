@@ -235,8 +235,11 @@ jQuery(document).ready(function($){
     }
 #titulo
     {
-        font-size: 35px;color:black;text-align: left;
-        padding-top: 30px;
+        font-size: 270%;
+        color:black;
+        text-align: left;
+        padding-top: 10px; padding-bottom: 10px;
+        line-height: 40px;
     }
 #categoria
     {
@@ -294,7 +297,7 @@ jQuery(document).ready(function($){
 <p id="leyenda"> Categorizador de productos </p>
 <div id="contenedor">
     <div id="interno">
-      <h2 id="titulo" class="margenCat">Producto: <?php echo $titulo; ?> </h2>
+      <div id="titulo" class="">Producto: <?php echo $titulo; ?> </div>
       <h2 class="margenCat">Categor&iacute;a: <h5 id="categoria" ></h5></h2>
     </div>
     <hr>
