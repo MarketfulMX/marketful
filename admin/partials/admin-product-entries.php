@@ -235,13 +235,13 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             switch($select_value)
             {
               case 'active':
-                echo'<b id="solo_status'.$product->ID.'">Active</b>';
+                echo'<b id="solo_status'.$product->ID.'">active</b>';
                 break;
               case 'paused':
-                echo'<b id="solo_status'.$product->ID.'">Paused</b>';
+                echo'<b id="solo_status'.$product->ID.'">paused</b>';
                 break;
               case 'closed':
-                echo'<b id="solo_status'.$product->ID.'">Closed</b>';
+                echo'<b id="solo_status'.$product->ID.'">closed</b>';
                 break;
               default :
                 echo '<b id="solo_status'.$product->ID.'">No seleccionado</b>';
@@ -264,13 +264,13 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             switch($select_value)
             {
               case 'free':
-                echo'<b id="solo_exposicion'.$product->ID.'">Free</b>';
+                echo'<b id="solo_exposicion'.$product->ID.'">free</b>';
                 break;
               case 'clasica':
-                echo'<b id="solo_exposicion'.$product->ID.'">Clasica</b>';
+                echo'<b id="solo_exposicion'.$product->ID.'">clasica</b>';
                 break;
               case 'premium':
-                echo'<b id="solo_exposicion'.$product->ID.'">Premium</b>';
+                echo'<b id="solo_exposicion'.$product->ID.'">cremium</b>';
                 break;
               default :
                 echo '<b id="solo_exposicion'.$product->ID.'">No seleccionado</b>';

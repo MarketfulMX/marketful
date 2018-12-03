@@ -76,7 +76,7 @@ function cambioStatus(product_id, key)
                     $('#tpml_'+product_id).text(value);
                 }
                 // Imprimir Label 
-                if(key == 'mercadolibre' || key == 'exposicion_ml')
+                if(key == 'mercadolibre' || key == 'exposicion_ml' || key == 'metodo_envio_ml')
                 {
                     imprimir_label(product_id, key, value);
                 }
