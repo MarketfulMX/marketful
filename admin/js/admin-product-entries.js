@@ -76,16 +76,9 @@ function cambioStatus(product_id, key)
                     $('#tpml_'+product_id).text(value);
                 }
                 // Imprimir Label 
-                if(key == 'mercadolibre')
+                if(key == 'mercadolibre' || key == 'exposicion_ml')
                 {
-                    if(value != "")
-                    {
-                        $('#solo_status'+product_id).text(value);
-                    }
-                    else
-                    {
-                        $('#solo_status'+product_id).text('No seleccionado');
-                    }
+                    imprimir_label(product_id, key, value);
                 }
                 console.log("exito")
                 console.log(response)
@@ -105,6 +98,26 @@ function cambioStatus(product_id, key)
         });
     }
 };
+
+/**
+ * @Funcion Imprimir_Label()
+ *
+ * Recibe los parametros del valor, del id y de la nueva etiqueta y los cambia
+ */
+ function imprimir_label(product_id, key, value)
+ {
+    switch(key)
+    {
+        case 'mercadolibre':
+            if (value != '') {$('#solo_status'+product_id).text(value);}else{$('solo_status'+product_id).text('No seleccionado');}
+            break;
+        case 'exposicion_ml':
+            if (value != '') {$('#solo_exposicion'+product_id).text(value);}else{$('solo_status'+product_id).text('No seleccionado');}
+            break;
+        default :
+            break;
+    }
+ }
 
 /**
  * @Función buscarResultados()

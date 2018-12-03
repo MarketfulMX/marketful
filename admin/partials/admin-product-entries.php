@@ -231,7 +231,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               </select>
             </div>
             <?php
-            //echo 'hola';
+            //Imprimiendo el label con el valor seleccionado
             switch($select_value)
             {
               case 'active':
@@ -254,12 +254,29 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               <select style="font-size: 10px;width: 80px; height: 25px;"class="custom-select expo_ml" onChange="cambioStatus(<?php echo $product->ID;  ?>, 'exposicion_ml'); check_status(<?php echo $product->ID; ?>);calcular_comision(<?php echo $product->ID; ?>);" id="exposicion_ml_<?php echo $product->ID;  ?>">
                 <?php $select_value = $all_mlmeta[0]["data"][0]->exposicion; ?>
                 <option value="">...</option>
-                <option value="free" <?php echo ($select_value=="free")?'selected':''; ?>>Gratis free</option>
-                <option value="clasica" <?php echo ($select_value=="clasica")?'selected':''; ?>>Clasica clasica</option>
-                <option value="premium" <?php echo ($select_value=="premium")?'selected':''; ?> >Premium premium</option> 
+                <option value="free" <?php echo ($select_value=="free")?'selected':''; ?>>Gratis </option>
+                <option value="clasica" <?php echo ($select_value=="clasica")?'selected':''; ?>>Clasica </option>
+                <option value="premium" <?php echo ($select_value=="premium")?'selected':''; ?> >Premium </option> 
               </select>
             </div>
-            
+             <?php
+            //Imprimiendo el label con el valor seleccionado
+            switch($select_value)
+            {
+              case 'free':
+                echo'<b id="solo_exposicion'.$product->ID.'">Free</b>';
+                break;
+              case 'clasica':
+                echo'<b id="solo_exposicion'.$product->ID.'">Clasica</b>';
+                break;
+              case 'premium':
+                echo'<b id="solo_exposicion'.$product->ID.'">Premium</b>';
+                break;
+              default :
+                echo '<b id="solo_exposicion'.$product->ID.'">No seleccionado</b>';
+                break;
+            }
+            ?>
         </td>
         
         <td style="min-width: 130px;" id="categoria_<?php echo $product->ID; ?>" class="category_field" ><?php 
