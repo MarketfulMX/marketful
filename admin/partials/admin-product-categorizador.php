@@ -238,7 +238,7 @@ jQuery(document).ready(function($){
         font-size: 270%;
         color:black;
         text-align: left;
-        padding-top: 10px; padding-bottom: 10px;
+        padding-top: 10px; padding-bottom: 10px; padding-right: 20px;
         line-height: 40px;
     }
 #categoria
