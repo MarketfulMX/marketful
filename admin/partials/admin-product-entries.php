@@ -205,7 +205,7 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             <?php 
 
               $titulo = get_post_meta($product->ID, "titulo_ml", $single = true );
-              if(strlen($titulo < 1)){
+              if(strlen($titulo) < 1){
                   $post_7 = get_post( $product->ID );
                   $titulo = $post_7->post_title;
               }
