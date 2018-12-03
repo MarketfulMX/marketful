@@ -76,17 +76,17 @@ function cambioStatus(product_id, key)
                     console.log(" Entro a valida titulo ML");
                     if(value.length == 60)
                     {
-                        $('#tpml_'+product_id).text(value); $('#title_counter'+product_id).text(' 0 '); $('#title_counter'+product_id).style('color','black');
+                        $('#tpml_'+product_id).text(value); $('#title_counter'+product_id).text(' 0 '); $('#title_counter'+product_id).css('color','black');
                     }
                     else
                     {
                         if (value.length < 60) 
                         {
-                           $('#tpml_'+product_id).text(value); $('#title_counter'+product_id).text('+' + (60 - value.length)); $('#title_counter'+product_id).style('color','green');
+                           $('#tpml_'+product_id).text(value); $('#title_counter'+product_id).text('+' + (60 - value.length)); $('#title_counter'+product_id).css('color','green');
                         }
                         else
                         {
-                          $('#tpml_'+product_id).text(value); $('#title_counter'+product_id).text((value.length - 60)); $('#title_counter'+product_id).style('color','red');
+                          $('#tpml_'+product_id).text(value); $('#title_counter'+product_id).text((value.length - 60)); $('#title_counter'+product_id).css('color','red');
                         }
                     }
                     
