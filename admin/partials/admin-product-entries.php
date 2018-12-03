@@ -212,17 +212,17 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
               echo '<b id="tpml_'.$product->ID.'">'.$titulo.' </b></b>';
               if(strlen($titulo)==60)
               {
-                echo '<label style="color: gray; float:right;"> 0 </label><br>';
+                echo '<label id="title_counter'.$product->ID.'" style="color: gray; float:right;"> 0 </label><br>';
               }
               else
               {
                 if (strlen($titulo) < 60) 
                 {
-                  echo '<label style="color: green; float:right;"> +'.(60 - strlen($titulo)).'</label><br>';
+                  echo '<label id="title_counter'.$product->ID.'" style="color: green; float:right;"> +'.(60 - strlen($titulo)).'</label><br>';
                 }
                 else
                 {
-                  echo '<label style="color: red; float: right;"> -'.(strlen($titulo)-60).'</label><br>';
+                  echo '<label id="title_counter'.$product->ID.'" style="color: red; float: right;"> -'.(strlen($titulo) - 60).'</label><br>';
                 }
               }
               

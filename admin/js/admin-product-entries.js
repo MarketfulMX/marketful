@@ -73,10 +73,26 @@ function cambioStatus(product_id, key)
             { 
                 if(key == 'titulo_ml')
                 {
-                    $('#tpml_'+product_id).text(value);
+                    console.log(" Entro a valida titulo ML");
+                    if(value.length == 60)
+                    {
+                        $('#tpml_'+product_id).text(value); $('#title_counter'+product_id).text(' 0 '); $('#title_counter'+product_id).style('color','black');
+                    }
+                    else
+                    {
+                        if (value.length < 60) 
+                        {
+                           $('#tpml_'+product_id).text(value); $('#title_counter'+product_id).text('+' + (60 - value.length)); $('#title_counter'+product_id).style('color','green');
+                        }
+                        else
+                        {
+                          $('#tpml_'+product_id).text(value); $('#title_counter'+product_id).text((value.length - 60)); $('#title_counter'+product_id).style('color','red');
+                        }
+                    }
+                    
                 }
                 // Imprimir Label 
-                if(key == 'mercadolibre' || key == 'exposicion_ml' || key == 'metodo_envio_ml')
+                if(key == 'mercadolibre' || key == 'exposicion_ml' || key == 'metodo_envio_ml' )
                 {
                     imprimir_label(product_id, key, value);
                 }
