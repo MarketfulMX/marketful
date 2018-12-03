@@ -75,6 +75,18 @@ function cambioStatus(product_id, key)
                 {
                     $('#tpml_'+product_id).text(value);
                 }
+                // Imprimir Label 
+                if(key == 'mercadolibre')
+                {
+                    if(value != "")
+                    {
+                        $('#solo_status'+product_id).text(value);
+                    }
+                    else
+                    {
+                        $('#solo_status'+product_id).text('No seleccionado');
+                    }
+                }
                 console.log("exito")
                 console.log(response)
                 console.log(tareas)

@@ -235,16 +235,16 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
             switch($select_value)
             {
               case 'active':
-                echo'<b>Active</b>';
+                echo'<b id="solo_status'.$product->ID.'">Active</b>';
                 break;
               case 'paused':
-                echo'<b>Paused</b>';
+                echo'<b id="solo_status'.$product->ID.'">Paused</b>';
                 break;
               case 'closed':
-                echo'<b>Closed</b>';
+                echo'<b id="solo_status'.$product->ID.'">Closed</b>';
                 break;
               default :
-                echo '<b>No seleccionado</b>';
+                echo '<b id="solo_status'.$product->ID.'">No seleccionado</b>';
                 break;
             }
             ?>
