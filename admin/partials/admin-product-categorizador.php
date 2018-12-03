@@ -46,7 +46,7 @@ if (is_null($onb)){
 $productObject = MKF_ProductEntry::GetInstance();
 $categories = $productObject->get_ml_categories();
 $titulo = get_post_meta($product_id, "titulo_ml", $single = true );
-if(strlen($titulo < 1)){
+if(strlen($titulo) < 1){
     $post_7 = get_post( $product_id );
     $titulo = $post_7->post_title;
 }
@@ -235,8 +235,11 @@ jQuery(document).ready(function($){
     }
 #titulo
     {
-        font-size: 35px;color:black;text-align: left;
-        padding-top: 30px;
+        font-size: 270%;
+        color:black;
+        text-align: left;
+        padding-top: 10px; padding-bottom: 10px; padding-right: 20px;
+        line-height: 40px;
     }
 #categoria
     {
@@ -294,7 +297,7 @@ jQuery(document).ready(function($){
 <p id="leyenda"> Categorizador de productos </p>
 <div id="contenedor">
     <div id="interno">
-      <h2 id="titulo" class="margenCat">Producto: <?php echo $titulo; ?> </h2>
+      <div id="titulo" class="">Producto: <?php echo $titulo; ?> </div>
       <h2 class="margenCat">Categor&iacute;a: <h5 id="categoria" ></h5></h2>
     </div>
     <hr>

@@ -209,8 +209,23 @@ $imgSrc   = plugins_url( '../img/Marketful.png', __FILE__ );
                   $post_7 = get_post( $product->ID );
                   $titulo = $post_7->post_title;
               }
-
-              echo '<b id="tpml_'.$product->ID.'">'.$titulo.' :'.strlen($titulo).'</b><br>';
+              echo '<b id="tpml_'.$product->ID.'">'.$titulo.' </b></b>';
+              if(strlen($titulo)==60)
+              {
+                echo '<label id="title_counter'.$product->ID.'" style="color: gray; float:right;"> 0 </label><br>';
+              }
+              else
+              {
+                if (strlen($titulo) < 60) 
+                {
+                  echo '<label id="title_counter'.$product->ID.'" style="color: green; float:right;"> +'.(60 - strlen($titulo)).'</label><br>';
+                }
+                else
+                {
+                  echo '<label id="title_counter'.$product->ID.'" style="color: red; float: right;"> -'.(strlen($titulo) - 60).'</label><br>';
+                }
+              }
+              
               echo '<input type="text" class="input titulo_onb" style="width: 200px;" id="titulo_ml_'.$product->ID.'" maxlength="60" placeholder="Nuevo titulo solo para Mercadolibre" onblur="cambioStatus('.$product->ID.', \'titulo_ml\')" onkeypress="checar_enter(event,'.$product->ID.', \'titulo_ml\')">';
           
             ?>
