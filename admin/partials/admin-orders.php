@@ -838,7 +838,7 @@ $(document).ready(function() {
                 */
                 /*$status_envio_ml = "imprimir";*/
                 /*IF PARA STATUS ENVIO*/
-                if ($status_envio_ml == " imprimir") {
+                if ($status_envio_ml == "imprimir") {
                   echo'
                     <div class="fr1_2naranja" id="'.$etiquetas.'">
                       '.$texto_titulo.' <h4> Etiqueta lista para imprimir </h4>
@@ -873,7 +873,7 @@ $(document).ready(function() {
                       </div>
                     </div>';
                   }
-                  if ($status_envio_ml == "impresa") {
+                  if ($status_envio_ml == " impresa") {
                   echo'
                     <div class="fr1_2naranja" id="'.$etiquetas.'">
                       '.$texto_titulo.' <h4> Etiqueta impresa </h4>
