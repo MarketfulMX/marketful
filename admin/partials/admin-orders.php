@@ -777,7 +777,8 @@ $(document).ready(function() {
             $status_envio_ml = "imprimir";
             foreach ($comentarios as $indice => $el_comentario){
               if(substr($el_comentario, 0, 10)=="seudonimo:"){
-                $comentario = trim($el_comentario,"seudonimo: ");
+                /*$comentario = trim($el_comentario,"seudonimo: ");*/
+                $comentario = str_replace("seudonimo: ","", $el_comentario);
               }
               if(substr($el_comentario, 0, 16)=="status_envio_ml:"){
                 $status_envio_ml = str_replace("status_envio_ml: ","", $el_comentario);
@@ -1063,7 +1064,11 @@ $(document).ready(function() {
             $comentario = "";
             foreach ($comentarios as $indice => $el_comentario){
               if(substr($el_comentario, 0, 10)=="seudonimo:"){
-                $comentario = trim($el_comentario,"seudonimo: ");
+                /*$comentario = trim($el_comentario,"seudonimo: ");*/
+                $comentario = str_replace("seudonimo: ","", $el_comentario);
+              }
+              if(substr($el_comentario, 0, 16)=="status_envio_ml:"){
+                $status_envio_ml = str_replace("status_envio_ml: ","", $el_comentario);
               }
             }
             intval($item_quantity) > 0;
