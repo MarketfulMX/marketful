@@ -873,7 +873,7 @@ $(document).ready(function() {
                       </div>
                     </div>';
                   }
-                  if ($status_envio_ml == " impresa") {
+                  if ($status_envio_ml == "impresa") {
                   echo'
                     <div class="fr1_2naranja" id="'.$etiquetas.'">
                       '.$texto_titulo.' <h4> Etiqueta impresa </h4>
@@ -1016,7 +1016,7 @@ $(document).ready(function() {
                     '.$nombre.' 
                   </div>
                   <div class="fr4_1_2">
-                    '.$comentario.'
+                    '.$comentario.' '.$status_envio_ml.'
                   </div>
                   <div class="fr4_1_3">
                     '.$tel.'
