@@ -1160,7 +1160,7 @@ $(document).ready(function() {
                     
                   </div>
                   <div class="fr3_2_3">
-                    SKU: '.$primer_producto->get_sku().'  
+                    SKU: '.$primer_producto['name'].'  
                   </div>
                 </div>
               </div>
