@@ -849,10 +849,10 @@ $(document).ready(function() {
                       Fecha de orden: '.$order_val->post_date.'
                     </div>
                   </div>
-                  <div class="fr2">
-                  <div class="alinear-derecha">
-                    <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Imprimir Etiqueta
-                    </button>
+                  <div class="fr2 imprimir">
+                    <div class="alinear-derecha">
+                      <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Imprimir Etiqueta
+                      </button>
                     </div>
                     <div class="alinear-derecha">
                       <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
@@ -884,10 +884,10 @@ $(document).ready(function() {
                       Fecha de orden: '.$order_val->post_date.'
                     </div>
                   </div>
-                  <div class="fr2">
-                  <div class="alinear-derecha">
-                    <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Reimprimir Etiqueta
-                    </button>
+                  <div class="fr2 impresa">
+                    <div class="alinear-derecha">
+                      <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Reimprimir Etiqueta
+                      </button>
                     </div>
                     <div class="alinear-derecha">
                       <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
@@ -920,9 +920,9 @@ $(document).ready(function() {
                     </div>
                   </div>
                   <div class="fr2">
-                  <div class="alinear-derecha">
-                    <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Seguir envio
-                    </button>
+                    <div class="alinear-derecha">
+                      <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Seguir envio
+                      </button>
                     </div>
                     <div class="alinear-derecha">
                       <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
@@ -955,9 +955,9 @@ $(document).ready(function() {
                     </div>
                   </div>
                   <div class="fr2">
-                  <div class="alinear-derecha">
-                    <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Entregu&eacute; el producto
-                    </button>
+                    <div class="alinear-derecha">
+                      <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Entregu&eacute; el producto
+                      </button>
                     </div>
                     <div class="alinear-derecha">
                       <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
