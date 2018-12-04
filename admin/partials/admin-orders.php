@@ -1000,7 +1000,7 @@ $(document).ready(function() {
                     
                   </div>
                   <div class="fr3_2_3">
-                    SKU: '.$primer_producto['product_id'].'  
+                    SKU: '.$primer_producto['sku'].'  
                   </div>
                 </div>
               </div>
