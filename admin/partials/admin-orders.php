@@ -1156,11 +1156,12 @@ $(document).ready(function() {
                   }else{
                     echo $item_subtotal.' x '.$item_quantity.' unidad';
                   }
+                  $product = new WC_Product($primer_producto['product_id']);
                   echo'
                     
                   </div>
                   <div class="fr3_2_3">
-                    SKU: '.print_r(array_keys($primer_producto['item_meta_array'])).'  
+                    SKU: '.$product->get_sku().'  
                   </div>
                 </div>
               </div>
