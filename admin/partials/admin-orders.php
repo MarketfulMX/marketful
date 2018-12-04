@@ -815,7 +815,7 @@ $(document).ready(function() {
                 break; // Se hace un break para que solo realize esta accion en a primera imagen.
               }
             }
-            $path = get_the_post_thumbnail( $product_post_id, 'medium' );
+            $path = get_the_post_thumbnail( $product_post_id, 'thumbnail' );
             if(!$path) $path = '<img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="150" height="100">'; // En caso de que no tenga ninguna imagen, se mostrara una imagen de prueba
             $nombre = get_post_meta($order->id, "_billing_first_name", $single = true ).' '.get_post_meta($order->id, "_billing_last_name", $single = true );
             $tel = get_post_meta($order->id, "_billing_phone", $single = true);
