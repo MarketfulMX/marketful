@@ -780,7 +780,7 @@ $(document).ready(function() {
                 $comentario = trim($el_comentario,"seudonimo: ");
               }
               if(substr($el_comentario, 0, 16)=="status_envio_ml:"){
-                $status_envio_ml = "impresa";
+                $status_envio_ml = trim($el_comentario,"status_envio_ml: ");
               }
             }
             intval($item_quantity) > 0;
@@ -838,7 +838,7 @@ $(document).ready(function() {
                 */
                 /*$status_envio_ml = "imprimir";*/
                 /*IF PARA STATUS ENVIO*/
-                if ($status_envio_ml == "imprimir") {
+                if ($status_envio_ml == " imprimir") {
                   echo'
                     <div class="fr1_2naranja" id="'.$etiquetas.'">
                       '.$texto_titulo.' <h4> Etiqueta lista para imprimir </h4>
