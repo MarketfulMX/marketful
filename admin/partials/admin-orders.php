@@ -780,7 +780,7 @@ $(document).ready(function() {
                 $comentario = trim($el_comentario,"seudonimo: ");
               }
               if(substr($el_comentario, 0, 16)=="status_envio_ml:"){
-                $status_envio_ml = trim($el_comentario,"status_envio_ml: ");
+                $status_envio_ml = "impresa";
               }
             }
             intval($item_quantity) > 0;
