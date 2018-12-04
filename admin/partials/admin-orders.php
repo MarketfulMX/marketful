@@ -803,7 +803,7 @@ $(document).ready(function() {
               contador = 0 
               foreach ( $images as $attachment_id => $attachment ) 
               {
-                contador = contador + 1 
+                contador = contador + 1;
                 //echo ' Imagen 1 : '.wp_get_attachment_image( $attachment_id, 'thumbnail' );
                 /*$path = wp_get_attachment_image( $attachment_id, 'thumb');*/ // Utilizando esta funcion se toma la imagen y se guarda en $path.  Tiene el tamaño default de WP 'thumb'. Version 2.5 para arriba 
                 if(contador == 1){
