@@ -774,7 +774,7 @@ $(document).ready(function() {
             $post_id = $order->id;
             $comentarios = custom_get_order_notes($post_id);
             $comentario = "";
-            $status_envio_ml = "impresa";
+            $status_envio_ml = "imprimir";
             foreach ($comentarios as $indice => $el_comentario){
               if(substr($el_comentario, 0, 10)=="seudonimo:"){
                 $comentario = trim($el_comentario,"seudonimo: ");
