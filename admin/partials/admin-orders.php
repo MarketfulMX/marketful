@@ -800,11 +800,15 @@ $(document).ready(function() {
             else 
             {
               // En caso de que si haya hijos del post del producto, se hace un for each para tomar sus valores
+              contador = 0 
               foreach ( $images as $attachment_id => $attachment ) 
               {
+                contador = contador + 1 
                 //echo ' Imagen 1 : '.wp_get_attachment_image( $attachment_id, 'thumbnail' );
                 /*$path = wp_get_attachment_image( $attachment_id, 'thumb');*/ // Utilizando esta funcion se toma la imagen y se guarda en $path.  Tiene el tamaño default de WP 'thumb'. Version 2.5 para arriba 
-                $path = wp_get_attachment_image( $attachment_id, 'thumb');
+                if(contador == 1){
+                  $path = wp_get_attachment_image( $attachment_id, 'thumb');
+                }
                 //$path = wp_get_attachment_image( $attachment_id, $special_size);
 
           /*$path = '<img src="<?php echo $imgUrls?>" width="150" height="100">';*/
