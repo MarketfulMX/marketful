@@ -1000,7 +1000,7 @@ $(document).ready(function() {
                     
                   </div>
                   <div class="fr3_2_3">
-                    SKU: '.$primer_producto['sku'].'  
+                    SKU: '.$primer_producto['name'].'  
                   </div>
                 </div>
               </div>
@@ -1160,7 +1160,7 @@ $(document).ready(function() {
                     
                   </div>
                   <div class="fr3_2_3">
-                    SKU: '.$primer_producto['name'].'  
+                    SKU: '.print_r(array_keys($primer_producto)).'  
                   </div>
                 </div>
               </div>
