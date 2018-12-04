@@ -774,6 +774,7 @@ $(document).ready(function() {
             $post_id = $order->id;
             $comentarios = custom_get_order_notes($post_id);
             $comentario = "";
+            $status_envio_ml = "impresa";
             foreach ($comentarios as $indice => $el_comentario){
               if(substr($el_comentario, 0, 10)=="seudonimo:"){
                 $comentario = trim($el_comentario,"seudonimo: ");
@@ -835,7 +836,7 @@ $(document).ready(function() {
                       en_camino
                       por_entregar
                 */
-                $status_envio_ml = "imprimir";
+                /*$status_envio_ml = "imprimir";*/
                 /*IF PARA STATUS ENVIO*/
                 if ($status_envio_ml == "imprimir") {
                   echo'
