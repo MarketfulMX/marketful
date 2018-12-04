@@ -209,10 +209,7 @@ body{padding: 0;}
   {
     margin-bottom: 10px; margin-left: 10px;
   }
-    h4
-    {
-      margin-top: -10px;
-    }
+    
   .container
   {
     width: 100%;
@@ -320,6 +317,10 @@ body{padding: 0;}
       .fr1_2
       {
         color: #27B820;
+      }
+      .fr1_2naranja
+      {
+        color: #FF6E3F;
       }
       .fr1_2-2
       {
@@ -819,39 +820,157 @@ $(document).ready(function() {
               <div class="fr1">
                 <div class="fr1_1">
                   <input type="checkbox" style="display: none;" id="checkbox_open_'.$order->id.'"name="checkbox_open">
-                </div>
-                <div class="fr1_2" id="'.$etiquetas.'">
-                  '.$texto_titulo.' status_ml : '.$order->id.'
-                </div>
-                <div class="fr1_3">
-                </div>
-                <div class="fr1_4">
-                  Fecha de orden: '.$order_val->post_date.'
-                </div>
-              </div>
-              <div class="fr2">
-              <div class="alinear-derecha">
-                <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Imprimir Etiqueta
-                </button>
-                </div>
-                <div class="alinear-derecha">
-                  <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
-                  <div class="dropdown">
-                    <button onclick="myFunction('.$order->id.')" class="dropbtn" >
-                      <span class="myml-ui-dropdown-actions__icon" style="pointer-events: none;">
-                        <svg width="8" height="14" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg">
-                        <title>A9B9EA24-301D-48AB-ADBC-23CE01B1CCE1</title><g fill="#333" fill-rule="evenodd">
-                        <path d="M4 7.838c2.21 0 4-1.754 4-3.919C8 1.755 6.21 0 4 0S0 1.755 0 3.92c0 2.164 1.79 3.918 4 3.918z" ></path>
-                        <ellipse cx="4" cy="17.458" rx="4" ry="3.919"></ellipse><ellipse cx="4" cy="30.998" rx="4" ry="3.919" ></ellipse></g>
-                        </svg>
-                      </span>
-                    </button>
-                    <div id="myDropdown'.$order->id.'" class="dropdown-content">
-                      <a href="#home">Cancelar venta</a>
-                      <a href="#about">Tengo un problema</a>
+                </div>';
+                
+                /* condiciones IF
+                      imprimir
+                      impresa
+                      en_camino
+                      por_entregar
+                */
+                $status_envio_ml = "imprimir";
+                /*IF PARA STATUS ENVIO*/
+                if ($status_envio_ml == "imprimir") {
+                  echo'
+                    <div class="fr1_2naranja" id="'.$etiquetas.'">
+                      '.$texto_titulo.' <h4> Etiqueta lista para imprimir </h4>
+                    </div>
+                    <div class="fr1_3">
+                    </div>
+                    <div class="fr1_4">
+                      Fecha de orden: '.$order_val->post_date.'
                     </div>
                   </div>
-                </div>
+                  <div class="fr2">
+                  <div class="alinear-derecha">
+                    <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Imprimir Etiqueta
+                    </button>
+                    </div>
+                    <div class="alinear-derecha">
+                      <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
+                      <div class="dropdown">
+                        <button onclick="myFunction('.$order->id.')" class="dropbtn" >
+                          <span class="myml-ui-dropdown-actions__icon" style="pointer-events: none;">
+                            <svg width="8" height="14" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg">
+                            <title>A9B9EA24-301D-48AB-ADBC-23CE01B1CCE1</title><g fill="#333" fill-rule="evenodd">
+                            <path d="M4 7.838c2.21 0 4-1.754 4-3.919C8 1.755 6.21 0 4 0S0 1.755 0 3.92c0 2.164 1.79 3.918 4 3.918z" ></path>
+                            <ellipse cx="4" cy="17.458" rx="4" ry="3.919"></ellipse><ellipse cx="4" cy="30.998" rx="4" ry="3.919" ></ellipse></g>
+                            </svg>
+                          </span>
+                        </button>
+                        <div id="myDropdown'.$order->id.'" class="dropdown-content">
+                          <a href="#home">Cancelar venta</a>
+                          <a href="#about">Tengo un problema</a>
+                        </div>
+                      </div>
+                    </div>';
+                  }
+                  if ($status_envio_ml == "impresa") {
+                  echo'
+                    <div class="fr1_2naranja" id="'.$etiquetas.'">
+                      '.$texto_titulo.' <h4> Etiqueta impresa </h4>
+                    </div>
+                    <div class="fr1_3">
+                    </div>
+                    <div class="fr1_4">
+                      Fecha de orden: '.$order_val->post_date.'
+                    </div>
+                  </div>
+                  <div class="fr2">
+                  <div class="alinear-derecha">
+                    <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Reimprimir Etiqueta
+                    </button>
+                    </div>
+                    <div class="alinear-derecha">
+                      <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
+                      <div class="dropdown">
+                        <button onclick="myFunction('.$order->id.')" class="dropbtn" >
+                          <span class="myml-ui-dropdown-actions__icon" style="pointer-events: none;">
+                            <svg width="8" height="14" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg">
+                            <title>A9B9EA24-301D-48AB-ADBC-23CE01B1CCE1</title><g fill="#333" fill-rule="evenodd">
+                            <path d="M4 7.838c2.21 0 4-1.754 4-3.919C8 1.755 6.21 0 4 0S0 1.755 0 3.92c0 2.164 1.79 3.918 4 3.918z" ></path>
+                            <ellipse cx="4" cy="17.458" rx="4" ry="3.919"></ellipse><ellipse cx="4" cy="30.998" rx="4" ry="3.919" ></ellipse></g>
+                            </svg>
+                          </span>
+                        </button>
+                        <div id="myDropdown'.$order->id.'" class="dropdown-content">
+                          <a href="#home">Cancelar venta</a>
+                          <a href="#about">Tengo un problema</a>
+                        </div>
+                      </div>
+                    </div>';
+                  }
+                  if ($status_envio_ml == "en_camino") {
+                  echo'
+                    <div class="fr1_2" id="'.$etiquetas.'">
+                      '.$texto_titulo.' <h4> En camino </h4>
+                    </div>
+                    <div class="fr1_3">
+                    </div>
+                    <div class="fr1_4">
+                      Fecha de orden: '.$order_val->post_date.'
+                    </div>
+                  </div>
+                  <div class="fr2">
+                  <div class="alinear-derecha">
+                    <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Seguir envio
+                    </button>
+                    </div>
+                    <div class="alinear-derecha">
+                      <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
+                      <div class="dropdown">
+                        <button onclick="myFunction('.$order->id.')" class="dropbtn" >
+                          <span class="myml-ui-dropdown-actions__icon" style="pointer-events: none;">
+                            <svg width="8" height="14" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg">
+                            <title>A9B9EA24-301D-48AB-ADBC-23CE01B1CCE1</title><g fill="#333" fill-rule="evenodd">
+                            <path d="M4 7.838c2.21 0 4-1.754 4-3.919C8 1.755 6.21 0 4 0S0 1.755 0 3.92c0 2.164 1.79 3.918 4 3.918z" ></path>
+                            <ellipse cx="4" cy="17.458" rx="4" ry="3.919"></ellipse><ellipse cx="4" cy="30.998" rx="4" ry="3.919" ></ellipse></g>
+                            </svg>
+                          </span>
+                        </button>
+                        <div id="myDropdown'.$order->id.'" class="dropdown-content">
+                          <a href="#home">Cancelar venta</a>
+                          <a href="#about">Tengo un problema</a>
+                        </div>
+                      </div>
+                    </div>';
+                  }
+                  if ($status_envio_ml == "por_entregar") {
+                  echo'
+                    <div class="fr1_2naranja" id="'.$etiquetas.'">
+                      '.$texto_titulo.' <h4> Por entregar </h4>
+                    </div>
+                    <div class="fr1_3">
+                    </div>
+                    <div class="fr1_4">
+                      Fecha de orden: '.$order_val->post_date.'
+                    </div>
+                  </div>
+                  <div class="fr2">
+                  <div class="alinear-derecha">
+                    <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Entregu&eacute; el producto
+                    </button>
+                    </div>
+                    <div class="alinear-derecha">
+                      <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
+                      <div class="dropdown">
+                        <button onclick="myFunction('.$order->id.')" class="dropbtn" >
+                          <span class="myml-ui-dropdown-actions__icon" style="pointer-events: none;">
+                            <svg width="8" height="14" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg">
+                            <title>A9B9EA24-301D-48AB-ADBC-23CE01B1CCE1</title><g fill="#333" fill-rule="evenodd">
+                            <path d="M4 7.838c2.21 0 4-1.754 4-3.919C8 1.755 6.21 0 4 0S0 1.755 0 3.92c0 2.164 1.79 3.918 4 3.918z" ></path>
+                            <ellipse cx="4" cy="17.458" rx="4" ry="3.919"></ellipse><ellipse cx="4" cy="30.998" rx="4" ry="3.919" ></ellipse></g>
+                            </svg>
+                          </span>
+                        </button>
+                        <div id="myDropdown'.$order->id.'" class="dropdown-content">
+                          <a href="#home">Cancelar venta</a>
+                          <a href="#about">Tengo un problema</a>
+                        </div>
+                      </div>
+                    </div>';
+                  }
+                echo'
                 <div class="alinear-derecha">
                 
                 </div>
@@ -979,7 +1098,7 @@ $(document).ready(function() {
                   <input type="checkbox" style="display: none;" id="checkbox_open_'.$order->id.'"name="checkbox_open">
                 </div>
                 <div class="fr1_2" id="etiquetas">
-                  Entregadas
+                  <h4>Entregadas</h4>
                 </div>
                 <div class="fr1_3">
                 </div>
