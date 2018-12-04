@@ -778,6 +778,9 @@ $(document).ready(function() {
               if(substr($el_comentario, 0, 10)=="seudonimo:"){
                 $comentario = trim($el_comentario,"seudonimo: ");
               }
+              if(substr($el_comentario, 0, 16)=="status_envio_ml:"){
+                $status_envio_ml = trim($el_comentario,"status_envio_ml: ");
+              }
             }
             intval($item_quantity) > 0;
             $item_subtotal = 0;
