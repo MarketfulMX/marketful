@@ -1160,7 +1160,7 @@ $(document).ready(function() {
                     
                   </div>
                   <div class="fr3_2_3">
-                    SKU: '.print_r(array_keys($primer_producto)).'  
+                    SKU: '.print_r(array_keys($primer_producto['item_meta])).'  
                   </div>
                 </div>
               </div>
