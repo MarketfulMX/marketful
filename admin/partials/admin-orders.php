@@ -1017,7 +1017,7 @@ $(document).ready(function() {
                     '.$nombre.' 
                   </div>
                   <div class="fr4_1_2">
-                    '.$comentario.' '.$status_envio_ml.'
+                    '.$comentario.'
                   </div>
                   <div class="fr4_1_3">
                     '.$tel.'
