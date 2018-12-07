@@ -774,9 +774,14 @@ $(document).ready(function() {
             $post_id = $order->id;
             $comentarios = custom_get_order_notes($post_id);
             $comentario = "";
+            $status_envio_ml = "imprimir";
             foreach ($comentarios as $indice => $el_comentario){
               if(substr($el_comentario, 0, 10)=="seudonimo:"){
-                $comentario = trim($el_comentario,"seudonimo: ");
+                /*$comentario = trim($el_comentario,"seudonimo: ");*/
+                $comentario = str_replace("seudonimo: ","", $el_comentario);
+              }
+              if(substr($el_comentario, 0, 16)=="status_envio_ml:"){
+                $status_envio_ml = str_replace("status_envio_ml: ","", $el_comentario);
               }
             }
             intval($item_quantity) > 0;
@@ -832,7 +837,7 @@ $(document).ready(function() {
                       en_camino
                       por_entregar
                 */
-                $status_envio_ml = "imprimir";
+                /*$status_envio_ml = "imprimir";*/
                 /*IF PARA STATUS ENVIO*/
                 if ($status_envio_ml == "imprimir") {
                   echo'
@@ -845,10 +850,10 @@ $(document).ready(function() {
                       Fecha de orden: '.$order_val->post_date.'
                     </div>
                   </div>
-                  <div class="fr2">
-                  <div class="alinear-derecha">
-                    <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Imprimir Etiqueta
-                    </button>
+                  <div class="fr2 imprimir">
+                    <div class="alinear-derecha">
+                      <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Imprimir Etiqueta
+                      </button>
                     </div>
                     <div class="alinear-derecha">
                       <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
@@ -880,10 +885,10 @@ $(document).ready(function() {
                       Fecha de orden: '.$order_val->post_date.'
                     </div>
                   </div>
-                  <div class="fr2">
-                  <div class="alinear-derecha">
-                    <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Reimprimir Etiqueta
-                    </button>
+                  <div class="fr2 impresa">
+                    <div class="alinear-derecha">
+                      <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Reimprimir Etiqueta
+                      </button>
                     </div>
                     <div class="alinear-derecha">
                       <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
@@ -916,9 +921,9 @@ $(document).ready(function() {
                     </div>
                   </div>
                   <div class="fr2">
-                  <div class="alinear-derecha">
-                    <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Seguir envio
-                    </button>
+                    <div class="alinear-derecha">
+                      <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Seguir envio
+                      </button>
                     </div>
                     <div class="alinear-derecha">
                       <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
@@ -951,9 +956,9 @@ $(document).ready(function() {
                     </div>
                   </div>
                   <div class="fr2">
-                  <div class="alinear-derecha">
-                    <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Entregu&eacute; el producto
-                    </button>
+                    <div class="alinear-derecha">
+                      <button type="button" class="ch-btn btn btn-lg" onclick="imprimir_guia_pdf('.$order->id.')"/>Entregu&eacute; el producto
+                      </button>
                     </div>
                     <div class="alinear-derecha">
                       <a href="?page=mkf-product-orders-details&id='.$order->id.'&pid='.$order->item_product_id.'" target="_blank"> Ver Detalles </a>
@@ -1059,7 +1064,11 @@ $(document).ready(function() {
             $comentario = "";
             foreach ($comentarios as $indice => $el_comentario){
               if(substr($el_comentario, 0, 10)=="seudonimo:"){
-                $comentario = trim($el_comentario,"seudonimo: ");
+                /*$comentario = trim($el_comentario,"seudonimo: ");*/
+                $comentario = str_replace("seudonimo: ","", $el_comentario);
+              }
+              if(substr($el_comentario, 0, 16)=="status_envio_ml:"){
+                $status_envio_ml = str_replace("status_envio_ml: ","", $el_comentario);
               }
             }
             intval($item_quantity) > 0;
@@ -1087,12 +1096,12 @@ $(document).ready(function() {
               {
                 //echo ' Imagen 1 : '.wp_get_attachment_image( $attachment_id, 'thumbnail' );
                 /*$path = wp_get_attachment_image( $attachment_id, 'thumb');*/ // Utilizando esta funcion se toma la imagen y se guarda en $path.  Tiene el tamaño default de WP 'thumb'. Version 2.5 para arriba 
-                $path = wp_get_attachment_image( $attachment_id, 'thumbnail');
                 //$path = wp_get_attachment_image( $attachment_id, $special_size);
             /*$path = '<img src="<?php echo $imgUrls?>" width="150" height="100">';*/
                 break; // Se hace un break para que solo realize esta accion en a primera imagen.
               }
             }
+            $path = get_the_post_thumbnail( $product_post_id, 'thumbnail' );
             if(!$path) $path = '<img src="https://www.eu-rentals.com/sites/default/files/default_images/noImg_2.jpg" width="150" height="100">'; // En caso de que no tenga ninguna imagen, se mostrara una imagen de prueba
             $nombre = get_post_meta($order->id, "_billing_first_name", $single = true ).' '.get_post_meta($order->id, "_billing_last_name", $single = true );
             $tel = get_post_meta($order->id, "_billing_phone", $single = true);
