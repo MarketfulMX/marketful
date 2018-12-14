@@ -997,9 +997,9 @@ $(document).ready(function() {
                   ';
 
                   if ($item_quantity>1) {
-                    echo $item_subtotal.' x '.$item_quantity.' unidad(es)';
+                    echo '$'.$item_subtotal.' x '.$item_quantity.' unidades';
                   }else{
-                    echo $item_subtotal.' x '.$item_quantity.' unidad';
+                    echo '$'.$item_subtotal.' x '.$item_quantity.' unidad';
                   }
                   $product = new WC_Product($primer_producto['product_id']);
                   echo'
@@ -1162,9 +1162,9 @@ $(document).ready(function() {
                   ';
 
                   if ($item_quantity>1) {
-                    echo $item_subtotal.' x '.$item_quantity.' unidad(es)';
+                    echo '$'.$item_subtotal.' x '.$item_quantity.' unidad(es)';
                   }else{
-                    echo $item_subtotal.' x '.$item_quantity.' unidad';
+                    echo '$'.$item_subtotal.' x '.$item_quantity.' unidad';
                   }
                   $product = new WC_Product($primer_producto['product_id']);
                   echo'
