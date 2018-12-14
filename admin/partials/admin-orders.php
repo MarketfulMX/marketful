@@ -1112,7 +1112,7 @@ $(document).ready(function() {
                   <input type="checkbox" style="display: none;" id="checkbox_open_'.$order->id.'"name="checkbox_open">
                 </div>
                 <div class="fr1_2" id="etiquetas">
-                  <h4>Entregadas</h4>
+                  <h4>Entregada</h4>
                 </div>
                 <div class="fr1_3">
                 </div>
