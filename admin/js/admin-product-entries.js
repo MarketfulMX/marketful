@@ -332,6 +332,10 @@ var status_cambios = ""
                         $('#' + el_id).text("");
                         path_categoria = path_categoria.substring(3);
                         $('#' + el_id).append('<a href=?page=mkf-entries_categorizador&pagina='+pagina+'&keyword='+keyword+'&product_id=' + el_id.replace("categoria_", "") + ">" + path_categoria + "</a> <br><b id='labelsolo_" + el_id + "'>" + cate + "</b>");
+                    },
+                    error: function(response) 
+                    { 
+                        console.log("fracaso traer la categoria");
                     }
                 });
             }
