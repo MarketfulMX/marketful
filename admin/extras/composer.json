@@ -1,6 +1,6 @@
 {
     "require": {
-        "guzzlehttp/guzzle": "~6.0",
+        "guzzlehttp/guzzle": "~7.15",
         "automattic/woocommerce": "^2.0"
     }
 }
